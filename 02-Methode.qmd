@@ -1,0 +1,32 @@
+# Methode
+
+```{r}
+#| label: setup
+#| include: false
+
+source("_common.R")
+```
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+## Methodensteckbrief
+
+Der ist im Files-Ordner zu finden.
+
+```{r}
+#| label: Methodensteckbrief
+#| echo: false
+
+#DATEN %>% frq(SPRACHE, weights = GEWICHT)
+
+Methodensteckbrief <- readxl::read_excel("files/Methodensteckbrief.xlsx", range = "A1:B21") ## Achtung ändern!
+options(knitr.kable.NA = "")
+Methodensteckbrief %>% 
+  kableExtra::kable(caption = "Methodensteckbrief", booktabs = T, linesep = "") %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                latex_options = c("striped", "hover", "condensed"), 
+                font_size = if(knitr::is_latex_output()){10} else {14},) %>% 
+  kableExtra::column_spec(1, width = "12em")  %>% 
+  kableExtra::column_spec(2, width = "25em")
+options(knitr.kable.NA = "---")
+```

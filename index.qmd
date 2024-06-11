@@ -1,0 +1,18 @@
+```{=tex}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+```
+# Einleitung
+
+```{r}
+#| label: setup
+#| include: false
+
+source("_common.R")
+```
+
+Der Text für die Einleitung kann hier eingefügt werden.
+
+<!-- Die Gliederung einer Hausarbeit folgt einem mehr oder weniger festgelegten, logischen Grobschema: Einleitung – Hauptteil – Schluss. Die Feingliederung des Hauptteils bildet den kritischen Punkt einer wissenschaftlichen Arbeit. Generelle Aussagen zur Feingliederung bleiben leider immer inhaltsleer („ist entscheidend“, „muss angemessen sein“, „bildet den kritischen Punkt“ u.s.w.), da sie aus der konkreten Fragestellung ableitet werden muss. Während Einleitung und Schluss für gewöhnlich abgeschlossene Kapitel bilden, besteht der Hauptteil aus mehreren Kapiteln der höchsten Gliederungsebene.  -->
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.

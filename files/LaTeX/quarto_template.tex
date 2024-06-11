@@ -1,0 +1,316 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames,x11names, table}{xcolor}
+$endif$
+$if(CJKmainfont)$
+\PassOptionsToPackage{space}{xeCJK}
+$endif$
+%
+
+$doc-class.tex()$
+
+% \documentclass[twoside, fontsize=10pt]{scrreport}
+\usepackage{amsmath,amssymb}
+$if(linestretch)$
+\usepackage{setspace}
+$endif$
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+$if(mathspec)$
+  \ifXeTeX
+    \usepackage{mathspec} % this also loads fontspec
+  \else
+    \usepackage{unicode-math} % this also loads fontspec
+  \fi
+$else$
+  \usepackage{unicode-math}
+$endif$
+  \defaultfontfeatures{Scale=MatchLowercase}$-- must come before Beamer theme
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+\usepackage{xcolor}
+
+$if(geometry)$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(svg)$
+\usepackage{svg}
+$endif$
+$if(strikeout)$
+$-- also used for underline
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+$endif$
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+$endif$
+$if(block-headings)$
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+$endif$
+$if(pagestyle)$
+\pagestyle{$pagestyle$}
+$endif$
+$pandoc.tex()$
+$if(lang)$
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+$if(babel-lang)$
+\babelprovide[main,import]{$babel-lang$}
+$if(mainfont)$
+\ifPDFTeX
+\else
+\babelfont{rm}[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+\fi
+$endif$
+$endif$
+$for(babel-otherlangs)$
+\babelprovide[import]{$babel-otherlangs$}
+$endfor$
+$for(babelfonts/pairs)$
+\babelfont[$babelfonts.key$]{rm}{$babelfonts.value$}
+$endfor$
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+$endif$
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+$if(dir)$
+\ifPDFTeX
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+$endif$
+$if(biblio-config)$
+$if(natbib)$
+\usepackage[$natbiboptions$]{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+$if(biblatex)$
+\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+$endif$
+$if(nocite-ids)$
+\nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
+$endif$
+$if(csquotes)$
+\usepackage{csquotes}
+$endif$
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allow verbatim text in footnotes
+$endif$
+
+
+\hypersetup{
+ pdflang = de, colorlinks = true, linkcolor = black, urlcolor = black,
+ pdfauthor={$for(author)$ $author.surname$, $author.given-names$ $endfor$},
+    pdfsubject={$if(subtitle)$$subtitle$$endif$},
+    pdftitle={$title$},
+    pdfkeywords={}
+   lang = {de_CH}
+}
+
+\usepackage{scrlayer-scrpage}
+
+\addtokomafont{disposition}{\sffamily}
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{}
+\date{}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+              %Dokumentstart
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\pagestyle{scrheadings}
+
+  \clearscrheadfoot
+  \automark[section]{section}
+  \ihead[]{\headmark} %oben links
+  \chead[]{} %oben Mitte
+  \ohead{} %oben rechts 
+  \ifoot[]{$for(author)${$author.surname$}$sep$/$endfor$} %unten links
+  \cfoot[]{$if(Fusstitel)$$Fusstitel$$endif$} %unten Mitte
+  \ofoot[]{\pagemark} % unten rechts
+  \setheadsepline{.2pt}
+  \setfootsepline{.2pt}
+
+
+
+\begin{titlepage}
+\sffamily
+\setlength\parindent{0pt}
+
+\includegraphics[width = 6cm]{images/pum_logo_sw.pdf} \par
+\vspace{-.9cm} \hfill{\huge \bfseries $institute$}
+
+\vfill
+\vfill
+
+$if(title)$
+{\huge \bfseries $title$} \\[1ex]
+$if(subtitle)$
+{\Large \bfseries $subtitle$} \\[1cm]
+$endif$
+$endif$
+
+
+\vfill
+
+\begin{multicols}{2}
+    $for(author)$\Large $author.surname$, $author.given-names$ \\*[1ex]
+    \normalsize $author.Email$\\*
+    Matrikelnummer: $author.MatrikelNr$ $sep$\\[1cm]
+    $endfor$
+\end{multicols}
+
+\vfill
+$if(AG)$AG: $AG$,  $endif$ $if(Uebung)$ Übung: $Uebung$,  $endif$ $if(TutorIn)$ Tutor:in: $TutorIn$ $endif$
+
+\vfill
+
+Modul: $Modul$ \\
+Semester: $Semester$ \\
+
+Dozent*Innen: \\[1ex]
+$for(DozentInnen)$ $DozentInnen.name$\\ $DozentInnen.Email$ $endfor$
+
+\vfill
+
+$Datum$
+
+\end{titlepage}
+
+
+
+\makeatletter
+\AddToShipoutPicture{\setlength{\unitlength}{1cm}\put(24.32,18.65){{\includegraphics[height=.6cm]{images/pum_logo_sw.pdf}}}}
+\makeatletter
+
+\cleardoublepage
+\ihead[]{Inhalt} %oben links
+
+%Überschriften unterdrücken durch IV und TV (wegen multicolumn)
+\renewcommand{\listoftables}{\@starttoc{lot}}
+\renewcommand{\tableofcontents}{\@starttoc{toc}}
+\renewcommand{\listoffigures}{\@starttoc{lof}}
+
+%Mehr Platz für breite Tabellennummern
+\renewcommand{\l@table}{\@dottedtocline{1}{1em}{3em}}
+\makeatother
+
+\section*{Inhalt}
+\label{sec:inhalt}
+\pdfbookmark[1]{\contentsname}{toc}
+%  \begin{multicols}{2}
+    \tableofcontents
+%  \end{multicols}
+
+\vspace{2cm}
+% \pdfbookmark[1]{Tabellen/Abbildungen}{lot}
+\subsection*{Tabellenverzeichnis}
+\label{sec:tabellenverzeichnis}
+
+%\begin{multicols}{2}
+\listoftables
+%\end{multicols}
+
+\subsection*{Abbildungsverzeichnis}
+\label{sec:Abbildungsverzeichnis}
+
+%\begin{multicols}{2}
+\listoffigures
+%\end{multicols}
+
+\clearpage
+
+\ihead[]{\headmark} %oben links
+
+% $before-body.tex()$
+% $for(include-before)$
+% $include-before$
+% $endfor$
+
+$if(linestretch)$
+\setstretch{$linestretch$}
+$endif$
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\setlength{\parindent}{1em}
+
+$body$
+
+$before-bib.tex()$
+
+% $if(has-frontmatter)$
+% \backmatter
+% $endif$
+$biblio.tex()$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+$after-body.tex()$
+\end{document}

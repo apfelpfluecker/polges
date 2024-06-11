@@ -1,0 +1,265 @@
+\usepackage{hyperref}
+\usepackage{eso-pic}
+\usepackage[german=swiss]{csquotes}
+\usepackage{pdfpages}
+\usepackage[skip = 4pt, font=large, labelfont={large}, justification=centering, singlelinecheck=false]{caption}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{multicol}
+\usepackage{threeparttable}
+\usepackage{tabularx,booktabs}
+
+%
+% %%%%%%%%%%%%%%%%%%%%%  Größen ändern gegen LaTeXs Hysterie %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\widowpenalty=10000 % erschwert Hurenkindern das Leben
+\clubpenalty=3000 % erschwert Schusterjungen das Leben
+\tolerance=500  %Wortabstände dehnbarer; fürs Final auf 300!!
+\hbadness= 500
+  \emergencystretch= 1.5em
+ \hfuzz = 0.3pt
+ \vfuzz \hfuzz
+ \raggedbottom
+%
+%% erste Zeile einrücken
+\setlength{\parindent}{1em}
+
+\usepackage{multicol}
+
+\setlength{\abovecaptionskip}{10pt plus 3pt minus 2pt}
+\setlength{\belowcaptionskip}{12pt plus 3pt minus 2pt}
+
+
+%
+% %% Fußnoten
+\usepackage{footnote}
+\usepackage[stable, norule, flushmargin]{footmisc} %% Fußgut
+%\usepackage{float}
+
+\counterwithout{footnote}{chapter} % über Kapitel hinweg zählen
+\addtolength{\skip\footins}{1ex plus 2mm} % Abstand zum Text
+\renewcommand{\footnotesep}{1ex} % da nummeriert, Abstand ok
+% rechtsbündig aus likem Rand
+
+\let\Umathcode\XeTeXmathcode \let\Umathchardef\XeTeXmathchardef
+%
+% %____________ Größen Ende ______________________________
+%
+%
+% \newcommand{\on}[1]{{#1}} %deaktiviertes oldstylenums
+% \newcommand{\p}{{\npnoaddmissingzero \npdecimalsign{.}}} %p-Wert
+%                                 %kompakt in zB Kovarianztabellen
+%
+\AtBeginDocument{%
+  \expandafter\def\expandafter\@tabarray\expandafter{%
+    \expandafter\CT@start\@tabarray}}
+%
+% %%%%%%%%%      Umgebungen und Kommandos   %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \newcommand{\hoch}[1]{\textsuperscript{#1}} % \hoch{2}1986  wird ²1986
+%
+% %% Literaturverzeichnis
+% \newenvironment{literatur}
+% {\begin{description}\footnotesize %\raggedright
+%   \setlength{\itemsep}{0ex plus0.0ex} \setlength{\parsep}{0ex plus 0ex
+%   minus 0ex}
+% }
+%   {\end{description}}%% Literatur Ende
+%
+%%%%% Farbboxen für Hinweise ------
+\usepackage{tcolorbox}
+\tcbset{textmarker/.style={%
+        enhanced,
+        parbox=false,boxrule=0mm,boxsep=0mm,arc=0mm,
+        outer arc=0mm,left=6mm,right=3mm,top=7pt,bottom=7pt,
+        toptitle=1mm,bottomtitle=1mm,oversize}}
+
+\newtcolorbox{hintBox}{textmarker,
+    borderline west={6pt}{0pt}{yellow},
+    colback=yellow!10!white}
+
+\newtcolorbox{importantBox}{textmarker,
+    borderline west={6pt}{0pt}{red},
+    colback=red!10!white}
+
+\newtcolorbox{noteBox}{textmarker,
+    borderline west={6pt}{0pt}{green},
+    colback=green!10!white}
+
+\newcommand{\Anmerkung}[1]
+{\begin{hintBox}
+#1
+\end{hintBox}}
+
+\newcommand{\Alarm}[1]
+{\begin{importantBox}
+#1
+\end{importantBox}}
+
+\newcommand{\Allesgut}[1]
+{\begin{noteBox}
+#1
+\end{noteBox}}
+
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+\usepackage{mdframed}
+
+\mdfdefinestyle{MyFrame}{%
+    linecolor=black,
+    outerlinewidth=2pt,
+    %roundcorner=20pt,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerleftmargin=4pt,
+        leftmargin = 4pt,
+        rightmargin = 4pt
+    %backgroundcolor=gray!50!white}
+        }
+
+% %% Zitate \zitat{Autor 1986:5}{Text} Autor steht rechtsbündig in der
+% %% letzten Zeile oder, wenns nicht passt rechtsbündig drunter
+% \newenvironment{zitat}[2]{%
+% \begin{list}{}{%
+% \setlength{\leftmargin}{2em}%
+% \setlength{\rightmargin}{2em}%
+% \setlength{\itemindent}{0cm}%
+% \setlength{\labelwidth}{0cm}%
+% \setlength{\parsep}{0cm}\setlength{\listparindent}{2mm}}%
+% \small
+% \begin{spacing}{1}%
+% \item  #2%
+% %\scshape
+% \unskip %
+% \hfill %
+% \quad%
+% \nolinebreak[3]{%
+% \hspace*{\fill}%
+% \nolinebreak%
+% \mbox{(#1)}}%
+% \end{spacing}%
+% \end{list}%
+% \vspace{-\topsep}{}}
+%
+%% \PBS für geschützten Backslash
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\let\PBS=\PreserveBackslash
+%
+\renewcommand{\labelitemi}{--}
+%
+% %%% Bilder einbauen (breitbild = Seitenbreite skalieren; bild zentriert
+% \newcommand{\breitbild}[2]{\includegraphics[width=\linewidth]{#1} \captionbelow{#2}}
+% \newcommand{\hist}[2]{\centering\includegraphics[width=.6\textwidth]{#1} \captionbelow{#2}}
+% \newcommand{\bild}[2]{\centering \includegraphics{#1} \captionbelow{#2}}
+% \newcommand{\seite}[1]{\centering\vspace{-1cm}\hspace{-1.7cm} \includegraphics[width=1.22\linewidth]{#1}}
+% \newcommandtwoopt{\Bild}[3][1][0 0 0
+% 0]{ \begin{center}
+%     \includegraphics[width=#1\linewidth,trim = #2, clip]{Bilder/#3}
+%   \end{center}}
+% %%%% Aufzählungen
+%
+\renewcommand{\labelitemi}{\small\textbullet}
+%
+% \newcommand{\Beschrieb}[1]{\ifthenelse{\isundefined{#1}}{}{
+% \begin{minipage}[H]{1.0\linewidth}
+%   \begin{multicols}{3}
+%  #1
+%  \end{multicols}
+% \end{minipage}\vspace{5mm}}}
+%
+% %__________________ Umgebungen Ende _____________________________________________
+%
+% %--------  Tabellenbefehle  ----------------------
+% %LaTeX interpretiert Tabulatoren und Zeilenenden für Tabellen
+% % & und \\ können eingesetzt werden, wenn nötig
+% % bei zB \\\midrule%! muss das Zeilenende auskommentiert sein
+%
+\renewcommand{\floatpagefraction}{.7}
+\renewcommand{\textfraction}{.12}
+\renewcommand{\topfraction}{.8}     % vorher: .7
+\renewcommand{\bottomfraction}{.5}  % vorher: .3
+\makeatletter
+\renewcommand{\fps@figure}{htbp}
+\renewcommand{\fps@table}{htbp}
+\makeatother
+%
+% \setbox0=\hbox{%
+%   \begin{tabular}{c}
+%  \global\let\CsvNewline\\%
+%  \end{tabular}}
+%  {\catcode`\^^M=\active%
+%   \gdef\CsvObeylines{\catcode`\^^M=\active \let^^M=\CsvNewline}}%
+%
+% \newlength{\cslhangindent}
+% \setlength{\cslhangindent}{1.5em}
+% \newenvironment{CSLReferences}%
+% {\setlength{\parindent}{0pt}%
+% \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+% {\par}
+%
+\setcapindent{1em}
+%
+\usepackage[ngerman]{varioref}
+
+\newcommand{\TBZeilenabstand}{\aboverulesep = 0pt \belowrulesep = 0mm}
+
+\newcommand{\NormalZeilenabstand}{\aboverulesep = 0.605mm \belowrulesep = 0.984mm}
+
+
+% %% variable Verweise
+\renewcommand\reftextfaceafter{gegen\"uberliegend}
+\renewcommand\reftextfacebefore{gegen\"uberliegend}
+\renewcommand\reftextbefore{vorherige Seite}
+\renewcommand\reftextafter{n\"achste Seite}
+\renewcommand\reftextcurrent{\unskip}
+\renewcommand\reftextfaraway[1]{Seite~\pageref{#1}}
+%
+\makeatletter
+\@addtoreset{figure}{section}
+\@addtoreset{table}{section}
+\makeatother
+%
+% %\definecolor{darkestblue}{rgb}{1,27,84}
+
+\usepackage[ngerman]{cleveref}
+
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+
+% \urlstyle{same} % nur für APA-Style
+
+% KOMA options
+
+\KOMAoptions{pagesize, paper=portrait}
+      \newgeometry{a4paper, lmargin=30mm, top=30mm, textwidth=15.5cm,
+ textheight=22.5cm}%
+ 
+\floatplacement{figure}{H}
+\floatplacement{table}{H}
+
+\makeatletter
+\newcommand{\blandscape}{
+\begin{landscape}
+%\KOMAoptions{pagesize, paper=landscape}
+    }
+
+\newcommand{\elandscape}{%
+\end{landscape}
+%\KOMAoptions{pagesize, paper=portrait}
+%      \newgeometry{a4paper, lmargin=30mm, top=30mm, textwidth=15.5cm,
+% textheight=22.5cm}%
+    }
+\makeatother
+
+\newcommand{\btwocol}{\begin{multicols}{2}}
+\newcommand{\etwocol}{\end{multicols}}
+
+\newcommand{\pdf}[3][1cm 1cm 1cm 1cm]
+  {\begin{center} \includegraphics[width=\linewidth,trim = #1,
+      clip, page = #3]{#2}
+   \end{center}}
+

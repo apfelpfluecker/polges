@@ -1,0 +1,100 @@
+# Wenn Sie unten einen Teil haben, den Sie noch nicht verfasst haben, dann können Sie ihn mit # auskommentieren (nur nicht index.Rmd)
+
+project:
+  type: book
+  output-dir: Forschungsbericht # anpassen
+
+Entwurfstatus: Entwurf 0.0 # regelmässig anpassen und am Ende auskommentieren (# an Anfangs)
+
+#institute: Institut für Politikwissenschaft
+#AG: X
+#Uebung: 0
+#TutorIn: Vorname Nachname
+Modul: 'Methoden Aufbau'
+Semester: 'WiSe 23/24'
+DozentInnen: 
+ - "Prof. Dr. Isabelle Bourcki"
+
+book:
+  title: 'Titel der Arbeit' # eher knackig
+  subtitle: 'Untertitel' # bessere Beschreibung 
+  author:
+  - given-names: Vorname
+    surname: Nachname
+    Email: email@students.uni-marburg.de
+    MatrikelNr: 123456
+
+  chapters:
+    -  index.qmd
+    -  01-Theorieteil.qmd
+    -  02-Methode.qmd 
+    -  03-Ergebnisse.qmd
+    -  07-Schluss.qmd
+  appendices:
+    -  08-Anhang.qmd
+
+  downloads: [pdf]
+  output-file: Hausarbeit_Nachname
+
+bibliography: files/references.bib
+cite-method: citeproc
+csl: https://www.zotero.org/styles/norsk-apa-manual
+
+language:
+  lang: de
+  ui:
+    chapter_name: ""
+  label:
+    fig: 'Abbildung '
+    tab: 'Tabelle '
+    eq: 'Gleichung '
+  section-title-appendices: "Anhang"
+
+format:
+  pdf:
+    documentclass: scrreprt
+    fontsize: 12pt
+    classoption: twoside #bei digitalen Arbeiten oneside!
+    geometry:
+      - top=30mm
+      - left=20mm
+      - lmargin=30mm,
+      - textwidth = 15.5cm,
+      - textheight = 22.5cm
+    keep-tex: true
+    fontenc: T1
+    template: files/LaTeX/quarto_template.tex
+    fig-cap-location: top
+    include-in-header:
+      - text: |
+      - file: files/LaTeX/macros.tex
+    number-sections: true
+    csquotes: true
+    filters: [files/pandoc-quotes.lua]
+    keep-md: false
+        
+  html:
+    theme: cosmo
+    filters: [files/pandoc-quotes.lua]
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px
+      gutter-width: 1.5rem
+  docx: 
+    toc: true
+    toc-title: Inhalt
+    number-sections: true
+    number-depth: 3
+    highlight-style: github
+    reference-doc: files/template.docx
+    
+prefer-html: true
+
+editor:
+  render-on-save: false
+
+header-includes:   
+  - \usepackage{setspace}   #Package um Zeilenabstand zu wechseln
+  - \onehalfspacing   #Zeilenabstand 1.5
+  - \pagenumbering{gobble}  #Seitenzahlen Unterdrücken bis Kapitel 1

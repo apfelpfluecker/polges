@@ -1,0 +1,17 @@
+#Verzeichnisse
+/.quarto/
+/.Rproj.user/
+/Forschungsbericht/
+/site_libs/
+
+.RData
+.Rhistory
+.DS_Store
+
+#Kapiteldateien
+/01-Theorieteil_cache/
+/02-Methode_cache/
+/03-Ergebnisse_cache/
+/03-Ergebnisse_files/
+
+*.log

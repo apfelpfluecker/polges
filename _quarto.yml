@@ -2,7 +2,7 @@
 
 project:
   type: book
-  output-dir: Forschungsbericht # anpassen
+  output-dir: Bachelorarbeit # anpassen
 
 Entwurfstatus: Entwurf 0.0 # regelmässig anpassen und am Ende auskommentieren (# an Anfangs)
 
@@ -10,19 +10,25 @@ Entwurfstatus: Entwurf 0.0 # regelmässig anpassen und am Ende auskommentieren (
 #AG: X
 #Uebung: 0
 #TutorIn: Vorname Nachname
-Modul: 'Methoden Aufbau'
-Semester: 'WiSe 23/24'
-DozentInnen: 
- - "Prof. Dr. Isabelle Bourcki"
+Modul: 'Bachelorarbeit'
+Semester: 'SoSe 24'
+Erstgutachter: 
+ - name: Prof. Dr. Isabelle Bourcki
+ - Email: borucki@uni-marburg.de
+Zweitgutachter:
+ - name: Stine Ziegler
+ - Email: stine.ziegler@uni-marburg.de
+Datum: "23.08.2024"
 
 book:
-  title: 'Titel der Arbeit' # eher knackig
-  subtitle: 'Untertitel' # bessere Beschreibung 
+  title: 'Politisierung geschlechtergerechter Sprache' # eher knackig
+  subtitle: 'Bachelorarbeit' # bessere Beschreibung 
   author:
-  - given-names: Vorname
-    surname: Nachname
-    Email: email@students.uni-marburg.de
-    MatrikelNr: 123456
+  - given-names: Jakob
+    surname: Krueger
+    Email: Kruege4c@students.uni-marburg.de
+    MatrikelNr: 3583647
+    Studiengang: B.A. Politikwissenschaft
 
   chapters:
     -  index.qmd
@@ -34,11 +40,11 @@ book:
     -  08-Anhang.qmd
 
   downloads: [pdf]
-  output-file: Hausarbeit_Nachname
+  output-file: Bachelorarbeit_Krueger_polges
 
 bibliography: files/references.bib
 cite-method: citeproc
-csl: https://www.zotero.org/styles/norsk-apa-manual
+csl: files/springervs.csl
 
 language:
   lang: de

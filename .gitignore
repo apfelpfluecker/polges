@@ -1,7 +1,7 @@
 #Verzeichnisse
 /.quarto/
 /.Rproj.user/
-/Forschungsbericht/
+/Bachelorarbeit/
 /site_libs/
 
 .RData
@@ -15,3 +15,12 @@
 /03-Ergebnisse_files/
 
 *.log
+*.aux
+*.bbl
+*.lof
+*.lot
+
+
+"Bachelorarbeit Paper.docx"
+Bachelorarbeit_Krueger_polges.pdf
+Bachelorarbeit_Krueger_polges.tex

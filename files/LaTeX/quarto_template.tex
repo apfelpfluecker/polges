@@ -220,7 +220,8 @@ $endif$
 \begin{multicols}{2}
     $for(author)$\Large $author.surname$, $author.given-names$ \\*[1ex]
     \normalsize $author.Email$\\*
-    Matrikelnummer: $author.MatrikelNr$ $sep$\\[1cm]
+    Matrikelnummer: $author.MatrikelNr$\\
+    Studiengang: $author.Studiengang$ $sep$\\[1cm]
     $endfor$
 \end{multicols}
 
@@ -232,12 +233,17 @@ $if(AG)$AG: $AG$,  $endif$ $if(Uebung)$ Übung: $Uebung$,  $endif$ $if(TutorIn)$
 Modul: $Modul$ \\
 Semester: $Semester$ \\
 
-Dozent*Innen: \\[1ex]
-$for(DozentInnen)$ $DozentInnen.name$\\ $DozentInnen.Email$ $endfor$
+\begin{multicols}{2}
+    Erstgutachterin: \\
+    $for(Erstgutachter)$ $Erstgutachter.name$\\ $Erstgutachter.Email$ $endfor$ \\
+
+    Zweitgutachterin: \\
+    $for(Zweitgutachter)$ $Zweitgutachter.name$\\ $Zweitgutachter.Email$ $endfor$
+\end{multicols}
 
 \vfill
 
-$Datum$
+Abgabedatum: $Datum$
 
 \end{titlepage}
 

@@ -1,0 +1,56 @@
+# Zugriff auf die Bundestags-API
+
+Einmal testen.
+
+```{r}
+# Simple Anleitung: https://www.r-bloggers.com/2020/02/r-api-tutorial-getting-started-with-apis-in-r/
+# Laden von benötigten Paketen
+library(httr)
+library(jsonlite)
+
+# GET-Request starten mit GET-Funktion und speichern in res
+res = GET("http://api.open-notify.org/astros.json")
+
+# Output ist der Link, Datum der Abfrage, Status (200 = alles gut), Kontent-Typ und Größe
+res
+
+# Der Inhalt ist raw Unicode, wir brauchen aber JSON, weil das das Standardformat für API-Daten ist. Deshalb packen wir das raw in einen character-Vektor
+rawToChar(res$content)
+
+# den character-Vektor können wir in eine JSON-strukturierte Liste packen
+# fromJSON benötigt einen character Vektor mit JSON-Struktur
+data = fromJSON(rawToChar(res$content))
+
+```
+
+Jetzt für den Bundestag
+
+```{r}
+# API-Key gültig bis Mai 2025
+# https://dip.bundestag.de/%C3%BCber-dip/hilfe/api
+api_key <- "I9FKdCn.hbfefNWCY336dL6x62vfwNKpoN2RZ1gp21"
+url <- "https://search.dip.bundestag.de/api/v1/vorgang"
+
+res <- GET(url = url, query = list(apikey = api_key))
+
+
+```
+
+und jetzt für Anträge
+
+```{r}
+# Key gültig bis 05/2025
+api_key <- "I9FKdCn.hbfefNWCY336dL6x62vfwNKpoN2RZ1gp21"
+url <- "https://search.dip.bundestag.de/api/v1/drucksache-text"
+
+res <- GET(url, query = list (
+  apikey = api_key,
+  f.datum.start = "2021-01-11",
+  f.datum.end = "2021-02-11",
+  f.drucksachetyp = "Antrag"
+))
+
+data = fromJSON(rawToChar(res$content))
+dataJSON <- toJSON(res, pretty = TRUE, auto_unbox = FALSE)
+writeLines(dataJSON, "data.json")
+```

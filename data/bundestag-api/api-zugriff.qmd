@@ -45,12 +45,63 @@ url <- "https://search.dip.bundestag.de/api/v1/drucksache-text"
 
 res <- GET(url, query = list (
   apikey = api_key,
-  f.datum.start = "2021-01-11",
-  f.datum.end = "2021-02-11",
+  f.datum.start = "2017-09-24",
+  f.datum.end = "2024-06-18",
   f.drucksachetyp = "Antrag"
 ))
 
-data = fromJSON(rawToChar(res$content))
-dataJSON <- toJSON(res, pretty = TRUE, auto_unbox = FALSE)
-writeLines(dataJSON, "data.json")
+data <- fromJSON(rawToChar(res$content))
+ds <- as.data.frame(data)
+ds
+```
+
+Antragsskript
+
+```{r}
+# API-Key (gültig bis 05/25)
+api_key <- "I9FKdCn.hbfefNWCY336dL6x62vfwNKpoN2RZ1gp21"
+# URL
+url <- "https://search.dip.bundestag.de/api/v1/drucksache-text"
+
+# Funktion für API-Anfrage
+request <- function(key, url, start, end, type, cursor){
+  res <- GET(url, query = list (
+    apikey = key,
+    f.datum.start = start,
+    f.datum.end = end,
+    f.drucksachetyp = type,
+    cursor = cursor
+  ))
+  data <- fromJSON(rawToChar(res$content))
+  ds <- as.data.frame(data)
+  return(ds)
+}
+
+# erstes Ziehen nicht über die Funktion
+res <- GET(url, query = list (
+  apikey = api_key,
+  f.datum.start = "2017-09-24",
+  f.datum.end = "2024-06-18",
+  f.drucksachetyp = "Antrag"
+))
+data <- fromJSON(rawToChar(res$content))
+ds_gesamt <- as.data.frame(data)
+
+# Cursor der 10. Entität abspeichern erstellen
+cursor_alt <- ds_alt$cursor[10]
+x <- TRUE
+
+#Seite 13 und 20
+
+while(x == TRUE){
+  ds_neu <- request(api_key, url, start = "2017-09-24", end = "2024-06-18", type = "Antrag", cursor = cursor_alt)
+  if (cursor_alt != ds_neu$cursor[10]) {
+    ds_gesamt <- rbind(ds_gesamt,ds_neu)
+    cursor_alt <- ds_neu$cursor[10]
+  }
+  else {
+    x <- FALSE
+  }
+}
+
 ```

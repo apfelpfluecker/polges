@@ -83,8 +83,7 @@ request <- function(key, url, start, end, type, cursor){
     config = list(ssl_version = 3)
   )
   data <- fromJSON(rawToChar(res$content))
-  ds <- as.data.frame(data)
-  return(ds)
+  return(data)
 }
 
 # erstes Ziehen nicht über die Funktion
@@ -96,89 +95,27 @@ res <- GET(url, query = list (
   config = list(ssl_version = 3)
 )
 data <- fromJSON(rawToChar(res$content))
-ds_gesamt <- as.data.frame(data)
+ds_gesamt <- as.data.frame(data$documents)
 
 # Cursor der 10. Entität abspeichern erstellen
-cursor_alt <- ds_gesamt$cursor[10]
+cursor_alt <- data$cursor
 x <- TRUE
 
 while(x == TRUE){
-  ds_neu <- request(api_key, url, start = "2017-09-24", end = "2024-06-18", type = "Antrag", cursor = cursor_alt)
-  if (cursor_alt != ds_neu$cursor[10]) {
+  data_neu <- request(api_key, url, start = "2017-09-24", end = "2024-06-18", type = "Antrag", cursor = cursor_alt)
+  if (cursor_alt != data_neu$cursor) {
     # Füge neuen Datensatz zum Gesamtdatensatz hinzu (rbind hat Probleme mit doppelten Spaltennamen)
-    ds_gesamt <- bind_rows(ds_gesamt, ds_neu)
+    ds_gesamt <- bind_rows(ds_gesamt, as.data.frame(data_neu$documents))
     #Cursor aktualisieren
-    cursor_alt <- ds_neu$cursor[10]
-    Sys.sleep(10)
+    cursor_alt <- data_neu$cursor
+    Sys.sleep(2)
   }
   else {
     x <- FALSE
   }
 }
 
-```
+# entstehenden Datensatz speichern
+saveRDS(ds_gesamt, file = "../btantraege.Rds")
 
-```{r}
-# Simple Anleitung: https://www.r-bloggers.com/2020/02/r-api-tutorial-getting-started-with-apis-in-r/
-# Laden von benötigten Paketen
-library(httr)
-library(jsonlite)
-library(dplyr)
-
-# API-Key (gültig bis 05/25)
-api_key <- "I9FKdCn.hbfefNWCY336dL6x62vfwNKpoN2RZ1gp21"
-# URL
-url <- "https://search.dip.bundestag.de/api/v1/drucksache-text"
-
-# Funktion für API-Anfrage
-request <- function(key, url, start, end, type, cursor){
-  res <- GET(url, query = list (
-    apikey = key,
-    f.datum.start = start,
-    f.datum.end = end,
-    f.drucksachetyp = type,
-    cursor = cursor
-  ))
-  if(validate(rawToChar(res$content)) == FALSE) {
-    return(rawToChar(res$content))
-  }
-  else {
-    data <- fromJSON(rawToChar(res$content))
-    ds <- as.data.frame(data)
-    return(ds)
-  }
-}
-
-# erstes Ziehen nicht über die Funktion
-res <- GET(url, query = list (
-  apikey = api_key,
-  f.datum.start = "2017-09-24",
-  f.datum.end = "2024-06-19",
-  f.drucksachetyp = "Antrag"
-))
-data <- fromJSON(rawToChar(res$content))
-ds_gesamt <- as.data.frame(data)
-
-# Cursor der 10. Entität abspeichern erstellen
-cursor_alt <- ds_gesamt$cursor[10]
-x <- TRUE
-
-while(x == TRUE){
-  ds_neu <- request(api_key, url, start = "2017-09-24", end = "2024-06-18", type = "Antrag", cursor = cursor_alt)
-  if(is.data.frame(ds_neu) == FALSE) {
-    fehler <- ds_neu
-    x <- FALSE
-  }
-  else {
-    if (cursor_alt != ds_neu$cursor[10]) {
-      # Füge neuen Datensatz zum Gesamtdatensatz hinzu (rbind hat Probleme mit doppelten Spaltennamen)
-      ds_gesamt <- bind_rows(ds_gesamt, ds_neu)
-      #Cursor aktualisieren
-      cursor_alt <- ds_neu$cursor[10]
-    }
-    else {
-      x <- FALSE
-    }
-  }
-}
 ```

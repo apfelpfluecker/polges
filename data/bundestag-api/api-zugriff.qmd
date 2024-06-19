@@ -7,6 +7,7 @@ Einmal testen.
 # Laden von benötigten Paketen
 library(httr)
 library(jsonlite)
+library(dplyr)
 
 # GET-Request starten mit GET-Funktion und speichern in res
 res = GET("http://api.open-notify.org/astros.json")
@@ -23,7 +24,7 @@ data = fromJSON(rawToChar(res$content))
 
 ```
 
-Jetzt für den Bundestag
+Jetzt für den Bundestag testen
 
 ```{r}
 # API-Key gültig bis Mai 2025
@@ -36,7 +37,7 @@ res <- GET(url = url, query = list(apikey = api_key))
 
 ```
 
-und jetzt für Anträge
+und jetzt für Anträge testen
 
 ```{r}
 # Key gültig bis 05/2025
@@ -46,7 +47,7 @@ url <- "https://search.dip.bundestag.de/api/v1/drucksache-text"
 res <- GET(url, query = list (
   apikey = api_key,
   f.datum.start = "2017-09-24",
-  f.datum.end = "2024-06-18",
+  f.datum.end = "2024-06-119",
   f.drucksachetyp = "Antrag"
 ))
 
@@ -55,9 +56,75 @@ ds <- as.data.frame(data)
 ds
 ```
 
-Antragsskript
+## Skript zur automatisierten Abfrage
 
 ```{r}
+# Simple Anleitung: https://www.r-bloggers.com/2020/02/r-api-tutorial-getting-started-with-apis-in-r/
+# Laden von benötigten Paketen
+library(httr)
+library(jsonlite)
+library(dplyr)
+
+# API-Key (gültig bis 05/25)
+api_key <- "I9FKdCn.hbfefNWCY336dL6x62vfwNKpoN2RZ1gp21"
+# URL
+url <- "https://search.dip.bundestag.de/api/v1/drucksache-text"
+# Config ändern, damit Verbindung funktioniert
+#set_config(use_proxy(url="10.3.100.207",port=8080))
+
+# Funktion für API-Anfrage
+request <- function(key, url, start, end, type, cursor){
+  res <- GET(url, query = list (
+    apikey = key,
+    f.datum.start = start,
+    f.datum.end = end,
+    f.drucksachetyp = type,
+    cursor = cursor),
+    config = list(ssl_version = 3)
+  )
+  data <- fromJSON(rawToChar(res$content))
+  ds <- as.data.frame(data)
+  return(ds)
+}
+
+# erstes Ziehen nicht über die Funktion
+res <- GET(url, query = list (
+  apikey = api_key,
+  f.datum.start = "2017-09-24",
+  f.datum.end = "2024-06-19",
+  f.drucksachetyp = "Antrag"),
+  config = list(ssl_version = 3)
+)
+data <- fromJSON(rawToChar(res$content))
+ds_gesamt <- as.data.frame(data)
+
+# Cursor der 10. Entität abspeichern erstellen
+cursor_alt <- ds_gesamt$cursor[10]
+x <- TRUE
+
+while(x == TRUE){
+  ds_neu <- request(api_key, url, start = "2017-09-24", end = "2024-06-18", type = "Antrag", cursor = cursor_alt)
+  if (cursor_alt != ds_neu$cursor[10]) {
+    # Füge neuen Datensatz zum Gesamtdatensatz hinzu (rbind hat Probleme mit doppelten Spaltennamen)
+    ds_gesamt <- bind_rows(ds_gesamt, ds_neu)
+    #Cursor aktualisieren
+    cursor_alt <- ds_neu$cursor[10]
+    Sys.sleep(10)
+  }
+  else {
+    x <- FALSE
+  }
+}
+
+```
+
+```{r}
+# Simple Anleitung: https://www.r-bloggers.com/2020/02/r-api-tutorial-getting-started-with-apis-in-r/
+# Laden von benötigten Paketen
+library(httr)
+library(jsonlite)
+library(dplyr)
+
 # API-Key (gültig bis 05/25)
 api_key <- "I9FKdCn.hbfefNWCY336dL6x62vfwNKpoN2RZ1gp21"
 # URL
@@ -72,36 +139,46 @@ request <- function(key, url, start, end, type, cursor){
     f.drucksachetyp = type,
     cursor = cursor
   ))
-  data <- fromJSON(rawToChar(res$content))
-  ds <- as.data.frame(data)
-  return(ds)
+  if(validate(rawToChar(res$content)) == FALSE) {
+    return(rawToChar(res$content))
+  }
+  else {
+    data <- fromJSON(rawToChar(res$content))
+    ds <- as.data.frame(data)
+    return(ds)
+  }
 }
 
 # erstes Ziehen nicht über die Funktion
 res <- GET(url, query = list (
   apikey = api_key,
   f.datum.start = "2017-09-24",
-  f.datum.end = "2024-06-18",
+  f.datum.end = "2024-06-19",
   f.drucksachetyp = "Antrag"
 ))
 data <- fromJSON(rawToChar(res$content))
 ds_gesamt <- as.data.frame(data)
 
 # Cursor der 10. Entität abspeichern erstellen
-cursor_alt <- ds_alt$cursor[10]
+cursor_alt <- ds_gesamt$cursor[10]
 x <- TRUE
-
-#Seite 13 und 20
 
 while(x == TRUE){
   ds_neu <- request(api_key, url, start = "2017-09-24", end = "2024-06-18", type = "Antrag", cursor = cursor_alt)
-  if (cursor_alt != ds_neu$cursor[10]) {
-    ds_gesamt <- rbind(ds_gesamt,ds_neu)
-    cursor_alt <- ds_neu$cursor[10]
-  }
-  else {
+  if(is.data.frame(ds_neu) == FALSE) {
+    fehler <- ds_neu
     x <- FALSE
   }
+  else {
+    if (cursor_alt != ds_neu$cursor[10]) {
+      # Füge neuen Datensatz zum Gesamtdatensatz hinzu (rbind hat Probleme mit doppelten Spaltennamen)
+      ds_gesamt <- bind_rows(ds_gesamt, ds_neu)
+      #Cursor aktualisieren
+      cursor_alt <- ds_neu$cursor[10]
+    }
+    else {
+      x <- FALSE
+    }
+  }
 }
-
 ```

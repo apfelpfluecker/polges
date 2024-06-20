@@ -94,13 +94,17 @@ res <- GET(url, query = list (
   f.drucksachetyp = "Antrag"),
   config = list(ssl_version = 3)
 )
+# entpacktes Ergebnis in data speichern
 data <- fromJSON(rawToChar(res$content))
+# Gesamtdatensatz erstellen, wo alle relevanten Ergebnisse gespeichert werden
 ds_gesamt <- as.data.frame(data$documents)
 
-# Cursor der 10. Entität abspeichern erstellen
+# Cursor der aktuellen Anfrage abspeichern
 cursor_alt <- data$cursor
 x <- TRUE
 
+# Schleife, die solange Anfragen an die API stellt, bis der alte Cursor mit dem neuen Cursor gleich ist
+# Achtung! Dauert lange, da zwischendurch 2 Sekunden Pause gemacht wird, damit das Limit der API nicht erreicht wird
 while(x == TRUE){
   data_neu <- request(api_key, url, start = "2017-09-24", end = "2024-06-18", type = "Antrag", cursor = cursor_alt)
   if (cursor_alt != data_neu$cursor) {

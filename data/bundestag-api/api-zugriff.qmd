@@ -47,7 +47,7 @@ url <- "https://search.dip.bundestag.de/api/v1/drucksache-text"
 res <- GET(url, query = list (
   apikey = api_key,
   f.datum.start = "2017-09-24",
-  f.datum.end = "2024-06-119",
+  f.datum.end = "2024-06-19",
   f.drucksachetyp = "Antrag"
 ))
 

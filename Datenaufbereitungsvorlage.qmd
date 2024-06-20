@@ -1,6 +1,6 @@
 # Datenaufbereitung
 
-In dem Ordner, in dem diese Datei liegt, muss auch eine "\_common.R" liegen, damit das Ganze funktioniert. Die haben Sie aber sicher schon und da auch angepasst. Darum nehmen Sie am besten die.
+Achtung: In dem Ordner, in dem diese Datei liegt, muss auch eine "\_common.R" liegen, damit das Ganze funktioniert.
 
 Diese Vorlage ist separat und nicht Teil der Arbeit. Hier kommt die gesamte Datenaufbereitung rein. Resultat sollte ein Datensatz sein, mit dem dann die Datenanalyse erfolgt. Das hat den Vorteil, dass Aufbereitung und Analyse getrennt werden und unabhängig voneinander erfolgen kann. Das minimiert auch die Fehleranfälligkeit.
 
@@ -13,4 +13,50 @@ Diese Vorlage ist separat und nicht Teil der Arbeit. Hier kommt die gesamte Date
 source('_common.R')
 ```
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+## Analyseebene 1: Individualdaten
+
+...
+
+## Analyseebene 2: Bundestagsanträge
+
+```{r}
+# Roh-Datensatz einlesen
+bta_raw <- readRDS("data/btantraege_raw.Rds")
+
+# neuen Datensatz erstellen und nicht benötigte Informationen löschen
+bta <- bta_raw %>% 
+  # Bundesratsanträge rausfiltern
+  filter(herausgeber == "BT") %>% 
+  select(
+    id,
+    dokumentnummer,
+    datum,
+    wahlperiode,
+    urheber,
+    autoren_anzahl,
+    titel,
+    text)
+
+bta$partei <- vector("character", length = nrow(bta))
+for (i in 1:nrow(bta)) {
+  bta$partei[i] <- bta[[5]][[i]]$bezeichnung
+}
+
+bta$partei <- rep(c(""), nrow(bta))  # Initialisiere bta$partei mit NA
+for (i in 1:nrow(bta)) {
+  if (!is.null(bta[[5]][[i]]$bezeichnung)) {
+    bta$partei[i] <- bta[[5]][[i]]$bezeichnung
+  }
+}
+# Lösung: Für jede Partei eine Variable
+
+# Filtervariable erstellen
+bta_filter <- c("[F|f]emin+", "[G|g]ender+")
+bta$filter <- str_extract(string = bta$message, pattern = "[F|f]emin+")
+
+
+```
+
+## Analyseebene 3: Social-Media-Posts
+
+...

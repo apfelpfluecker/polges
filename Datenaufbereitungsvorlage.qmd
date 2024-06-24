@@ -11,11 +11,78 @@ Diese Vorlage ist separat und nicht Teil der Arbeit. Hier kommt die gesamte Date
 #| label: setup
 
 source('_common.R')
+library(tidyr)
+library(sjPlot)
+library(sjlabelled)
+library(sjmisc)
+library(stringr)
+
 ```
 
 ## Analyseebene 1: Individualdaten
 
-...
+```{r}
+# Roh-Datensatz einlesen
+sui_raw <- read_spss("data/sprache_und_identitaet_raw.sav")
+
+# neuen Datesatz erstellen und nicht benötigte Informationen löschen
+sui <- sui_raw %>% 
+  select(
+    S1,
+    S2,
+    S3,
+    S4,
+    S5_1,
+    S5_2,
+    S6,
+    S7,
+    S8o,
+    S9o,
+    S10,
+    S11,
+    S12,
+    S13,
+    Q1,
+    Q2,
+    Q13,
+    Split_Q14,
+  ) %>% 
+  rename(
+    age = S1,
+    sex = S2,
+    fed_state = S3,
+    education = S4,
+    polint = Q1,
+    polinf = Q2,
+    motong_ger = S5_1, # mother tongue
+    motong_oth = S5_2,
+    gainemp = S6, # gainful employment
+    class = S7,
+    housesize = S8o, # household size
+    childinhouse = S9o, # children in household
+    houseinc = S10, # household income
+    commsize = S11, # community size
+    party = S12,
+    migback = S13, # migration background
+    genatt = Q13 # attitude towards gender-neutral language
+  ) %>% 
+  mutate(eastwest = rec(
+    fed_state,
+    rec = "1,2,3,4,5,6,7,8,9,10 = 0 [West]; 12,13,14,15,16 = 1 [Ost]",
+    var.label = "Ost-West-Zueghörigkeit",
+    to.factor = TRUE
+  )) %>% 
+  mutate(educ = rec(
+    education,
+    rec = "1,2,3,5,6,7,8 = 0 [kein Studium]; 5 = 1 [Studium]",
+    var.label = "Bildung (Studium)",
+    to.factor = TRUE
+  )) %>% 
+  set_na(sex, na = 3) # Da sonst schwierig mit zu rechnen
+
+sui <- set_na(sui, na = c(-66, 99, -99)) # unklar, was -66 bedeutet
+
+```
 
 ## Analyseebene 2: Bundestagsanträge
 
@@ -35,25 +102,63 @@ bta <- bta_raw %>%
     urheber,
     autoren_anzahl,
     titel,
-    text)
+    text) %>% 
+  rename(
+    doknr = dokumentnummer)
 
-bta$partei <- vector("character", length = nrow(bta))
-for (i in 1:nrow(bta)) {
-  bta$partei[i] <- bta[[5]][[i]]$bezeichnung
-}
+# Parteienvariablen erstellen und belegen
+bta$spd <- str_detect(bta$urheber, "SPD")
+bta$union <- str_detect(bta$urheber, "CDU/CSU")
+bta$gruene <- str_detect(bta$urheber, "B90/GR")
+bta$fdp <- str_detect(bta$urheber, "FDP")
+bta$afd <- str_detect(bta$urheber, "AfD")
+bta$linke <- str_detect(bta$urheber, paste(c("LINKE", "Linke"), collapse = "|")) # Paste verbindet die beiden Strings durch die Bedingung collapse mit einem logischen Und
+bta$bsw <- str_detect(bta$urheber, "BSW")
+bta$bundesregierung <- str_detect(bta$urheber, "Bundesregierung")
+bta$bundesministerien <- str_detect(bta$urheber, "Bundesministerium")
 
-bta$partei <- rep(c(""), nrow(bta))  # Initialisiere bta$partei mit NA
-for (i in 1:nrow(bta)) {
-  if (!is.null(bta[[5]][[i]]$bezeichnung)) {
-    bta$partei[i] <- bta[[5]][[i]]$bezeichnung
-  }
-}
-# Lösung: Für jede Partei eine Variable
+# Datensatz schön formatieren
+bta <- bta %>% 
+  # Liste Urheber in eigene Variablen
+  unnest_wider(urheber, names_sep = "_") %>% 
+  # unnötige Variablen entfernen
+  select(
+    -urheber_einbringer,
+    -urheber_titel
+  ) %>% 
+  rename(urheber = urheber_bezeichnung) %>% 
+  # Variablenlabels hinzufügen
+  var_labels(
+    id = "ID",
+    doknr = "Dokumentennummer",
+    datum = "Antragsdatum",
+    wahlperiode = "Wahlperiode",
+    urheber = "Antragsteller",
+    autoren_anzahl = "Autorenanzahl",
+    titel = "Antragstitel",
+    text = "Antragstext",
+    spd = "SPD-Antrag",
+    union = "Unions-Antrag",
+    gruene = "Grünen-Antrag",
+    fdp = "FDP-Antrag",
+    afd = "AfD-Antrag",
+    linke = "LINKE-Antrag",
+    bsw = "BSW-Antrag",
+    bundesregierung = "Antrag der Bundesregierung",
+    bundesministerien = "Antrag eines Bundesministeriums"
+  ) %>% 
+  to_numeric(id)
 
 # Filtervariable erstellen
 bta_filter <- c("[F|f]emin+", "[G|g]ender+")
-bta$filter <- str_extract(string = bta$message, pattern = "[F|f]emin+")
+# neue Variable anlegen, die mit TRUE/FALSE bei Treffer/Nichttreffer belegt wird
+bta$filter <- str_detect(bta$text, paste(bta_filter, collapse = "|")) # Paste verbindet die beiden Strings durch die Bedingung collapse mit einem logischen Und
+# Nach TRUE-Werten filtern
+bta <- bta %>% 
+  filter(bta$filter == TRUE)
 
+# fertigen Datensatz speichern
+saveRDS(bta, file = "data/btantraege.Rds")
 
 ```
 

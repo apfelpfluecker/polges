@@ -149,14 +149,6 @@ bta <- bta %>%
   ) %>% 
   to_numeric(id)
 
-# Filtervariable erstellen
-bta_filter <- c("[F|f]emin+", "[G|g]ender+")
-# neue Variable anlegen, die mit TRUE/FALSE bei Treffer/Nichttreffer belegt wird
-bta$filter <- str_detect(bta$text, paste(bta_filter, collapse = "|")) # Paste verbindet die beiden Strings durch die Bedingung collapse mit einem logischen Und
-# Nach TRUE-Werten filtern
-bta <- bta %>% 
-  filter(bta$filter == TRUE)
-
 # fertigen Datensatz speichern
 saveRDS(bta, file = "data/btantraege.Rds")
 

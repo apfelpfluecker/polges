@@ -1,0 +1,77 @@
+# Ergebnisse
+
+```{r}
+#| label: setup
+#| include: false
+#| echo: false
+#| waring: false
+#| error: false
+
+source("_common.R")
+```
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+```{r}
+bta <- readRDS("data/btantraege.Rds")
+
+# Filtervariable erstellen
+bta_filter <- c("[F|f]emin+", "[G|g]ender+")
+# neue Variable anlegen, die mit TRUE/FALSE bei Treffer/Nichttreffer belegt wird
+bta$filter <- str_detect(bta$text, paste(bta_filter, collapse = "|")) # Paste verbindet die beiden Strings durch die Bedingung collapse mit einem logischen Und
+
+# Nach TRUE-Werten filtern => Eigentlich nicht notwendig
+#bta <- bta_gesamt %>% 
+#  filter(bta_gesamt$filter == TRUE)
+
+# neuen Datensatz erstellen für Parteiübersicht
+antr_gesamt <- c(
+  sum(bta$spd), 
+  sum(bta$union), 
+  sum(bta$gruene), 
+  sum(bta$fdp), 
+  sum(bta$afd), 
+  sum(bta$linke), 
+  sum(bta$bsw),
+  sum(bta$bundesregierung), 
+  sum(bta$bundesministerien))
+
+antr_gendern <- c(
+  sum(bta$spd & bta$filter), 
+  sum(bta$union & bta$filter), 
+  sum(bta$gruene & bta$filter), 
+  sum(bta$fdp & bta$filter), 
+  sum(bta$afd & bta$filter), 
+  sum(bta$linke & bta$filter), 
+  sum(bta$bsw & bta$filter),
+  sum(bta$bundesregierung & bta$filter), 
+  sum(bta$bundesministerien & bta$filter))
+
+antr_gesamt_proz <- c(
+  sum(bta$spd) / nrow(bta), 
+  sum(bta$union) / nrow(bta), 
+  sum(bta$gruene) / nrow(bta), 
+  sum(bta$fdp) / nrow(bta), 
+  sum(bta$afd) / nrow(bta), 
+  sum(bta$linke) / nrow(bta), 
+  sum(bta$bsw) / nrow(bta),
+  sum(bta$bundesregierung) / nrow(bta), 
+  sum(bta$bundesministerien) / nrow(bta))
+
+antr_gendern_proz <- c(
+  sum(bta$spd & bta$filter) / sum(bta$filter), 
+  sum(bta$union & bta$filter) / sum(bta$filter), 
+  sum(bta$gruene & bta$filter) / sum(bta$filter), 
+  sum(bta$fdp & bta$filter) / sum(bta$filter), 
+  sum(bta$afd & bta$filter) / sum(bta$filter), 
+  sum(bta$linke & bta$filter) / sum(bta$filter), 
+  sum(bta$bsw & bta$filter) / sum(bta$filter),
+  sum(bta$bundesregierung & bta$filter) / sum(bta$filter), 
+  sum(bta$bundesministerien & bta$filter) / sum(bta$filter))
+
+party <- c("SPD", "Union", "Grüne", "FDP", "AfD", "DIE LINKE", "BSW", "Bundesregierung", "Bundesministerien")
+
+parties <- data.frame(party, antr_gesamt, antr_gendern, antr_gesamt_proz*100, antr_gendern_proz*100)
+
+parties
+```

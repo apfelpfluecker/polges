@@ -34,7 +34,9 @@ book:
     -  index.qmd
     -  01-Theorieteil.qmd
     -  02-Methode.qmd 
-    -  03-Ergebnisse.qmd
+    -  03-Ergebnisse-sui.qmd
+    -  04-Ergebnisse-bta.qmd
+    -  05-Ergebnisse-sm.qmd
     -  07-Schluss.qmd
   appendices:
     -  08-Anhang.qmd

@@ -14,8 +14,8 @@
 /03-Ergebnisse_cache/
 /03-Ergebnisse_files/
 /03-Ergebnisse-sui_files/
-/03-Ergebnisse-bta_files/
-/03-Ergebnisse-sm_files/
+/04-Ergebnisse-bta_files/
+/05-Ergebnisse-sm_files/
 
 *.log
 *.aux

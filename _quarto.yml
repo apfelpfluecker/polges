@@ -47,6 +47,7 @@ book:
 bibliography: files/references.bib
 cite-method: citeproc
 csl: files/springervs.csl
+# link-citations: true
 
 language:
   lang: de

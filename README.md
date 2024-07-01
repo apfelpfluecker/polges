@@ -23,9 +23,10 @@
 
 - Forschungsstand Populismus
 - Forschungsstand GeS und Ablehnung von GeS/Antifeminismen
+- „Forschungsstand“ (eher Einordnung) von Bundesanträgen und ihrer Rolle in Politics
 - Theorieentwicklung
 - Analyse der Individualdaten
-- Analyse der BTA
+- Analyse der BTA (nicht unterschätzen)
 - Kodierung festlegen SM
 - Kodierung der SM-Daten
 - Schluss

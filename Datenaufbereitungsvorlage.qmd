@@ -82,6 +82,8 @@ sui <- sui_raw %>%
 
 sui <- set_na(sui, na = c(-66, 99, -99)) # unklar, was -66 bedeutet
 
+saveRDS(sui, file = "data/sui.Rds")
+
 ```
 
 ## Analyseebene 2: Bundestagsanträge
@@ -112,7 +114,7 @@ bta$union <- str_detect(bta$urheber, "CDU/CSU")
 bta$gruene <- str_detect(bta$urheber, "B90/GR")
 bta$fdp <- str_detect(bta$urheber, "FDP")
 bta$afd <- str_detect(bta$urheber, "AfD")
-bta$linke <- str_detect(bta$urheber, paste(c("LINKE", "Linke"), collapse = "|")) # Paste verbindet die beiden Strings durch die Bedingung collapse mit einem logischen Und
+bta$linke <- str_detect(bta$urheber, regex("linke", ignore_case = TRUE)) # Groß-/Kleinschreibung egal
 bta$bsw <- str_detect(bta$urheber, "BSW")
 bta$bundesregierung <- str_detect(bta$urheber, "Bundesregierung")
 bta$bundesministerien <- str_detect(bta$urheber, "Bundesministerium")
@@ -149,8 +151,109 @@ bta <- bta %>%
   ) %>% 
   to_numeric(id)
 
+# Filtervariable erstellen
+# Übersicht über Platzhalter-Syntax: https://rstudio.github.io/cheatsheets/html/strings.html bzw. hier: https://stringr.tidyverse.org/articles/regular-expressions.html oder hier: https://mhesselbarth.github.io/advanced-r-workshop/cheatsheets/stringr.pdf
+bta_filter <- c("gender+", "geschlecht(.*)gerecht+", "generisch+")
+# neue Variable anlegen, die mit TRUE/FALSE bei Treffer/Nichttreffer belegt wird
+bta$filter <- str_detect(bta$text, regex(paste(bta_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+
+#manuelle Korrektur
+bta_sub <- select(bta, id, filter, titel, text)
+
+
+korrekturen <- c(258268, 264465 )
+for (i in korrekturen) {
+  bta$filter[bta$id == i] <- FALSE
+}
+
+bta_sub <- bta %>% 
+  select(id, filter2)
+ids <- subset(bta_sub, filter2 == TRUE)$id
+ids <- bta_sub$id[bta_sub$filter2 == TRUE]
+
 # fertigen Datensatz speichern
 saveRDS(bta, file = "data/btantraege.Rds")
+
+```
+
+```{r}
+# neuen Datensatz erstellen für Parteiübersicht
+# bei logischen Variablen werden bei sum() automatisch die TRUE-Werte gezählt
+# Gesamtzahl der Anträge (absolut)
+antr_gesamt <- c(
+  sum(bta$spd), 
+  sum(bta$union), 
+  sum(bta$gruene), 
+  sum(bta$fdp), 
+  sum(bta$afd), 
+  sum(bta$linke), 
+  sum(bta$bsw),
+  sum(bta$bundesregierung), 
+  sum(bta$bundesministerien))
+
+# Gesamtzahl der Anträge zum Thema Gendern (absolut)
+antr_gendern <- c(
+  sum(bta$spd & bta$filter), 
+  sum(bta$union & bta$filter), 
+  sum(bta$gruene & bta$filter), 
+  sum(bta$fdp & bta$filter), 
+  sum(bta$afd & bta$filter), 
+  sum(bta$linke & bta$filter), 
+  sum(bta$bsw & bta$filter),
+  sum(bta$bundesregierung & bta$filter), 
+  sum(bta$bundesministerien & bta$filter))
+
+# Gesamtzahl der Anträge (relativ)
+antr_gesamt_proz <- c(
+  sum(bta$spd) / nrow(bta), 
+  sum(bta$union) / nrow(bta), 
+  sum(bta$gruene) / nrow(bta), 
+  sum(bta$fdp) / nrow(bta), 
+  sum(bta$afd) / nrow(bta), 
+  sum(bta$linke) / nrow(bta), 
+  sum(bta$bsw) / nrow(bta),
+  sum(bta$bundesregierung) / nrow(bta),
+  sum(bta$bundesministerien) / nrow(bta))*100
+
+# Gesamtzahl der Anträge zum Thema Gendern (relativ)
+antr_gendern_proz <- c(
+  sum(bta$spd & bta$filter) / sum(bta$filter), 
+  sum(bta$union & bta$filter) / sum(bta$filter), 
+  sum(bta$gruene & bta$filter) / sum(bta$filter), 
+  sum(bta$fdp & bta$filter) / sum(bta$filter), 
+  sum(bta$afd & bta$filter) / sum(bta$filter), 
+  sum(bta$linke & bta$filter) / sum(bta$filter), 
+  sum(bta$bsw & bta$filter) / sum(bta$filter),
+  sum(bta$bundesregierung & bta$filter) / sum(bta$filter), 
+  sum(bta$bundesministerien & bta$filter) / sum(bta$filter))*100
+
+# Verhältnis der Gender-thematisierenden Anträge zu den eigenen Anträgen
+antr_gendern_gesamt <- c(
+  sum(bta$spd & bta$filter) / sum(bta$spd), 
+  sum(bta$union & bta$filter) / sum(bta$union), 
+  sum(bta$gruene & bta$filter) / sum(bta$gruene), 
+  sum(bta$fdp & bta$filter) / sum(bta$fdp), 
+  sum(bta$afd & bta$filter) / sum(bta$afd), 
+  sum(bta$linke & bta$filter) / sum(bta$linke), 
+  sum(bta$bsw & bta$filter) / sum(bta$bsw),
+  sum(bta$bundesregierung & bta$filter) / sum(bta$bundesregierung), 
+  sum(bta$bundesministerien & bta$filter) / sum(bta$bundesministerien))*100
+
+bta_sum <- data.frame(antr_gesamt, antr_gendern, antr_gesamt_proz, antr_gendern_proz, antr_gendern_gesamt)
+
+rownames(bta_sum) <- c("SPD", "Union", "Grüne", "FDP", "AfD", "DIE LINKE", "BSW", "Bundesregierung", "Bundesministerien")
+
+bta_sum <- bta_sum %>% 
+  var_labels(
+    antr_gesamt = "Gesamtzahl der Anträge",
+    antr_gendern = "Gesamtzahl der geS-Anträge",
+    antr_gesamt_proz = "Gesamtzahl der Anträge (relativ)",
+    antr_gendern_proz = "Gesamtzahl der geS-Anträge (relativ)",
+    antr_gendern_gesamt = "Verhältnis von geS-Anträgen zu eigenen Anträgen"
+  )
+
+# fertigen Datensatz speichern
+saveRDS(bta_sum, file = "data/btantraege_sum.Rds")
 
 ```
 

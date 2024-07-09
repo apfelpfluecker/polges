@@ -95,11 +95,11 @@
     - Aufrichtigkeit, Anstand, Fleiß, gesunder Menschenverstand etc.
     
     - „Es handelt sich um eine sozial oder kulturell mehr oder minder klar abgegrenzte Gruppe, die aufgrund ihrer als positiv erachteten Eigenschaften für den „wahren Kern“, das „eigentliche“ Volk steht.“ (Lewandowsky, 2022, p. 19)
-
-- andererseits homogen bzgl. des politischen Willens (L22: 19)
   
-  - (nur) Populisten repräsentieren den Willen des Volkes als Ganzes (L22: 19f.)
-  - => antipluralistisch (Mudde 2004: 544; Rensmann 2006: 63-64; Heinze 2022, 163)
+  - andererseits homogen bzgl. des politischen Willens (L22: 19)
+    
+    - (nur) Populisten repräsentieren den Willen des Volkes als Ganzes (L22: 19f.)
+    - => antipluralistisch (Mudde 2004: 544; Rensmann 2006: 63-64; Heinze 2022, 163)
 
 - „Populisten verfolgen eine „schwarz-weiß“ Sicht, die das Volk als sinnhaft gut darstellt und die Elite als böse, schlecht und verdorben (Meyer 2006, S. 82)“ (Spieß et al., 2020, p. 225)
   

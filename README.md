@@ -21,14 +21,48 @@
 
 ### To Do’s
 
-- Forschungsstand Populismus
-- Forschungsstand GeS und Ablehnung von GeS/Antifeminismen
-- „Forschungsstand“ (eher Einordnung) von Bundesanträgen und ihrer Rolle in Politics
-- Theorieentwicklung
-- Analyse der Individualdaten
-- Analyse der BTA (nicht unterschätzen)
-- Kodierung festlegen SM
-- Kodierung der SM-Daten
-- Schluss
-- Einleitung
+- [ ] Forschungsstände
+  
+  - [x] Populismus
+  
+  - [ ] Geschlechtergerechte Sprache (inkl. Ablehnung)
+    
+    - [ ] Zum Begriff der Politisierung
+  
+  - [ ] Ablehnung von Anti-Genderismus/Anitfemitismus
+  
+  - [ ] Einordnung von Bundestagsanträgen und ihre Rolle im politischen Prozess (politics)
 
+- [ ] Theorieentwicklung (auf Basis der Forschungsstände)
+  
+  - [ ] Welche Gruppen lehnen ab
+  
+  - [ ] Welche Parteien thematisieren es
+    
+    - [ ] Standpunkte der Parteien thematisieren?
+  
+  - [ ] Welche Parteien thematisieren es populistisch
+
+- [ ] Analysen
+  
+  - [ ] Individualdaten
+    
+    - [ ] Analyseart festlegen
+  
+  - [ ] BTA (nicht unterschätzen)
+    
+    - [x] Datenerhebung
+    
+    - [ ] Kodierung
+  
+  - [ ] Inhaltsanalyse Social-Media-Posts
+    
+    - [ ] Datenerhebung
+    
+    - [ ] Codebuch
+    
+    - [ ] Kodierung
+
+- [ ] Einleitung
+
+- [ ] Schluss

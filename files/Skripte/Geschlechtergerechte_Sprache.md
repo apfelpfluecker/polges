@@ -47,6 +47,7 @@
   - -> Aber: Wie sieht es denn empirisch aus? Wird der Genus vom Sexus im Kopf unterschieden? -> zentrale Frage: Hat das gen. Mask. das Potential, das es verspricht? vgl. (Müller-Spitzer, 2020, p. 53)
   
   - 
+
 - Problem: Uneindeutigkeit, ob maskuline Form gerade generisch oder spezifisch ist (Günthner, 2017, p. 4; Schütze 144)
 
 ## Schafft Sprache Wirklichkeit?
@@ -258,40 +259,6 @@
 ## Politisierung geschlechtergerechter Sprache
 
 - „Sprache wird somit zu einem Mittel, um die eigene politische, kulturelle Position zu markieren; sie wird sozialindexikalisch aufgeladen“ (“Geschlechtergerechte Sprache”, 2022, p. 21) Simon
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ------------------
 

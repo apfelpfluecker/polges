@@ -109,6 +109,7 @@ bta <- bta_raw %>%
     doknr = dokumentnummer)
 
 # Parteienvariablen erstellen und belegen
+# ACHTUNG!! FUNKTIONIERT NICHT!!!
 bta$spd <- str_detect(bta$urheber, "SPD")
 bta$union <- str_detect(bta$urheber, "CDU/CSU")
 bta$gruene <- str_detect(bta$urheber, "B90/GR")
@@ -122,13 +123,13 @@ bta$bundesministerien <- str_detect(bta$urheber, "Bundesministerium")
 # Datensatz schön formatieren
 bta <- bta %>% 
   # Liste Urheber in eigene Variablen
-  unnest_wider(urheber, names_sep = "_") %>% 
+  #unnest_wider(urheber, names_sep = "_") %>% 
   # unnötige Variablen entfernen
-  select(
-    -urheber_einbringer,
-    -urheber_titel
-  ) %>% 
-  rename(urheber = urheber_bezeichnung) %>% 
+  #select(
+  #  -urheber_einbringer,
+  #  -urheber_titel
+  #) %>% 
+  #rename(urheber = urheber_bezeichnung) %>% 
   # Variablenlabels hinzufügen
   var_labels(
     id = "ID",
@@ -153,9 +154,16 @@ bta <- bta %>%
 
 # Filtervariable erstellen
 # Übersicht über Platzhalter-Syntax: https://rstudio.github.io/cheatsheets/html/strings.html bzw. hier: https://stringr.tidyverse.org/articles/regular-expressions.html oder hier: https://mhesselbarth.github.io/advanced-r-workshop/cheatsheets/stringr.pdf
-bta_filter <- c("gender+", "geschlecht(.*)gerecht+", "generisch+")
+# 1. Filter filtert alles, was „Sprache“ enthält
+bta_filter1 <- c("sprache+", "sprachlich+")
+bta$filter1 <- str_detect(bta$text, regex(paste(bta_filter1, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+
+# 2. Filte filtert nach dem Thema
+bta_filter2 <- c("gender+", "geschlecht(.*)gerecht+", "generisch+")
 # neue Variable anlegen, die mit TRUE/FALSE bei Treffer/Nichttreffer belegt wird
-bta$filter <- str_detect(bta$text, regex(paste(bta_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+bta$filter2 <- str_detect(bta$text, regex(paste(bta_filter2, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+
+bta$filter <- ifelse(bta$filter1 == TRUE & bta$filter2 == TRUE, TRUE, FALSE)
 
 #manuelle Korrektur
 bta_sub <- select(bta, id, filter, titel, text)

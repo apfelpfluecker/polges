@@ -6,29 +6,34 @@ project:
 
 Entwurfstatus: Entwurf 0.0 # regelmässig anpassen und am Ende auskommentieren (# an Anfangs)
 
-#institute: Institut für Politikwissenschaft
+institut: "Fachbereich Gesellschaftswissenschaften und Philosophie der Philipps-Universität Marburg"
+papertype: "Bachelorarbeit im Fach Politikwissenschaft"
 #AG: X
 #Uebung: 0
 #TutorIn: Vorname Nachname
-Modul: 'Bachelorarbeit'
-Semester: 'SoSe 24'
-Erstgutachter: 
- - name: Prof. Dr. Isabelle Bourcki
- - Email: borucki@uni-marburg.de
-Zweitgutachter:
- - name: Stine Ziegler
- - Email: stine.ziegler@uni-marburg.de
+#Modul: 'Bachelorarbeit'
+#Semester: 'SoSe 24'
+Gutachter:
+  - type: Erstgutachterin
+    name: Prof. Dr. Isabelle Borucki
+    Email: borucki@uni-marburg.de
+  - type: Zweitgutachterin
+    name: Stine Ziegler
+    Email: stine.ziegler@uni-marburg.de
+Ort: Marburg
+Jahr: 2024
 Datum: "23.08.2024"
 
 book:
-  title: 'Politisierung geschlechtergerechter Sprache' # eher knackig
-  subtitle: 'Bachelorarbeit' # bessere Beschreibung 
+  title: 'Polarisierung geschlechtergerechter Sprache' # eher knackig
+  subtitle: 'Eine empirische Analyse anhand von Individualdaten, Bundestagsanträgen und Facebook-Posts' # bessere Beschreibung
   author:
   - given-names: Jakob
     surname: Krueger
     Email: Kruege4c@students.uni-marburg.de
     MatrikelNr: 3583647
     Studiengang: B.A. Politikwissenschaft
+    Geburtsort: Halle (Saale)
 
   chapters:
     -  index.qmd

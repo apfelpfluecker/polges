@@ -182,6 +182,8 @@ $endif$
 
 \begin{document}
 
+\input{files/Silbentrennung} %Tex-File, um die Silbentrennung manuell für einzelne Wörter anzupassen
+
 \pagestyle{scrheadings}
 
   \clearscrheadfoot
@@ -189,7 +191,7 @@ $endif$
   \ihead[]{\headmark} %oben links
   \chead[]{} %oben Mitte
   \ohead{} %oben rechts 
-  \ifoot[]{$for(author)${$author.surname$}$sep$/$endfor$} %unten links
+  \ifoot[]{$for(author)${$author.surname$}$sep$/$endfor$ – $title$} %unten links
   \cfoot[]{$if(Fusstitel)$$Fusstitel$$endif$} %unten Mitte
   \ofoot[]{\pagemark} % unten rechts
   \setheadsepline{.2pt}
@@ -198,6 +200,7 @@ $endif$
 
 
 \begin{titlepage}
+\begin {center}
 \sffamily
 \setlength\parindent{0pt}
 
@@ -205,6 +208,11 @@ $endif$
 \vspace{-.9cm} \hfill{\huge \bfseries $institute$}
 
 \vfill
+$if(institut)$ $institut$
+$endif$
+\vfill
+$if(papertype)$ \Large $papertype$
+$endif$
 \vfill
 
 $if(title)$
@@ -214,37 +222,29 @@ $if(subtitle)$
 $endif$
 $endif$
 
+\normalsize vorgelegt von
+\vfill
+$for(author)$\Large $author.given-names$ $author.surname$\\*[1ex]
+\normalsize $author.Email$\\*
+Matrikelnummer: $author.MatrikelNr$ $sep$\\[1cm]
+$endfor$
 
 \vfill
-
-\begin{multicols}{2}
-    $for(author)$\Large $author.surname$, $author.given-names$ \\*[1ex]
-    \normalsize $author.Email$\\*
-    Matrikelnummer: $author.MatrikelNr$\\
-    Studiengang: $author.Studiengang$ $sep$\\[1cm]
-    $endfor$
-\end{multicols}
-
+aus\\
+$for(author)$ $author.Geburtsort$\\
+$endfor$
 \vfill
-$if(AG)$AG: $AG$,  $endif$ $if(Uebung)$ Übung: $Uebung$,  $endif$ $if(TutorIn)$ Tutor:in: $TutorIn$ $endif$
-
+$Ort$, $Jahr$
 \vfill
 
-Modul: $Modul$ \\
-Semester: $Semester$ \\
-
-\begin{multicols}{2}
-    Erstgutachterin: \\
-    $for(Erstgutachter)$ $Erstgutachter.name$\\ $Erstgutachter.Email$ $endfor$ \\
-
-    Zweitgutachterin: \\
-    $for(Zweitgutachter)$ $Zweitgutachter.name$\\ $Zweitgutachter.Email$ $endfor$
-\end{multicols}
+$for(Gutachter)$
+$Gutachter.type$: $Gutachter.name$, $Gutachter.Email$\\
+$endfor$
 
 \vfill
 
 Abgabedatum: $Datum$
-
+\end{center}
 \end{titlepage}
 
 

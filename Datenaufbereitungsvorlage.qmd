@@ -109,7 +109,6 @@ bta <- bta_raw %>%
     doknr = dokumentnummer)
 
 # Parteienvariablen erstellen und belegen
-# ACHTUNG!! FUNKTIONIERT NICHT!!!
 bta$spd <- str_detect(bta$urheber, "SPD")
 bta$union <- str_detect(bta$urheber, "CDU/CSU")
 bta$gruene <- str_detect(bta$urheber, "B90/GR")
@@ -163,13 +162,24 @@ bta_filter2 <- c("gender+", "geschlecht(.*)gerecht+", "generisch+")
 # neue Variable anlegen, die mit TRUE/FALSE bei Treffer/Nichttreffer belegt wird
 bta$filter2 <- str_detect(bta$text, regex(paste(bta_filter2, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
 
+# Kombination beider Filter-Variablen
 bta$filter <- ifelse(bta$filter1 == TRUE & bta$filter2 == TRUE, TRUE, FALSE)
+
+# Prüfen, ob ID einzigartig
+anyDuplicated(bta$id) == 0 # wenn TRUE, dann einzigartig
+
+# Manuelle Korrektur
+bta_ges <- select(bta_ges, -urheber)
+write.table(bta_ges, file="bta_ges.txt", dec = ",", sep = "\t")
+
+
+
 
 #manuelle Korrektur
 bta_sub <- select(bta, id, filter, titel, text)
 
 
-korrekturen <- c(258268, 264465 )
+korrekturen <- c(274476, 273997, 273665, 273415)
 for (i in korrekturen) {
   bta$filter[bta$id == i] <- FALSE
 }

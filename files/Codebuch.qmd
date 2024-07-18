@@ -1,0 +1,88 @@
+---
+title: "Codebuch"
+author: "Jakob Krueger"
+
+bibliography: references.bib
+cite-method: citeproc
+csl: springervs.csl
+
+language:
+  lang: de
+  ui:
+    chapter_name: ""
+  label:
+    fig: 'Abbildung '
+    tab: 'Tabelle '
+    eq: 'Gleichung '
+  section-title-appendices: "Anhang"
+
+quot-lang: de
+
+format:
+  pdf:
+    documentclass: scrreprt
+    fontsize: 12pt
+    classoption: twoside #bei digitalen Arbeiten oneside!
+    geometry:
+      - top=30mm
+      - left=20mm
+      - lmargin=30mm,
+      - textwidth = 15.5cm,
+      - textheight = 22.5cm
+    keep-tex: true
+    fontenc: T1
+    fig-cap-location: top
+    include-in-header:
+      - text: |
+      - file: LaTeX/macros.tex
+    number-sections: true
+    csquotes: true
+    filters: [pandoc-quotes.lua]
+    keep-md: false
+    
+editor:
+  render-on-save: false
+  visual: true
+
+header-includes:   
+  - \usepackage{setspace}   #Package um Zeilenabstand zu wechseln
+  - \onehalfspacing   #Zeilenabstand 1.5
+  - \pagenumbering{gobble}  #Seitenzahlen Unterdrücken bis Kapitel 1
+---
+
+Überblick über
+
+-   Kodierungsprozess
+
+-   verwendete Kategorien und Unterkategorien
+
+1.  Definition der wichtigen Begriffe für die Kategorien
+2.  Beschreibung der Merkmale der Unterkategorien
+
+-   Vorgehensweise bei der Kategorienbildung (deduktiv nach Brosius et al. 2022: 175?)
+
+-   Analyseeinheiten, Kodiereinheiten etc. benennen
+
+## Begriffsdefinitionen
+
+## Kategorienschema
+
+| Hauptkategorie | Unterkategorie | Col3 | Merkmale |
+|----------------|----------------|------|----------|
+| Populismus     |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+|                |                |      |          |
+
+: Kategorienschema

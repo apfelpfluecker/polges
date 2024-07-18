@@ -5,8 +5,12 @@
 
 # Codebuch
 
-...
-
+```{=tex}
+\pdf[2cm 2cm 2cm 2cm]{files/Codebuch.pdf}{1} 
+\pdf[2cm 2cm 2cm 2cm]{files/Codebuch.pdf}{2} 
+\pdf[2cm 2cm 2cm 2cm]{files/Codebuch.pdf}{3} 
+\pdf[2cm 2cm 2cm 2cm]{files/Codebuch.pdf}{4}
+```
 # R-Code
 
 ...

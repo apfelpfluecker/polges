@@ -22,8 +22,13 @@
 *.bbl
 *.lof
 *.lot
+*.csv
+*.txt
 
 
 "Bachelorarbeit Paper.docx"
 Bachelorarbeit_Krueger_polges.pdf
 Bachelorarbeit_Krueger_polges.tex
+
+#Codebuch Hilfsdateien
+/files/Codebuch.tex

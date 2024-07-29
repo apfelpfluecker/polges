@@ -22,7 +22,7 @@ format:
   pdf:
     documentclass: scrreprt
     fontsize: 12pt
-    classoption: twoside #bei digitalen Arbeiten oneside!
+    classoption: oneside #bei digitalen Arbeiten oneside!
     geometry:
       - top=30mm
       - left=20mm
@@ -48,16 +48,78 @@ header-includes:
   - \usepackage{setspace}   #Package um Zeilenabstand zu wechseln
   - \onehalfspacing   #Zeilenabstand 1.5
   - \pagenumbering{gobble}  #Seitenzahlen Unterdrücken bis Kapitel 1
+  #- \usepackage{colortbl}\rowcolors{1}{white}{lightgray!50} #Zeilen in Tabellen 'striped'
 ---
 
 Überblick über
 
 -   Kodierungsprozess
 
+    -   genaue Vorgaben, wie beim Kodieren vorgegangen wird, explizite Anleitung, Beschreibung der Kategorien
+
 -   verwendete Kategorien und Unterkategorien
 
-1.  Definition der wichtigen Begriffe für die Kategorien
-2.  Beschreibung der Merkmale der Unterkategorien
+1.  Definitorischer Rahmen
+
+    1.  Informationen über die Untersuchung (ausgliedern aus definitor. Rahmen)
+        -   Grundgesamtheit der Analyse
+
+        -   Bestimmung der zu untersuchenden Medien (+ Begründung)
+    2.  Ziel, Forschungsfrage, Hypothesen
+    3.  Definition der wichtigen Begriffe für die Kategorien
+    4.  Definition der Untersuchungs- und Analyseeinheiten
+        -   Auswahl der Beiträge
+
+        -   Welche Einheiten werden untersucht, warum?
+
+        -   Unterschiedliche Ebenen in Analyseeinheiten
+    5.  Definition der Aufgreifkriterien
+        -   Wann wird etwas in die Analyse aufgenommen
+
+        -   hier: bestimmte Begriffe (Lexika)
+    6.  Beschreibung der Vorgehensweise
+    7.  
+
+2.  Kategoriensystem
+
+    1.  Kategorie 1 mit Ausprägungen (plus Definition und Kodierbeispiel)
+    2.  Kategorie 2...
+    3.  Kategorie n...
+
+    -   formale Kategorien
+
+        -   Datum, Autor\*in, Legislatur, ggf. Zeiteinheit
+
+    -   inhaltliche Kategorien
+
+        -   Populismus
+
+    -   numerisches Relativ oder vorhanden/nicht vorhanden
+
+    -   Kategoriensystem muss vollständig sein -\> alle Aspekte der Forschungsfrage abdecken
+
+    -   Kategoriensystem muss trennscharf sein -\> Kategorien schließen sich gegenseitig aus
+
+    -   Validität:
+
+        -   Vollständigkeit!
+
+        -   geht zu Lasten der Reliabilität -\> je detaillierter die Codes, desto fehleranfälliger die Codierung
+
+    -   Reliabilität:
+
+        -   gleiche Kodierung bei versch. Kodierer\*innen
+
+        -   Intracoderreliabilität: gleicher Kodierer zu versch. Zeitpunkten
+
+        -   Intercoderreliabilität: versch. Kodierer\*innen
+
+        -   Errechnung eines Quotienten
+
+3.  Anhang
+
+    1.  Tabellarische Übersicht über Kategorien
+    2.  (Muster-)Codebogen
 
 -   Vorgehensweise bei der Kategorienbildung (deduktiv nach Brosius et al. 2022: 175?)
 
@@ -67,22 +129,121 @@ header-includes:
 
 ## Kategorienschema
 
-| Hauptkategorie | Unterkategorie | Col3 | Merkmale |
-|----------------|----------------|------|----------|
-| Populismus     |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
-|                |                |      |          |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Konstrukt  | Hauptkategorien                         | Unterkategorien                           | Merkmale                                                                                                                                                                                                                                                                                    |
++============+=========================================+===========================================+=============================================================================================================================================================================================================================================================================================+
+| Populismus | Volksnähe                               | Homogenisierung                           | Das Volk wird als eine homogene Masse dargestellt, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.\                                                                                                                                                          |
+|            |                                         |                                           | Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“ oder den „Bürger\*innen“ gesprochen wird.                                                                                                                                                                     |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|            |                                         | Idealisierung                             | Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden.\                                                                                                                                                                                                 |
+|            |                                         |                                           | Dies trifft zu, wenn beispielsweise von einem außerordentlichen Gemeinschaftssinn oder auch vom „gesunden Menschenverstand“ gesprochen wird. Aber auch, wenn positiv konnotierte Adjektive verwendet werden wie bei „die kleinen Leute“, „der einfache Bürger“, „das hart arbeitende Volk“. |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|            |                                         | Selbstpositionierung                      | Der Akteur positioniert sich identifizierend mit dem Volk, das bedeutet, er stellt sich als Fürsprecher oder Teil des Volkes dar. Es entsteht der Eindruck, als identifiziere sich der Akteur mit dem Volk.\                                                                                |
+|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|            | Elitenkritik                            | Konzeptkritik                             | Fachliche Kompetenzen oder persönliche Eigenschaften einzelner Akteure, die der Elite zugeschrieben werden, werden kritisiert.\                                                                                                                                                             |
+|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|            |                                         | Moralkritik                               | Der Elite wird vorgeworfen, eigene Interessen über das Gemeinwohl zu stellen.\                                                                                                                                                                                                              |
+|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|            |                                         | Schuldzuweisung                           | Der Elite wird vorgeworfen, für Missstände verantwortlich zu sein.\                                                                                                                                                                                                                         |
+|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|            |                                         | Medienkritik                              | Medien werden Adressat der Kritik.\                                                                                                                                                                                                                                                         |
+|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|            | Wiederherstellung der Volkssouveränität | Forderungen nach Kompetenzen für das Volk | Es werden mehr Befugnisse/Kompetenzen für das Volk gefordert.\                                                                                                                                                                                                                              |
+|            |                                         |                                           | Ein Beispiel dafür ist die Forderung nach mehr direkter Demokratie.                                                                                                                                                                                                                         |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|            |                                         | Absprache von Kompetenzen für die Elite   | Der Elite werden Befugnisse/Kompetenzen abgesprochen.\                                                                                                                                                                                                                                      |
+|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
++------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-: Kategorienschema
+: Kategorienschema {.striped}
+
+### Kategorien
+
+#### Volksnähe
+
+Spieß et al.:
+
+-   Volk als homogene Gruppe
+
+-   Zuschreibung positiver Attribute
+
+-   Identifikation des Akteurs mit dem Volk
+
+Ernst et al.:
+
+-   Betonung der Tugenden des Volkes
+
+-   Leistungen des Volks loben
+
+-   Volk als monolithisch (sehr homogen)
+
+-   Nähe zum Volk betonen
+
+Lewandowsky et al.:
+
+-   Mehrheitsdezisionismus
+
+-   Direkte Demokratie
+
+#### Elitenkritik
+
+Spieß et al.:
+
+-   Konzeptkritik (fachliche Kompetenzen / persönl. Eigenschaften bemängelt)
+
+-   Moralkritik (Eigeninteressen der Elite über Gemeinwohl gestellt)
+
+-   Schuldzuweisung (Elite für Missstände verantwortlich gemacht)
+
+-   Medienkritik (andere Logik: Medien als Elite adressiert)
+
+Schmiege et al.:
+
+-   Elite allgemein
+
+-   ausländische Politiker\*innen und Regierungen
+
+-   Politische Elite
+
+-   Staatliche Elite
+
+-   Wissenschaftliche Elite
+
+-   Wirtschaftliche Elite
+
+-   Mediale Elite
+
+Ernst et al.:
+
+-   Elite diskreditieren
+
+-   Elite beschuldigen
+
+-   Elite vom Volk distanzieren
+
+Lewandowsky et al.:
+
+-   Kritik an nationaler Demokratie und ihren Akteuren
+
+-   Kritik an Europäischer Union
+
+-   Kritik an Medien
+
+#### Wiederherstellung der Volkssouveränität
+
+Spieß et al.:
+
+-   Forderung nach Kompetenzen für das Volk
+
+-   Absprache der Kompetenzen der Elite
+
+Ernst et al.:
+
+-   Forderung nach mehr Kompetenzen für das Volk
+
+-   Ablehnung von mehr Kompetenzen für die Elite

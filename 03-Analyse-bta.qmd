@@ -1,4 +1,4 @@
-# Ergebnisse
+# Analyseebene 2: Bundestagsanträge
 
 ```{r}
 #| label: setup
@@ -8,8 +8,7 @@
 #| error: false
 
 source("_common.R")
-library(dplyr)
-library(knitr)
+library(ggpubr)
 
 ```
 
@@ -21,6 +20,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 #| tbl-cap: Bundestagsanträge der Fraktionen/Gruppen
 #| waring: false
 #| error: false
+#| eval: false #Code nicht ausführen, nur in Ausagabe
 
 bta <- readRDS("data/btantraege.Rds")
 bta_sum <- readRDS("data/btantraege_sum.Rds")

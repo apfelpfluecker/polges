@@ -1,4 +1,4 @@
-# Methode
+# Analyseebene 1: Individualdaten
 
 ```{r}
 #| label: setup
@@ -29,4 +29,9 @@ Methodensteckbrief %>%
   kableExtra::column_spec(1, width = "12em")  %>% 
   kableExtra::column_spec(2, width = "25em")
 options(knitr.kable.NA = "---")
+```
+
+```{r}
+# alle Variablen: age, sex, fed_state, eastwest, education, polint,   polinf, motong_ger, motong_oth, gainemp, class, housesize, childinhouse, houseinc, commsize, party, migback, genatt
+
 ```

@@ -14,3 +14,9 @@
 # R-Code
 
 ...
+
+# Eidesstattliche Erklärung
+
+Hiermit erkläre ich an Eides statt, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst habe. Alle wörtlichen und sinngemäßen Übernahmen aus anderen Werken habe ich jeweils kenntlich gemacht. Diese Arbeit wurde an keiner anderen Stelle als Prüfungsleistung vorgelegt und auch noch nicht veröffentlicht.\
+\
+Marburg, den 23.08.2024

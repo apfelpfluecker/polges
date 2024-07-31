@@ -333,8 +333,9 @@ sm_filter <- c("gender+", "geschlecht(.*)gerecht+", "generisch+")
 
 # Filtern
 spd$filter <- str_detect(spd$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+spd$party <- c(rep("SPD", nrow(spd)))
 spd <- spd %>%  
-  select(id, object_id, created_time, filter, message) # Reihenfolge der Variablen ändern
+  select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
 # Subset für die manuelle Filterkorrektur
 write_csv2(subset(spd, filter == TRUE), "data/social-media-data/spd_korr.csv")
@@ -346,9 +347,6 @@ for (i in korrekturen) {
   spd$filter[spd$id == i] <- FALSE
 }
 
-# Exportieren zum Kodieren
-write_csv2(spd, "data/social-media-data/spd_cod.csv")
-
 
 ######################### Rohdatensatz CDU #########################
 cdu_raw <- read.csv2("data/social-media-data/cdu.csv")
@@ -359,8 +357,9 @@ cdu <- cdu_raw %>%
 
 # Filtern
 cdu$filter <- str_detect(cdu$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+cdu$party <- c(rep("CDU", nrow(cdu)))
 cdu <- cdu %>%  
-  select(id, object_id, created_time, filter, message) # Reihenfolge der Variablen ändern
+  select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
 # Subset für die manuelle Filterkorrektur
 write_csv2(subset(cdu, filter == TRUE), "data/social-media-data/cdu_korr.csv")
@@ -372,9 +371,6 @@ for (i in korrekturen) {
   cdu$filter[cdu$id == i] <- FALSE
 }
 
-# Exportieren zum Kodieren
-write_csv2(cdu, "data/social-media-data/cdu_cod.csv")
-
 
 ######################### Rohdatensatz CSU #########################
 csu_raw <- read.csv2("data/social-media-data/csu.csv")
@@ -385,8 +381,9 @@ csu <- csu_raw %>%
 
 # Filtern
 csu$filter <- str_detect(csu$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+csu$party <- c(rep("CSU", nrow(csu)))
 csu <- csu %>%  
-  select(id, object_id, created_time, filter, message) # Reihenfolge der Variablen ändern
+  select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
 # Subset für die manuelle Filterkorrektur
 write_csv2(subset(csu, filter == TRUE), "data/social-media-data/csu_korr.csv")
@@ -398,9 +395,6 @@ for (i in korrekturen) {
   csu$filter[csu$id == i] <- FALSE
 }
 
-# Exportieren zum Kodieren
-write_csv2(csu, "data/social-media-data/csu_cod.csv")
-
 
 ######################### Rohdatensatz Grüne #########################
 gruene_raw <- read.csv2("data/social-media-data/gruene.csv")
@@ -411,8 +405,9 @@ gruene <- gruene_raw %>%
 
 # Filtern
 gruene$filter <- str_detect(gruene$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+gruene$party <- c(rep("Bündnis 90/Die Grünen", nrow(gruene)))
 gruene <- gruene %>%  
-  select(id, object_id, created_time, filter, message) # Reihenfolge der Variablen ändern
+  select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
 # Subset für die manuelle Filterkorrektur
 write_csv2(subset(gruene, filter == TRUE), "data/social-media-data/gruene_korr.csv")
@@ -424,9 +419,6 @@ for (i in korrekturen) {
   gruene$filter[gruene$id == i] <- FALSE
 }
 
-# Exportieren zum Kodieren
-write_csv2(gruene, "data/social-media-data/gruene_cod.csv")
-
 
 ######################### Rohdatensatz FDP #########################
 fdp_raw <- read.csv2("data/social-media-data/fdp.csv")
@@ -437,8 +429,9 @@ fdp <- fdp_raw %>%
 
 # Filtern
 fdp$filter <- str_detect(fdp$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+fdp$party <- c(rep("FDP", nrow(fdp)))
 fdp <- fdp %>%  
-  select(id, object_id, created_time, filter, message) # Reihenfolge der Variablen ändern
+  select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
 # Subset für die manuelle Filterkorrektur
 write_csv2(subset(fdp, filter == TRUE), "data/social-media-data/fdp_korr.csv")
@@ -450,9 +443,6 @@ for (i in korrekturen) {
   fdp$filter[fdp$id == i] <- FALSE
 }
 
-# Exportieren zum Kodieren
-write_csv2(fdp, "data/social-media-data/fdp_cod.csv")
-
 
 ######################### Rohdatensatz AfD #########################
 afd_raw <- read.csv2("data/social-media-data/afd.csv")
@@ -463,8 +453,9 @@ afd <- afd_raw %>%
 
 # Filtern
 afd$filter <- str_detect(afd$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+afd$party <- c(rep("AfD", nrow(afd)))
 afd <- afd %>% 
-  select(id, object_id, created_time, filter, message) # Reihenfolge der Variablen ändern
+  select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
 # Subset für die manuelle Filterkorrektur
 write_csv2(subset(afd, filter == TRUE), "data/social-media-data/afd_korr.csv")
@@ -476,9 +467,6 @@ for (i in korrekturen) {
   afd$filter[afd$id == i] <- FALSE
 }
 
-# Exportieren zum Kodieren
-write_csv2(afd, "data/social-media-data/afd_cod.csv")
-
 
 ######################### Rohdatensatz Linke #########################
 linke_raw <- read.csv2("data/social-media-data/linke.csv")
@@ -489,8 +477,9 @@ linke <- linke_raw %>%
 
 # Filtern
 linke$filter <- str_detect(linke$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+linke$party <- c(rep("Die Linke", nrow(linke)))
 linke <- linke %>%  
-  select(id, object_id, created_time, filter, message) # Reihenfolge der Variablen ändern
+  select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
 # Subset für die manuelle Filterkorrektur
 write_csv2(subset(linke, filter == TRUE), "data/social-media-data/linke_korr.csv")
@@ -502,9 +491,6 @@ for (i in korrekturen) {
   linke$filter[linke$id == i] <- FALSE
 }
 
-# Exportieren zum Kodieren
-write_csv2(linke, "data/social-media-data/linke_cod.csv")
-
 
 ######################### Rohdatensatz BSW #########################
 bsw_raw <- read.csv2("data/social-media-data/bsw.csv")
@@ -515,8 +501,9 @@ bsw <- bsw_raw %>%
 
 # Filtern
 bsw$filter <- str_detect(bsw$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
+bsw$party <- c(rep("BSW", nrow(bsw)))
 bsw <- bsw %>%  
-  select(id, object_id, created_time, filter, message) # Reihenfolge der Variablen ändern
+  select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
 # Subset für die manuelle Filterkorrektur
 write_csv2(subset(bsw, filter == TRUE), "data/social-media-data/bsw_korr.csv")
@@ -528,9 +515,6 @@ for (i in korrekturen) {
   bsw$filter[bsw$id == i] <- FALSE
 }
 
-# Exportieren zum Kodieren
-write_csv2(bsw, "data/social-media-data/bsw_cod.csv")
-
 
 ######################### Zusammenfügen der Daten in einen Datensatz #########################
 fb_posts <- rbind(spd, cdu, csu, gruene, fdp, afd, linke, bsw)
@@ -539,7 +523,9 @@ if(sum(nrow(spd),nrow(cdu),nrow(csu),nrow(gruene),nrow(fdp),nrow(afd),nrow(linke
   "Achtung! Ungleiche Zeilenlänge von Ausgangsdaten und neuem Datensatz."
 }
 
-#fertigen Datensatz abspeichern
+# fertigen Datensatz abspeichern
 saveRDS(fb_posts, file = "data/fb_posts.Rds")
+# Datensatz zum Codieren abspeichern
+write_csv2(filter(fb_posts, filter == TRUE), "data/social-media-data/fb_posts_cod.csv")
 
 ```

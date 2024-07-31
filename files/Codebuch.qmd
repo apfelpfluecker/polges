@@ -125,40 +125,195 @@ header-includes:
 
 -   Analyseeinheiten, Kodiereinheiten etc. benennen
 
-## Begriffsdefinitionen
+------------------------------------------------------------------------
 
-## Kategorienschema
+Informationen über die Untersuchung
 
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Konstrukt  | Hauptkategorien                         | Unterkategorien                           | Merkmale                                                                                                                                                                                                                                                                                    |
-+============+=========================================+===========================================+=============================================================================================================================================================================================================================================================================================+
-| Populismus | Volksnähe                               | Homogenisierung                           | Das Volk wird als eine homogene Masse dargestellt, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.\                                                                                                                                                          |
-|            |                                         |                                           | Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“ oder den „Bürger\*innen“ gesprochen wird.                                                                                                                                                                     |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|            |                                         | Idealisierung                             | Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden.\                                                                                                                                                                                                 |
-|            |                                         |                                           | Dies trifft zu, wenn beispielsweise von einem außerordentlichen Gemeinschaftssinn oder auch vom „gesunden Menschenverstand“ gesprochen wird. Aber auch, wenn positiv konnotierte Adjektive verwendet werden wie bei „die kleinen Leute“, „der einfache Bürger“, „das hart arbeitende Volk“. |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|            |                                         | Selbstpositionierung                      | Der Akteur positioniert sich identifizierend mit dem Volk, das bedeutet, er stellt sich als Fürsprecher oder Teil des Volkes dar. Es entsteht der Eindruck, als identifiziere sich der Akteur mit dem Volk.\                                                                                |
-|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|            | Elitenkritik                            | Konzeptkritik                             | Fachliche Kompetenzen oder persönliche Eigenschaften einzelner Akteure, die der Elite zugeschrieben werden, werden kritisiert.\                                                                                                                                                             |
-|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|            |                                         | Moralkritik                               | Der Elite wird vorgeworfen, eigene Interessen über das Gemeinwohl zu stellen.\                                                                                                                                                                                                              |
-|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|            |                                         | Schuldzuweisung                           | Der Elite wird vorgeworfen, für Missstände verantwortlich zu sein.\                                                                                                                                                                                                                         |
-|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|            |                                         | Medienkritik                              | Medien werden Adressat der Kritik.\                                                                                                                                                                                                                                                         |
-|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|            | Wiederherstellung der Volkssouveränität | Forderungen nach Kompetenzen für das Volk | Es werden mehr Befugnisse/Kompetenzen für das Volk gefordert.\                                                                                                                                                                                                                              |
-|            |                                         |                                           | Ein Beispiel dafür ist die Forderung nach mehr direkter Demokratie.                                                                                                                                                                                                                         |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|            |                                         | Absprache von Kompetenzen für die Elite   | Der Elite werden Befugnisse/Kompetenzen abgesprochen.\                                                                                                                                                                                                                                      |
-|            |                                         |                                           | Beispiel                                                                                                                                                                                                                                                                                    |
-+------------+-----------------------------------------+-------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-   Grundgesamtheit der Analyse
+
+-   Bestimmung der zu untersuchenden Medien
+
+## Definitorischer Rahmen
+
+### Untersuchungsziel, Forschungsfragen, Hypothesen
+
+Das Ziel der Untersuchung ist, herauszufinden, welche Parteien das Thema geschlechtergerechte Sprache populistisch behandeln.
+
+-   kurz und knapp
+
+### Definition wichtiger Begriffe
+
+Populismus wird in dieser Arbeit angelehnt an Cas Mudde als eine dünne Ideologie definiert, die im Wesentlichen aus den Aspekten Volksnähe, Elitenkritik und der Wiederherstellung der Volkssouveränität besteht [-@mudde2004: 543].
+
+Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerechtigkeit in der Sprache herzustellen, wobei ein wichtiger Bestandteil die Sichtbarmachung von in der Sprache nicht abgebildeten Geschlechtern ist [vgl. @rödder2022: 6]. Sprache verhält sich demnach als „Machtkonstrukt“ [@rödder2022: 6], das auf die Wirklichkeit einwirkt. Es gibt zahlreiche Formen geschlechtergerechter Sprache, exemplarisch seien an dieser Stelle das Binnen-I (StudentInnen), die Beidnennung (Studentinnen und Studenten), die Substantivierung von Präsenspartizipien (Studierende) sowie Zeichensetzungen innerhalb von Wörtern wie zum Beispiel der Gender-Gap (Student_innen), der Gender-Stern (Student\*innen) oder auch der Doppelpunkt (Student:innen) sowie das generische Femininum (Studentinnen) genannt.[^codebuch-1]
+
+[^codebuch-1]: Streng genommen ist das generische Maskulinum auch eine Form geschlechtergerechter Sprache, allerdings entlädt sich gerade an dieser Form die größte Kritik der feministischen Linguistik, sodass an dieser Stelle davon abgesehen wurde, es explizit zu nennen. Mehr dazu in der Arbeit.
+
+-   Populismus, geschlechtergerechte Sprache, etc.
+
+### Definition der Auswahleinheit
+
+Die Auswahleinheit ist nach Patrick Rössler das „Untersuchungsmaterial für die Medieninhaltsanalyse“ [-@rössler2017: 53]. Der untersuchte Zeitraum ist der 24.09.2017 bis 19.06.2024. Der Startzeitpunkt wurde in Abhängigkeit zu den Bundestagswahlen gewählt, da in Betracht zu ziehen ist, dass sich wie auch bei Bundestagsanträgen [vgl. @ismayr2012: 403] das Postverhalten mit einer Regierungsbeteiligung verändern könnte. Um eine zeitlich vergleichende Analyse zu ermöglichen, ist es sinnvoll, dass sich Oppositions- und Regierungszeit bei einer Partei innerhalb eines Zeitraums nicht überschneiden. Dass die Bundestagswahl 2017 Ausgangspunkt der Untersuchung ist, hat einerseits mit den begrenzten Ressourcen bei der Analyse zu tun und andererseits damit, dass sich das Thema geschlechtergerechte Sprache vor allem in den letzten Jahren polarisiert hat. Somit kann davon ausgegangen werden, dass vor 2017 weitaus weniger Analyseeinheiten aufgetreten wären. Die Untersuchung bezieht sich auf Deutschland als räumlichen Geltungsbereich und betrachtet die Mediengattung Social Media. Es werden ausschließlich Posts (weder Bilder und Videos noch Kommentare) der Plattform Facebook einbezogen. BEGRÜNDUNG. Betrachtet werden darüber hinaus ausschließlich die Accounts der Bundesparteien der Parteien, die im Untersuchungszeitraum eine Gruppe oder Fraktion im Bundestag hatten, es handelt sich damit um eine Auswahl typischer Fälle. Aus der Grundgesamtheit aller Parteien in Deutschland wurden lediglich relevanten (also die im Bundestag sitzenden) Parteien ausgewählt und von denen lediglich die Bundesparteien, da sich diese Analyse auf die Bundespolitik beschränken soll. Eine Ausnahme stellt die CSU dar, die keine Bundespartei hat. Trotzdem wurde sich für eine Betrachtung der CSU entschieden. Zuletzt werden nur die Posts der Inhaltsanalyse unterzogen, die das Thema geschlechtergerechte Sprache mindestens anschneiden. Dabei ist wichtig zu erwähnen, dass die Nutzung geschlechtergerechter Sprache an sich keine Thematisierung im Sinne des Forschungsinteresses darstellt, da eine theoretische Differenzierung bezüglich der Verwendung geschlechtergerechter Sprache kaum möglich ist. Korrekterweise ist schon das generische Maskulinum eine Form geschlechtergerechter Sprache [vgl. @wizorek2022: 4; vgl. @eisenberg2022: 35] genauso wie die weit verbreitete Beidnennung (beispielsweise in „Studentinnen und Studenten“).
+
+Auswahleinheit = "Untersuchungsmaterial für die Medieninhaltsanalyse" [@rössler2017: 53]
+
+-   Zeitraum: ab Bundestagswahl 2017, da verschiedenes Verhalten von Parteien in Opposition/Regierung + Thema Gendern immer polarisierender -\> Verlauf wäre schön und wird so möglich + forschungspragmatische Gründe (begrenzte Ressoucen)
+
+-   räumlicher Geltungsbereich: Deutschland
+
+-   Mediengattung: Social Media
+
+-   Medienangebot(e): Facebook
+
+-   Ressorts/Formate: Posts (keine Bilder/Videos)
+
+-   inhaltlich definitorischer Teil: alle Accounts der Parteien, die im Untersuchungszeitraum eine Gruppe oder Fraktion im Bundestag haben → Auswahl typischer Fälle (Grundgesamtheit: alle Parteien in Deutschland); alle Posts, in denen Gendern thematisiert wird
+
+### Definition der Analyseeinheit(en)
+
+Als Analyseeinheit werden „jene Elemente aus dem Untersuchungsmaterial \[bezeichnet\], für die im Rahmen der Codierung eine Klassifizierung vorgenommen wird“ [@rössler2017: 75]. Dabei ist zu beachten, dass der „Auflösungsgrad der Analyseeinheit \[...\] die Detailliertheit der Auswertungen (Analysetiefe) \[bestimmt\]“ [@rössler2017: 76]. Dementsprechend sind alle Posts Teil der Analyseeinheit, in denen mindestens eine Dimension von Populismus im Codierprozess festgestellt wurde.
+
+-   "Die Analyseeinheit sind jene Elemente aus dem Untersuchungsmaterial, für die im Rahmen der Codierung eine Klassifizierung vorgenommen wird." [@rössler2017: 75]
+
+    -   "Der Auflösungsgrad der Analyseeinheit bestimmt die Detailliertheit der Auswertungen (Analysetiefe)" [@rössler2017: 76]
+
+-   alle Posts, in denen Gendern thematisiert wird
+
+### Definition der Codiereinheiten
+
+Als formale Codiereinheiten fungieren die Erstellungszeit, der Urheber beziehungsweise die Partei, die den Post veröffentlicht hat, WEITERE ZEITEINTEILUNGEN. Alle formalen Kriterien werden automatisiert erfasst und nicht von Codierer\*innen codiert.\
+Inhaltliche Codiereinheiten sind die neun Populismus-Dimensionen, die weiter unten ausführlich beschrieben sind.
+
+Codiereinheit:
+
+-   formale: Autor, Datum, ...
+
+-   inhaltlich: thematische Einheit: 9 Populismus-Dimensionen
+
+### Definition der Kontexteinheit
+
+Das Hilfskonstrukt der Kontexteinheit kommt in dieser Analyse nicht zum Einsatz, da jeweils der gesamte Text eines Posts erfasst wird und als Grundlage für die Codierung dient. Eine Einsatzmöglichkeit wäre zwar, gegebenenfalls vorhandene Bild- und Videoanhänge der Posts als Kontexteinheit zu nutzen, allerdings wurden selbige aus forschungspragmatischen Gründen ausgeschlossen (BEGRÜNDUNG SIEHE OBEN!!!!), sodass eine Betrachtung als Kontexteinheit eine ungleiche Betrachtung der Posts als Gesamtheit bedeuten würde, weswegen davon abgesehen wird.
+
+-   Hilfskonstrukt: Abschließend sei die Kontexteinheit als die vierte bedeutsame Einheit im Rahmen der Inhaltsanalyse erwähnt. Sie stellt ein Hilfskonstrukt dar, das dem Codierer erlaubt, im Zweifelsfall zusätzliche Kontexte heranzuziehen, um zu einer korrekten Codierung der Analyseeinheit zu gelangen. \[...\] Als Kontexteinheit wird deswegen, wenn ein Codebuch unterschiedliche Analyseeinheiten vorsieht, häufig die nächstumfassendere Analyseeinheit definiert, die ein zweifelsfreies Verständnis erlaubt (in unserem Beispiel der Artikel zum Verständnis einer einzelnen Aussage).
+
+-   wird nicht benötigt
+
+### Beschreibung der Vorgehensweise
+
+-   Flussdiagramm bietet sich an (siehe Rössler 99)
+
+```{mermaid vorgehensweise}
+%%| label: fig-vorgehensweise
+%%| fig-cap: Visuelle Darstellung der Vorgehensweise. Eigene Abbildung.
+%%| fig-width: 4
+
+flowchart TD
+  1([Zeile des Posts aufrufen]) --> 2([Post lesen])
+  2 --- 3{"Überprüfung: Ist
+  Filtervariable TRUE?"}
+  3 --> |ja| 4([Post komplett ansehen])
+  4 --- 5["`**Codierung**
+  Homogenisierung
+  Idealisierung
+  Selbstpositionierung
+  Konzeptkritik
+  Moralkritik
+  Schuldzuweisung
+  Medienkritik
+  mehr Volkskompetenzen
+  weniger Elitenkompetenzen`"]
+  5 --> 6([Codierung des Posts abschließen])
+  6 --> 7{"Gibt es noch 
+  weitere Posts?"}
+  7 --> |ja| 8([In die nächste Zeile springen])
+  8 --> 2
+  7 --> |nein| 9([Codierung abschließen])
+  3 --> |nein| 7
+
+```
+
+## Kategoriensystem
+
+-   formale Kategorien werden automatisiert erfasst
+
+-   Kategorien erschöpfend, disjunkt (Rössler 10-102) -\> Vollständigkeit, Trennschärfe und nur relevante Sachverhalte
+
+-   Datenniveau (Nominal -\> 0/1)
+
+Ein Kategoriensystem sollte im Allgemeinen genauso wie die einzelnen Kategorien vollständig und trennscharf sein sowie ausschließlich die relevanten Sachverhalte abdecken [vgl. @rössler2017: 101-102]. Die Entwicklung des Kategoriensystems FOLGEND ... nach Spieß und Ernst
+
+Beispiel: Rössler 107
+
+Populismus als Konstrukt kann wie oben definiert drei Hauptkategorien (Volksnähe, Elitenkritik, Wiederherstellung der Volkssouveränität) unterteilt werden, die sich in insgesamt neun Unterkategorien ausdrücken. Die Kategorien Homogenisierung, Idealisierung und Selbstpositionierung stehen für Volksnähe, die Kategorien Konzeptkritik, Moralkritik, Schuldzuweisung und Medienkritik für Elitenkritik und die Kategorien mehr Volkskompetenzen und weniger Elitenkompetenzen für die Wiederherstellung der Volkssouveränität. Im Folgenden werden alle Unterkategorien ausführlich beschrieben.
+
+***Wichtig: die Beispiele sollten jeweils noch erklärt werden!***
+
+### Volksnähe
+
+Volkszentriertheit zeichnet sich durch die Vorstellung aus, „dass es ein durch einen gemeinsamen homogenen Willen gekennzeichnetes ‚Volk‘ gebe“ [@lewandowsky2022: 18]. Das „Volk“ entspricht dabei nicht dem Staatsvolk [vgl. @lewandowsky2022: 18]. Vielmehr ist es eine „imagined community“ [@mudde2004: 546], die konstruiert ist und so nicht existiert [vgl. @mudde2017: 31-32]. Wichtig ist die strikte Abgrenzung zur „korrupten Elite“: Populist\*innen sehen Volk und Elite als „schwarz“ und „weiß“ [vgl. Meyer 2006: 82 zit. n. @spieß2020: 225], wobei der Unterschied zwischen beiden normativ, nicht empirisch ist [vgl. @mudde2004: 544].
+
+#### Homogenisierung
+
+Unter Homogenisierung wird die angebliche Homogenität des Volkes verstanden. Dies bezieht sich auf zwei Ebenen: einerseits auf die Identität des Volkes [vgl. @lewandowsky2022: 18]. Das Volk hat demnach dieselben Interessen und Präferenzen, wobei der Common Sense des Volkes den Special Interests der Eliten gegenübersteht [vgl. @mudde2017: 33]. Dies kann sich bei rechten und linken Akteuren unterscheiden: Erstere verstehen eine gemeinsame Kultur oder Ethnie unter dem Volk, zweitere eher marginalisierte Gruppen [vgl. @lewandowsky2022: 19]. Auf der anderen Seite bezieht sich Homogenität auch auf den politischen Willen des Volkes als Ganzes, den nur die Populist\*innen wirklich repräsentierten [vgl. @lewandowsky2022: 19-20]. Zusammenfassend ist bei der Kategorie Homogenisierung die Ausprägung vorhanden zutreffend, wenn das Volk implizit oder explizit als eine homogene Masse dargestellt wird, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.\
+Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“ oder den „Bürger\*innen“ gesprochen wird.
+
+#### Idealisierung
+
+Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden. Die Konnotationen können zum Beispiel Aufrichtigkeit, Anstand, Fleiß oder auch der viel zitierte gesunde Menschenverstand sein [vgl. @lewandowsky2022: 19; vgl. @spieß2020: 225]. Weitere Beispiele wären, wenn von einem außerordentlichen Gemeinschaftssinn gesprochen wird oder positiv konnotierte Adjektive in Kombination mit Volk oder Synonymen im Sinne der Kategorie Homogenisierung verwendet werden wie in „die kleinen Leute“, „der einfache Bürger“, „das hart arbeitende Volk“.
+
+#### Selbstpositionierung
+
+Die Kategorie wird mit der Ausprägung vorhanden versehen, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Ein Beispiel ist das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188].
+
+### Elitenkritik
+
+Unter Elitenkritik, auch Anti-Establishment-Haltung, wird die Ablehnung der „Elite“ verstanden, die ebenso wie das Volk eine homogene Gruppe ist [vgl. @lewandowsky2022: 20] und die Antithese des Volkes darstellt [vgl. @mudde2017: 32]. Im Fokus dieser Ablehnung steht die Behauptung, dass die Eliten, womit verschiedenste Formen (politisch, kulturell, intellektuell, wirtschaftlich,...) gemeint sein können [vgl. @mudde2017: 33], nur ihren eigenen Interessen folgt und sich auf die Kosten des Volkes bereichert [vgl. @spieß2020: 225; vgl. @mudde2004: 546]. Sie ist „korrupt, inkompetent, abgehoben, entrückt vom Volk und seinen Nöten“ [@lewandowsky2022: 21] und kreiert Probleme, die mit den Problemen der kleinen Leute nichts zu tun haben [vgl. @schmiege2023: 438; vgl. @mudde2017: 33]. Die zentrale Abgrenzung zum Volk erfolgt über die Moral [vgl. @mudde2017: 32], weitere Dimensionen wie Klasse oder Nation können durch die Ergänzung anderer Ideologien ebenso auftauchen [vgl. @mudde2017: 32].
+
+#### Konzeptkritik
+
+Als Konzeptkritik wird das Anzweifeln oder Kritisieren von fachlichen Kompetenzen oder persönlicher Eigenschaften einzelner Akteur\*innen, die der Elite zugeschrieben werden, verstanden. Das wäre beispielsweise erfüllt, wenn wissenschaftlichen Studien die Wissenschaftlichkeit abgesprochen wird.[^codebuch-2] Genauso würde der Satz „Es ist fraglich, ob das betreffende Ministerium den nötigen Sachverstand zu Rate gezogen hat“ als Konzeptkritik aufgefasst werden.
+
+[^codebuch-2]: Selbstverständlich ist Kritik an wissenschaftlichen Studien per se kein Populismus und nicht Teil der Konzeptkritik. Allerdings bewegen wir uns mit dieser Analyse außerhalb des wissenschaftlichen Diskurses – sowohl in Bezug auf die untersuchten Akteure als auch hinsichtlich des Mediums. Insofern kann in diesem Beispiel die Kategorie der Konzeptkritik als vorhanden betrachtet werden.
+
+#### Moralkritik
+
+Moralkritik kann festgestellt werden, wenn der Elite vorgeworfen wird, eigene Interessen über das Gemeinwohl zu stellen. Das kann zum Beispiel der Ausspruch sein, Abgeordnete seien dem Volk verpflichtet – obwohl unsere Demokratie „nur das freie, nicht das imperative Mandat \[kennt\]“ [@müller2016: 189]. Ein weiteres Beispiel für diese Kategorie ist folgender Satz: „Abgeordneter XY sitzt eigentlich nur im Bundestag, um sich selbst zu bereichern.“ Oder auch: „Die Regierung dient mehr der eigenen Ideologie als der Bevölkerung“.
+
+#### Schuldzuweisung
+
+Als Schuldzuweisung wird aufgefasst, was der Elite vorwirft, für bestehende Missstände verantwortlich zu sein. Exemplarisch würde folgender Satz als Schuldzuweisung bewertet werden: „Statt sich mit den wirklichen Problemen dieses Landes zu beschäftigen, werden Geld und Ressourcen in unnützes Gender-Mainstreaming gesteckt.“
+
+#### Medienkritik
+
+Einer etwas anderen Logik folgt die Kategorie Medienkritik, die erfüllt ist, wenn Medien kritisiert werden. Ein Beispiel: „Der öffentlich-rechtliche Rundfunk ist keine richtige Presse, sondern Staatsfunk.“
+
+### Wiederherstellung der Volkssouveränität
+
+Schließlich steht die Wiederherstellung der Volkssouveränität für die Forderung, die Macht in die Hände des Volkes (zurück) zu geben [vgl. @spieß2020: 225]. Die Politik soll sich demnach vollständig durch den Volkswillen formen, wodurch konstitutionelle Elemente der liberalen Demokratie (unter anderem Gewaltenteilung, Schutz von Minderheiten) implizit oder explizit in Frage gestellt werden [vgl. @spieß2020: 225-226].
+
+#### mehr Kompetenzen für das Volk
+
+Die Kategorie ist erfüllt, wenn der Akteur mehr Befugnisse oder Kompetenzen für das Volk fordert. Das kann beispielsweise die Forderung nach mehr direkter Demokratie sein.
+
+#### weniger Kompetenzen für die Elite
+
+Die Kategorie ist erfüllt, wenn der Akteur der Elite ihre vorhandenen Befugnisse oder Kompetenzen abspricht, sie also reduzieren oder minimieren will. Beispielsweise würde die Forderung, man solle die sexuelle Aufklärung vollends den Eltern überlassen, die Kategorie erfüllen.
+
+## Anhang
+
+### Tabellarische Übersicht über die Kategorien
+
+| Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                                                                                                                    |
+|------------|-----------------------------------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Populismus | Volksnähe                               | Homogenisierung           | Das Volk wird als eine homogene Masse dargestellt, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.                                                                           |
+|            |                                         | Idealisierung             | Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden.                                                                                                                  |
+|            |                                         | Selbstpositionierung      | Der Akteur positioniert sich identifizierend mit dem Volk, das bedeutet, er stellt sich als Fürsprecher oder Teil des Volkes dar. Es entsteht der Eindruck, als identifiziere sich der Akteur mit dem Volk. |
+|            | Elitenkritik                            | Konzeptkritik             | Fachliche Kompetenzen oder persönliche Eigenschaften einzelner Akteure, die der Elite zugeschrieben werden, werden kritisiert.                                                                              |
+|            |                                         | Moralkritik               | Der Elite wird vorgeworfen, eigene Interessen über das Gemeinwohl zu stellen.                                                                                                                               |
+|            |                                         | Schuldzuweisung           | Der Elite wird vorgeworfen, für Missstände verantwortlich zu sein.                                                                                                                                          |
+|            |                                         | Medienkritik              | Medien werden Adressat der Kritik.                                                                                                                                                                          |
+|            | Wiederherstellung der Volkssouveränität | mehr Volkskompetenzen     | Es werden mehr Befugnisse/Kompetenzen für das Volk gefordert.                                                                                                                                               |
+|            |                                         | weniger Elitenkompetenzen | Der Elite werden Befugnisse/Kompetenzen abgesprochen.                                                                                                                                                       |
 
 : Kategorienschema {.striped}
 

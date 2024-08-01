@@ -13,11 +13,49 @@ library(knitr)
 
 ```
 
-…
+In der letzten Analyseebene werden nun Facebook-Posts der Bundestagsparteien analysiert.
 
 ## Methodik
 
 ### Daten
+
+Die Erhebung der zugrunde liegenden Daten erfolgte mithilfe der Software Facepager [@jünger2020]. Diese sammelt die Daten über die Graph API von Facebook in der Version v14.0. Außerdem wurde das Preset "Get Posts" in der Version v14.0 genutzt. Der Untersuchungszeitraum war der 24.10.2017 (der Tag der ersten konstituierenden Sitzung des Bundestags nach der Bundestagswahl 2017) bis zum 19.06.2024. Der Startzeitpunkt wurde in Abhängigkeit zu den Bundestagswahlen festgelegt, da in Betracht zu ziehen ist, dass sich wie auch bei Bundestagsanträgen [vgl. @ismayr2012: 403] das Postverhalten mit einer Regierungsbeteiligung verändern könnte [vgl. @engesser2017: 1358-1359]. Um einen zeitlichen Überblick des Antragsverhaltens zu ermöglichen, ist es sinnvoll, dass sich die Zeit in der Opposition und die in der Regierung innerhalb eines Zeitraums nicht überlappt, um gegebenenfalls Antragsverhalten auf das Oppositionsdasein rückführen zu können.[^04-analyse-sm-1] Es ergibt also Sinn, eine Bundestagswahl beziehungsweise die erste konstituierende Sitzung danach als Ausgangspunkt zu nehmen. Dass die Bundestagswahl 2017 dafür ausgewählt wurde, hat einerseits mit den begrenzten Ressourcen dieser Arbeit zu tun und andererseits damit, dass sich das Thema geschlechtergerechte Sprache vor allem in den letzten Jahren polarisiert hat (vgl. @sec-ges-theorie). Auch die AfD, die einen Großteil der betreffenden Posts auf sich vereint, saß vor 2017 noch nicht im Bundestag. Somit kann davon ausgegangen werden, dass vor 2017 weitaus weniger Analyseeinheiten aufgetreten wären und dadurch der Aufwand gegenüber dem Nutzen deutlich überwiegt. Der Untersuchungsbereich bezieht sich ausschließlich auf deutsche Parteien. Innerhalb dieses Pools wurde anhand einer Auswahl typischer Fälle ausschließlich die Parteien betrachtet, die während des Untersuchungszeitraums eine Gruppe oder eine Fraktion im Bundestag stellten oder Teil davon waren. Damit ist der Südschleswigsche Wählerverband (SSW) beispielsweise nicht Teil der Analyse, obwohl die Partei als Partei nationaler Minderheiten 2021 in den Bundestag gewählt wurde. Ihr Abgeordneter Stefan Seidler ist fraktionslos. Gleiches gilt für Die PARTEI und Marco Bülow, der 2020 als MdB[^04-analyse-sm-2] aus der SPD und der SPD-Fraktion austrat, um in die Partei Die PARTEI einzutreten. Übrig bleiben nach dieser Auswahl die Sozialdemokratische Partei Deutschlands (SPD), die Christlich Demokratische Union Deutschlands (CDU) und ihre Schwesterpartei, die Christlich-Soziale Union in Bayern (CSU), Bündnis 90/Die Grünen (Grüne), die Freie Demokratische Partei (FDP), die Alternative für Deutschland (AfD), Die Linke (Linke), sowie das Bündnis Sahra Wagenknecht – Vernunft und Gerechtigkeit (BSW). Untersucht wurden ausschließlich Facebook-Posts als Teil der Social-Media-Kommunikation der Parteien. Soziale Medien stehen deswegen im Fokus dieser Analyse, da sie Populismus unter anderem aufgrund der direkteren Verbindung im Gegensatz zu anderen Medien [vgl. @engesser2017: 1113] einen besonders guten Nährboden bieten [vgl. @müller2016: 194; vgl. @engesser2017: 1350]. Außerdem gehören sie zum festen Kommunikationsrepertoire der Parteien [vgl. @spieß2020: 221], sodass davon ausgegangen werden kann, dass die transportierten Inhalte Ausdruck der Parteimeinung sind. Facebook wurde als Plattform aus drei Gründen ausgewählt: Erstens zeigten bereits @spieß2020 [: 222], "dass populistische Kommunikation insbesondere auf Facebook reüssiert". Zweitens ist Facebook die größte Social-Media-Plattform in Deutschland (vgl. @fig-sm-marktanteil).[^04-analyse-sm-3] Und drittens konnten aus finanziellen und zeitlichen Gründen keine weiteren Plattformen untersucht werden.[^04-analyse-sm-4]
+
+[^04-analyse-sm-1]: Dass dies nicht statistisch zwingend belegt werden kann, ist dem Autor durchaus bewusst. Allerdings soll das Vorgehen ermöglichen, Vermutungen in diese Richtung anzustellen, um möglichen Nachfolgeuntersuchungen erste Hinweise für eine empirisch und statistisch saubere Untersuchung zu liefern.
+
+[^04-analyse-sm-2]: Mitglied des Bundestages
+
+[^04-analyse-sm-3]: Kritisch angemerkt werden muss, dass die Daten von Statcounter GlobalStats [-@statcounter2024] wichtige Plattformen wie TikTok, Snapchat oder Twitch nicht berücksichtigen. Das ist durchaus problematisch und verzerrt die Daten vermutlich deutlich, wie ein Blick auf die ARD/ZDF-Onlinestudie zeigt, bei der die Ergebnisse deutlich anders aussehen [vgl. @koch2023]. Der Grund könnte darin liegen, dass die Messung bei GlobalStats über Website-Klicks erfolgt und Instagram, TikTok und Co. klassische App-Plattformen sind, die wenig bis kaum im Internet genutzt werden. Das ist ein großer Bias, der einzig dadurch gemildert wird, dass die übrige Validität der Daten aufgrund ihrer automatisierten Erfassung besser sein dürfte als bei Befragungsergebnissen wie der ARD/ZDF-Onlinestudie, die ein korrektes Einschätzungsvermögen der Befragten voraussetzt.
+
+[^04-analyse-sm-4]: Interessant wäre sicherlich die Untersuchung von X (ehemals Twitter) als eine sehr diskussionsfreudige Plattform, gerade hinsichtlich politisch-gesellschaftlicher Themen, gewesen. Allerdings gewährt diese seit dem 09.02.2024 keinen kostenfreien API-Zugang mehr [vgl. @weiß2023: o. S.].
+
+```{r sm-marktanteil}
+#| label: fig-sm-marktanteil
+#| fig-cap: "Marktanteile verschiedener Social-Media-Plattformen im Zeitverlauf (10/2017 – 06/2024). Datengrundlage: Statcounter GlobalStats. Eigene Abbildung."
+#| out-width: 100%
+#| echo: false
+#| warning: false
+#| message: false
+
+library(lubridate)
+# Marktanteile-Datensatz einlesen
+sm_marktanteile <- readRDS("data/sm_marktanteile.Rds")
+# in Long-Format umwandeln
+sm_marktanteile_long <- sm_marktanteile %>% 
+  pivot_longer(cols = -Date, names_to = "Plattform", values_to = "MarketShare")
+# Date in Datumsformat umwandeln
+sm_marktanteile_long$Date <- ymd(paste0(sm_marktanteile_long$Date, "-01"))
+# Plot
+ggplot(data = sm_marktanteile_long, aes(x = Date, y = MarketShare, color = Plattform)) +
+  geom_line(linewidth = 0.4) +
+  geom_point(size = 0.3) +
+  labs(title = "Marktanteile über die Zeit", x = "Zeit (in Monaten)", y = "Marktanteil (%)")
+
+```
+
+Die Abgefragt wurden sämtliche Posts der Bundestagsparteien im Zeitraum vom 24.10.2017 bis zum 19.06.2024
+
+Die Untersuchung bezieht sich auf Deutschland als räumlichen Geltungsbereich und betrachtet die Mediengattung Social Media. Es werden ausschließlich Posts (weder Bilder und Videos noch Kommentare) der Plattform Facebook einbezogen. BEGRÜNDUNG. Betrachtet werden darüber hinaus ausschließlich die Accounts der Bundesparteien der Parteien, die im Untersuchungszeitraum eine Gruppe oder Fraktion im Bundestag hatten, es handelt sich damit um eine Auswahl typischer Fälle. Aus der Grundgesamtheit aller Parteien in Deutschland wurden lediglich relevanten (also die im Bundestag sitzenden) Parteien ausgewählt und von denen lediglich die Bundesparteien, da sich diese Analyse auf die Bundespolitik beschränken soll. Eine Ausnahme stellt die CSU dar, die keine Bundespartei hat. Trotzdem wurde sich für eine Betrachtung der CSU entschieden. Zuletzt werden nur die Posts der Inhaltsanalyse unterzogen, die das Thema geschlechtergerechte Sprache mindestens anschneiden. Dabei ist wichtig zu erwähnen, dass die Nutzung geschlechtergerechter Sprache an sich keine Thematisierung im Sinne des Forschungsinteresses darstellt, da eine theoretische Differenzierung bezüglich der Verwendung geschlechtergerechter Sprache kaum möglich ist. Korrekterweise ist schon das generische Maskulinum eine Form geschlechtergerechter Sprache [vgl. @wizorek2022: 4; vgl. @eisenberg2022: 35] genauso wie die weit verbreitete Beidnennung (beispielsweise in „Studentinnen und Studenten“).
 
 ### Grenzen der Daten
 
@@ -25,9 +63,11 @@ library(knitr)
 
 hier müsste was generelles zur Inhaltsanalyse hin
 
-### Datenanalyse und Ergebnisse
+## Datenanalyse und Ergebnisse
 
-### Auswertung
+## Limitationen
+
+## Auswertung
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 

@@ -13,7 +13,7 @@ Im Folgenden werden zuerst Grundlagen gebende theoretische Aspekte mit dem aktue
 
 Im Anschluss daran wird theoretisch und wissenschaftlich fundiert argumentiert, ... (Blick auf Theorien werfen)
 
-## Geschlechtergerechte Sprache
+## Geschlechtergerechte Sprache  {#sec-ges-theorie}
 
 Über geschlechtergerechte Sprache, auch Gendern genannt, gibt es eine kontroverse wissenschaftliche Auseinandersetzung [vgl. @hackmann2023: 11], bei der die Wirkmächtigkeit der Sprache vermutlich von beiden Seiten überschätzt wird [vgl. @lind2022: 36]. Noch viel kontroverser ist die gesellschaftliche Debatte darüber. Fest steht: Es handelt sich nicht um ein Randgruppenphänomen [vgl. @weidner2021: 287] und ebenso wenig um eine reine "Akademikersprache", denn geschlechtergerechte Sprache wird als "TIN\*-klusive"[^01-theorieteil-1] Sprache von Betroffenen genutzt [vgl. @schütze2023: 156-158].
 
@@ -118,9 +118,25 @@ Auch wenn Populismus als Phänomen in großem Maße erforscht wurde, stellt Anna
 
 ## Theoretische Überlegungen
 
--   Forschungsfragen
+...
 
--   Relevanz
+### Definitionen
+
+Wenn in dieser Arbeit die Rede von Bundestagsparteien ist, werden darunter im Allgemeinen darunter jene Parteien verstanden, die im Deutschen Bundestag repräsentiert sind.
+
+-   Populismus
+
+-   geschlechtergerechte Sprache
+
+-   …
+
+…
+
+-   Forschungsfragen (ggf. in Einleitung)
+
+-   Relevanz (ggf. in Einleitung)
+
+### Hypothesen
 
 -   Hypothesen
 

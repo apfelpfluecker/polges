@@ -92,6 +92,10 @@ saveRDS(sui, file = "data/sui.Rds")
 # Roh-Datensatz einlesen
 bta_raw <- readRDS("data/btantraege_raw.Rds")
 
+# alte Wahlperiode rauslöschen
+bta_raw <- bta_raw %>% 
+  filter(wahlperiode != 18)
+
 # neuen Datensatz erstellen und nicht benötigte Informationen löschen
 bta <- bta_raw %>% 
   # Bundesratsanträge rausfiltern
@@ -523,9 +527,59 @@ if(sum(nrow(spd),nrow(cdu),nrow(csu),nrow(gruene),nrow(fdp),nrow(afd),nrow(linke
   "Achtung! Ungleiche Zeilenlänge von Ausgangsdaten und neuem Datensatz."
 }
 
+# created_time in richtiges Datumsformat umwandeln
+fb_posts$created_time <- as.Date(fb_posts$created_time)
+
+# Filtern: Erst ab 24.10.2017
+fb_posts <- fb_posts %>% 
+  filter(created_time >= as.Date("2017-10-24"))
+
+
 # fertigen Datensatz abspeichern
 saveRDS(fb_posts, file = "data/fb_posts.Rds")
 # Datensatz zum Codieren abspeichern
 write_csv2(filter(fb_posts, filter == TRUE), "data/social-media-data/fb_posts_cod.csv")
+
+```
+
+```{r}
+# Marktanteile aller Social-Media-Plattformen in Deutschland
+sm_17 <- read.csv("data/social-media-data/marktanteil/sm-2017.csv")
+sm_17 <- sm_17 %>% 
+  mutate(Other = rowSums(select(., c(StumbleUpon, VKontakte, Google., news.ycombinator.com, Fark, Other)), na.rm = TRUE)) %>% 
+  select(Date, Facebook, Pinterest, Tumblr, Twitter, YouTube, Instagram, reddit, LinkedIn, Other)
+sm_18 <- read.csv("data/social-media-data/marktanteil/sm-2018.csv")
+sm_18 <- sm_18 %>% 
+  mutate(Other = rowSums(select(., c(StumbleUpon, VKontakte, Google., news.ycombinator.com, Other)), na.rm = TRUE)) %>% 
+  select(Date, Facebook, Pinterest, Tumblr, Twitter, YouTube, Instagram, reddit, LinkedIn, Other)
+sm_19 <- read.csv("data/social-media-data/marktanteil/sm-2019.csv")
+sm_19 <- sm_19 %>% 
+  mutate(Other = rowSums(select(., c(StumbleUpon, VKontakte, Google., news.ycombinator.com, Other)), na.rm = TRUE)) %>% 
+  select(Date, Facebook, Pinterest, Tumblr, Twitter, YouTube, Instagram, reddit, LinkedIn, Other)
+sm_20 <- read.csv("data/social-media-data/marktanteil/sm-2020.csv")
+sm_20 <- sm_20 %>% 
+  mutate(Other = rowSums(select(., c(StumbleUpon, VKontakte, Google., news.ycombinator.com, Vimeo, Other)), na.rm = TRUE)) %>% 
+  select(Date, Facebook, Pinterest, Tumblr, Twitter, YouTube, Instagram, reddit, LinkedIn, Other)
+sm_21 <- read.csv("data/social-media-data/marktanteil/sm-2021.csv")
+sm_21 <- sm_21 %>% 
+  mutate(Other = rowSums(select(., c(StumbleUpon, VKontakte, Sina.Weibo, news.ycombinator.com, Vimeo, Other)), na.rm = TRUE)) %>% 
+  select(Date, Facebook, Pinterest, Tumblr, Twitter, YouTube, Instagram, reddit, LinkedIn, Other)
+sm_22 <- read.csv("data/social-media-data/marktanteil/sm-2022.csv")
+sm_22 <- sm_22 %>% 
+  mutate(Other = rowSums(select(., c(StumbleUpon, VKontakte, Sina.Weibo, news.ycombinator.com, Vimeo, Other)), na.rm = TRUE)) %>% 
+  select(Date, Facebook, Pinterest, Tumblr, Twitter, YouTube, Instagram, reddit, LinkedIn, Other)
+sm_23 <- read.csv("data/social-media-data/marktanteil/sm-2023.csv")
+sm_23 <- sm_23 %>% 
+  mutate(Other = rowSums(select(., c(StumbleUpon, VKontakte, news.ycombinator.com, Other)), na.rm = TRUE)) %>% 
+  select(Date, Facebook, Pinterest, Tumblr, Twitter, YouTube, Instagram, reddit, LinkedIn, Other)
+sm_last12 <- read.csv("data/social-media-data/marktanteil/sm-last12.csv")
+sm_last12 <- sm_last12 %>% 
+  mutate(Other = rowSums(select(., c(StumbleUpon, VKontakte, Sina.Weibo, news.ycombinator.com, Other)), na.rm = TRUE)) %>% 
+  select(Date, Facebook, Pinterest, Tumblr, Twitter, YouTube, Instagram, reddit, LinkedIn, Other)
+# Zusammenfügen
+sm_marktanteile <- rbind(sm_17, sm_18, sm_19, sm_20, sm_21, sm_22, sm_23, sm_last12)
+# Zeilen außerhalb des Untersuchungszeitraums löschen
+sm_marktanteile <- sm_marktanteile[-(1:9), ]
+saveRDS(sm_marktanteile, "data/sm_marktanteile.Rds")
 
 ```

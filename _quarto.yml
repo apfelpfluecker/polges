@@ -61,7 +61,13 @@ language:
     fig: 'Abbildung '
     tab: 'Tabelle '
     eq: 'Gleichung '
+    #sec: 'Kapitel '
   section-title-appendices: "Anhang"
+  crossref-sec-prefix: "Kapitel"
+  crossref-fig-title: "Abbildung"
+  crossref-tbl-title: "Tabelle"
+  crossref-ch-prefix: "Kapitel"
+  crossref-apx-prefix: "Anhang"
 
 quot-lang: de
 

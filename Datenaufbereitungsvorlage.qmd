@@ -22,6 +22,10 @@ library(stringr)
 ## Analyseebene 1: Individualdaten
 
 ```{r}
+library(sjlabelled)
+library(dplyr)
+library(sjmisc)
+
 # Roh-Datensatz einlesen
 sui_raw <- read_spss("data/sprache_und_identitaet_raw.sav")
 
@@ -89,6 +93,13 @@ saveRDS(sui, file = "data/sui.Rds")
 ## Analyseebene 2: Bundestagsanträge
 
 ```{r}
+library(dplyr)
+library(stringr)
+library(sjlabelled)
+library(sjmisc)
+library(ggplot2)
+library(utils)
+
 # Roh-Datensatz einlesen
 bta_raw <- readRDS("data/btantraege_raw.Rds")
 
@@ -176,63 +187,15 @@ anyDuplicated(bta$id) == 0 # wenn TRUE, dann einzigartig
 #bta_ges <- select(bta_ges, -urheber)
 #write.table(bta_ges, file="bta_ges.txt", dec = ",", sep = "\t")
 
-
-
-
 #manuelle Korrektur
 #bta_sub <- select(bta, id, filter, titel, text)
 
 # [x] Kriterium: Sprache wird verwendet in Kombination mit Gender oder Geschlecht
-# alternativ: Antrag zu dem Thema...
-# Wichtig: thematisieren, dass Verwendung von geS keine Kodierung hervorruft
 korrekturen <- c(274476, 273997, 273665, 273415, 272589, 271735, 271017, 271008, 270408, 269855, 269758, 268322, 268300, 268085, 267184, 266226, 265560, 266454, 265134, 264631, 264465, 264266, 264257, 264146, 263599, 263285, 263070, 262726, 261824, 261803, 260843, 259703, 258987, 258349, 257242, 255852, 256043, 255159, 254265, 254257, 254219, 253536, 253521, 252965, 252608, 251871, 251870, 251858, 251804, 251830, 251140, 251059, 251053, 251039, 250674, 250662, 250614, 249635, 248684, 247841, 247806, 247819, 247493, 246643, 246635, 246526, 245930, 245647, 245080, 245076, 245071, 244769, 244768, 244442, 242994, 242918, 242335, 242244, 242220, 241587, 241007, 241003, 240760, 240760, 238585, 237866, 237859, 237051, 235708, 235694, 235691, 235245, 234897, 234831, 233894, 231397, 229770, 229748, 229251, 227816, 227808, 227281, 227084, 226636, 226633, 226340, 226168, 224830, 224791, 224054, 223675, 223668, 223083, 222685, 222500, 220694, 220450, 220380)
 
 for (i in korrekturen) {
   bta$filter[bta$id == i] <- FALSE
 }
-
-party <- c("SPD", "Union", "Grüne", "FDP", "AfD", "Linke", "BSW")
-antraege_ges <- c(sum(bta$spd), sum(bta$union), sum(bta$gruene), sum(bta$fdp), sum(bta$afd), sum(bta$linke), sum(bta$bsw))
-antraege_gen <- c(sum(bta$spd & bta$filter), sum(bta$union & bta$filter), sum(bta$gruene & bta$filter), sum(bta$fdp & bta$filter), sum(bta$afd & bta$filter), sum(bta$linke & bta$filter), sum(bta$bsw & bta$filter))
-bta_new <- data.frame(party,antraege_ges, antraege_gen)
-
-# Balkendiagramm für Anzahl der Anträge nach Parteien
-ggplot(data = bta_new, aes(x = party, y = antraege_ges, fill = party)) +
-  geom_bar(stat = "identity") +
-  labs(title = "Anzahl der Anträge nach Parteien", x = "Partei", y = "Anzahl der Anträge")
-
-# Balkendiagramm für Anzahl der Anträge für geschlechtergerechte Sprache
-ggplot(data = bta_new, aes(x = party, y = antraege_gen, fill = party)) +
-  geom_bar(stat = "identity") +
-  labs(title = "Anzahl der Anträge für geschlechtergerechte Sprache", x = "Partei", y = "Anzahl der Anträge")
-
-
-# Schlanken Datensatz erstellen
-bta_sub <- bta %>% 
-  select(id, wahlperiode, datum, spd, union, gruene, fdp, afd, linke, bsw, filter1, filter2, filter)
-
-
-
-
-
-# funktioniert so nicht
-bta <- bta %>% 
-  group_by(filter == TRUE) %>% 
-  mutate(party = case_when(spd == TRUE ~ 1,
-                           union == TRUE ~ 2,
-                           gruene == TRUE ~ 3,
-                           fdp == TRUE ~ 4,
-                           afd == TRUE ~ 5,
-                           linke == TRUE ~ 6,
-                           bsw == TRUE ~ 7)) %>% 
-  rec(party, rec = "1 = 1 [SPD]; 2 = 2 [Union]; 3 = 3 [Grüne]; 4 = 4 [FDP]; 5 = 5 [AfD]; 6 = 6 [Linke]; 7 = 7 [BSW]", var.label = "Partei", to.factor = TRUE)
-
-barplot(table(bta$filter, bta$), horiz = TRUE, beside = TRUE)
-
-bta_sub <- bta %>% 
-  select(id, filter2)
-ids <- subset(bta_sub, filter2 == TRUE)$id
-ids <- bta_sub$id[bta_sub$filter2 == TRUE]
 
 # fertigen Datensatz speichern
 saveRDS(bta, file = "data/btantraege.Rds")
@@ -325,6 +288,11 @@ saveRDS(bta_sum, file = "data/btantraege_sum.Rds")
 ...
 
 ```{r}
+library(utils)
+library(dplyr)
+library(stringr)
+library(readr)
+
 ######################### Rohdatensatz SPD #########################
 spd_raw <- read.csv2("data/social-media-data/spd.csv")
 spd <- spd_raw %>% 
@@ -542,6 +510,9 @@ write_csv2(filter(fb_posts, filter == TRUE), "data/social-media-data/fb_posts_co
 ```
 
 ```{r}
+library(utils)
+library(dplyr)
+
 # Marktanteile aller Social-Media-Plattformen in Deutschland
 sm_17 <- read.csv("data/social-media-data/marktanteil/sm-2017.csv")
 sm_17 <- sm_17 %>% 

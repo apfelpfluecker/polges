@@ -1,6 +1,9 @@
 ---
 title: "Codebuch"
+subtitle: "zur Arbeit „Polarisierung geschlechtergerechter Sprache. Eine empirische Analyse anhand von Individualdaten, Bundestagsanträgen und Facebook-Posts“"
 author: "Jakob Krueger"
+date-format: DD.MM.YYYY
+date: 08-23-2024
 
 bibliography: references.bib
 cite-method: citeproc
@@ -16,25 +19,31 @@ language:
     eq: 'Gleichung '
   section-title-appendices: "Anhang"
 
+lang: de
 quot-lang: de
+toc: true
+include-before:
+- '`\newpage{}' # nach Titelseite kommt ein Seitenumbruch, dann erst das TOC
+#linestretch: 1.5
+#crossref:
+#  lot-title: "Tabellenverzeichnis"
 
 format:
   pdf:
-    documentclass: scrreprt
+    #documentclass: scrreprt
     fontsize: 12pt
     classoption: oneside #bei digitalen Arbeiten oneside!
     geometry:
-      - top=30mm
-      - left=20mm
-      - lmargin=30mm,
-      - textwidth = 15.5cm,
-      - textheight = 22.5cm
+      - top=20mm
+      - left=15mm
+      - right=15mm
+      - bottom=30mm
     keep-tex: true
     fontenc: T1
     fig-cap-location: top
     include-in-header:
       - text: |
-      - file: LaTeX/macros.tex
+      #- file: LaTeX/macros.tex
     number-sections: true
     csquotes: true
     filters: [pandoc-quotes.lua]
@@ -43,15 +52,6 @@ format:
 editor:
   render-on-save: false
   visual: true
-  
-hyphenation:
-  - "Ho-mo-ge-ni-sie-rung"
-  - "Selbst-po-si-tio-nie-rung"
-  - "Schuld-zu-wei-sung"
-  - "Wie-der-her-stel-lung"
-  - "Volks-kom-pe-tenz"
-  
-
 
 header-includes:   
   - \usepackage{setspace}   #Package um Zeilenabstand zu wechseln
@@ -60,6 +60,10 @@ header-includes:
   #- \usepackage{colortbl}\rowcolors{1}{white}{lightgray!50} #Zeilen in Tabellen 'striped'
   - \hyphenation{Ho-mo-ge-ni-sie-rung Selbst-po-si-tio-nie-rung Schuld-zu-wei-sung Wie-der-her-stel-lung Volks-kom-pe-tenz}
 ---
+
+\newpage { }
+
+\pagenumbering{arabic}
 
 Überblick über
 
@@ -131,8 +135,6 @@ header-includes:
     1.  Tabellarische Übersicht über Kategorien
     2.  (Muster-)Codebogen
 
--   Vorgehensweise bei der Kategorienbildung (deduktiv nach Brosius et al. 2022: 175?)
-
 -   Analyseeinheiten, Kodiereinheiten etc. benennen
 
 ------------------------------------------------------------------------
@@ -143,9 +145,9 @@ Informationen über die Untersuchung
 
 -   Bestimmung der zu untersuchenden Medien
 
-## Definitorischer Rahmen
+# Definitorischer Rahmen
 
-### Untersuchungsziel, Forschungsfragen, Hypothesen
+## Untersuchungsziel, Forschungsfragen, Hypothesen
 
 *aus Arbeit übernehmen*
 
@@ -153,7 +155,7 @@ Das Ziel der Untersuchung ist, herauszufinden, welche Parteien das Thema geschle
 
 -   kurz und knapp
 
-### Definition wichtiger Begriffe
+## Definition wichtiger Begriffe
 
 *aus Arbeit übernehmen*
 
@@ -167,7 +169,7 @@ Es gibt zahlreiche Formen geschlechtergerechter Sprache, exemplarisch seien an d
 
 [^codebuch-1]: Streng genommen ist das generische Maskulinum auch eine Form geschlechtergerechter Sprache, allerdings entlädt sich gerade an dieser Form die größte Kritik der feministischen Linguistik, sodass an dieser Stelle davon abgesehen wurde, es explizit zu nennen. Mehr dazu in der Arbeit.
 
-### Definition der Auswahleinheit
+## Definition der Auswahleinheit
 
 Eine Übersicht über die Eigenschaften der Auswahleinheit, das „Untersuchungsmaterial für die Medieninhaltsanalyse“ [@rössler2017: 53], findet sich in @tbl-auswahleinheit.
 
@@ -192,11 +194,11 @@ options(knitr.kable.NA = "---")
 
 ```
 
-### Definition der Analyseeinheit(en)
+## Definition der Analyseeinheit(en)
 
 Als Analyseeinheit werden „jene Elemente aus dem Untersuchungsmaterial \[bezeichnet\], für die im Rahmen der Codierung eine Klassifizierung vorgenommen wird“ [@rössler2017: 75]. Dabei ist zu beachten, dass der „Auflösungsgrad der Analyseeinheit \[...\] die Detailliertheit der Auswertungen (Analysetiefe) \[bestimmt\]“ [@rössler2017: 76]. Es sind alle Posts Teil der Analyseeinheit, die die Auswahlkriterien (siehe @tbl-auswahleinheit) erfüllen. Das bedeutet, dass es sich um eine Vollerhebung handelt, da die Grundgesamtheit mit den untersuchten Posts übereinstimmt: Sämtliche Facebook-Text-Posts der Bundestagsparteien im Zeitraum des 24.10.2017 bis zum 19.06.2024, die geschlechtergerechte Sprache thematisieren.
 
-### Definition der Codiereinheiten
+## Definition der Codiereinheiten
 
 Als formale Codiereinheiten fungieren die Erstellungszeit, der Urheber beziehungsweise die Partei, die den Post veröffentlicht hat, WEITERE ZEITEINTEILUNGEN. Alle formalen Kriterien werden automatisiert erfasst und nicht von Codierer\*innen codiert.\
 Inhaltliche Codiereinheiten sind die neun Populismus-Dimensionen, die weiter unten ausführlich beschrieben sind.
@@ -207,11 +209,11 @@ Codiereinheit:
 
 -   inhaltlich: thematische Einheit: 9 Populismus-Dimensionen
 
-### Definition der Kontexteinheit
+## Definition der Kontexteinheit
 
 Das Hilfskonstrukt der Kontexteinheit kommt in dieser Analyse nicht zum Einsatz, da jeweils der gesamte Text eines Posts erfasst wird und als Grundlage für die Codierung dient. Eine Einsatzmöglichkeit wäre zwar, gegebenenfalls vorhandene Bild- und Videoanhänge der Posts als Kontexteinheit zu nutzen, allerdings wurden selbige aus forschungspragmatischen Gründen ausgeschlossen, sodass eine Betrachtung als Kontexteinheit eine ungleiche Betrachtung der Posts als Gesamtheit bedeuten würde, weswegen davon abgesehen wird.
 
-### Beschreibung der Vorgehensweise
+## Beschreibung der Vorgehensweise
 
 -   Flussdiagramm bietet sich an (siehe Rössler 99)
 -   ggf. mehrfaches Lesen, um auf verschiedene Dimensionen achten zu können
@@ -246,7 +248,7 @@ flowchart TD
 
 ```
 
-## Kategoriensystem
+# Kategoriensystem
 
 -   formale Kategorien werden automatisiert erfasst
 
@@ -264,60 +266,60 @@ Die formalen Kategorien wurden automatisiert erfasst.
 
 ***Wichtig: die Beispiele sollten jeweils noch erklärt werden!***
 
-### Volksnähe
+## Volksnähe
 
 Volkszentriertheit zeichnet sich durch die Vorstellung aus, „dass es ein durch einen gemeinsamen homogenen Willen gekennzeichnetes ‚Volk‘ gebe“ [@lewandowsky2022: 18]. Das „Volk“ entspricht dabei nicht dem Staatsvolk [vgl. @lewandowsky2022: 18]. Vielmehr ist es eine „imagined community“ [@mudde2004: 546], die konstruiert ist und so nicht existiert [vgl. @mudde2017: 31-32]. Wichtig ist die strikte Abgrenzung zur „korrupten Elite“: Populist\*innen sehen Volk und Elite als „schwarz“ und „weiß“ [vgl. Meyer 2006: 82 zit. n. @spieß2020: 225], wobei der Unterschied zwischen beiden normativ, nicht empirisch ist [vgl. @mudde2004: 544].
 
-#### Homogenisierung
+### Homogenisierung
 
 Unter Homogenisierung wird die angebliche Homogenität des Volkes verstanden. Dies bezieht sich auf zwei Ebenen: einerseits auf die Identität des Volkes [vgl. @lewandowsky2022: 18]. Das Volk hat demnach dieselben Interessen und Präferenzen, wobei der Common Sense des Volkes den Special Interests der Eliten gegenübersteht [vgl. @mudde2017: 33]. Dies kann sich bei rechten und linken Akteuren unterscheiden: Erstere verstehen eine gemeinsame Kultur oder Ethnie unter dem Volk, zweitere eher marginalisierte Gruppen [vgl. @lewandowsky2022: 19]. Auf der anderen Seite bezieht sich Homogenität auch auf den politischen Willen des Volkes als Ganzes, den nur die Populist\*innen wirklich repräsentierten [vgl. @lewandowsky2022: 19-20]. Zusammenfassend ist bei der Kategorie Homogenisierung die Ausprägung vorhanden zutreffend, wenn das Volk implizit oder explizit als eine homogene Masse dargestellt wird, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.\
 Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“ oder den „Bürger\*innen“ gesprochen wird.
 
-#### Idealisierung
+### Idealisierung
 
 Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden. Die Konnotationen können zum Beispiel Aufrichtigkeit, Anstand, Fleiß oder auch der viel zitierte gesunde Menschenverstand sein [vgl. @lewandowsky2022: 19; vgl. @spieß2020: 225]. Weitere Beispiele wären, wenn von einem außerordentlichen Gemeinschaftssinn gesprochen wird oder positiv konnotierte Adjektive in Kombination mit Volk oder Synonymen im Sinne der Kategorie Homogenisierung verwendet werden wie in „die kleinen Leute“, „der einfache Bürger“, „das hart arbeitende Volk“.
 
-#### Selbstpositionierung
+### Selbstpositionierung
 
 Die Kategorie wird mit der Ausprägung vorhanden versehen, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Ein Beispiel ist das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188].
 
-### Elitenkritik
+## Elitenkritik
 
 Unter Elitenkritik, auch Anti-Establishment-Haltung, wird die Ablehnung der „Elite“ verstanden, die ebenso wie das Volk eine homogene Gruppe ist [vgl. @lewandowsky2022: 20] und die Antithese des Volkes darstellt [vgl. @mudde2017: 32]. Im Fokus dieser Ablehnung steht die Behauptung, dass die Eliten, womit verschiedenste Formen (politisch, kulturell, intellektuell, wirtschaftlich,...) gemeint sein können [vgl. @mudde2017: 33], nur ihren eigenen Interessen folgt und sich auf die Kosten des Volkes bereichert [vgl. @spieß2020: 225; vgl. @mudde2004: 546]. Sie ist „korrupt, inkompetent, abgehoben, entrückt vom Volk und seinen Nöten“ [@lewandowsky2022: 21] und kreiert Probleme, die mit den Problemen der kleinen Leute nichts zu tun haben [vgl. @schmiege2023: 438; vgl. @mudde2017: 33]. Die zentrale Abgrenzung zum Volk erfolgt über die Moral [vgl. @mudde2017: 32], weitere Dimensionen wie Klasse oder Nation können durch die Ergänzung anderer Ideologien ebenso auftauchen [vgl. @mudde2017: 32].
 
-#### Konzeptkritik
+### Konzeptkritik
 
 Als Konzeptkritik wird das Anzweifeln oder Kritisieren von fachlichen Kompetenzen oder persönlicher Eigenschaften einzelner Akteur\*innen, die der Elite zugeschrieben werden, verstanden. Das wäre beispielsweise erfüllt, wenn wissenschaftlichen Studien die Wissenschaftlichkeit abgesprochen wird.[^codebuch-2] Genauso würde der Satz „Es ist fraglich, ob das betreffende Ministerium den nötigen Sachverstand zu Rate gezogen hat“ als Konzeptkritik aufgefasst werden.
 
 [^codebuch-2]: Selbstverständlich ist Kritik an wissenschaftlichen Studien per se kein Populismus und nicht Teil der Konzeptkritik. Allerdings bewegen wir uns mit dieser Analyse außerhalb des wissenschaftlichen Diskurses – sowohl in Bezug auf die untersuchten Akteure als auch hinsichtlich des Mediums. Insofern kann in diesem Beispiel die Kategorie der Konzeptkritik als vorhanden betrachtet werden.
 
-#### Moralkritik
+### Moralkritik
 
 Moralkritik kann festgestellt werden, wenn der Elite vorgeworfen wird, eigene Interessen über das Gemeinwohl zu stellen. Das kann zum Beispiel der Ausspruch sein, Abgeordnete seien dem Volk verpflichtet – obwohl unsere Demokratie „nur das freie, nicht das imperative Mandat \[kennt\]“ [@müller2016: 189]. Ein weiteres Beispiel für diese Kategorie ist folgender Satz: „Abgeordneter XY sitzt eigentlich nur im Bundestag, um sich selbst zu bereichern.“ Oder auch: „Die Regierung dient mehr der eigenen Ideologie als der Bevölkerung“.
 
-#### Schuldzuweisung
+### Schuldzuweisung
 
 Als Schuldzuweisung wird aufgefasst, was der Elite vorwirft, für bestehende Missstände verantwortlich zu sein. Exemplarisch würde folgender Satz als Schuldzuweisung bewertet werden: „Statt sich mit den wirklichen Problemen dieses Landes zu beschäftigen, werden Geld und Ressourcen in unnützes Gender-Mainstreaming gesteckt.“
 
-#### Medienkritik
+### Medienkritik
 
 Einer etwas anderen Logik folgt die Kategorie Medienkritik, die erfüllt ist, wenn Medien kritisiert werden. Ein Beispiel: „Der öffentlich-rechtliche Rundfunk ist keine richtige Presse, sondern Staatsfunk.“
 
-### Wiederherstellung der Volkssouveränität
+## Wiederherstellung der Volkssouveränität
 
 Schließlich steht die Wiederherstellung der Volkssouveränität für die Forderung, die Macht in die Hände des Volkes (zurück) zu geben [vgl. @spieß2020: 225]. Die Politik soll sich demnach vollständig durch den Volkswillen formen, wodurch konstitutionelle Elemente der liberalen Demokratie (unter anderem Gewaltenteilung, Schutz von Minderheiten) implizit oder explizit in Frage gestellt werden [vgl. @spieß2020: 225-226].
 
-#### mehr Kompetenzen für das Volk
+### mehr Kompetenzen für das Volk
 
 Die Kategorie ist erfüllt, wenn der Akteur mehr Befugnisse oder Kompetenzen für das Volk fordert. Das kann beispielsweise die Forderung nach mehr direkter Demokratie sein.
 
-#### weniger Kompetenzen für die Elite
+### weniger Kompetenzen für die Elite
 
 Die Kategorie ist erfüllt, wenn der Akteur der Elite ihre vorhandenen Befugnisse oder Kompetenzen abspricht, sie also reduzieren oder minimieren will. Beispielsweise würde die Forderung, man solle die sexuelle Aufklärung vollends den Eltern überlassen, die Kategorie erfüllen.
 
-## Anhang
+# Anhang
 
-### Tabellarische Übersicht über die Kategorien
+## Tabellarische Übersicht über die Kategorien
 
 ```{r kategoriensystem}
 #| label: tbl-kategoriensystem
@@ -326,6 +328,7 @@ Die Kategorie ist erfüllt, wenn der Akteur der Elite ihre vorhandenen Befugniss
 #| warning: false
 #| message: false
 #| eval: false
+#| include: false
 
 library(dplyr)
 kategoriensystem <- readxl::read_excel("../files/kategoriensystem.xlsx", range = "A1:D10") ## Achtung ändern!
@@ -344,7 +347,7 @@ options(knitr.kable.NA = "---")
 ```
 
 | Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                                                                                                                    |
-|----------------|----------------|----------------|--------------------------|
+|----------|---------------|-----------------|------------------------------------------|
 | Populismus | Volksnähe                               | Homogenisierung           | Das Volk wird als eine homogene Masse dargestellt, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.                                                                           |
 |            |                                         | Idealisierung             | Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden.                                                                                                                  |
 |            |                                         | Selbstpositionierung      | Der Akteur positioniert sich identifizierend mit dem Volk, das bedeutet, er stellt sich als Fürsprecher oder Teil des Volkes dar. Es entsteht der Eindruck, als identifiziere sich der Akteur mit dem Volk. |

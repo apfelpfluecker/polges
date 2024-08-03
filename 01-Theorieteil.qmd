@@ -13,7 +13,7 @@ Im Folgenden werden zuerst Grundlagen gebende theoretische Aspekte mit dem aktue
 
 Im Anschluss daran wird theoretisch und wissenschaftlich fundiert argumentiert, ... (Blick auf Theorien werfen)
 
-## Geschlechtergerechte Sprache  {#sec-ges-theorie}
+## Geschlechtergerechte Sprache {#sec-ges-theorie}
 
 Über geschlechtergerechte Sprache, auch Gendern genannt, gibt es eine kontroverse wissenschaftliche Auseinandersetzung [vgl. @hackmann2023: 11], bei der die Wirkmächtigkeit der Sprache vermutlich von beiden Seiten überschätzt wird [vgl. @lind2022: 36]. Noch viel kontroverser ist die gesellschaftliche Debatte darüber. Fest steht: Es handelt sich nicht um ein Randgruppenphänomen [vgl. @weidner2021: 287] und ebenso wenig um eine reine "Akademikersprache", denn geschlechtergerechte Sprache wird als "TIN\*-klusive"[^01-theorieteil-1] Sprache von Betroffenen genutzt [vgl. @schütze2023: 156-158].
 
@@ -110,7 +110,7 @@ Das *Manifesto Project* bietet einen umfangreichen Textkorpus, in dem Wahlprogra
 In der *Global Populism Databse* werden Daten zu Populismus gesammelt. Unter anderem gibt es Daten über den Populismusgrad von Reden von Staats- und Regierungschefs zwischen 2000 und 2018 [vgl. @lewandowsky2022: 30].\
 *GermaParl* ist ein Textkorpus mit Plenarprotokollen des Deutschen Bundestags, auf den über ein R-Package zugegriffen werden kann [vgl. @blätte].
 
-Populismus auf Social Media wurde schon vielfach analysiert [vgl. @spieß2020: 220]. Die meisten Autor\*innen vertreten die Ansicht, dass Social Media die Logik des Populismus begünstigt [vgl. @engesser2017: 1113; anders: @neubaum2022: 420], vor allem, weil eine viel direktere, ungefilterte [vgl. @engesser2017: 1113; @spieß2020: 221; @ernst2017: 1350] Verbindung zur Zielgruppe besteht, die überdies noch den Journalismus als Gatekeeper umgeht [vgl. @spieß2020: 222; @ernst2017: 1350; @wirth2016: 28]. Soziale Medien stellen ein wichtiges Kommunikationsinstrument dar, über das Parteien und Politiker\*innen informieren und Diskussionen auslösen [vgl. @spieß2020: 221] – und damit dem grundgesetzlichen Anspruch, an der politischen Meinungsbildung beteiligt zu sein, gerecht werden. Trotzdem zeigt sich auch, dass populistische Kommunikation beispielsweise auf Facebook gut funktioniert [vgl. @spieß2020: 222] und dass Populisten häufig moderater in Parlamenten als im außerparlamentarischen Raum auftreten [vgl. @heinze2022: 169]. Bartlett sieht Social Media sogar als ideales Medium für Populist\*innen [vgl. 2014: 106 zit. n. @spieß2020: 222].
+Populismus auf Social Media wurde schon vielfach analysiert [vgl. @spieß2020: 220; vgl. @degen2023: 40]. Die meisten Autor\*innen vertreten die Ansicht, dass Social Media die Logik des Populismus begünstigt [vgl. @engesser2017: 1113; anders: @neubaum2022: 420], vor allem, weil eine viel direktere, ungefilterte [vgl. @engesser2017: 1113; @spieß2020: 221; @ernst2017: 1350] Verbindung zur Zielgruppe besteht, die überdies noch den Journalismus als Gatekeeper umgeht [vgl. @spieß2020: 222; @ernst2017: 1350; @wirth2016: 28]. Soziale Medien stellen ein wichtiges Kommunikationsinstrument dar, über das Parteien und Politiker\*innen informieren und Diskussionen auslösen [vgl. @spieß2020: 221] – und damit dem grundgesetzlichen Anspruch, an der politischen Meinungsbildung beteiligt zu sein, gerecht werden. Trotzdem zeigt sich auch, dass populistische Kommunikation beispielsweise auf Facebook gut funktioniert [vgl. @spieß2020: 222; vgl. @degen2023] und dass Populisten häufig moderater in Parlamenten als im außerparlamentarischen Raum auftreten [vgl. @heinze2022: 169]. Bartlett sieht Social Media sogar als ideales Medium für Populist\*innen [vgl. 2014: 106 zit. n. @spieß2020: 222].
 
 Hinsichtlich der Frage, inwiefern Populismus eine Gefahr für die Demokratie darstellt, gibt es in der Forschung unterschiedliche Ansichten, die hier nur angerissen werden sollen. Die wissenschaftliche Meinung schwankt zwischen Populismus als Bedrohung und Populismus als Korrektiv [vgl. @ernst2017: 1348], wobei vergleichsweise wenige Autor\*innen die Korrektiv-Seite vertreten. Es gibt sogar einen ganzen Sammelband zu diesem Thema [@populism2006]. Mudde sieht mehr den Rechtspopulismus als Gefahr als Populismus an sich [2019 zit. n. @heinze2022: 162]. Lars Rensmann attestiert dem Populismus langfristig problematische Effekte und sieht die Gefahr, er könne in Extremismus umschlagen [vgl. @rensmann2006: 77]. Ähnlich sehen es Wirth et al.: "populist democracy is illiberal" [-@wirth2016: 16].
 
@@ -120,9 +120,13 @@ Auch wenn Populismus als Phänomen in großem Maße erforscht wurde, stellt Anna
 
 ...
 
+Thema: Populismusgrad der Social-Media-Kommunikation der Parteien über geschlechtergerechte Sprache
+
 ### Definitionen
 
-Wenn in dieser Arbeit die Rede von Bundestagsparteien ist, werden darunter im Allgemeinen darunter jene Parteien verstanden, die im Deutschen Bundestag repräsentiert sind.
+Populismus wird in dieser Arbeit angelehnt an Cas Mudde als eine dünne Ideologie definiert, die im Wesentlichen aus den Aspekten Volksnähe, Elitenkritik und der Wiederherstellung der Volkssouveränität besteht [-@mudde2004: 543].
+
+Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerechtigkeit in der Sprache herzustellen, wobei ein wichtiger Bestandteil die Sichtbarmachung von in der Sprache nicht abgebildeten Geschlechtern ist [vgl. @rödder2022: 6]. Sprache verhält sich demnach als „Machtkonstrukt“ [@rödder2022: 6], das auf die Wirklichkeit einwirkt.
 
 -   Populismus
 

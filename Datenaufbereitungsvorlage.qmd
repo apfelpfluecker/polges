@@ -534,7 +534,6 @@ fb_posts$created_time <- as.Date(fb_posts$created_time)
 fb_posts <- fb_posts %>% 
   filter(created_time >= as.Date("2017-10-24"))
 
-
 # fertigen Datensatz abspeichern
 saveRDS(fb_posts, file = "data/fb_posts.Rds")
 # Datensatz zum Codieren abspeichern

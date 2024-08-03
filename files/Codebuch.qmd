@@ -43,12 +43,22 @@ format:
 editor:
   render-on-save: false
   visual: true
+  
+hyphenation:
+  - "Ho-mo-ge-ni-sie-rung"
+  - "Selbst-po-si-tio-nie-rung"
+  - "Schuld-zu-wei-sung"
+  - "Wie-der-her-stel-lung"
+  - "Volks-kom-pe-tenz"
+  
+
 
 header-includes:   
   - \usepackage{setspace}   #Package um Zeilenabstand zu wechseln
   - \onehalfspacing   #Zeilenabstand 1.5
   - \pagenumbering{gobble}  #Seitenzahlen Unterdrücken bis Kapitel 1
   #- \usepackage{colortbl}\rowcolors{1}{white}{lightgray!50} #Zeilen in Tabellen 'striped'
+  - \hyphenation{Ho-mo-ge-ni-sie-rung Selbst-po-si-tio-nie-rung Schuld-zu-wei-sung Wie-der-her-stel-lung Volks-kom-pe-tenz}
 ---
 
 Überblick über
@@ -137,47 +147,54 @@ Informationen über die Untersuchung
 
 ### Untersuchungsziel, Forschungsfragen, Hypothesen
 
+*aus Arbeit übernehmen*
+
 Das Ziel der Untersuchung ist, herauszufinden, welche Parteien das Thema geschlechtergerechte Sprache populistisch behandeln.
 
 -   kurz und knapp
 
 ### Definition wichtiger Begriffe
 
-Populismus wird in dieser Arbeit angelehnt an Cas Mudde als eine dünne Ideologie definiert, die im Wesentlichen aus den Aspekten Volksnähe, Elitenkritik und der Wiederherstellung der Volkssouveränität besteht [-@mudde2004: 543].
+*aus Arbeit übernehmen*
 
-Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerechtigkeit in der Sprache herzustellen, wobei ein wichtiger Bestandteil die Sichtbarmachung von in der Sprache nicht abgebildeten Geschlechtern ist [vgl. @rödder2022: 6]. Sprache verhält sich demnach als „Machtkonstrukt“ [@rödder2022: 6], das auf die Wirklichkeit einwirkt. Es gibt zahlreiche Formen geschlechtergerechter Sprache, exemplarisch seien an dieser Stelle das Binnen-I (StudentInnen), die Beidnennung (Studentinnen und Studenten), die Substantivierung von Präsenspartizipien (Studierende) sowie Zeichensetzungen innerhalb von Wörtern wie zum Beispiel der Gender-Gap (Student_innen), der Gender-Stern (Student\*innen) oder auch der Doppelpunkt (Student:innen) sowie das generische Femininum (Studentinnen) genannt.[^codebuch-1]
+Bundestagsparteien
+
+Populismus
+
+Geschlechtergerechte Sprache
+
+Es gibt zahlreiche Formen geschlechtergerechter Sprache, exemplarisch seien an dieser Stelle das Binnen-I (StudentInnen), die Beidnennung (Studentinnen und Studenten), die Substantivierung von Präsenspartizipien (Studierende) sowie Zeichensetzungen innerhalb von Wörtern wie zum Beispiel der Gender-Gap (Student_innen), der Gender-Stern (Student\*innen) oder auch der Doppelpunkt (Student:innen) sowie das generische Femininum (Studentinnen) genannt.[^codebuch-1]
 
 [^codebuch-1]: Streng genommen ist das generische Maskulinum auch eine Form geschlechtergerechter Sprache, allerdings entlädt sich gerade an dieser Form die größte Kritik der feministischen Linguistik, sodass an dieser Stelle davon abgesehen wurde, es explizit zu nennen. Mehr dazu in der Arbeit.
 
--   Populismus, geschlechtergerechte Sprache, etc.
-
 ### Definition der Auswahleinheit
 
-Die Auswahleinheit ist nach Patrick Rössler das „Untersuchungsmaterial für die Medieninhaltsanalyse“ [-@rössler2017: 53]. Der untersuchte Zeitraum ist der 24.09.2017 bis 19.06.2024. Der Startzeitpunkt wurde in Abhängigkeit zu den Bundestagswahlen gewählt, da in Betracht zu ziehen ist, dass sich wie auch bei Bundestagsanträgen [vgl. @ismayr2012: 403] das Postverhalten mit einer Regierungsbeteiligung verändern könnte. Um eine zeitlich vergleichende Analyse zu ermöglichen, ist es sinnvoll, dass sich Oppositions- und Regierungszeit bei einer Partei innerhalb eines Zeitraums nicht überschneiden. Dass die Bundestagswahl 2017 Ausgangspunkt der Untersuchung ist, hat einerseits mit den begrenzten Ressourcen bei der Analyse zu tun und andererseits damit, dass sich das Thema geschlechtergerechte Sprache vor allem in den letzten Jahren polarisiert hat. Somit kann davon ausgegangen werden, dass vor 2017 weitaus weniger Analyseeinheiten aufgetreten wären. Die Untersuchung bezieht sich auf Deutschland als räumlichen Geltungsbereich und betrachtet die Mediengattung Social Media. Es werden ausschließlich Posts (weder Bilder und Videos noch Kommentare) der Plattform Facebook einbezogen. BEGRÜNDUNG. Betrachtet werden darüber hinaus ausschließlich die Accounts der Bundesparteien der Parteien, die im Untersuchungszeitraum eine Gruppe oder Fraktion im Bundestag hatten, es handelt sich damit um eine Auswahl typischer Fälle. Aus der Grundgesamtheit aller Parteien in Deutschland wurden lediglich relevanten (also die im Bundestag sitzenden) Parteien ausgewählt und von denen lediglich die Bundesparteien, da sich diese Analyse auf die Bundespolitik beschränken soll. Eine Ausnahme stellt die CSU dar, die keine Bundespartei hat. Trotzdem wurde sich für eine Betrachtung der CSU entschieden. Zuletzt werden nur die Posts der Inhaltsanalyse unterzogen, die das Thema geschlechtergerechte Sprache mindestens anschneiden. Dabei ist wichtig zu erwähnen, dass die Nutzung geschlechtergerechter Sprache an sich keine Thematisierung im Sinne des Forschungsinteresses darstellt, da eine theoretische Differenzierung bezüglich der Verwendung geschlechtergerechter Sprache kaum möglich ist. Korrekterweise ist schon das generische Maskulinum eine Form geschlechtergerechter Sprache [vgl. @wizorek2022: 4; vgl. @eisenberg2022: 35] genauso wie die weit verbreitete Beidnennung (beispielsweise in „Studentinnen und Studenten“).
+Eine Übersicht über die Eigenschaften der Auswahleinheit, das „Untersuchungsmaterial für die Medieninhaltsanalyse“ [@rössler2017: 53], findet sich in @tbl-auswahleinheit.
 
-Auswahleinheit = "Untersuchungsmaterial für die Medieninhaltsanalyse" [@rössler2017: 53]
+```{r auswahleinheit}
+#| label: tbl-auswahleinheit
+#| tbl-cap: Auswahleinheit
+#| echo: false
+#| warning: false
+#| message: false
 
--   Zeitraum: ab Bundestagswahl 2017, da verschiedenes Verhalten von Parteien in Opposition/Regierung + Thema Gendern immer polarisierender -\> Verlauf wäre schön und wird so möglich + forschungspragmatische Gründe (begrenzte Ressoucen)
+library(dplyr)
+auswahleinheit <- readxl::read_excel("../files/auswahleinheit.xlsx", range = "A1:B7") ## Achtung ändern!
+options(knitr.kable.NA = "")
+auswahleinheit %>% 
+  kableExtra::kable(booktabs = T, linesep = "") %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                latex_options = c("striped", "hover", "condensed"), 
+                font_size = if(knitr::is_latex_output()){10} else {14},) %>% 
+  kableExtra::column_spec(1, width = "12em")  %>% 
+  kableExtra::column_spec(2, width = "25em")
+options(knitr.kable.NA = "---")
 
--   räumlicher Geltungsbereich: Deutschland
-
--   Mediengattung: Social Media
-
--   Medienangebot(e): Facebook
-
--   Ressorts/Formate: Posts (keine Bilder/Videos)
-
--   inhaltlich definitorischer Teil: alle Accounts der Parteien, die im Untersuchungszeitraum eine Gruppe oder Fraktion im Bundestag haben → Auswahl typischer Fälle (Grundgesamtheit: alle Parteien in Deutschland); alle Posts, in denen Gendern thematisiert wird
+```
 
 ### Definition der Analyseeinheit(en)
 
-Als Analyseeinheit werden „jene Elemente aus dem Untersuchungsmaterial \[bezeichnet\], für die im Rahmen der Codierung eine Klassifizierung vorgenommen wird“ [@rössler2017: 75]. Dabei ist zu beachten, dass der „Auflösungsgrad der Analyseeinheit \[...\] die Detailliertheit der Auswertungen (Analysetiefe) \[bestimmt\]“ [@rössler2017: 76]. Dementsprechend sind alle Posts Teil der Analyseeinheit, in denen mindestens eine Dimension von Populismus im Codierprozess festgestellt wurde.
-
--   "Die Analyseeinheit sind jene Elemente aus dem Untersuchungsmaterial, für die im Rahmen der Codierung eine Klassifizierung vorgenommen wird." [@rössler2017: 75]
-
-    -   "Der Auflösungsgrad der Analyseeinheit bestimmt die Detailliertheit der Auswertungen (Analysetiefe)" [@rössler2017: 76]
-
--   alle Posts, in denen Gendern thematisiert wird
+Als Analyseeinheit werden „jene Elemente aus dem Untersuchungsmaterial \[bezeichnet\], für die im Rahmen der Codierung eine Klassifizierung vorgenommen wird“ [@rössler2017: 75]. Dabei ist zu beachten, dass der „Auflösungsgrad der Analyseeinheit \[...\] die Detailliertheit der Auswertungen (Analysetiefe) \[bestimmt\]“ [@rössler2017: 76]. Es sind alle Posts Teil der Analyseeinheit, die die Auswahlkriterien (siehe @tbl-auswahleinheit) erfüllen. Das bedeutet, dass es sich um eine Vollerhebung handelt, da die Grundgesamtheit mit den untersuchten Posts übereinstimmt: Sämtliche Facebook-Text-Posts der Bundestagsparteien im Zeitraum des 24.10.2017 bis zum 19.06.2024, die geschlechtergerechte Sprache thematisieren.
 
 ### Definition der Codiereinheiten
 
@@ -192,15 +209,12 @@ Codiereinheit:
 
 ### Definition der Kontexteinheit
 
-Das Hilfskonstrukt der Kontexteinheit kommt in dieser Analyse nicht zum Einsatz, da jeweils der gesamte Text eines Posts erfasst wird und als Grundlage für die Codierung dient. Eine Einsatzmöglichkeit wäre zwar, gegebenenfalls vorhandene Bild- und Videoanhänge der Posts als Kontexteinheit zu nutzen, allerdings wurden selbige aus forschungspragmatischen Gründen ausgeschlossen (BEGRÜNDUNG SIEHE OBEN!!!!), sodass eine Betrachtung als Kontexteinheit eine ungleiche Betrachtung der Posts als Gesamtheit bedeuten würde, weswegen davon abgesehen wird.
-
--   Hilfskonstrukt: Abschließend sei die Kontexteinheit als die vierte bedeutsame Einheit im Rahmen der Inhaltsanalyse erwähnt. Sie stellt ein Hilfskonstrukt dar, das dem Codierer erlaubt, im Zweifelsfall zusätzliche Kontexte heranzuziehen, um zu einer korrekten Codierung der Analyseeinheit zu gelangen. \[...\] Als Kontexteinheit wird deswegen, wenn ein Codebuch unterschiedliche Analyseeinheiten vorsieht, häufig die nächstumfassendere Analyseeinheit definiert, die ein zweifelsfreies Verständnis erlaubt (in unserem Beispiel der Artikel zum Verständnis einer einzelnen Aussage).
-
--   wird nicht benötigt
+Das Hilfskonstrukt der Kontexteinheit kommt in dieser Analyse nicht zum Einsatz, da jeweils der gesamte Text eines Posts erfasst wird und als Grundlage für die Codierung dient. Eine Einsatzmöglichkeit wäre zwar, gegebenenfalls vorhandene Bild- und Videoanhänge der Posts als Kontexteinheit zu nutzen, allerdings wurden selbige aus forschungspragmatischen Gründen ausgeschlossen, sodass eine Betrachtung als Kontexteinheit eine ungleiche Betrachtung der Posts als Gesamtheit bedeuten würde, weswegen davon abgesehen wird.
 
 ### Beschreibung der Vorgehensweise
 
 -   Flussdiagramm bietet sich an (siehe Rössler 99)
+-   ggf. mehrfaches Lesen, um auf verschiedene Dimensionen achten zu können
 
 ```{mermaid vorgehensweise}
 %%| label: fig-vorgehensweise
@@ -240,11 +254,13 @@ flowchart TD
 
 -   Datenniveau (Nominal -\> 0/1)
 
-Ein Kategoriensystem sollte im Allgemeinen genauso wie die einzelnen Kategorien vollständig und trennscharf sein sowie ausschließlich die relevanten Sachverhalte abdecken [vgl. @rössler2017: 101-102]. Die Entwicklung des Kategoriensystems FOLGEND ... nach Spieß und Ernst
+Das Kategoriensystem sollte im Allgemeinen genauso wie die einzelnen Kategorien vollständig und trennscharf sein sowie ausschließlich die relevanten Sachverhalte abdecken [vgl. @rössler2017: 101-102]. Die Entwicklung des Kategoriensystems erfolgte deduktiv, also theoriegeleitet [vgl. @brosius2022: 175] in Anlehnung an @spieß2020 und @ernst2017.
 
 Beispiel: Rössler 107
 
-Populismus als Konstrukt kann wie oben definiert drei Hauptkategorien (Volksnähe, Elitenkritik, Wiederherstellung der Volkssouveränität) unterteilt werden, die sich in insgesamt neun Unterkategorien ausdrücken. Die Kategorien Homogenisierung, Idealisierung und Selbstpositionierung stehen für Volksnähe, die Kategorien Konzeptkritik, Moralkritik, Schuldzuweisung und Medienkritik für Elitenkritik und die Kategorien mehr Volkskompetenzen und weniger Elitenkompetenzen für die Wiederherstellung der Volkssouveränität. Im Folgenden werden alle Unterkategorien ausführlich beschrieben.
+Populismus als Konstrukt kann wie oben definiert in drei Hauptkategorien (Volksnähe, Elitenkritik, Wiederherstellung der Volkssouveränität) unterteilt werden, die sich in insgesamt neun Unterkategorien ausdrücken. Die Kategorien Homogenisierung, Idealisierung und Selbstpositionierung stehen für Volksnähe, die Kategorien Konzeptkritik, Moralkritik, Schuldzuweisung und Medienkritik für Elitenkritik und die Kategorien mehr Volkskompetenzen und weniger Elitenkompetenzen für die Wiederherstellung der Volkssouveränität. Im Folgenden werden alle Unterkategorien ausführlich beschrieben.
+
+Die formalen Kategorien wurden automatisiert erfasst.
 
 ***Wichtig: die Beispiele sollten jeweils noch erklärt werden!***
 
@@ -303,8 +319,32 @@ Die Kategorie ist erfüllt, wenn der Akteur der Elite ihre vorhandenen Befugniss
 
 ### Tabellarische Übersicht über die Kategorien
 
+```{r kategoriensystem}
+#| label: tbl-kategoriensystem
+#| tbl-cap: Tabellarische Übersicht über die Kategorien
+#| echo: false
+#| warning: false
+#| message: false
+#| eval: false
+
+library(dplyr)
+kategoriensystem <- readxl::read_excel("../files/kategoriensystem.xlsx", range = "A1:D10") ## Achtung ändern!
+options(knitr.kable.NA = "")
+kategoriensystem %>% 
+  kableExtra::kable(booktabs = T, linesep = "") %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                latex_options = c("striped", "hover", "condensed"), 
+                font_size = if(knitr::is_latex_output()){10} else {14},) %>% 
+  kableExtra::column_spec(1, width = "6em")  %>% 
+  kableExtra::column_spec(2, width = "6em") %>% 
+  kableExtra::column_spec(3, width = "6em") %>% 
+  kableExtra::column_spec(4, width = "19em")
+options(knitr.kable.NA = "---")
+
+```
+
 | Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                                                                                                                    |
-|------------|-----------------------------------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|----------------|----------------|----------------|--------------------------|
 | Populismus | Volksnähe                               | Homogenisierung           | Das Volk wird als eine homogene Masse dargestellt, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.                                                                           |
 |            |                                         | Idealisierung             | Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden.                                                                                                                  |
 |            |                                         | Selbstpositionierung      | Der Akteur positioniert sich identifizierend mit dem Volk, das bedeutet, er stellt sich als Fürsprecher oder Teil des Volkes dar. Es entsteht der Eindruck, als identifiziere sich der Akteur mit dem Volk. |

@@ -48,6 +48,7 @@ format:
     csquotes: true
     filters: [pandoc-quotes.lua]
     keep-md: false
+    linkcolor: black
     
 editor:
   render-on-save: false
@@ -248,7 +249,7 @@ flowchart TD
 
 ```
 
-# Kategoriensystem
+# Kategoriensystem und Codieranweisungen
 
 -   formale Kategorien werden automatisiert erfasst
 
@@ -264,7 +265,27 @@ Populismus als Konstrukt kann wie oben definiert in drei Hauptkategorien (Volksn
 
 Die formalen Kategorien wurden automatisiert erfasst.
 
+Es wird ausschließlich der Kontext der Äußerungen zu geschlechtergerechter Sprache beachtet, nicht der gesamte Post.
+
 ***Wichtig: die Beispiele sollten jeweils noch erklärt werden!***
+
+***Problemstellen:***
+
+-   Umgang mit Gender-Zwang
+
+-   Umgang mit Darstellung als Eintreten für „das“ richtige
+
+    -   Selbstbezeichnung als patriotisch = Selbstpositionierung?
+
+-   Kritik zwischen den Zeilen
+
+-   Was bedeutet weniger Elitenkompetenz?
+
+    -   auch schon wenn es heißt: GeS hat im ÖRR nichts verloren?
+
+fehlt noch:
+
+-   Hauptthema
 
 ## Volksnähe
 
@@ -273,7 +294,7 @@ Volkszentriertheit zeichnet sich durch die Vorstellung aus, „dass es ein durch
 ### Homogenisierung
 
 Unter Homogenisierung wird die angebliche Homogenität des Volkes verstanden. Dies bezieht sich auf zwei Ebenen: einerseits auf die Identität des Volkes [vgl. @lewandowsky2022: 18]. Das Volk hat demnach dieselben Interessen und Präferenzen, wobei der Common Sense des Volkes den Special Interests der Eliten gegenübersteht [vgl. @mudde2017: 33]. Dies kann sich bei rechten und linken Akteuren unterscheiden: Erstere verstehen eine gemeinsame Kultur oder Ethnie unter dem Volk, zweitere eher marginalisierte Gruppen [vgl. @lewandowsky2022: 19]. Auf der anderen Seite bezieht sich Homogenität auch auf den politischen Willen des Volkes als Ganzes, den nur die Populist\*innen wirklich repräsentierten [vgl. @lewandowsky2022: 19-20]. Zusammenfassend ist bei der Kategorie Homogenisierung die Ausprägung vorhanden zutreffend, wenn das Volk implizit oder explizit als eine homogene Masse dargestellt wird, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.\
-Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“ oder den „Bürger\*innen“ gesprochen wird.
+Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“, den „Bürger\*innen“ oder auch von einer „normalen“ oder der „Normalbevölkerung“ gesprochen wird. Wenn also davon gesprochen wird, dass „Gendersprache \[...\] die Menschen auf die Palme \[bringt\]“ [@csu2024], handelt es sich um eine Homogenisierung, da von „den“ Menschen gesprochen wird. Wenn allerdings von einer „große\[n\] Mehrheit der Deutschen“ [@csu2023] gesprochen wird, die Gendern ablehne, handelt es sich nicht um eine Homogenisierung, da ein Verhältnis (große Mehrheit) eine präzisere Beschreibung und damit keine Homogenisierung darstellt.
 
 ### Idealisierung
 
@@ -281,7 +302,9 @@ Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieb
 
 ### Selbstpositionierung
 
-Die Kategorie wird mit der Ausprägung vorhanden versehen, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Ein Beispiel ist das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188].
+Die Kategorie wird mit der Ausprägung vorhanden versehen, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Das ist auch der Fall, wenn der Akteur für „das Richtige“ eintritt, da das Volk der Populist\*innen eine wertebasierte Zuteilung ist, die beispielsweise auch mit dem „gesunden Menschenverstand“ gleichzusetzen ist. Dementsprechend ist ein Eintreten für „das Richtige“ auch ein Eintreten für das Volk – selbst wenn dieses nicht explizit genannt wird. Hinzukommen kann das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188].
+
+Beispiel
 
 ## Elitenkritik
 
@@ -289,17 +312,19 @@ Unter Elitenkritik, auch Anti-Establishment-Haltung, wird die Ablehnung der „E
 
 ### Konzeptkritik
 
-Als Konzeptkritik wird das Anzweifeln oder Kritisieren von fachlichen Kompetenzen oder persönlicher Eigenschaften einzelner Akteur\*innen, die der Elite zugeschrieben werden, verstanden. Das wäre beispielsweise erfüllt, wenn wissenschaftlichen Studien die Wissenschaftlichkeit abgesprochen wird.[^codebuch-2] Genauso würde der Satz „Es ist fraglich, ob das betreffende Ministerium den nötigen Sachverstand zu Rate gezogen hat“ als Konzeptkritik aufgefasst werden.
+Als Konzeptkritik wird das Anzweifeln oder Kritisieren von fachlichen Kompetenzen oder persönlicher Eigenschaften einzelner Akteur\*innen, die der Elite zugeschrieben werden, verstanden. Dabei reicht auch ein Infragestellen zur Codierung aus. Wichtig ist, dass ein konkreter Akteur vorhanden sein muss. Dabei kann es sich um Universitäten, die Regierung oder um bestimmte Medien handeln. Auch ein einzelner Wissenschaftszweig wird noch als konkreter Akteur codiert werden. Ein Beispiel wäre, wenn wissenschaftlichen Studien die Wissenschaftlichkeit abgesprochen wird.[^codebuch-2] Genauso würde der Satz „Es ist fraglich, ob das betreffende Ministerium den nötigen Sachverstand zu Rate gezogen hat“ als Konzeptkritik aufgefasst werden.
 
 [^codebuch-2]: Selbstverständlich ist Kritik an wissenschaftlichen Studien per se kein Populismus und nicht Teil der Konzeptkritik. Allerdings bewegen wir uns mit dieser Analyse außerhalb des wissenschaftlichen Diskurses – sowohl in Bezug auf die untersuchten Akteure als auch hinsichtlich des Mediums. Insofern kann in diesem Beispiel die Kategorie der Konzeptkritik als vorhanden betrachtet werden.
 
 ### Moralkritik
 
-Moralkritik kann festgestellt werden, wenn der Elite vorgeworfen wird, eigene Interessen über das Gemeinwohl zu stellen. Das kann zum Beispiel der Ausspruch sein, Abgeordnete seien dem Volk verpflichtet – obwohl unsere Demokratie „nur das freie, nicht das imperative Mandat \[kennt\]“ [@müller2016: 189]. Ein weiteres Beispiel für diese Kategorie ist folgender Satz: „Abgeordneter XY sitzt eigentlich nur im Bundestag, um sich selbst zu bereichern.“ Oder auch: „Die Regierung dient mehr der eigenen Ideologie als der Bevölkerung“.
+Moralkritik kann festgestellt werden, wenn der Elite vorgeworfen wird, eigene Interessen über das Gemeinwohl zu stellen. Dabei ist vor allem das moralisierende Element essenziell. Vorwürfe wie eine Ideologisierung sind ebenso als Moralkritik zu codieren, da sie den Vorwurf enthalten, einer Ideologie verfallen zu sein, statt den Interessen des Volkes zu dienen. Auch der Vorwurf, Gemeinwohlinteressen zu ignorieren, ist eine Moralkritik, da daraus – unter der Prämisse, dass jede\*r Interessen verfolgt – logisch folgt, dass andere Interessen gewichtiger für die Elite sind als die Gemeinwohlinteressen.
+
+Eine Moralkritik kann zum Beispiel der Ausspruch sein, Abgeordnete seien dem Volk verpflichtet – obwohl unsere Demokratie „nur das freie, nicht das imperative Mandat \[kennt\]“ [@müller2016: 189]. Ein weiteres Beispiel für diese Kategorie ist folgender Satz: „Abgeordneter XY sitzt eigentlich nur im Bundestag, um sich selbst zu bereichern.“ Oder auch: „Die Regierung dient mehr der eigenen Ideologie als der Bevölkerung“. Ausdrücke wie „Gender-Quatsch“, „Gendersprech“ (in Anlehnung an das Neusprech aus George Orwells 1984), „Gender-Irrsinn“, „Gender-Ideologie“, „Gender-Unfug“ oder auch „Gender-Wahn“ sind in der Regel immer als Moralkritik zu codieren. Nur in Ausnahmefällen, wenn der Akteur nicht seinen eigenen Standpunkt äußert, weil er beispielsweise zitiert, erfolgt keine Codierung.
 
 ### Schuldzuweisung
 
-Als Schuldzuweisung wird aufgefasst, was der Elite vorwirft, für bestehende Missstände verantwortlich zu sein. Exemplarisch würde folgender Satz als Schuldzuweisung bewertet werden: „Statt sich mit den wirklichen Problemen dieses Landes zu beschäftigen, werden Geld und Ressourcen in unnützes Gender-Mainstreaming gesteckt.“
+Als Schuldzuweisung wird aufgefasst, was der Elite vorwirft, für bestehende Missstände verantwortlich zu sein. Darunter fällt auch das Verhindern von der Behebung von Missständen aufgrund falscher Politik, wodurch sich die Elite einer Mitverantwortung schuldig macht. Eingeschlossen ist also auch der Vorwurf, die Elite würde sich auf falsche Probleme fokussieren. Exemplarisch würde folgender Satz als Schuldzuweisung bewertet werden: „Statt sich mit den wirklichen Problemen dieses Landes zu beschäftigen, werden Geld und Ressourcen in unnützes Gender-Mainstreaming gesteckt.“
 
 ### Medienkritik
 
@@ -311,11 +336,13 @@ Schließlich steht die Wiederherstellung der Volkssouveränität für die Forder
 
 ### mehr Kompetenzen für das Volk
 
-Die Kategorie ist erfüllt, wenn der Akteur mehr Befugnisse oder Kompetenzen für das Volk fordert. Das kann beispielsweise die Forderung nach mehr direkter Demokratie sein.
+Die Kategorie ist erfüllt, wenn der Akteur mehr Befugnisse oder Kompetenzen für das Volk fordert. Das kann beispielsweise die Forderung nach mehr direkter Demokratie, mehr Mitentscheidung oder mehr Partizipation sein.
 
 ### weniger Kompetenzen für die Elite
 
-Die Kategorie ist erfüllt, wenn der Akteur der Elite ihre vorhandenen Befugnisse oder Kompetenzen abspricht, sie also reduzieren oder minimieren will. Beispielsweise würde die Forderung, man solle die sexuelle Aufklärung vollends den Eltern überlassen, die Kategorie erfüllen.
+Die Kategorie ist erfüllt, wenn der Akteur der Elite ihre vorhandenen Befugnisse oder Kompetenzen abspricht, sie also reduzieren oder minimieren will. Darin inbegriffen sind Forderungen, die der Elite Dinge, die sie im Moment tun kann, absprechen will. Beispielsweise ist die Aussage „Wir sind gegen einen Genderzwang“ zu codieren, weil der Elite die (wenn auch potentielle) Macht genommen werden soll, einen (angeblichen) Genderzwang auszuüben. Auch Verbote für die Elite fallen darunter, also wenn dem öffentlich-rechtlichen Rundfunk die Nutzung geschlechtergerechter Sprache verboten werden soll.
+
+Der Satz „Für uns ist klar: Wer gendern mag, soll gendern, aber niemand darf dazu gezwungen werden.“ [@csu2023] ist zu codieren, da „Genderzwang“ in einem ablehnenden Kontext gesetzt wird.
 
 # Anhang
 
@@ -327,8 +354,8 @@ Die Kategorie ist erfüllt, wenn der Akteur der Elite ihre vorhandenen Befugniss
 #| echo: false
 #| warning: false
 #| message: false
-#| eval: false
-#| include: false
+#| #eval: false
+#| #include: false
 
 library(dplyr)
 kategoriensystem <- readxl::read_excel("../files/kategoriensystem.xlsx", range = "A1:D10") ## Achtung ändern!
@@ -338,25 +365,25 @@ kategoriensystem %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
                 latex_options = c("striped", "hover", "condensed"), 
                 font_size = if(knitr::is_latex_output()){10} else {14},) %>% 
-  kableExtra::column_spec(1, width = "6em")  %>% 
-  kableExtra::column_spec(2, width = "6em") %>% 
-  kableExtra::column_spec(3, width = "6em") %>% 
-  kableExtra::column_spec(4, width = "19em")
+  kableExtra::column_spec(1, width = "4em")  %>% 
+  kableExtra::column_spec(2, width = "7em") %>% 
+  kableExtra::column_spec(3, width = "8em") %>% 
+  kableExtra::column_spec(4, width = "18em")
 options(knitr.kable.NA = "---")
 
 ```
 
-| Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                                                                                                                    |
-|----------|---------------|-----------------|------------------------------------------|
-| Populismus | Volksnähe                               | Homogenisierung           | Das Volk wird als eine homogene Masse dargestellt, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.                                                                           |
-|            |                                         | Idealisierung             | Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden.                                                                                                                  |
-|            |                                         | Selbstpositionierung      | Der Akteur positioniert sich identifizierend mit dem Volk, das bedeutet, er stellt sich als Fürsprecher oder Teil des Volkes dar. Es entsteht der Eindruck, als identifiziere sich der Akteur mit dem Volk. |
-|            | Elitenkritik                            | Konzeptkritik             | Fachliche Kompetenzen oder persönliche Eigenschaften einzelner Akteure, die der Elite zugeschrieben werden, werden kritisiert.                                                                              |
-|            |                                         | Moralkritik               | Der Elite wird vorgeworfen, eigene Interessen über das Gemeinwohl zu stellen.                                                                                                                               |
-|            |                                         | Schuldzuweisung           | Der Elite wird vorgeworfen, für Missstände verantwortlich zu sein.                                                                                                                                          |
-|            |                                         | Medienkritik              | Medien werden Adressat der Kritik.                                                                                                                                                                          |
-|            | Wiederherstellung der Volkssouveränität | mehr Volkskompetenzen     | Es werden mehr Befugnisse/Kompetenzen für das Volk gefordert.                                                                                                                                               |
-|            |                                         | weniger Elitenkompetenzen | Der Elite werden Befugnisse/Kompetenzen abgesprochen.                                                                                                                                                       |
+| Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                             |
+|--------------|--------------|--------------|-------------------------------|
+| Populismus | Volksnähe                               | Homogenisierung           | Darstellung als homogene Masse mit einheitlicher Meinung beziehungsweise einheitlichem Interesse                     |
+|            |                                         | Idealisierung             | idealisierte Darstellung durch Zuschreibung positiver Attribute                                                      |
+|            |                                         | Selbstpositionierung      | Akteur stellt sich dar, als identifiziere er sich mit dem Volk, als sei er Fürsprecher oder Teil des Volkes.         |
+|            | Elitenkritik                            | Konzeptkritik             | Kritik an fachlicher Kompetenz oder persönlichen Eigenschaften einzelner Akteure, die der Elite zugeschrieben werden |
+|            |                                         | Moralkritik               | Vorwurf an Elite, eigene Interessen über das Gemeinwohl zu stellen                                                   |
+|            |                                         | Schuldzuweisung           | Vorwurf an Elite, für Missstände verantwortlich zu sein                                                              |
+|            |                                         | Medienkritik              | Medien werden Adressat der Kritik                                                                                    |
+|            | Wiederherstellung der Volkssouveränität | mehr Volkskompetenzen     | Forderung nach mehr Befugnissen/Kompetenzen für das Volk                                                             |
+|            |                                         | weniger Elitenkompetenzen | Forderung nach weniger Befugnissen/Kompetenzen für die Elite                                                         |
 
 : Kategorienschema {.striped}
 
@@ -445,3 +472,5 @@ Ernst et al.:
 -   Forderung nach mehr Kompetenzen für das Volk
 
 -   Ablehnung von mehr Kompetenzen für die Elite
+
+# Literaturverzeichnis

@@ -385,7 +385,7 @@ gruene <- gruene %>%
 write_csv2(subset(gruene, filter == TRUE), "data/social-media-data/gruene_korr.csv")
 
 # Filterkorrektur
-korrekturen <- c(6, 52, 77, 119, 260, 594, 659, 700, 780, 812, 815, 880, 895, 957, 958, 1158, 1348, 1375, 1465, 1697)
+korrekturen <- c(6, 52, 77, 119, 260, 594, 659, 700, 780, 812, 815, 880, 895, 957, 958, 1158, 1185, 1348, 1375, 1465, 1697)
 
 for (i in korrekturen) {
   gruene$filter[gruene$id == i] <- FALSE
@@ -504,6 +504,7 @@ fb_posts <- fb_posts %>%
 
 # fertigen Datensatz abspeichern
 saveRDS(fb_posts, file = "data/fb_posts.Rds")
+
 # Datensatz zum Codieren abspeichern
 write_csv2(filter(fb_posts, filter == TRUE), "data/social-media-data/fb_posts_cod.csv")
 

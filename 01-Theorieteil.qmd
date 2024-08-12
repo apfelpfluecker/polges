@@ -154,33 +154,25 @@ Dementsprechend unterscheidet sich einerseits die Problemwahrnehmung: Halten Erl
 
 Andererseits unterscheidet sich die Strategie des Diskriminierungsabbaus: Während die konservative Position eine stillschweigende Eingemeindung präferiert – die Anerkennung als Normale –, zielt die progressive Position auf eine öffentliche Umwertung – die Anerkennung als Besondere und Gleiche. Daraus folgt auf der einen Seite das Ablehnen von Sonderrechten und auf der anderen Seite die Forderung nach einem Nachteilsausgleich. Konservative betrachten die geforderten Veränderung dann oft als Zumutung, wohingegen Progressive die Pflicht zur Selbsthinterfragung sehen [vgl. @mau2024: 202].
 
-Hinsichtlich geschlechtergerechter Sprache zeigt sich eine "Irritation über Begriffsneuerungen, die Wahrnehmung einer zu Unrecht in die Öffentlichkeit gezerrten Thematik sowie die Abwehr 'übertriebener' Forderungen und einer vermeintlichen Hypersensibilität." [@mau2024: 191]. Dabei ist die Polarisierung nicht besonders hoch [vgl. @mau2024: 195]. Erstaunlich ist, dass keine Klassenkonfrontation zwischen Akademiker\*innen und Arbeiter\*innen festgestellt werden konnte [vgl. @mau2024: 195], der Vorwurf von Kritiker\*innen, Ungleichheitskritik käme vor allem von Bessergestellten und höher Gebildeten, den sogenannten "Lifestyle-Linken" [@wagenknecht2022] kann zurückgewiesen werden
+Hinsichtlich geschlechtergerechter Sprache zeigt sich eine "Irritation über Begriffsneuerungen, die Wahrnehmung einer zu Unrecht in die Öffentlichkeit gezerrten Thematik sowie die Abwehr 'übertriebener' Forderungen und einer vermeintlichen Hypersensibilität." [@mau2024: 191]. Dabei ist die Polarisierung nicht besonders hoch [vgl. @mau2024: 195]. Erstaunlich ist, dass keine Klassenkonfrontation zwischen Akademiker\*innen und Arbeiter\*innen festgestellt werden konnte [vgl. @mau2024: 195], der Vorwurf von Kritiker\*innen, Ungleichheitskritik käme vor allem von Bessergestellten und höher Gebildeten, den sogenannten "Lifestyle-Linken" [@wagenknecht2022] kann zurückgewiesen werden [@mau2024: 175].
 
 ### Triggerpunkte
 
-#### Eigenschaften
+Um die Heftigkeit mancher Konflikte erklären zu können, bedienen sich Mau et al. dem Konzept der Triggerpunkte: "sensible Bereiche des öffentlichen Diskurses \[…\], wo Menschen stark und affektiv reagieren" [@mau2024: 27]. Sie sind "neuralgische \[…\] Stellen, an denen Meinungsverschiedenheiten hochschießen, an denen Konsens, Hinnahmebereitschaft und Indifferenz in deutlich artikulierten Dissens, ja sogar Gegnerschaft umschlagen." [@mau2024: 246]. Der Schwachpunkt des öffentlichen und teils auch wissenschaftlichen Diskurses, so die Autoren, ist der Schluss von medialen Diskursformen auf eine polarisierte Tiefenstruktur der Gesellschaft [vgl. @mau2024: 245].
 
-#### Taxonomie typischer Trigger
+In einer Taxonomie typischer Trigger stellen Mau et al. dar, welche Erregungsgründe zu Triggern werden können: *Ungleichbehandlungen* (verletzte Erwartung: Egalität), *Normalitätsverstöße* (verletzte Erwartung: Normalität), *Entgrenzungsbefürchtungen* (verletzte Erwartung: Kontrolle) und nicht zuletzt *Verhaltenszumutungen* (verletzte Erwartung: Autonomie) [vgl. @mau2024: 276].
 
--   Ungleichheitsbehandlungen
-
--   Normalitätsverstöße
-
--   Entrgrenzungsbefürchtungen
-
--   Verhaltenszumutungen
-
-#### Geschlechtergerechte Sprache als Triggerpunkt
+So ist es leicht verständlich, dass "\[s\]prachpolitische Interventionen \[…\] auf starke Reaktanz \[treffen\]" [@mau2024: 400], denn geschlechtergerechte Sprache erfüllt gleich alle vier dieser Triggertypen. Als "Sonderrecht" für Minderheiten ist es ein Trigger für Ungleichbehandlung, als Abweichung von den gängigen Sprachnormen ein Trigger für Normalitätsverstöße, als Praxisform im kommunikativen Umgang miteinander – ob in den Nachrichten oder in der Firma – ein Trigger für Entgrenzungsbefürchtungen und als "Sprachreform" ein Trigger für Verhaltenszumutungen.
 
 ### Sozialstrukturelle Polarisierung
 
-### Anwendung
+Überraschenderweise stellt die Studie auch fest, dass es zwar eine Klassenspezifik gibt, nicht aber eine Klassenpolarisierung [vgl. @mau2024: 290], denn die Unterschiede der Klassen sind marginal – genauso wie die des Alters, von Bildung, Stadt und Land sowie Ost und West [vgl. @mau2024: 292, 297, 300, 301]. Einzig beim Geschlecht zeigt sich, dass Frauen eine höhere Akzeptanz sexueller Vielfalt haben als Männer [vgl. @mau2024: 302].
 
--   Affektive Polarisierung
+### Polarisierungsunternehmer
 
--   Social Media
+Dass Triggerpunkte von politischen Akteuren bewusst genutzt werden können, scheint offensichtlich. Politische Akteure, "deren Profilierung primär über die Erzeugung und Kapitalisierung polarisierter Auseinandersetzung erfolgt", nennen @mau2024 \[: 375\] Polarisierungsunternehmer. Insbesondere die AfD versucht auf diesem Wege, politische Geländegewinne zu realisieren, Berührungsängste abzumildern und so einen Kulturkampf zwischen rechtskonservativ und linksgrün zu inszenieren [vgl. @mau2024: 377].
 
--   Polarisierungsunternehmer
+Triggerpunkte werden aber auch von etablierten Akteuren genutzt, um sich von anderen Parteien abzusetzen [vgl. @mau2024: 388]. Social Media begünstigen diese Mechaniken [vgl. @mau2024: 335-336].
 
 ## Theoretische Überlegungen
 
@@ -209,6 +201,8 @@ Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerech
 ### Hypothesen
 
 -   Hypothesen
+
+AfD als Polunt? -\> meine Arbeit legt den Schluss nahe, der noch detaillierter zu untersuchen sein wird =\> Nutzung von Chiffren (siehe Triggerpunkte), die genau diesen Effekt haben
 
 ------------------------------------------------------------------------
 

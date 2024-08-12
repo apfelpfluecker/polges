@@ -299,7 +299,7 @@
 
 ## Affekt und Struktur
 
-- ### Affektive Polarisierung
+### Affektive Polarisierung
 
 - Verkörperungen des sozialen Wandels polarisieren besonders stark (29)
 
@@ -369,11 +369,11 @@
 
 - "Politisierung erscheint aus dieser Perspektive nicht als *Folge* polarisierter Einstellungen in der Bevölkerung, sondern im Gegenteil als deren *Erzeuger*." 393
 
-- "Aus Nuzenkalkül sind Parteien also besonders 'laut' bei umstrittenen und 'leise' bei konsensuellen Themen." 394
+- "Aus Nutzenkalkül sind Parteien also besonders 'laut' bei umstrittenen und 'leise' bei konsensuellen Themen." 394
 
 - "*zerklüftete, verkraterte Konfliktlandschaft*" 395
 
-- Befriedung: 407-
+- Befriedung: 407-420
 
 --------------------------------------
 

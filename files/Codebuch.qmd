@@ -212,7 +212,7 @@ Codiereinheit:
 
 ## Definition der Kontexteinheit
 
-Das Hilfskonstrukt der Kontexteinheit kommt in dieser Analyse nicht zum Einsatz, da jeweils der gesamte Text eines Posts erfasst wird und als Grundlage für die Codierung dient. Eine Einsatzmöglichkeit wäre zwar, gegebenenfalls vorhandene Bild- und Videoanhänge der Posts als Kontexteinheit zu nutzen, allerdings wurden selbige aus forschungspragmatischen Gründen ausgeschlossen, sodass eine Betrachtung als Kontexteinheit eine ungleiche Betrachtung der Posts als Gesamtheit bedeuten würde, weswegen davon abgesehen wird.
+Das Hilfskonstrukt der Kontexteinheit kommt in dieser Analyse nur bedingt zum Einsatz, da jeweils der gesamte Text eines Posts erfasst wird und als Grundlage für die Codierung dient. Allerdings wird als Kontexteinheit das Datum des Posts betrachtet, um Aprilscherz-Posts intentionsgemäß codieren zu können. Eine weitere Einsatzmöglichkeit wäre zwar, gegebenenfalls vorhandene Bild- und Videoanhänge der Posts als Kontexteinheit zu nutzen, allerdings wurden selbige aus forschungspragmatischen Gründen ausgeschlossen, sodass eine Betrachtung als Kontexteinheit eine ungleiche Betrachtung der Posts als Gesamtheit bedeuten würde, weswegen davon abgesehen wird.
 
 ## Beschreibung der Vorgehensweise
 
@@ -263,7 +263,7 @@ Beispiel: Rössler 107
 
 Populismus als Konstrukt kann wie oben definiert in drei Hauptkategorien (Volksnähe, Elitenkritik, Wiederherstellung der Volkssouveränität) unterteilt werden, die sich in insgesamt neun Unterkategorien ausdrücken. Die Kategorien Homogenisierung, Idealisierung und Selbstpositionierung stehen für Volksnähe, die Kategorien Konzeptkritik, Moralkritik, Schuldzuweisung und Medienkritik für Elitenkritik und die Kategorien mehr Volkskompetenzen und weniger Elitenkompetenzen für die Wiederherstellung der Volkssouveränität. Im Folgenden werden alle Unterkategorien ausführlich beschrieben.
 
-Die formalen Kategorien wurden automatisiert erfasst.
+Die formalen Kategorien wurden bis auf die Kategorie „Hauptthema“ automatisiert erfasst.
 
 Es wird ausschließlich der Kontext der Äußerungen zu geschlechtergerechter Sprache beachtet, nicht der gesamte Post.
 
@@ -287,6 +287,10 @@ fehlt noch:
 
 -   Hauptthema
 
+## Hauptthema
+
+Als Hauptthema ist ein Post dann zu erfassen, wenn geschlechtergerechte Sprache die zentrale Rolle im Text einnimmt. Das ist der Fall, wenn ein Post ausschließlich geschlechtergerechte Sprache thematisiert, aber auch wenn eine deutliche Mehrheit des Textes davon handelt. Auch Mittel der Hervorhebung wie Überschriften (beispielsweise markiert durch Zeichenketten wie „+++“) sind bei der Bewertung miteinzubeziehen. Als Teil bloßer Aufzählungen von zwei oder mehr Themen ist der Post nicht als Hauptthema zu erfassen.
+
 ## Volksnähe
 
 Volkszentriertheit zeichnet sich durch die Vorstellung aus, „dass es ein durch einen gemeinsamen homogenen Willen gekennzeichnetes ‚Volk‘ gebe“ [@lewandowsky2022: 18]. Das „Volk“ entspricht dabei nicht dem Staatsvolk [vgl. @lewandowsky2022: 18]. Vielmehr ist es eine „imagined community“ [@mudde2004: 546], die konstruiert ist und so nicht existiert [vgl. @mudde2017: 31-32]. Wichtig ist die strikte Abgrenzung zur „korrupten Elite“: Populist\*innen sehen Volk und Elite als „schwarz“ und „weiß“ [vgl. Meyer 2006: 82 zit. n. @spieß2020: 225], wobei der Unterschied zwischen beiden normativ, nicht empirisch ist [vgl. @mudde2004: 544].
@@ -294,15 +298,15 @@ Volkszentriertheit zeichnet sich durch die Vorstellung aus, „dass es ein durch
 ### Homogenisierung
 
 Unter Homogenisierung wird die angebliche Homogenität des Volkes verstanden. Dies bezieht sich auf zwei Ebenen: einerseits auf die Identität des Volkes [vgl. @lewandowsky2022: 18]. Das Volk hat demnach dieselben Interessen und Präferenzen, wobei der Common Sense des Volkes den Special Interests der Eliten gegenübersteht [vgl. @mudde2017: 33]. Dies kann sich bei rechten und linken Akteuren unterscheiden: Erstere verstehen eine gemeinsame Kultur oder Ethnie unter dem Volk, zweitere eher marginalisierte Gruppen [vgl. @lewandowsky2022: 19]. Auf der anderen Seite bezieht sich Homogenität auch auf den politischen Willen des Volkes als Ganzes, den nur die Populist\*innen wirklich repräsentierten [vgl. @lewandowsky2022: 19-20]. Zusammenfassend ist bei der Kategorie Homogenisierung die Ausprägung vorhanden zutreffend, wenn das Volk implizit oder explizit als eine homogene Masse dargestellt wird, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.\
-Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“, den „Bürger\*innen“ oder auch von einer „normalen“ oder der „Normalbevölkerung“ gesprochen wird. Wenn also davon gesprochen wird, dass „Gendersprache \[...\] die Menschen auf die Palme \[bringt\]“ [@csu2024], handelt es sich um eine Homogenisierung, da von „den“ Menschen gesprochen wird. Wenn allerdings von einer „große\[n\] Mehrheit der Deutschen“ [@csu2023] gesprochen wird, die Gendern ablehne, handelt es sich nicht um eine Homogenisierung, da ein Verhältnis (große Mehrheit) eine präzisere Beschreibung und damit keine Homogenisierung darstellt.
+Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“, den „Bürger\*innen“ oder auch von einer „normalen“ oder der „Normalbevölkerung“ gesprochen wird. Wenn also davon gesprochen wird, dass „Gendersprache \[...\] die Menschen auf die Palme \[bringt\]“ [@csu2024], handelt es sich um eine Homogenisierung, da von „den“ Menschen gesprochen wird. Wenn allerdings von einer „große\[n\] Mehrheit der Deutschen“ [@csu2023] gesprochen wird, die Gendern ablehne, handelt es sich nicht um eine Homogenisierung, da ein Verhältnis (große Mehrheit) eine Relativierung und damit keine Generalisierung und keine Homogenisierung darstellt. Auch wenn von „unserer Sprache“ gesprochen wird, handelt es sich um eine Homogenisierung, da impliziert wird, daraus leiteten sich bestimmte Interessen und Werte ab, die verschiedenen Perspektiven auf Sprache, die in der Bevölkerung ohne Frage existieren, nicht gerecht wird.
 
 ### Idealisierung
 
-Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden. Die Konnotationen können zum Beispiel Aufrichtigkeit, Anstand, Fleiß oder auch der viel zitierte gesunde Menschenverstand sein [vgl. @lewandowsky2022: 19; vgl. @spieß2020: 225]. Weitere Beispiele wären, wenn von einem außerordentlichen Gemeinschaftssinn gesprochen wird oder positiv konnotierte Adjektive in Kombination mit Volk oder Synonymen im Sinne der Kategorie Homogenisierung verwendet werden wie in „die kleinen Leute“, „der einfache Bürger“, „das hart arbeitende Volk“.
+Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden. Die Konnotationen können zum Beispiel Aufrichtigkeit, Anstand, Fleiß oder auch der viel zitierte gesunde Menschenverstand sein [vgl. @lewandowsky2022: 19; vgl. @spieß2020: 225]. Weitere Beispiele wären, wenn von einem außerordentlichen Gemeinschaftssinn gesprochen wird oder positiv konnotierte Adjektive in Kombination mit Volk oder Synonymen im Sinne der Kategorie Homogenisierung verwendet werden wie in „die kleinen Leute“, „der einfache Bürger“, „das hart arbeitende Volk“, „die normale Bevölkerung“.
 
 ### Selbstpositionierung
 
-Die Kategorie wird mit der Ausprägung vorhanden versehen, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Das ist auch der Fall, wenn der Akteur für „das Richtige“ eintritt, da das Volk der Populist\*innen eine wertebasierte Zuteilung ist, die beispielsweise auch mit dem „gesunden Menschenverstand“ gleichzusetzen ist. Dementsprechend ist ein Eintreten für „das Richtige“ auch ein Eintreten für das Volk – selbst wenn dieses nicht explizit genannt wird. Hinzukommen kann das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188].
+Die Kategorie wird mit der Ausprägung vorhanden versehen, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Das ist auch der Fall, wenn der Akteur für „das Richtige“ eintritt, da das Volk der Populist\*innen eine wertebasierte Zuteilung ist, die beispielsweise auch mit dem „gesunden Menschenverstand“ gleichzusetzen ist. Dementsprechend ist ein Eintreten für „das Richtige“ auch ein Eintreten für das Volk – selbst wenn dieses nicht explizit genannt wird. Hinzukommen kann das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188]. Die Selbstbezeichnung als patriotische Partei gilt damit als eine Selbstpositionierung.
 
 Beispiel
 
@@ -312,7 +316,7 @@ Unter Elitenkritik, auch Anti-Establishment-Haltung, wird die Ablehnung der „E
 
 ### Konzeptkritik
 
-Als Konzeptkritik wird das Anzweifeln oder Kritisieren von fachlichen Kompetenzen oder persönlicher Eigenschaften einzelner Akteur\*innen, die der Elite zugeschrieben werden, verstanden. Dabei reicht auch ein Infragestellen zur Codierung aus. Wichtig ist, dass ein konkreter Akteur vorhanden sein muss. Dabei kann es sich um Universitäten, die Regierung oder um bestimmte Medien handeln. Auch ein einzelner Wissenschaftszweig wird noch als konkreter Akteur codiert werden. Ein Beispiel wäre, wenn wissenschaftlichen Studien die Wissenschaftlichkeit abgesprochen wird.[^codebuch-2] Genauso würde der Satz „Es ist fraglich, ob das betreffende Ministerium den nötigen Sachverstand zu Rate gezogen hat“ als Konzeptkritik aufgefasst werden.
+Als Konzeptkritik wird das Anzweifeln oder Kritisieren von fachlichen Kompetenzen oder persönlicher Eigenschaften einzelner Akteur\*innen, die der Elite zugeschrieben werden, verstanden. Dabei reicht auch ein Infragestellen zur Codierung aus. Wichtig ist, dass ein konkreter Akteur vorhanden sein muss. Dabei kann es sich um Universitäten, die Regierung oder um bestimmte Medien handeln. Auch ein einzelner Wissenschaftszweig ist noch als konkreter Akteur zu codieren. Eine rein inhaltliche Kritik zählt nicht als Konzeptkritik. Ein Beispiel wäre, wenn wissenschaftlichen Studien die Wissenschaftlichkeit abgesprochen wird.[^codebuch-2] Genauso würde der Satz „Es ist fraglich, ob das betreffende Ministerium den nötigen Sachverstand zu Rate gezogen hat“ als Konzeptkritik aufgefasst werden.
 
 [^codebuch-2]: Selbstverständlich ist Kritik an wissenschaftlichen Studien per se kein Populismus und nicht Teil der Konzeptkritik. Allerdings bewegen wir uns mit dieser Analyse außerhalb des wissenschaftlichen Diskurses – sowohl in Bezug auf die untersuchten Akteure als auch hinsichtlich des Mediums. Insofern kann in diesem Beispiel die Kategorie der Konzeptkritik als vorhanden betrachtet werden.
 
@@ -328,7 +332,7 @@ Als Schuldzuweisung wird aufgefasst, was der Elite vorwirft, für bestehende Mis
 
 ### Medienkritik
 
-Einer etwas anderen Logik folgt die Kategorie Medienkritik, die erfüllt ist, wenn Medien kritisiert werden. Ein Beispiel: „Der öffentlich-rechtliche Rundfunk ist keine richtige Presse, sondern Staatsfunk.“
+Einer etwas anderen Logik folgt die Kategorie Medienkritik, die erfüllt ist, wenn Medien kritisiert werden, worunter auch Verlage wie der Duden gezählt werden. Ein Beispiel: „Der öffentlich-rechtliche Rundfunk ist keine richtige Presse, sondern Staatsfunk.“
 
 ## Wiederherstellung der Volkssouveränität
 
@@ -336,7 +340,7 @@ Schließlich steht die Wiederherstellung der Volkssouveränität für die Forder
 
 ### mehr Kompetenzen für das Volk
 
-Die Kategorie ist erfüllt, wenn der Akteur mehr Befugnisse oder Kompetenzen für das Volk fordert. Das kann beispielsweise die Forderung nach mehr direkter Demokratie, mehr Mitentscheidung oder mehr Partizipation sein.
+Die Kategorie ist erfüllt, wenn der Akteur mehr Befugnisse oder Kompetenzen für das Volk fordert. Auch die Forderung, ein Akteur solle sich mal nach der Volksmeinung richten, ist zu codieren. Das kann beispielsweise die Forderung nach mehr direkter Demokratie, mehr Mitentscheidung oder mehr Partizipation sein.
 
 ### weniger Kompetenzen für die Elite
 
@@ -374,7 +378,7 @@ options(knitr.kable.NA = "---")
 ```
 
 | Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                             |
-|--------------|--------------|--------------|-------------------------------|
+|---------------|---------------|---------------|---------------------------|
 | Populismus | Volksnähe                               | Homogenisierung           | Darstellung als homogene Masse mit einheitlicher Meinung beziehungsweise einheitlichem Interesse                     |
 |            |                                         | Idealisierung             | idealisierte Darstellung durch Zuschreibung positiver Attribute                                                      |
 |            |                                         | Selbstpositionierung      | Akteur stellt sich dar, als identifiziere er sich mit dem Volk, als sei er Fürsprecher oder Teil des Volkes.         |

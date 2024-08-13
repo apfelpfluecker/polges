@@ -25,6 +25,8 @@
 *.csv
 *.txt
 
+#Ausnahme für Codebogen
+!/data/social-media-data/fb_posts_cod_1.csv
 
 "Bachelorarbeit Paper.docx"
 Bachelorarbeit_Krueger_polges.pdf

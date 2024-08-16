@@ -249,6 +249,12 @@ flowchart TD
 
 ```
 
+## Reliabilität
+
+…
+
+-   Reliabilitätsmaß nach Holsti erwähnen -\> Kritik an nur einem Codierer
+
 # Kategoriensystem und Codieranweisungen
 
 -   formale Kategorien werden automatisiert erfasst
@@ -378,7 +384,7 @@ options(knitr.kable.NA = "---")
 ```
 
 | Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                             |
-|---------------|---------------|---------------|---------------------------|
+|----------------|----------------|----------------|------------------------|
 | Populismus | Volksnähe                               | Homogenisierung           | Darstellung als homogene Masse mit einheitlicher Meinung beziehungsweise einheitlichem Interesse                     |
 |            |                                         | Idealisierung             | idealisierte Darstellung durch Zuschreibung positiver Attribute                                                      |
 |            |                                         | Selbstpositionierung      | Akteur stellt sich dar, als identifiziere er sich mit dem Volk, als sei er Fürsprecher oder Teil des Volkes.         |

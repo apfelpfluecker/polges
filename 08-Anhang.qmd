@@ -1,3 +1,10 @@
+---
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
 # Literaturverzeichnis
 
 ::: {#refs}
@@ -11,6 +18,47 @@
 \pdf[2cm 2cm 2cm 2cm]{files/Codebuch.pdf}{3} 
 \pdf[2cm 2cm 2cm 2cm]{files/Codebuch.pdf}{4}
 ```
+# Tabellen
+
+```{r}
+#| tbl-cap: "Gesamtzahl der Posts"
+
+library(kableExtra)
+library(gmodels) # für Fisher-Test
+fb_posts <- readRDS("data/fb_posts.Rds")
+
+# Tabelle erstellen
+tbl_gesamtposts <- table(fb_posts$party)
+# Anzahl der Ausprägungen der Parteienvariable
+length_parties <- length(unique(fb_posts$party))
+# Chi² berechnen
+chi_gesamtposts <- chisq.test(x = tbl_gesamtposts, p = c(rep(1/length_parties, length_parties)))
+# Tabelle als Dataframe
+tbl_gesamtposts <- as.data.frame(tbl_gesamtposts)
+# Kable
+kable(tbl_gesamtposts,
+      format = "latex",
+      col.names = c("Partei", "Anzahl")) %>% 
+  kable_styling()
+
+# Tabelle erstellen
+tbl_gesamtposts_wp <- table(fb_posts$party, fb_posts$Wahlerperiode)
+# Anzahl der Ausprägungen der Parteienvariable
+length_parties <- length(unique(fb_posts$party))
+# Chi² berechnen
+#chi_gesamtposts_wp <- chisq.test(x = tbl_gesamtposts, p = c(rep(1/length_parties, length_parties)))
+# Tabelle als Dataframe
+tbl_gesamtposts_wp <- as.data.frame(tbl_gesamtposts_wp)
+# Kable
+kable(tbl_gesamtposts_wp,
+      format = "latex",
+      col.names = c("Partei", "Wahlperiode", "Anzahl")) %>% 
+  kable_styling()
+
+```
+
+-   falls ich's schaffe
+
 # R-Code
 
 ...

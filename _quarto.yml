@@ -88,6 +88,9 @@ format:
     fig-cap-location: top
     include-in-header:
       - text: |
+          \usepackage{lscape}
+          \renewcommand{\blandscape}{\begin{landscape}}
+          \renewcommand{\elandscape}{\end{landscape}}
       - file: files/LaTeX/macros.tex
     number-sections: true
     csquotes: true

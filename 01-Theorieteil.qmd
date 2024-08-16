@@ -176,21 +176,13 @@ Triggerpunkte werden aber auch von etablierten Akteuren genutzt, um sich von and
 
 ## Theoretische Überlegungen
 
-...
-
 Thema: Populismusgrad der Social-Media-Kommunikation der Parteien über geschlechtergerechte Sprache
 
 ### Definitionen
 
 Populismus wird in dieser Arbeit angelehnt an Cas Mudde als eine dünne Ideologie definiert, die im Wesentlichen aus den Aspekten Volksnähe, Elitenkritik und der Wiederherstellung der Volkssouveränität besteht [-@mudde2004: 543].
 
-Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerechtigkeit in der Sprache herzustellen, wobei ein wichtiger Bestandteil die Sichtbarmachung von in der Sprache nicht abgebildeten Geschlechtern ist [vgl. @rödder2022: 6]. Sprache verhält sich demnach als „Machtkonstrukt“ [@rödder2022: 6], das auf die Wirklichkeit einwirkt.
-
--   Populismus
-
--   geschlechtergerechte Sprache
-
--   …
+Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerechtigkeit in der Sprache herzustellen, wobei ein wichtiger Bestandteil die Sichtbarmachung von in der Sprache nicht abgebildeten Geschlechtern ist [vgl. @rödder2022: 6].
 
 …
 
@@ -198,20 +190,14 @@ Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerech
 
 -   Relevanz (ggf. in Einleitung)
 
-### Hypothesen
+### Analyse von Individualdaten
 
--   Hypothesen
+-   zu erwarten, dass alle keinen großen Einfluss
 
-AfD als Polunt? -\> meine Arbeit legt den Schluss nahe, der noch detaillierter zu untersuchen sein wird =\> Nutzung von Chiffren (siehe Triggerpunkte), die genau diesen Effekt haben
+### Analyse von Bundestagsanträgen
 
-------------------------------------------------------------------------
+Im Kern dieser Analyseebene steht die These, dass vor allem rechte und mit Einschränkungen konservative Parteien geschlechtergerechte Sprache thematisieren, um sie als Triggerpunkt für ihre Zwecke zu missbrauchen. Sie schlüpfen, um mit @mau2024 zu sprechen, in die Rolle der Polarisierungsunternehmer, die bewusst versuchen, einen Kulturkampf zu inszenieren, um von der daher erhofften Spaltung zu profitieren. Hypothese H2.1 lautet demnach, dass die AfD geschlechtergerechte Sprache am meisten in Bundestagsanträgen thematisiert.
 
-AfD besonders viele Posts, da Social Media prädestiniert für Populismus AfD besonders viele populistische Gender-Posts, da populistische Partei (PopuList)
+### Analyse von Facebook-Posts
 
-Die Linke mehr Posts als der Rest, da SM gut für Popul Die Linke mehr populist. Gender-Posts, da Grenzfall Populis (Populist)
-
-Grüne: Besonders viele Posts zu Gendern, da großes Thema in der Partei
-
-FDP, Grüne, Linke: eher weniger Posts, da jüngere Zielgruppe und deswegen Facebook nicht so interessant
-
-AfD zu Geschlechtrverhältnissen: <https://www.nomos-elibrary.de/10.5771/9783748922773-271/nichts-als-wahn-und-ideologie-rechtspopulistische-angriffe-auf-die-geschlechterforschung-und-die-politisierung-von-geschlechterverhaeltnissen?page=1>
+Zunächst ist zu vermuten, dass aufgrund der günstigen Rahmenbedingungen auf Social Media populistische Parteien – als Grundlage der Bewertung wird die PopuList [@rooduijn2023] genutzt, nach der das auf die AfD sowie Die Linke als Grenzfall zutrifft – die Plattform Facebook besonders häufig nutzen, also erkennbar mehr Posts absetzen als die übrigen Parteien (H3.1). Darauf aufbauend wird vermutet, dass die Posts dieser Parteien zu geschlechtergerechten Sprache populistischer sind als bei anderen Parteien, da populistische Parteien auch zu populistischer Kommunikation neigen sollten (H3.2). Wie schon im Zuge der Hypothese H2.1 angesprochen, wird die AfD als Polarisierungsunternehmer angesehen, sodass zu erwarten ist, dass wie auch bei den Bundestagsanträgen die AfD am meisten geschlechtergerechte Sprache thematisiert (H3.3). Da es sich bei geschlechtergerechter Sprache um einen gesellschaftlichen Triggerpunkt handelt, ist anzunehmen, dass im Bundestagswahlkampf besonders viele Posts zu diesem Thema abgesetzt wurden, um davon zu profitieren [vgl. @mau2024: 388] (H3.4). Zuletzt wird vermutet, dass Posts, in denen der Schwerpunkt auf geschlechtergerechter Sprache liegt, populistischer sind als Posts, die geschlechtergerechte Sprache nur am Rand thematisieren (H3.5).

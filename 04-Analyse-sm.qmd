@@ -91,6 +91,264 @@ Der Populismusgrad wird ermittelt über eine neundimensionale, angepasste Skala 
 
 ## Datenanalyse und Ergebnisse
 
+```{r plots}
+#| label: fig-smplots
+#| fig-cap: "Überschrift"
+#| fig-subcap: "Subcap"
+
+library(ggplot2)
+library(patchwork)
+library(tidyr)
+library(viridisLite)
+library(viridis)
+
+fb_posts <- readRDS("data/fb_posts.Rds")
+
+# Posts Gesamt
+post_counts <- as.data.frame(table(fb_posts$party))
+colnames(post_counts) <- c("party", "count")
+desired_order <- c("SPD", "CDU", "CSU", "Bündnis 90/Die Grünen", "FDP", "AfD", "Die Linke", "BSW")
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p1 <- ggplot(post_counts, aes(x = party, y = count, fill = party)) +
+  geom_bar(stat = "identity", show.legend = FALSE) + # Legende unterdrücken
+  scale_fill_manual(values = parteifarben) + # Farbe einstellen
+  labs(title= "Gesamtzahl der Posts",
+       x = "Partei",
+       y = "Anzahl",
+       fill = "Partei") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13)) # Umbruch der Beschriftung
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Posts Gesamt nach Wahlperiode
+days_in_period <- function(start_date, end_date) {
+  start <- as.Date(paste(start_date)) # Startdatum erstellen
+  end <- as.Date(paste(end_date)) # Enddatum angeben
+  days <- seq(start, end, by = "day") # Sequenz von start bis end
+  count_days <- length(days)
+  return(count_days)
+}
+days19 <- days_in_period("2017-10-24", "2021-10-25") # 19
+days20 <- days_in_period("2021-10-26", "2024-06-19") # 20
+post_counts <- as.data.frame(table(fb_posts$party, fb_posts$Wahlerperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(post_counts) <- c("party", "election_period", "count")
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p2 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = election_period)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  #scale_fill_viridis(discrete = TRUE) + # Viridis-Farbschema verwenden
+  scale_fill_manual(values = duofarben) + # Farbe einstellen
+  labs(title = "Relative Anzahl der Posts nach Partei und Wahlperiode pro Tag",
+       x = "Partei",
+       y = "Relative Anzahl der Posts pro Tag",
+       fill = "Wahlperiode") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Posts Gesamt nach Zeit
+days1 <- days_in_period("2017-10-24", "2018-10-25")
+days2 <- days_in_period("2018-10-26", "2019-10-25")
+days3 <- days_in_period("2019-10-26", "2020-10-25")
+days4 <- days_in_period("2020-10-26", "2021-10-25")
+days5 <- days_in_period("2021-10-26", "2022-10-25")
+days6 <- days_in_period("2022-10-26", "2023-10-25")
+days7 <- days_in_period("2023-10-26", "2024-06-19")
+post_counts <- as.data.frame(table(fb_posts$party, fb_posts$Zeitraum))
+days_in_time<- data.frame(time = c("1", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(post_counts) <- c("party", "time", "count")
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p3 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = time)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  #scale_fill_viridis(discrete = TRUE) + # Viridis-Farbschema verwenden
+  scale_fill_manual(values = farben,
+                    labels = c("1" = "2017/18", "2" = "2018/19", "3" = "2019/20", "4" = "2020/21", "5" = "2021/22", "6" = "2022/23", "7" = "2023/24")) + # Farbe einstellen; Labels für die Kategorien
+  labs(title = "Relative Anzahl der Posts nach Partei und Zeit pro Tag",
+       x = "Partei",
+       y = "Relative Anzahl der Posts pro Tag",
+       fill = "Zeitraum") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#################################################################
+
+gender_posts <- fb_posts %>% 
+  filter(filter == TRUE)
+all_parties <- data.frame(party = unique(fb_posts$party))
+# Gender-Posts Gesamt
+post_counts <- as.data.frame(table(gender_posts$party))
+colnames(post_counts) <- c("party", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p4 <- ggplot(post_counts, aes(x = party, y = count, fill = party)) +
+  geom_bar(stat = "identity", show.legend = FALSE) + # Legende unterdrücken
+  labs(title= "Posts, die geschlechtergerechte Sprache thematisieren",
+       x = "Partei",
+       y = "Anzahl",
+       fill = "Partei") +
+  theme_minimal() +
+  scale_fill_manual(values = parteifarben) + # Farbe einstellen
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13)) # Umbruch der Beschriftung
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Gender-Posts Gesamt nach Wahlperiode
+post_counts <- as.data.frame(table(gender_posts$party, gender_posts$Wahlerperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(post_counts) <- c("party", "election_period", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days)  # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p5 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = election_period)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  scale_fill_manual(values = duofarben) + # Farbe einstellen
+  labs(title = "Relative Anzahl der Posts nach Partei und Wahlperiode pro Tag",
+       x = "Partei",
+       y = "Relative Anzahl der Posts pro Tag",
+       fill = "Wahlperiode") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Gender-Posts Gesamt nach Zeit
+post_counts <- as.data.frame(table(gender_posts$party, gender_posts$Zeitraum))
+days_in_time <- data.frame(time = c("2017/18", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(post_counts) <- c("party", "time", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p6 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = time)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  scale_fill_manual(values = farben,
+                    labels = c("1" = "2017/18", "2" = "2018/19", "3" = "2019/20", "4" = "2020/21", "5" = "2021/22", "6" = "2022/23", "7" = "2023/24")) + # Farbe einstellen; Labels für die Kategorien
+  theme_minimal() +
+  labs(title = "Relative Anzahl der Gender-Posts nach Partei und Zeit pro Tag",
+       x = "Partei",
+       y = "Relative Anzahl der Posts pro Tag",
+       fill = "Zeitraum") +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#################################################################
+
+gender_main_posts <- fb_posts %>% 
+  filter(Hauptthema == 1)
+all_parties <- data.frame(party = unique(fb_posts$party))
+
+# Gender-Posts Hauptthema Gesamt
+post_counts <- as.data.frame(table(gender_main_posts$party))
+colnames(post_counts) <- c("party", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p7 <- ggplot(post_counts, aes(x = party, y = count, fill = party)) +
+  geom_bar(stat = "identity", show.legend = FALSE) + # Legende unterdrücken
+  labs(title= "Posts mit Hauptthema geschlechtergerechte Sprache",
+       x = "Partei",
+       y = "Anzahl",
+       fill = "Partei") +
+  theme_minimal() +
+  scale_fill_manual(values = parteifarben) + # Farbe einstellen
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13)) # Umbruch der Beschriftung
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Gender-Posts Hauptthema Gesamt nach Wahlperiode
+post_counts <- as.data.frame(table(gender_main_posts$party, gender_main_posts$Wahlerperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(post_counts) <- c("party", "election_period", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p8 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = election_period)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  scale_fill_manual(values = duofarben) + # Farbe einstellen
+  labs(title = "Relative Anzahl der Posts nach Partei und Wahlperiode pro Tag",
+       x = "Partei",
+       y = "Relative Anzahl der Posts pro Tag",
+       fill = "Wahlperiode") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Gender-Posts Hauptthema Gesamt nach Zeit
+post_counts <- as.data.frame(table(gender_main_posts$party, gender_main_posts$Zeitraum))
+days_in_time <- data.frame(time = c("2017/18", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(post_counts) <- c("party", "time", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+p9 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = time)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  scale_fill_manual(values = farben,
+                    labels = c("1" = "2017/18", "2" = "2018/19", "3" = "2019/20", "4" = "2020/21", "5" = "2021/22", "6" = "2022/23", "7" = "2023/24")) + # Farbe einstellen; Labels für die Kategorien
+  labs(title = "Relative Anzahl der Posts nach Partei und Zeit pro Tag",
+       x = "Partei",
+       y = "Relative Anzahl der Posts pro Tag",
+       fill = "Zeitraum") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+#################################################################
+
+
+# Posts Gesamt
+#popind <- as.data.frame(table(fb_posts$party, fb_posts$Populismusgrad))
+#colnames(popind) <- c("party", "popind")
+#popind$party <- factor(popind$party, levels = desired_order)
+gender_posts$party <- factor(gender_posts$party, levels = desired_order)
+p10 <- ggplot(gender_posts, aes(x = party, y = Populismusgrad, fill = party)) +
+  geom_violin(drop = FALSE) +
+  scale_x_discrete(drop = FALSE) + # Alle Parteien einschließen, auch ohne Daten
+  scale_fill_manual(values = parteifarben[levels(gender_posts$party)]) + # Farbe einstellen
+  labs(title= "Populismusgrad nach Partei",
+       x = "Partei",
+       y = "Populismusgrad",
+       fill = "Partei") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13)) # Umbruch der Beschriftung
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+plot <- (p1 + p2 + p3) / (p4 + p5 + p6) / (p7 + p8 + p9) +
+  plot_annotation(tag_levels = 'A')
+plot
+
+```
+
 ## Limitationen
 
 ## Auswertung

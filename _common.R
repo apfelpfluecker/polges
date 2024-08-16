@@ -26,5 +26,8 @@ options(
   scipen = 4
 )
 
-# Farbpalette (eine gute Seite, um die Hexacodes für Farben und Paletten zu finden ist hier: https://htmlcolorcodes.com/)
-Farben <- c("#46085a", "#3b528b", "#1f998a",  "#8dd64d", "#fde725")
+# Farbpalette (eine gute Seite, um die Hexacodes für Farben und Paletten zu finden ist hier: https://htmlcolorcodes.com)
+farben <- c("#440154", "#443a83", "#31688e",  "#21908c", "#35b779", "#8fd744", "#fde725")
+duofarben <- c("#31688e", "#35b779")
+parteifarben <- c("SPD" = "#d71f1e", "CDU" = "#111111", "CSU" = "#111111", "Bündnis 90/Die Grünen" = "#78bc1a", "FDP" = "#ffcc00", "AfD" = "#0020c7", "Die Linke" = "#bd3076", "BSW" = "#691a3e")
+parteifarben_mild <- c("#5A8AA5", "#7B3F4B", "#7A9E55", "#333333", "#5A8399", "#8B5A78", "#C4A600", "#8B3C3C")

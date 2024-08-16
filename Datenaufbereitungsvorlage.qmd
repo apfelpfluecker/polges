@@ -497,18 +497,91 @@ if(sum(nrow(spd),nrow(cdu),nrow(csu),nrow(gruene),nrow(fdp),nrow(afd),nrow(linke
 
 # created_time in richtiges Datumsformat umwandeln
 fb_posts$created_time <- as.Date(fb_posts$created_time)
-
 # Filtern: Erst ab 24.10.2017
 fb_posts <- fb_posts %>% 
   filter(created_time >= as.Date("2017-10-24"))
 
 # fertigen Datensatz abspeichern
 saveRDS(fb_posts, file = "data/fb_posts.Rds")
-
 # Datensatz zum Codieren abspeichern
 write_csv2(filter(fb_posts, filter == TRUE), "data/social-media-data/fb_posts_cod.csv")
 
+# codierten Datensatz neu einlesen
+fb_posts_cod_sub <- read.csv2("data/social-media-data/fb_posts_cod_1.csv")
+# created_time in richtiges Datumsformat umwandeln
+fb_posts_cod_sub$created_time <- as.Date(fb_posts_cod_sub$created_time)
+
+# Test, ob Fälle anhand zweier Kriterien eindeutig identifiziert werden können
+duplikate <- duplicated(fb_posts[, c("object_id", "id")]) | duplicated(fb_posts[, c("object_id", "id")], fromLast = TRUE) # erstellt Vektor 
+any(duplikate) # muss FALSE sein
+
+# neue Variablen für fb_posts
+fb_posts$Hauptthema <- NA
+fb_posts$Homogenisierung <- NA
+fb_posts$Idealisierung <- NA
+fb_posts$Selbstpositionierung <- NA
+fb_posts$Konzeptkritik <- NA
+fb_posts$Moralkritik <- NA
+fb_posts$Schuldzuweisung <- NA
+fb_posts$Medienkritik <- NA
+fb_posts$mehr.Volkskompetenzen <- NA
+fb_posts$weniger.Elitenkompetenzen <- NA
+fb_posts$Begründung <- NA
+
+# fb_posts und fb_posts_cod_sub vereinen
+fb_posts_cod <- rbind(fb_posts_cod_sub, fb_posts)
+# doppelte Posts wieder löschen
+# Duplikate abspeichern
+fb_posts_cod$duplikate <- duplicated(fb_posts_cod[, c("object_id", "id")]) | duplicated(fb_posts_cod[, c("object_id", "id")], fromLast = TRUE) # erstellt Vektor 
+# Korrekte Fälle auf FALSE setzen
+for (i in 1:nrow(fb_posts_cod_sub)) {
+  fb_posts_cod$duplikate[i] <- FALSE
+}
+# Kontrolle: müssten nun 74 sein
+sum(fb_posts_cod$duplikate)
+# Duplikate und Variable duplikate löschen
+fb_posts_cod <- fb_posts_cod %>% 
+  filter(duplikate == FALSE) %>% 
+  select(-duplikate)
+# Kontrolle, ob noch Duplikate drin sind
+duplikate <- duplicated(fb_posts_cod[, c("object_id", "id")]) | duplicated(fb_posts_cod[, c("object_id", "id")], fromLast = TRUE) # erstellt Vektor 
+any(duplikate) # muss FALSE sein
+
+# Populismus-Summenindex erstellen
+for (i in 1:nrow(fb_posts_cod)) {
+  if (fb_posts_cod$filter[i] == TRUE) {
+    fb_posts_cod$Populismusgrad[i] <- sum(
+      fb_posts_cod$Homogenisierung[i],
+      fb_posts_cod$Idealisierung[i],
+      fb_posts_cod$Selbstpositionierung[i],
+      fb_posts_cod$Konzeptkritik[i],
+      fb_posts_cod$Moralkritik[i],
+      fb_posts_cod$Schuldzuweisung[i],
+      fb_posts_cod$Medienkritik[i],
+      fb_posts_cod$mehr.Volkskompetenzen[i],
+      fb_posts_cod$weniger.Elitenkompetenzen[i])
+  }
+}
+# Rest auf NA setzen
+fb_posts_cod$Populismusgrad[75:nrow(fb_posts_cod)] <- NA
+
+# Wahlperiode erstellen
+fb_posts_cod$Wahlerperiode <- ifelse(fb_posts_cod$created_time < "2021-10-26", 19, 20)
+
+# Zeiträume erstellen
+fb_posts_cod$Zeitraum <- ifelse(fb_posts_cod$created_time < "2018-10-26", 1,
+                                ifelse(fb_posts_cod$created_time < "2019-10-26", 2,
+                                       ifelse(fb_posts_cod$created_time < "2020-10-26", 3,
+                                              ifelse(fb_posts_cod$created_time < "2021-10-26", 4,
+                                                     ifelse(fb_posts_cod$created_time < "2022-10-26", 5,
+                                                            ifelse(fb_posts_cod$created_time < "2023-10-26", 6, 7))))))
+
+# fertigen Datensatz abspeichern (und anderen überschreiben)
+saveRDS(fb_posts_cod, file = "data/fb_posts.Rds")
+
 ```
+
+### Social Media Plattformen Deutschland
 
 ```{r}
 library(utils)

@@ -14,7 +14,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 Der ist im Files-Ordner zu finden.
 
 ```{r}
-#| label: Methodensteckbrief
+#| label: tbl-Methodensteckbrief
 #| echo: false
 
 #DATEN %>% frq(SPRACHE, weights = GEWICHT)

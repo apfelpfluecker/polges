@@ -197,6 +197,14 @@ for (i in korrekturen) {
   bta$filter[bta$id == i] <- FALSE
 }
 
+# Zeiträume erstellen
+bta$Zeitraum <- ifelse(bta$datum < "2018-10-26", 1,
+                       ifelse(bta$datum < "2019-10-26", 2,
+                             ifelse(bta$datum < "2020-10-26", 3,
+                                   ifelse(bta$datum < "2021-10-26", 4,
+                                         ifelse(bta$datum < "2022-10-26", 5,
+                                               ifelse(bta$datum < "2023-10-26", 6, 7))))))
+
 # fertigen Datensatz speichern
 saveRDS(bta, file = "data/btantraege.Rds")
 
@@ -377,7 +385,7 @@ gruene <- gruene_raw %>%
 
 # Filtern
 gruene$filter <- str_detect(gruene$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
-gruene$party <- c(rep("Bündnis 90/Die Grünen", nrow(gruene)))
+gruene$party <- c(rep("Grüne", nrow(gruene)))
 gruene <- gruene %>%  
   select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 
@@ -449,7 +457,7 @@ linke <- linke_raw %>%
 
 # Filtern
 linke$filter <- str_detect(linke$message, regex(paste(sm_filter, collapse = "|"), ignore_case = TRUE)) # Paste verbindet die beiden Strings durch die Bedingung collapse mit Und # ignore_case sorgt dafür, dass Groß-/Kleinschreibung egal ist
-linke$party <- c(rep("Die Linke", nrow(linke)))
+linke$party <- c(rep("Linke", nrow(linke)))
 linke <- linke %>%  
   select(id, object_id, created_time, party, filter, message) # Reihenfolge der Variablen ändern
 

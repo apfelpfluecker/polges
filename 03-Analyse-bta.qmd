@@ -1,3 +1,10 @@
+---
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
 # Analyseebene 2: Bundestagsanträge
 
 ```{r}
@@ -12,66 +19,210 @@ library(ggpubr)
 
 ```
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+## Methodik
 
-```{r}
+### Daten, Operationalisierung, Limitationen
+
+### Analysestrategie
+
+## Datenanalyse und Ergebnisse
+
+## Auswertung
+
+```{r bta-plots}
+library(tidyverse)
+library(dplyr)
+library(ggpubr)
+library(sjmisc)
+
 bta <- readRDS("data/btantraege.Rds")
 
-#neuen Datensatz für Parteiübersicht
-party <- c("SPD", "Union", "Grüne", "FDP", "AfD", "Linke", "BSW")
-antraege_ges <- c(sum(bta$spd), sum(bta$union), sum(bta$gruene), sum(bta$fdp), sum(bta$afd), sum(bta$linke), sum(bta$bsw)) # gesamt
-antraege_gen <- c(sum(bta$spd & bta$filter), sum(bta$union & bta$filter), sum(bta$gruene & bta$filter), sum(bta$fdp & bta$filter), sum(bta$afd & bta$filter), sum(bta$linke & bta$filter), sum(bta$bsw & bta$filter)) # gendern
-bta_new <- data.frame(party,antraege_ges, antraege_gen)
+# Daten in langes Format
+bta_long <- bta %>% 
+  pivot_longer(cols = c(spd, union, gruene, fdp, afd, linke, bsw),
+               names_to = "party",
+               values_to = "Beteiligung") %>% 
+  filter(Beteiligung == 1) %>% 
+  mutate(party = rec(party, rec = "spd = SPD; union = Union; gruene = Grüne; fdp = FDP; afd = AfD; linke = Linke; bsw = BSW"))
 
-# Balkendiagramm für Anzahl der Anträge nach Parteien
-ggplot(data = bta_new, aes(x = party, y = antraege_ges, fill = party)) +
-  geom_bar(stat = "identity") +
-  labs(title = "Anzahl der Anträge nach Parteien", x = "Partei", y = "Anzahl der Anträge")
+# Parteireihenfolge
+desired_order <- c("SPD", "Union", "Grüne", "FDP", "AfD", "Linke", "BSW")
+bta_long$party <- factor(bta_long$party, levels = desired_order)
 
-# Balkendiagramm für Anzahl der Anträge für geschlechtergerechte Sprache
-ggplot(data = bta_new, aes(x = party, y = antraege_gen, fill = party)) +
+#############################################
+
+# Häufigkeit der Anträge zählen
+bta_counts <- bta_long %>% 
+  group_by(party) %>% 
+  summarise(Häufigkeit = n(), .groups = "drop")
+# Grafik erstellen
+f1 <- ggplot(bta_counts, aes(x = party, y = Häufigkeit, fill = party)) +
   geom_bar(stat = "identity") +
-  labs(title = "Anzahl der Anträge für geschlechtergerechte Sprache", x = "Partei", y = "Anzahl der Anträge")
+  scale_fill_manual(values = parteifarben_bta) + # Farbe einstellen
+  labs(x = "Partei",
+       y = "Anzahl") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = "none", colour = "none") # Legende ausblenden
+
+# Anträge Gesamt nach Wahlperiode
+days19 <- days_in_period("2017-10-24", "2021-10-25") # 19
+days20 <- days_in_period("2021-10-26", "2024-06-19") # 20
+bta_counts <- as.data.frame(table(bta_long$party, bta_long$wahlperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(bta_counts) <- c("party", "election_period", "count")
+bta_counts <- bta_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+bta_counts$party <- factor(bta_counts$party, levels = desired_order)
+f2 <- ggplot(bta_counts, aes(x = party, y = relative_count, fill = election_period)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  #scale_fill_viridis(discrete = TRUE) + # Viridis-Farbschema verwenden
+  scale_fill_manual(values = duofarben,
+                    labels = c("19" = "19.", "20" = "20.")) + # Farbe einstellen
+  labs(#title = "Relative Anzahl der Posts nach Partei und Wahlperiode pro Tag",
+       x = "Partei",
+       y = "Anträge/Tag (Durchschnitt)",
+       fill = "Wahlperiode") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Anträge Gesamt nach Zeit
+days1 <- days_in_period("2017-10-24", "2018-10-25")
+days2 <- days_in_period("2018-10-26", "2019-10-25")
+days3 <- days_in_period("2019-10-26", "2020-10-25")
+days4 <- days_in_period("2020-10-26", "2021-10-25")
+days5 <- days_in_period("2021-10-26", "2022-10-25")
+days6 <- days_in_period("2022-10-26", "2023-10-25")
+days7 <- days_in_period("2023-10-26", "2024-06-19")
+bta_counts <- as.data.frame(table(bta_long$party, bta_long$Zeitraum))
+days_in_time<- data.frame(time = c("1", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(bta_counts) <- c("party", "time", "count")
+bta_counts <- bta_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+bta_counts$party <- factor(bta_counts$party, levels = desired_order)
+f3 <- ggplot(bta_counts, aes(x = party, y = relative_count, fill = time)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  #scale_fill_viridis(discrete = TRUE) + # Viridis-Farbschema verwenden
+  scale_fill_manual(values = farben,
+                    labels = c("1" = "2017/18", "2" = "2018/19", "3" = "2019/20", "4" = "2020/21", "5" = "2021/22", "6" = "2022/23", "7" = "2023/24")) + # Farbe einstellen
+  labs(#title = "Relative Anzahl der Posts nach Partei und Zeitraum pro Tag",
+       x = "Partei",
+       y = "Anträge/Tag (Durchschnitt)",
+       fill = "Zeitraum") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+#############################################
+
+
+# Häufigkeit der Gender-Anträge zählen
+bta_long_gender <- bta_long %>% 
+  filter(filter == TRUE)
+all_parties <- data.frame(party = unique(bta_long$party))
+all_times <- data.frame(time = c("1", "2", "3", "4", "5", "6", "7"))
+
+bta_gender_counts <- bta_long_gender %>% 
+  group_by(party) %>% 
+  summarise(Häufigkeit = n(), .groups = "drop")
+#alle Parteien berücksichtigen
+bta_gender_counts <- all_parties %>%
+  left_join(bta_gender_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+# Grafik erstellen
+f4 <- ggplot(bta_gender_counts, aes(x = party, y = Häufigkeit, fill = party)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = parteifarben_bta) + # Farbe einstellen
+  labs(x = "Partei",
+       y = "Anzahl") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = "none", colour = "none") # Legende ausblenden
+
+# Anträge Gesamt nach Wahlperiode
+days19 <- days_in_period("2017-10-24", "2021-10-25") # 19
+days20 <- days_in_period("2021-10-26", "2024-06-19") # 20
+bta_gender_counts <- as.data.frame(table(bta_long_gender$party, bta_long_gender$wahlperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(bta_gender_counts) <- c("party", "election_period", "count")
+bta_gender_counts <- bta_gender_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+bta_gender_counts$party <- factor(bta_gender_counts$party, levels = desired_order)
+f5 <- ggplot(bta_gender_counts, aes(x = party, y = relative_count, fill = election_period)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  #scale_fill_viridis(discrete = TRUE) + # Viridis-Farbschema verwenden
+  scale_fill_manual(values = duofarben,
+                    labels = c("19" = "19.", "20" = "20.")) + # Farbe einstellen
+  labs(#title = "Relative Anzahl der Posts nach Partei und Wahlperiode pro Tag",
+       x = "Partei",
+       y = "Anträge/Tag (Durchschnitt)",
+       fill = "Wahlperiode") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Anträge Gesamt nach Zeit
+days1 <- days_in_period("2017-10-24", "2018-10-25")
+days2 <- days_in_period("2018-10-26", "2019-10-25")
+days3 <- days_in_period("2019-10-26", "2020-10-25")
+days4 <- days_in_period("2020-10-26", "2021-10-25")
+days5 <- days_in_period("2021-10-26", "2022-10-25")
+days6 <- days_in_period("2022-10-26", "2023-10-25")
+days7 <- days_in_period("2023-10-26", "2024-06-19")
+bta_gender_counts <- as.data.frame(table(bta_long_gender$party, bta_long_gender$Zeitraum))
+days_in_time<- data.frame(time = c("1", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(bta_gender_counts) <- c("party", "time", "count")
+bta_gender_counts <- bta_gender_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) %>%  # relativen Wert berechnen
+  right_join(all_times, by = "time") %>%  # sorgt dafür, dass alle Zeiträume auftauchen
+  tidyr::replace_na(list(count = 0, relative_count = 0)) # dafür fehlende Werte mit 0 ersetzen
+bta_gender_counts$party <- factor(bta_gender_counts$party, levels = desired_order)
+f6 <- ggplot(bta_gender_counts, aes(x = party, y = relative_count, fill = time)) +
+  geom_bar(stat = "identity", position = "dodge") + 
+  #scale_fill_viridis(discrete = TRUE) + # Viridis-Farbschema verwenden
+  scale_fill_manual(values = farben,
+                    labels = c("1" = "2017/18", "2" = "2018/19", "3" = "2019/20", "4" = "2020/21", "5" = "2021/22", "6" = "2022/23", "7" = "2023/24")) + # Farbe einstellen
+  labs(#title = "Relative Anzahl der Posts nach Partei und Zeitraum pro Tag",
+       x = "Partei",
+       y = "Anträge/Tag (Durchschnitt)",
+       fill = "Zeitraum") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#(f1+f2+f3)/(f4+f5+f6)
+
+
 ```
 
-```{r}
-#| label: tbl-bta
-#| echo: false
-#| tbl-cap: Bundestagsanträge der Fraktionen/Gruppen
-#| waring: false
-#| error: false
-#| eval: false #Code nicht ausführen, nur in Ausagabe
+```{r bta-plot-ausgabe}
+#| label: fig-btaplots
+#| layout-ncol: 3
+#| fig-cap: "Bundestagsanträge der Fraktionen/Gruppen zwischen 2017 und 2024 – Gesamt, nach Wahlperiode, nach Jahr. Eigene Abbildung. (geS = geschlechtergerechte Sprache)"
+#| fig-subcap:
+#|   - "Gesamtzahl der Anträge"
+#|   - "Anträge pro Tag nach Wahlperiode"
+#|   - "Anträge pro Tag nach Jahr"
+#|   - "Anträge, die geS thematisieren"
+#|   - "Anträge pro Tag, die geS thematisieren nach Wahlperiode"
+#|   - "Anträge pro Tag, die geS thematisieren nach Jahr"
+#|   - "Anträge mit Hauptthema geS"
+#|   - "Anträge pro Tag mit Hauptthema geS nach Wahlperiode"
+#|   - "Anträge pro Tag mit Hauptthema geS nach Jahr"
+#| out-height: 100%
+#| out-width: 100%
 
-bta <- readRDS("data/btantraege.Rds")
-bta_sum <- readRDS("data/btantraege_sum.Rds")
-
-#barplot(as.vector(bta_sum$antr_gendern_gesamt))
-
-#kable(round(bta_sum,3))
-
-bta_sum$party <- c(1,2,3,4,5,6,7,8,9)
-
-bta_sum <- bta_sum %>%  
-  sjlabelled::set_labels(party, labels = c("SPD" = 1, "Union" = 2, "Grüne" = 3, "FDP" = 4, "AfD" = 5, "Linke" = 6, "BSW" = 7, "BuReg" = 8, "BMs" = 9))
-
-bta_tbl <- as_tibble(round(bta_sum,3)) %>% 
-  sjlabelled::as_label(party)
-  
-
-header <- c("SPD", "Union", "Grüne", "FDP", "AfD", "Linke", "BSW", "BuReg", "BMs")
-
-bta_tbl %>% 
-  kableExtra::kable(
-    booktabs = TRUE, 
-    align = c('l', rep('r',2)), # die 10 steht dafür, dass 10 weitere Spalten alle rechtsbündig sind bzw. wären
-    #linesep = "", # ohne diese Zeile, macht knitr alle 5 Zeilen einen kleinen Abstand, der oft kaum Sinn macht
-    col.names = c("Anträge gesamt", "Anträge geS", "Anträge gesamt (in %)", "Anträge geS (in %)", "Anträge geS/gesamt"), # Damit können die Überschriften neu gemacht werden
-  ) %>% 
-  kableExtra::add_header_above(header) %>% 
-  kableExtra::footnote(general = "Hier könnten/sollten Sie einen allgemeinen Hinweis oder eine kleine Erläuterung zur Tabelle geben.",
-            general_title = "", # damit Kable unten nicht "Note" schreibt
-           threeparttable = T # damit längere Fussnoten umgebrochen werden
-           ) %>% 
-  kableExtra::kable_styling()
+f1
+f2
+f3
+f4
+f5
+f6
 
 ```

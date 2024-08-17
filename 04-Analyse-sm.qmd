@@ -1,3 +1,10 @@
+---
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
 # Analyseebene 3: Facebook-Posts
 
 ```{r}
@@ -53,7 +60,8 @@ sm_marktanteile_long$Date <- ymd(paste0(sm_marktanteile_long$Date, "-01"))
 ggplot(data = sm_marktanteile_long, aes(x = Date, y = MarketShare, color = Plattform)) +
   geom_line(linewidth = 0.4) +
   geom_point(size = 0.3) +
-  labs(x = "Zeit (in Monaten)", y = "Marktanteil (%)")
+  labs(x = "Zeit (in Monaten)", y = "Marktanteil (%)") +
+  theme_minimal()
 
 ```
 
@@ -91,7 +99,7 @@ Schaut man auf die Thematisierung geschlechtergerechter Sprache in den untersuch
 
 [^04-analyse-sm-11]: Fisher-Test zur Ermittlung der exakten Signifikanz.
 
-Dahingegen kann Hypothese 3.4 weder bekräftigt noch verworfen werden. Zwar wurden die meisten Posts zu geschlechtergerechter Sprache im Vorfeld des Bundestagswahlkampfes 2021 veröffentlicht, jedoch sind die Zahlen für das folgende Jahr ebenfalls sehr hoch (@fig-smplots-6, `Chi² (18, 74) = 35.23, p < 0.05`[^04-analyse-sm-12]) – auch wenn sich für Posts mit dem Hauptthema geschlechtergerechte Sprache ein anderes Bild zeigt (@fig-smplots-9). Interessant ist, dass die Daten nahelegen, dass geschlechtergerechte Sprache einerseits rein zahlenmäßig gar kein so großes Thema war (auch wenn Vergleiche zu anderen Themenbereichen notwendig wären, um dies zwingend festzustellen) und andererseits der Peak des Themas längst überschritten ist – zumindest für Posts der Bundestagsparteien.
+Dahingegen kann Hypothese 3.4 weder bekräftigt noch verworfen werden. Zwar wurden die meisten Posts zu geschlechtergerechter Sprache im Vorfeld des Bundestagswahlkampfes 2021 veröffentlicht (35 %), jedoch sind die Zahlen für das folgende Jahr ebenfalls sehr hoch (@fig-smplots-6, `Chi² (18, 74) = 35.23, p < 0.05`[^04-analyse-sm-12]) – auch wenn sich für Posts mit dem Hauptthema geschlechtergerechte Sprache ein anderes Bild zeigt (@fig-smplots-9; Anteil 44 %). Interessant ist, dass die Daten nahelegen, dass geschlechtergerechte Sprache einerseits rein zahlenmäßig gar kein so großes Thema war (auch wenn Vergleiche zu anderen Themenbereichen notwendig wären, um dies zwingend festzustellen) und andererseits der Peak des Themas längst überschritten ist – zumindest für Posts der Bundestagsparteien.
 
 [^04-analyse-sm-12]: Fisher-Test zur Ermittlung der exakten Signifikanz.
 
@@ -107,11 +115,12 @@ library(viridisLite)
 library(viridis)
 
 fb_posts <- readRDS("data/fb_posts.Rds")
+desired_order <- c("SPD", "CDU", "CSU", "Grüne", "FDP", "AfD", "Linke", "BSW")
+
 
 # Posts Gesamt
 post_counts <- as.data.frame(table(fb_posts$party))
 colnames(post_counts) <- c("party", "count")
-desired_order <- c("SPD", "CDU", "CSU", "Bündnis 90/Die Grünen", "FDP", "AfD", "Die Linke", "BSW")
 post_counts$party <- factor(post_counts$party, levels = desired_order)
 p1 <- ggplot(post_counts, aes(x = party, y = count, fill = party)) +
   geom_bar(stat = "identity", show.legend = FALSE) + # Legende unterdrücken
@@ -126,13 +135,6 @@ p1 <- ggplot(post_counts, aes(x = party, y = count, fill = party)) +
 
 
 # Posts Gesamt nach Wahlperiode
-days_in_period <- function(start_date, end_date) {
-  start <- as.Date(paste(start_date)) # Startdatum erstellen
-  end <- as.Date(paste(end_date)) # Enddatum angeben
-  days <- seq(start, end, by = "day") # Sequenz von start bis end
-  count_days <- length(days)
-  return(count_days)
-}
 days19 <- days_in_period("2017-10-24", "2021-10-25") # 19
 days20 <- days_in_period("2021-10-26", "2024-06-19") # 20
 post_counts <- as.data.frame(table(fb_posts$party, fb_posts$Wahlerperiode))
@@ -145,7 +147,8 @@ post_counts$party <- factor(post_counts$party, levels = desired_order)
 p2 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = election_period)) +
   geom_bar(stat = "identity", position = "dodge") + 
   #scale_fill_viridis(discrete = TRUE) + # Viridis-Farbschema verwenden
-  scale_fill_manual(values = duofarben) + # Farbe einstellen
+  scale_fill_manual(values = duofarben,
+                    labels = c("19" = "19.", "20" = "20.")) + # Farbe einstellen
   labs(#title = "Relative Anzahl der Posts nach Partei und Wahlperiode pro Tag",
        x = "Partei",
        y = "Posts/Tag (Durchschnitt)",
@@ -191,6 +194,7 @@ all_parties <- data.frame(party = unique(fb_posts$party))
 # Gender-Posts Gesamt
 post_counts <- as.data.frame(table(gender_posts$party))
 colnames(post_counts) <- c("party", "count")
+# alle Parteien berücksichtigen
 post_counts <- all_parties %>%
   left_join(post_counts, by = "party") %>%
   tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
@@ -220,7 +224,8 @@ post_counts <- post_counts %>%
 post_counts$party <- factor(post_counts$party, levels = desired_order)
 p5 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = election_period)) +
   geom_bar(stat = "identity", position = "dodge") + 
-  scale_fill_manual(values = duofarben) + # Farbe einstellen
+  scale_fill_manual(values = duofarben,
+                    labels = c("19" = "19.", "20" = "20.")) + # Farbe einstellen
   labs(#title = "Relative Anzahl der Posts nach Partei und Wahlperiode pro Tag",
        x = "Partei",
        y = "Posts/Tag (Durchschnitt)",
@@ -291,7 +296,8 @@ post_counts <- post_counts %>%
 post_counts$party <- factor(post_counts$party, levels = desired_order)
 p8 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = election_period)) +
   geom_bar(stat = "identity", position = "dodge") + 
-  scale_fill_manual(values = duofarben) + # Farbe einstellen
+  scale_fill_manual(values = duofarben,
+                    labels = c("19" = "19.", "20" = "20.")) + # Farbe einstellen
   labs(#title = "Relative Anzahl der Posts nach Partei und Wahlperiode pro Tag",
        x = "Partei",
        y = "Posts/Tag (Durchschnitt)",
@@ -322,35 +328,73 @@ p9 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = time)) +
        fill = "Zeitraum") +
   theme_minimal() +
   #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = "none", colour = "none") # Legende ausblenden
 
 
 #################################################################
 
 
-# Posts Gesamt
-#popind <- as.data.frame(table(fb_posts$party, fb_posts$Populismusgrad))
-#colnames(popind) <- c("party", "popind")
-#popind$party <- factor(popind$party, levels = desired_order)
+# Populismusgrad Violin-Plot
 gender_posts$party <- factor(gender_posts$party, levels = desired_order)
 p10 <- ggplot(gender_posts, aes(x = party, y = Populismusgrad, fill = party)) +
-  geom_violin(drop = FALSE) +
+  geom_violin(drop = FALSE, alpha = 0.4) +
+  geom_jitter(aes(colour = party), alpha = 0.8, width = 0.5, ) +
   scale_x_discrete(drop = FALSE) + # Alle Parteien einschließen, auch ohne Daten
-  scale_fill_manual(values = parteifarben[levels(gender_posts$party)]) + # Farbe einstellen
-  labs(title= "Populismusgrad nach Partei",
+  scale_fill_manual(values = parteifarben[levels(gender_posts$party)]) + # Farbe für Violin-Plot einstellen
+  scale_colour_manual(values = parteifarben[levels(gender_posts$party)]) + # Farbe für Jitter einstellen
+  labs(#title= "Populismusgrad nach Partei",
        x = "Partei",
        y = "Populismusgrad",
-       fill = "Partei") +
+       fill = "Partei",
+       colour = "Partei") +
   theme_minimal() +
   #scale_x_discrete(labels = function(x) str_wrap(x, width = 13)) # Umbruch der Beschriftung
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = "none", colour = "none") # Legende ausblenden
 
-# Populismusgrad von Posts
+# Populismusgrad von Posts Bar-Plot
+# Alle Parteien einfügen
 p11 <- ggplot(gender_posts, aes(fill = popind, y = party)) +
   geom_bar(position = "fill") +
   scale_fill_manual(
     values = c("#2CA02C", "#1F77B4", "#FF7F0E", "#D62728"),
-    labels = c("0" = "kein Populismus", "1" = "gering", "2" = "moderat", "3" = "hoch")) + # Farbe einstellen
+    labels = c("0" = "0 (kein Populismus)", "1" = "1–2 (gering)", "2" = "3–4 (moderat)", "3" = ">4 (hoch)")) + # Farbe einstellen
+  labs(
+    x = "Relative Verteilung",
+    y = "Partei",
+    fill= "Populismusgrad"
+  ) +
+  theme_minimal()
+
+
+##################################################
+
+
+# Populismusgrad Violin-Plot
+gender_main_posts$party <- factor(gender_main_posts$party, levels = desired_order)
+p12 <- ggplot(gender_main_posts, aes(x = party, y = Populismusgrad, fill = party)) +
+  geom_violin(drop = FALSE, alpha = 0.4) +
+  geom_jitter(aes(colour = party), alpha = 0.8, width = 0.5, ) +
+  scale_x_discrete(drop = FALSE) + # Alle Parteien einschließen, auch ohne Daten
+  scale_fill_manual(values = parteifarben[levels(gender_posts$party)]) + # Farbe für Violin-Plot einstellen
+  scale_colour_manual(values = parteifarben[levels(gender_posts$party)]) + # Farbe für Jitter einstellen
+  labs(#title= "Populismusgrad nach Partei",
+       x = "Partei",
+       y = "Populismusgrad",
+       fill = "Partei",
+       colour = "Partei") +
+  theme_minimal() +
+  #scale_x_discrete(labels = function(x) str_wrap(x, width = 13)) # Umbruch der Beschriftung
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = "none", colour = "none") # Legende ausblenden
+
+# Populismusgrad von Posts Bar-Plot
+p13 <- ggplot(gender_main_posts, aes(fill = popind, y = party)) +
+  geom_bar(position = "fill") +
+  scale_fill_manual(
+    values = c("#2CA02C", "#1F77B4", "#FF7F0E", "#D62728"),
+    labels = c("0" = "0 (kein Populismus)", "1" = "1–2 (gering)", "2" = "3–4 (moderat)", "3" = ">4 (hoch)")) + # Farbe einstellen
   labs(
     x = "Relative Verteilung",
     y = "Partei",
@@ -369,7 +413,7 @@ p11 <- ggplot(gender_posts, aes(fill = popind, y = party)) +
 ```{r plots-ausgeben}
 #| label: fig-smplots
 #| layout-ncol: 3
-#| fig-cap: "Facebook-Posts der Bundestagsparteien zwischen 2017 und 2024 – Gesamt, nach Wahlperiode, nach Jahr. Eigene Abbildung."
+#| fig-cap: "Facebook-Posts der Bundestagsparteien zwischen 2017 und 2024 – Gesamt, nach Wahlperiode, nach Jahr. Eigene Abbildung. (geS = geschlechtergerechte Sprache)"
 #| fig-subcap:
 #|   - "Gesamtzahl der Posts"
 #|   - "Posts pro Tag nach Wahlperiode"
@@ -380,8 +424,8 @@ p11 <- ggplot(gender_posts, aes(fill = popind, y = party)) +
 #|   - "Posts mit Hauptthema geS"
 #|   - "Posts pro Tag mit Hauptthema geS nach Wahlperiode"
 #|   - "Posts pro Tag mit Hauptthema geS nach Jahr"
-#| out-height: 100%
-#| out-width: 100%
+#| out-height: 80%
+#| out-width: 80%
 #| fig-pos: p
 #| echo: false
 #| warning: false
@@ -402,11 +446,34 @@ p9
 
 \elandscape
 
-## Auswertung
+Bei der Betrachtung der Hypothese 3.2 sowie @fig-popindplots springt sofort ins Auge, dass vor allem und fast ausschließlich die AfD und die CSU populistisch über geschlechtergerechte Sprache sprechen. Aus dem Violin-Plot (@fig-popindplots-1, `Chi² (18, 74) = 27.82, p < 0.1`[^04-analyse-sm-13]) geht hervor, dass die AfD populistischer agiert, was sich sowohl mit Blick auf die Bewertungsstufen (gering, moderat, hoch) zeigt (@fig-popindplots-2, `Chi² (9, 74) = 15.37, p = 0.14`[^04-analyse-sm-14]), als auch in Bezug auf die Posts mit Hauptthema geschlechtergerechter Sprache offensichtlich wird (@fig-popindplots-3, `Chi² (12, 36) = 16.57, p = 0.31`; @fig-popindplots-4, `Chi² (6, 36= = 4.62, p = 0.5`[^04-analyse-sm-15]) – wenn auch für alle drei Grafiken gilt, dass sie ein zu hohes Maß an Überzufälligkeit aufweisen. Hypothese 3.2 kann somit nur in Teilen bekräftigt werden, die Linken fallen wie schon bei H3.1 aus dem theoretischen Raster.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+[^04-analyse-sm-13]: Fisher-Test zur Ermittlung der exakten Signifikanz.
 
-```{r}
+[^04-analyse-sm-14]: Fishers-Test zur Ermittlung der exakten Signifikanz.
 
+[^04-analyse-sm-15]: Jeweils: Fishers-Test zur Ermittlung der exakten Signifikanz.
+
+Nicht falsifiziert und auch klar bekräftigt werden kann dagegen Hypothese 3.5: Posts, in denen hauptsächlich geschlechtergerechte Sprache thematisiert wird und nicht nur Randthema ist, sind besonders und häufiger populistisch (@fig-popindplots) – wenn auch hinsichtlich der Signifikanz dieselben Einschränkungen für die Abbildungen (b) bis (d) gelten. Zwar sind nicht mehr AfD-Posts populistisch, allerdings weisen sie mehr Populismusdimensionen auf, wenn geschlechtergerechte Sprache das Hauptthema des Posts ist. Bei der CSU ist dagegen sogar festzustellen, dass beides gilt: Mehr Posts sind populistisch und die Posts weisen mehr Populismusdimensionen auf.
+
+```{r popind-plots}
+#| label: fig-popindplots
+#| layout-ncol: 2
+#| fig-cap: "Populismusgrad der Facebook-Posts zu geschlechtergerechter Sprache (geS) zwischen 2017 und 2024. Eigene Abbildung."
+#| fig-subcap: 
+#|   - "Posts, die geS thematisieren"
+#|   - "Posts, die geS thematisieren nach Stufen"
+#|   - "Posts mit Hauptthema geS"
+#|   - "Posts mit Hauptthema geS nach Stufen"
+#| out-width: 100%
+
+p10
+p11
+p12
+p13
 
 ```
+
+## Auswertung
+
+Zusammenfassend lässt sich feststellen, dass Facebook eher ein Medium der rechten und konservativen Parteien zu sein scheint – sie sind deutlich aktiver. H3.1 konnte so widerlegt werden. Auch die anschließende Hypothese 3.2 gilt nur für die AfD. Darüber hinaus tritt aber auch die CSU als besonders populismusfreudig hervor. H3.3 konnte klar bekräftigt werden: Die AfD thematisiert geschlechtergerechte Sprache mit Abstand am häufigsten. Der Verdacht des Polarisierungsunternehmers AfD erhärtet sich damit. Nachfolgende Forschung könnte an diesem Punkt weiter ansetzen. Im Bundestagswahlkampf wurde geschlechtergerechte Sprache besonders häufig verwendet, H3.4 gilt also als bekräftigt. Das gleiche gilt für H3.5.

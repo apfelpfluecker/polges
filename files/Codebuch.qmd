@@ -35,8 +35,8 @@ format:
     classoption: oneside #bei digitalen Arbeiten oneside!
     geometry:
       - top=20mm
-      - left=15mm
-      - right=15mm
+      - left=20mm
+      - right=20mm
       - bottom=30mm
     keep-tex: true
     fontenc: T1
@@ -49,6 +49,7 @@ format:
     filters: [pandoc-quotes.lua]
     keep-md: false
     linkcolor: black
+    citecolor: black
     
 editor:
   render-on-save: false
@@ -152,10 +153,6 @@ Informationen über die Untersuchung
 
 *aus Arbeit übernehmen*
 
-Das Ziel der Untersuchung ist, herauszufinden, welche Parteien das Thema geschlechtergerechte Sprache populistisch behandeln.
-
--   kurz und knapp
-
 ## Definition wichtiger Begriffe
 
 *aus Arbeit übernehmen*
@@ -201,14 +198,8 @@ Als Analyseeinheit werden „jene Elemente aus dem Untersuchungsmaterial \[bezei
 
 ## Definition der Codiereinheiten
 
-Als formale Codiereinheiten fungieren die Erstellungszeit, der Urheber beziehungsweise die Partei, die den Post veröffentlicht hat, WEITERE ZEITEINTEILUNGEN. Alle formalen Kriterien werden automatisiert erfasst und nicht von Codierer\*innen codiert.\
+Als formale Codiereinheiten fungieren die Erstellungszeit, der Urheber beziehungsweise die Partei, die den Post veröffentlicht hat, die Wahlperiode sowie der Zeitraum. Alle formalen Kriterien werden automatisiert erfasst beziehungsweise weiterverarbeitet und nicht von Codierer\*innen codiert.\
 Inhaltliche Codiereinheiten sind die neun Populismus-Dimensionen, die weiter unten ausführlich beschrieben sind.
-
-Codiereinheit:
-
--   formale: Autor, Datum, ...
-
--   inhaltlich: thematische Einheit: 9 Populismus-Dimensionen
 
 ## Definition der Kontexteinheit
 
@@ -216,8 +207,7 @@ Das Hilfskonstrukt der Kontexteinheit kommt in dieser Analyse nur bedingt zum Ei
 
 ## Beschreibung der Vorgehensweise
 
--   Flussdiagramm bietet sich an (siehe Rössler 99)
--   ggf. mehrfaches Lesen, um auf verschiedene Dimensionen achten zu können
+Die Vorgehensweise wird in @fig-vorgehensweise schematisch beschrieben. Runde Kästchen stehen für eine Handlung, Rechtecke für die Codierung und die um 45° gedrehten Quadrate für eine Entscheidung.
 
 ```{mermaid vorgehensweise}
 %%| label: fig-vorgehensweise
@@ -265,33 +255,11 @@ flowchart TD
 
 Das Kategoriensystem sollte im Allgemeinen genauso wie die einzelnen Kategorien vollständig und trennscharf sein sowie ausschließlich die relevanten Sachverhalte abdecken [vgl. @rössler2017: 101-102]. Die Entwicklung des Kategoriensystems erfolgte deduktiv, also theoriegeleitet [vgl. @brosius2022: 175] in Anlehnung an @spieß2020 und @ernst2017.
 
-Beispiel: Rössler 107
-
 Populismus als Konstrukt kann wie oben definiert in drei Hauptkategorien (Volksnähe, Elitenkritik, Wiederherstellung der Volkssouveränität) unterteilt werden, die sich in insgesamt neun Unterkategorien ausdrücken. Die Kategorien Homogenisierung, Idealisierung und Selbstpositionierung stehen für Volksnähe, die Kategorien Konzeptkritik, Moralkritik, Schuldzuweisung und Medienkritik für Elitenkritik und die Kategorien mehr Volkskompetenzen und weniger Elitenkompetenzen für die Wiederherstellung der Volkssouveränität. Im Folgenden werden alle Unterkategorien ausführlich beschrieben.
 
-Die formalen Kategorien wurden bis auf die Kategorie „Hauptthema“ automatisiert erfasst.
+Die formalen Kategorien wurden bis auf die Kategorie „Hauptthema“ automatisiert erfasst beziehungsweise automatisiert aus automatisiert erfassten Kategorien umcodiert..
 
 Es wird ausschließlich der Kontext der Äußerungen zu geschlechtergerechter Sprache beachtet, nicht der gesamte Post.
-
-***Wichtig: die Beispiele sollten jeweils noch erklärt werden!***
-
-***Problemstellen:***
-
--   Umgang mit Gender-Zwang
-
--   Umgang mit Darstellung als Eintreten für „das“ richtige
-
-    -   Selbstbezeichnung als patriotisch = Selbstpositionierung?
-
--   Kritik zwischen den Zeilen
-
--   Was bedeutet weniger Elitenkompetenz?
-
-    -   auch schon wenn es heißt: GeS hat im ÖRR nichts verloren?
-
-fehlt noch:
-
--   Hauptthema
 
 ## Hauptthema
 
@@ -313,8 +281,6 @@ Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieb
 ### Selbstpositionierung
 
 Die Kategorie wird mit der Ausprägung vorhanden versehen, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Das ist auch der Fall, wenn der Akteur für „das Richtige“ eintritt, da das Volk der Populist\*innen eine wertebasierte Zuteilung ist, die beispielsweise auch mit dem „gesunden Menschenverstand“ gleichzusetzen ist. Dementsprechend ist ein Eintreten für „das Richtige“ auch ein Eintreten für das Volk – selbst wenn dieses nicht explizit genannt wird. Hinzukommen kann das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188]. Die Selbstbezeichnung als patriotische Partei gilt damit als eine Selbstpositionierung.
-
-Beispiel
 
 ## Elitenkritik
 
@@ -384,7 +350,7 @@ options(knitr.kable.NA = "---")
 ```
 
 | Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                             |
-|----------------|----------------|----------------|------------------------|
+|-----------------|-----------------|-----------------|----------------------|
 | Populismus | Volksnähe                               | Homogenisierung           | Darstellung als homogene Masse mit einheitlicher Meinung beziehungsweise einheitlichem Interesse                     |
 |            |                                         | Idealisierung             | idealisierte Darstellung durch Zuschreibung positiver Attribute                                                      |
 |            |                                         | Selbstpositionierung      | Akteur stellt sich dar, als identifiziere er sich mit dem Volk, als sei er Fürsprecher oder Teil des Volkes.         |

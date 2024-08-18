@@ -73,7 +73,7 @@ kable(tbl_gesamtposts_wp,
 
 -   falls ich's schaffe
 
-# R-Code  {#sec-code}
+# R-Code {#sec-code}
 
 Aus Gründen des Umweltschutzes...
 

@@ -44,7 +44,7 @@ Interessant ist auch die Perspektive anderer Länder. Im Englischen funktioniert
 
 Trotz allem Streit, sind sich – zumindest in der Wissenschaft – über das Ziel der Geschlechtergerechtigkeit, das im Grundgesetz verankert ist (Art. 3 Abs. 2), alle einig. Somit stellt sich mehr die Frage nach der angemessenen sprachlichen Form als danach, *ob* geschlechtergerechte Sprache generell verwendet werden sollte [vgl. @müller-spitzer2022: 40]. Diese Perspektive geht häufig unter, zumal für ihre Beachtung deutlich mehr Konstruktivität notwendig wäre. Interessant – wenn auch eher für den gesellschaftlichen Bereich – ist die Sichtweise Henning Lobins in Anlehnung an Anatol Stefanowitsch [-@stefanowitsch2018]: Geschlechtergerechte Sprache beziehungsweise eine möglichst gewalt- und diskriminierungsfreie Sprache generell ist letztlich eine Frage der Höflichkeit gegenüber seinen Mitmenschen [vgl. -@lobin2018] – und damit eine Frage der Moral.
 
-## Bundestagsanträge
+## Bundestagsanträge {#sec-bta}
 
 Obgleich Bundestagsanträge ein etablierter Teil der parlamentarischen Arbeit darstellen, wurden und werden sie in der politikwissenschaftlichen Forschung wenig bis gar nicht berücksichtigt. Das ist durchaus erstaunlich, finden sich doch Analysen von parlamentarischen Anfragen zuhauf [siehe z. B. @bereswill2021; @siefken2010; @hünermund2018; @carstensen2018; @bald1988]. Einzig Wolfgang Ismayr widmet sich in seiner (auch nicht gerade neuen) Monographie über den Deutschen Bundestag den Anträgen im Bundestag [-@ismayr2012: 403-407].[^01-theorieteil-5] Somit kann sich diese Arbeit nur wenig auf den Stand der Forschung stützen und nimmt damit auch eine explorative Funktion für die Politikwissenschaft ein.
 
@@ -196,7 +196,7 @@ Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerech
 
 ### Analyse von Bundestagsanträgen
 
-Im Kern dieser Analyseebene steht die These, dass vor allem rechte und mit Einschränkungen konservative Parteien geschlechtergerechte Sprache thematisieren, um sie als Triggerpunkt für ihre Zwecke zu missbrauchen. Sie schlüpfen, um mit @mau2024 zu sprechen, in die Rolle der Polarisierungsunternehmer, die bewusst versuchen, einen Kulturkampf zu inszenieren, um von der daher erhofften Spaltung zu profitieren. Hypothese H2.1 lautet demnach, dass die AfD geschlechtergerechte Sprache am meisten in Bundestagsanträgen thematisiert.
+Im Kern dieser Analyseebene steht die These, dass vor allem rechte und mit Einschränkungen konservative Parteien geschlechtergerechte Sprache thematisieren, um sie als Triggerpunkt für ihre Zwecke zu missbrauchen. Sie schlüpfen, um mit @mau2024 zu sprechen, in die Rolle der Polarisierungsunternehmer, die bewusst versuchen, einen Kulturkampf zu inszenieren, um von der daher erhofften Spaltung zu profitieren. Hypothese H2.1 lautet demnach, dass die AfD geschlechtergerechte Sprache am meisten in Bundestagsanträgen thematisiert. Darüber hinaus sollen die empirischen Erkenntnisse von @ismayr2012 auf aktuelle Daten gestützt und die Hypothese bestätigt werden, dass vor allem die Opposition das Instrument der Bundestagsanträge nutzt (H2.2).
 
 ### Analyse von Facebook-Posts
 

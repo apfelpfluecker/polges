@@ -21,13 +21,43 @@ library(ggpubr)
 
 ## Methodik
 
-### Daten, Operationalisierung, Limitationen
+### Daten, Operationalisierung, Limitationen, Analysestrategie {#sec-daten-bta}
 
-### Analysestrategie
+Mithilfe der API des Bundestags wurden sämtliche Bundestagsanträge gesammelt, die im Untersuchungszeitraum gestellt wurden.[^03-analyse-bta-1] Aus diesem Datensatz wurden alle Anträge entfernt, die keine Anträge aus den Reihen des Bundestags waren, sondern aus dem Bundesrat heraus gestellt wurden. Auch Regierungs- und Ministeriumsanträge fielen raus, die allerdings weder einen relevanten Anteil ausmachen noch Anträge zum Thema geschlechtergerechte Sprache gestellt haben.
+
+[^03-analyse-bta-1]: Der Code für die API-Anfrage ist zusammen mit dem gesamten Code dieser Arbeit im Online-Anhang (@sec-code) zu finden.
+
+Der Untersuchungszeitraum war der 24.10.2017, der Tag der ersten konstituierenden Sitzung des Bundestags nach der Bundestagswahl 2017, bis zum 19.06.2024. Der Startzeitpunkt wurde in Abhängigkeit zu den Bundestagswahlen festgelegt, da sich, wie gezeigt, das Antragsverhalten je nach Regierungs- und Oppositionsbeteiligung unterscheidet. Um dies auf eine aktuelle Empirie zu stellen, werden Zeiträume festgelegt, die sich hinsichtlich der Wahlperioden nicht überlappen. So wird die Wahlperiode also nochmals in vier Zeiträume unterteilt.[^03-analyse-bta-2] Es ergibt also Sinn, eine Bundestagswahl beziehungsweise die erste konstituierende Sitzung danach als Ausgangspunkt zu nehmen. Dass die Bundestagswahl 2017 dafür ausgewählt wurde, hat einerseits mit forschungsökonomischen Gründen zu tun und andererseits damit, dass sich das Thema geschlechtergerechte Sprache vor allem in den letzten Jahren polarisiert hat (vgl. @sec-ges-theorie). Auch die AfD, die einen Großteil der betreffenden Anträge auf sich vereint, saß vor 2017 noch nicht im Bundestag. Somit kann davon ausgegangen werden, dass vor 2017 weitaus weniger Analyseeinheiten aufgetreten wären und dadurch der Aufwand gegenüber dem Nutzen deutlich überwiegt.
+
+[^03-analyse-bta-2]: Die Zeiträume sind der 24.10.2017–25.10.2018, 26.10.2018–25.10.2019, 26.10.2019–25.10.2020, 26.10.2020–25.10.2021, 26.10.2021–25.10.2022, 26.10.2022–25.10.2023, 26.10.2023–19.06.2024. Der 26.10. ist der Tag der konstituierenden Sitzung des 20. Deutschen Bundestag, weshalb er als Stichtag für die Perioden gilt. Ausnahme ist der Starttag der ersten Periode (siehe oben) sowie der letzte Tag, der in forschungspragmatischen Gründen (der Abgabe dieser Arbeit) begründet liegt.
+
+Die Analyse fokussiert sich auf den Deutschen Bundestag beziehungsweise dessen Fraktionen und Gruppen, da zwar auch einfache Abgeordnete Anträge stellen können (vgl. @sec-bta), dies aber im Untersuchungszeitraum nicht der Fall war. Damit wurden grundsätzlich Anträge der SPD-Fraktion, der CDU/CSU-Fraktion (auch: Unions-Fraktion), der Fraktion Bündnis 90/Die Grünen, der FDP-Fraktion, der AfD-Fraktion, der Gruppe Die Linke sowie der Gruppe BSW berücksichtigt.[^03-analyse-bta-3] Darüber hinaus gab es zwei inhaltliche Kriterien für die Einbeziehung. Das notwendige Kriterium `sprache+` und `sprachlich+`[^03-analyse-bta-4] sollte dabei sicherstellen, dass die Zahl der fälschlich ausgewählten Anträge nicht zu hoch ist,[^03-analyse-bta-5] um die manuelle Auswahl zu verkürzen. Das zweite, ebenfalls notwendige Kriterium umfasste die Wörter `gender+`, `geschlecht(.*)gerecht+` sowie `generisch+`[^03-analyse-bta-6].
+
+[^03-analyse-bta-3]: Da das BSW noch nicht lange eine Gruppe im Deutschen Bundestag stellt, haben die Daten diesbezüglich keine größere Aussagekraft. Trotzdem wurde das BSW der Vollständigkeit halber mitbetrachtet.
+
+[^03-analyse-bta-4]: Das Zeichen `+` steht für einen beliebig langen Platzhalter, der null oder mehr Zeichen umfasst. Groß- und Kleinschreibung spielen keine Rolle.
+
+[^03-analyse-bta-5]: Durch das zweite Kriterium würden grundsätzlich auch Anträge mit den Wortfolgen "hervorra*gender"* oder "aufgrund stei*gender* Infektionszahlen" ausgewählt. Es ist nicht davon auszugehen, dass in Anträgen, in denen geschlechtergerechte Sprache thematisiert wird, nicht das Wort Sprache oder sprachlich vorkommt.
+
+[^03-analyse-bta-6]: Das Zeichen `(.*)` bewirkt einen beliebig langen Platzhalter zwischen den beiden Wörtern "geschlecht" und "gerecht+", das bedeutet, es können auch ganze Wörter zwischen diesen beiden stehen.
+
+    Die Auswahl erfolgte automatisiert über das R-Paket *stringr* [@wickham2023]. Anschließend wurden die Posts manuell auf ihre korrekte Zuordnung überprüft.
+
+Um die Hypothesen zu überprüfen wird vornehmlich auf deskriptive Statistiken zurückgegriffen, die aus den Daten hervorgehen.
 
 ## Datenanalyse und Ergebnisse
 
-## Auswertung
+Die Ergebnisse der Datenanalyse sind in @fig-btaplots zu sehen. Die so verschiedene Gesamtzahl an Anträgen (@fig-btaplots-1, `Chi² (6) = 1520.3, p < 0.01`) kann anhand @fig-btaplots-2 (`Chi² (6, 4316) = 914.31, p < 0.01`) erklärt werden: Die Oppositionsfraktionen der Wahlperiode 19 (Grüne, FDP, AfD, Linke) nutzten das Instrument des Bundestagsantrags relativ vier bis fünfmal so oft wie die Regierungsfraktionen aus SPD und Union.[^03-analyse-bta-7] Dasselbe Bild zeigt sich in Wahlperiode 20 (Opposition: Union, AfD, Linke, BSW). Die Abweichung bei den Linken ist vermutlich mit dem deutlich kleineren Fraktions- beziehungsweise nach der Gründung des BSW mit dem Gruppen-Dasein zu erklären. Letzteres gilt genauso für das BSW. Auch ein Blick auf @fig-btaplots-3 (`Chi² (36, 4316) = 1157.07, p < 0.01`) bestärkt diese Vermutung. Hypothese 2.2 kann also als bekräftigt gelten.
+
+[^03-analyse-bta-7]: Um die beiden Wahlperioden (und auch die Zeiträume) miteinander vergleichen zu können, wurde der Durchschnitt pro Tag gebildet. Zwar spiegelt das nicht die realen Arbeitszeiten des Parlamentes wieder, schafft aber zumindest etwas mehr Vergleichbarkeit.
+
+Gleiches gilt für Hypothese 2.1, die klar bestärkt werden kann. Mit 16 von 17 kommen fast alle Bundestagsanträge, die im Untersuchungszeitraum gestellt wurden, von der AfD (@fig-btaplots-4, `Chi² (1) = 13.24, p < 0.01`). Nur ein Antrag kommt von Linken. Bei der Betrachtung von @fig-btaplots-5 (`Chi² (1, 17) = 1.95, p = 0.35`[^03-analyse-bta-8]) fällt auf, dass die Thematisierung in der 20. Wahlperiode, wenn auch nicht signifikant, so zumindest deutlich zugenommen hat. Überhaupt wurde geschlechtergerechte Sprache im Untersuchungszeitraum erst 2019/20 angesprochen (@fig-btaplots-6, `Chi² (4, 17) = 17, p = 0.12`[^03-analyse-bta-9]). Auch diese Beobachtung ist auf keinem Signifkanzniveau signifikant, obgleich die reale Überzufälligkeit aufgrund der geringen Fallzahl schwer zu ermitteln ist.[^03-analyse-bta-10]
+
+[^03-analyse-bta-8]: Fisher-Test zur Ermittlung der exakten Signifikanz.
+
+[^03-analyse-bta-9]: Fisher-Test zur Ermittlung der exakten Signifikanz.
+
+[^03-analyse-bta-10]: Zumal man argumentieren könnte, dass es sich im Sinne der Fragestellung um eine Vollerhebung handelt. Bei selbigen ist die Verwendung von Signifikanztest umstritten [vgl. @behnke2005].
 
 ```{r bta-plots}
 library(tidyverse)
@@ -215,8 +245,8 @@ f6 <- ggplot(bta_gender_counts, aes(x = party, y = relative_count, fill = time))
 #|   - "Anträge mit Hauptthema geS"
 #|   - "Anträge pro Tag mit Hauptthema geS nach Wahlperiode"
 #|   - "Anträge pro Tag mit Hauptthema geS nach Jahr"
-#| out-height: 100%
-#| out-width: 100%
+#| out-height: 120%
+#| out-width: 120%
 
 f1
 f2
@@ -226,3 +256,7 @@ f5
 f6
 
 ```
+
+## Auswertung
+
+Zusammenfassend ist festzustellen, dass beide Hypothesen dieser Analyseebene nicht falsifiziert werden konnten. Das Antragsverhalten scheint sich somit tatsächlich mit einer Regierungsbeteiligung zu verändern – Oppositionsfraktionen stellten vier bis fünfmal so viele Anträge wie Regierungsfraktionen. Ebenso konnte festgestellt werden, dass fast ausschließlich die AfD Bundestagsanträge stellt, in denen geschlechtergerechte Sprache thematisiert wird. Durch die bloße Verwendung des Triggerpunktes geschlechtergerechte Sprache scheint sich die Vermutung des Polarisierungsunternehmers AfD zu erhärten. Ob sich dies auch in Facebook-Posts sowie deren Populismusgrad zeigt, ist auf den folgenden Seiten zu klären.

@@ -35,6 +35,10 @@ execute:
 # Tabellen
 
 ```{r}
+#| tbl-cap: "VIF-Werte"
+```
+
+```{r}
 #| tbl-cap: "Gesamtzahl der Posts"
 
 library(kableExtra)

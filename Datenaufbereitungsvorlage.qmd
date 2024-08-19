@@ -49,11 +49,12 @@ sui <- sui_raw %>%
     Q1,
     Q2,
     Q13,
+    Q15,
     Split_Q14,
   ) %>% 
   rename(
     age = S1,
-    sex = S2,
+    sex_r = S2,
     fed_state = S3,
     education = S4,
     polint = Q1,
@@ -68,7 +69,8 @@ sui <- sui_raw %>%
     commsize = S11, # community size
     party = S12,
     migback = S13, # migration background
-    genatt = Q13 # attitude towards gender-neutral language
+    genatt = Q13, # attitude towards gender-neutral language
+    genequatt = Q15 # attitude towards role for gender equality
   ) %>% 
   mutate(eastwest = rec(
     fed_state,
@@ -78,14 +80,41 @@ sui <- sui_raw %>%
   )) %>% 
   mutate(educ = rec(
     education,
-    rec = "1,2,3,5,6,7,8 = 0 [kein Studium]; 5 = 1 [Studium]",
+    rec = "1,2,3,5,6,7,8 = 0 [kein Studium]; 4 = 1 [Studium]",
     var.label = "Bildung (Studium)",
     to.factor = TRUE
   )) %>% 
-  set_na(sex, na = 3) # Da sonst schwierig mit zu rechnen
+  mutate(sex = rec(
+    sex_r,
+    rec = "1 = 0 [männlich]; 2 = 1 [weiblich]; 3 = NA",
+    var.label = "Geschlecht",
+    to.factor = TRUE
+  )) %>% 
+  mutate(genequatt = rec(
+    genequatt,
+    rec = "1 = 1 [Bringt Gleichberechtigung voran]; 2 = 0 [Bringt nicht viel]",
+    var.label = "Mehrwert für Gleichberechtigung",
+    to.factor = TRUE
+  )) %>% 
+  mutate(migback = rec(
+    migback,
+    rec = "4 = 0 [Nein]; else = copy",
+    var.label = "Migrationshintergrund",
+    to.factor = TRUE
+  ))
 
 sui <- set_na(sui, na = c(-66, 99, -99)) # unklar, was -66 bedeutet
 
+# Variablen zu numerischen umkodieren
+sui$age <- as.numeric(sui$age) 
+sui$class <- as.numeric(sui$class)  # Unterschicht-untere Mittelschicht-Mittelschicht-obere Mittelschicht-Oberschicht
+sui$houseinc <- as.numeric(sui$houseinc) # unter 1.5 - 1.5-2.5 - 2.5-3.5 - ü3.5
+sui$commsize <- as.numeric(sui$commsize) # unter 5 - 5-20 - 20-50 - 50-100 - 100-500 - ü500
+sui$polint <- as.numeric(sui$polint) # sehr stark-eher stark - weniger stark - überhaupt nicht
+sui$polinf <- as.numeric(sui$polinf) # täglich - wöchentlich - monatlich - seltener -nie
+sui$genatt <- as.numeric(sui$genatt) # voll und ganz - eher - lehne eher ab - lehne voll und ganz ab
+sui$genequatt <- as.numeric(sui$genequatt) # Bringt nicht viel - Bringt Gleichberechtigung voran
+  
 saveRDS(sui, file = "data/sui.Rds")
 
 ```

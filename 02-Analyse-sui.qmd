@@ -1,3 +1,10 @@
+---
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
 # Analyseebene 1: Individualdaten
 
 ```{r}
@@ -33,5 +40,65 @@ options(knitr.kable.NA = "---")
 
 ```{r}
 # alle Variablen: age, sex, fed_state, eastwest, education, polint,   polinf, motong_ger, motong_oth, gainemp, class, housesize, childinhouse, houseinc, commsize, party, migback, genatt
+
+```
+
+```{r reg-genatt}
+#| output: false
+
+library(car)
+
+sui <- readRDS("data/sui.Rds")
+
+# Regressionsmodell
+modell_genatt <- lm(genatt ~ age + sex + eastwest + educ + polint + polinf + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
+
+# Homoskedastizität
+plot(modell_genatt, 1) # liegt nicht vor
+
+# keine Multikollinearität
+round(vif(modell_genatt), 3) # liegt nicht vor
+
+# Normalverteilte Residuen
+plot(modell_genatt, 2)
+
+```
+
+```{r reg-genequatt}
+#| output: false
+
+library(car)
+library(stargazer)
+
+# Regressionsmodell
+modell_genequatt <- glm(genequatt ~ age + sex + eastwest + educ + polint + polinf + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
+
+# Homoskedastizität
+plot(modell_genequatt, 1) # liegt nicht vor
+
+# keine Multikollinearität
+round(vif(modell_genequatt), 3) # liegt nicht vor
+
+# Normalverteilte Residuen
+plot(modell_genequatt, 2)
+
+```
+
+```{r reg-tbl}
+#| tbl-cap: "Regression"
+#| results: asis
+#| out-height: 100%
+#| out-width: 100%
+
+stargazer(modell_genatt, modell_genequatt,
+          type = "latex",
+          covariate.labels = c("Alter", "Geschlecht (w)", "Ost-West (Ost)", "Bildung (Studium)", "politisches Interesse", "politische Informiertheit", "Deutsch nicht als Muttersprache", "Azubi", "in 1-€-Job tätig", "Arbeitslos", "Altersteilzeit", "Rentner*in/Pensionär*in", "Schüler*in", "Student*in", "Hausfrau*Hausmann", "FSJ/FÖJ/BFD", "Sonstiges", "Klasse", "Haushaltsgröße", "Kinde im Haushalt", "Haushaltsnettoeinkommen", "Gemeindegröße", "CDU", "CSU", "Bündnis 90/Die Grünen", "FDP", "AfD", "Die Linke", "Andere Partei", "Keine Partei ist sympathisch", "Migrationshintergrund (ich selbst)", "Migrationshintergrund (ein Elternteil", "Migrationshintergrund (beide Eltern)"),
+          dep.var.labels = c("Ablehnung geS", "GeS leistet Mehrwert für Gleichberechtigung"),
+          dep.var.caption = "Abhängige Variable:",
+          float = TRUE, # Tabelle soll als float eingebunden werden
+          font.size = "scriptsize", # Schriftgröße verkleinern
+          no.space = TRUE, # keine Zwischenräume
+          report = "vc*" #Nur Koeffizienten anzeigen (keine Standardfehler)
+          )
 
 ```

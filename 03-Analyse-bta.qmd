@@ -19,9 +19,7 @@ library(ggpubr)
 
 ```
 
-## Methodik
-
-### Daten, Operationalisierung, Limitationen, Analysestrategie {#sec-daten-bta}
+## Methodik {#sec-methodik-bta}
 
 Mithilfe der API des Bundestags wurden sämtliche Bundestagsanträge gesammelt, die im Untersuchungszeitraum gestellt wurden.[^03-analyse-bta-1] Aus diesem Datensatz wurden alle Anträge entfernt, die keine Anträge aus den Reihen des Bundestags waren, sondern aus dem Bundesrat heraus gestellt wurden. Auch Regierungs- und Ministeriumsanträge fielen raus, die allerdings weder einen relevanten Anteil ausmachen noch Anträge zum Thema geschlechtergerechte Sprache gestellt haben.
 
@@ -245,8 +243,8 @@ f6 <- ggplot(bta_gender_counts, aes(x = party, y = relative_count, fill = time))
 #|   - "Anträge mit Hauptthema geS"
 #|   - "Anträge pro Tag mit Hauptthema geS nach Wahlperiode"
 #|   - "Anträge pro Tag mit Hauptthema geS nach Jahr"
-#| out-height: 120%
-#| out-width: 120%
+#| out-height: 100%
+#| out-width: 100%
 
 f1
 f2

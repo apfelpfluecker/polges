@@ -72,10 +72,11 @@ sui <- sui_raw %>%
     genatt = Q13, # attitude towards gender-neutral language
     genequatt = Q15 # attitude towards role for gender equality
   ) %>% 
+  set_na(na = c(-66, 99, -99)) %>% 
   mutate(eastwest = rec(
     fed_state,
-    rec = "1,2,3,4,5,6,7,8,9,10 = 0 [West]; 12,13,14,15,16 = 1 [Ost]",
-    var.label = "Ost-West-Zueghörigkeit",
+    rec = "1,2,3,4,5,6,7,8,9,10,11 = 0 [West]; 12,13,14,15,16 = 1 [Ost]",
+    var.label = "Ost-West-Zugehörigkeit",
     to.factor = TRUE
   )) %>% 
   mutate(educ = rec(
@@ -92,7 +93,7 @@ sui <- sui_raw %>%
   )) %>% 
   mutate(genequatt = rec(
     genequatt,
-    rec = "1 = 1 [Bringt Gleichberechtigung voran]; 2 = 0 [Bringt nicht viel]",
+    rec = "1 = 1 [Bringt Gleichberechtigung voran]; 2 = 0 [Bringt nicht viel]; else = copy",
     var.label = "Mehrwert für Gleichberechtigung",
     to.factor = TRUE
   )) %>% 
@@ -103,15 +104,12 @@ sui <- sui_raw %>%
     to.factor = TRUE
   ))
 
-sui <- set_na(sui, na = c(-66, 99, -99)) # unklar, was -66 bedeutet
+#sui <- set_na(sui, na = c(-66, 99, -99)) # unklar, was -66 bedeutet
 
 # Variablen zu numerischen umkodieren
 sui$age <- as.numeric(sui$age) 
-sui$class <- as.numeric(sui$class)  # Unterschicht-untere Mittelschicht-Mittelschicht-obere Mittelschicht-Oberschicht
-sui$houseinc <- as.numeric(sui$houseinc) # unter 1.5 - 1.5-2.5 - 2.5-3.5 - ü3.5
-sui$commsize <- as.numeric(sui$commsize) # unter 5 - 5-20 - 20-50 - 50-100 - 100-500 - ü500
-sui$polint <- as.numeric(sui$polint) # sehr stark-eher stark - weniger stark - überhaupt nicht
-sui$polinf <- as.numeric(sui$polinf) # täglich - wöchentlich - monatlich - seltener -nie
+#sui$houseinc <- as.numeric(sui$houseinc) # unter 1.5 - 1.5-2.5 - 2.5-3.5 - ü3.5
+#sui$commsize <- as.numeric(sui$commsize) # unter 5 - 5-20 - 20-50 - 50-100 - 100-500 - ü500
 sui$genatt <- as.numeric(sui$genatt) # voll und ganz - eher - lehne eher ab - lehne voll und ganz ab
 sui$genequatt <- as.numeric(sui$genequatt) # Bringt nicht viel - Bringt Gleichberechtigung voran
   

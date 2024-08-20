@@ -32,7 +32,7 @@ execute:
 \pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{17}
 \pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{18}
 ```
-# Tabellen
+# Tabellen {#sec-tabellen}
 
 ```{r}
 #| tbl-cap: "VIF-Werte"

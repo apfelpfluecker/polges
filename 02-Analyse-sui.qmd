@@ -14,15 +14,70 @@ execute:
 source("_common.R")
 ```
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+```{r reg-genatt}
+#| output: false
 
-## Methodensteckbrief
+library(car)
 
-Der ist im Files-Ordner zu finden.
+sui <- readRDS("data/sui.Rds")
+
+# Regressionsmodell
+modell_genatt <- lm(genatt ~ age + sex + eastwest + educ + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
+
+# Homoskedastizität
+plot(modell_genatt, 1) # liegt nicht vor
+
+# keine Multikollinearität
+round(vif(modell_genatt), 3) # liegt nicht vor
+
+# Normalverteilte Residuen
+plot(modell_genatt, 2)
+
+sui_genatt <- sui %>% 
+  select(genatt, age, sex, eastwest, educ, motong_oth, gainemp, class, housesize, childinhouse, houseinc, commsize, party, migback)
+sui_genatt <- sui_genatt[complete.cases(sui_genatt),]
+
+```
+
+```{r reg-genequatt}
+#| output: false
+library(rms)
+library(car)
+library(stargazer)
+
+# Regressionsmodell
+modell_genequatt <- glm(genequatt ~ age + sex + eastwest + educ + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
+
+# keine Multikollinearität
+round(vif(modell_genequatt), 3) # liegt nicht vor
+
+# Fallzahl der einzelnen Ausprägungen über 25
+sum(sui$genequatt == 1, na.rm = TRUE) > 25
+sum(sui$genequatt == 2, na.rm = TRUE) > 25
+
+
+```
+
+## Methodik
+
+Die Daten dieser Analyse stammen aus dem Survey "Sprache und Identität bei Intensivnutzern sozialer Medien (Juli 2022)" [@presse-undinformationsamtderbundesregierungberlin], der von Kantar Public im Auftrag des Presse- und Informationsamts der Bundesregierung im Zeitraum vom 21.07.2022 bis zum 03.08.2022 durchgeführt wurde. Befragt wurden Intensivnutzer\*innen sozialer Medien ab 16 Jahren in Deutschland mittels eines Onlineinterviews (CAWI). Als Intensivnutzer\*in galt, wer mindestens ein Mal täglich Social Media nutzte. 1040 Menschen nahmen an der Befragung teil. Für diese Analyse konnten allerdings nur `r 1040-length(modell_genatt$na.action)` beziehungsweise `r 1040-length(modell_genequatt$na.action)` Fälle einbezogen werden.[^02-analyse-sui-1] Es handelt sich um eine Querschnittsstudie.
+
+[^02-analyse-sui-1]: Grund hierfür ist, dass einbezogene Fälle bei allen im Modell berücksichtigten Variablen eine Antwort gegeben haben müssen.
+
+Problematisch ist die geringe Anzahl an verwertbaren Fällen, wodurch es nicht möglich ist, für die Ergebnisse dieser Analyse Repräsentativität zu beanspruchen. Außerdem hat natürlich auch das Online-Format der Studie einen Bias, der allerdings zumindest mithilfe einer Quotierung des Online Access-Panels verringert wurde. Des weiteren bringt die Operationalisierung einiger Variablen einige Einschränkungen mit sich. So wird beispielsweise die Soziale Schicht über eine Selbsteinschätzung in einer fünfstufigen Skala erfasst, obwohl gerade die eigene Schicht oft fälschlich eingeschätzt wird. Schade ist ebenso, dass der Mehrwert für Gleichberechtigung nur dichotom erfasst wird, was im konkreten Fall das Durchführen einer linearen Regression und damit einen besseren Vergleich mit den Studienergebnissen von @mau2024 verhindert.
+
+Um die Hypothesen zu testen, werden die Variablen "Ablehnung geschlechtergerechter Sprache" und "Mehrwert für Gleichberechtigung" einer linearen [@frost2018] beziehungsweisen logistischen Regressionsanalyse [@behnke2015] unterzogen. Die Fragestellung bei "Mehrwert für Gleichberechtigung"[^02-analyse-sui-2] ähnelt dabei der Fragestellung von @mau2024[^02-analyse-sui-3], nur leider wurde sie mit einer anderen Skalierung gemessen, wodurch ein direkter Vergleich nicht möglich ist. Deswegen wird außerdem die Ablehnung geschlechtergerechter Sprache[^02-analyse-sui-4] verwendet, die vom Konstrukt her in die gleiche Richtung gehen sollte.
+
+[^02-analyse-sui-2]: "Glauben Sie, es bringt die Gleichberechtigung voran, wenn neben der männlichen immer auch die weibliche Form verwendet wird, oder bringt das für die Gleichberechtigung nicht viel?"
+
+[^02-analyse-sui-3]: "Eine gendergerechte Sprache, bei der alle Geschlechter eingeschlossen sind, ist ein wichtiger Beitrag für die Gleichstellung."
+
+[^02-analyse-sui-4]: "Ganz allgemein: Was halten Sie von gendergerechter Sprache?" Das Konstrukt wurde mithilfe einer vierstufigen Skala gemessen.
 
 ```{r}
 #| label: tbl-Methodensteckbrief
 #| echo: false
+#| output: false
 
 #DATEN %>% frq(SPRACHE, weights = GEWICHT)
 
@@ -38,67 +93,59 @@ Methodensteckbrief %>%
 options(knitr.kable.NA = "---")
 ```
 
-```{r}
-# alle Variablen: age, sex, fed_state, eastwest, education, polint,   polinf, motong_ger, motong_oth, gainemp, class, housesize, childinhouse, houseinc, commsize, party, migback, genatt
+## Datenanalyse und Ergebnisse[^02-analyse-sui-5]
 
-```
+[^02-analyse-sui-5]: Die Prüfung der Vorannahmen befindet sich im @sec-tabellen.
 
-```{r reg-genatt}
-#| output: false
+Die Analyse der Ablehnung geschlechtergerechter Sprache zeigt sehr offensichtlich, dass die Signifikanzen der meisten Variablen deutlich über den anerkannten Signifkanzniveaus liegt (@tbl-reg[^02-analyse-sui-6]). Das könnte in der schon thematisierten vergleichsweise schwachen Datenqualität begründet liegen. Signifikante Effekte konnten für die Variablen Alter, Geschlecht, Erwerbstätigkeit (Azubi, Rentner\*in/Pensionär\*in, Student\*in), Klasse (Mittelschicht, Oberschicht), Partei (Grüne, AfD) sowie Migrationshintergrund (ich selbst) festgestellt werden. Die folgende Überprüfung der Hypothesen muss vor dem Hintergrund dieser starken Barriere betrachtet werden. Die Hypothese 1.1 kann mit Einschränkungen als nicht widerrufen gelten. Zwar ist kein signifikanter Effekt fürs Alter (`0.01`) vorhanden und nur kleine Effekte[^02-analyse-sui-7] für Azubis (`-0.493`), Rentner\*innen (`-0.283`) sowie die Mittelschicht (`0.387`), jedoch konnten auch mittlere Effekte für Studierende (`-0.581`) und Menschen mit eigenem Migrationshintergrund (`-0.5`) nachgewiesen werden. Darüber hinaus auch ein hoher Effekt für die Oberschicht (`0.983`). Menschen aus der Oberschicht unterscheiden sich also von denen der Unterschicht um eine ganze Skalenstufe. Dieser Befund widerspricht allerdings nicht wirklich den Befunden von Mau et al, da Studierende und Migrant\*innen lediglich je 3,07 % im Modell ausmachen – die Oberschicht sogar nur 0,9 %. Hypothese H1.2 zeigt nur einen sehr schwachen Effekt für Frauen (`-0.171`) und muss damit widerrufen werden. Für die Hypothese 1.3 konnten keine signifikanten Effekte festgestellt werden. Anders für H1.4 und H1.5: Für beide zeigt sich der prognostizierte Zusammenhang. Grünen-Sympathisant\*innen lehnen geschlechtergerechte Sprache deutlich weniger ab (`-0.523`, im Vergleich zu SPD-Sympathisant\*innen), AfD-Sympathisant\*innen deutlich mehr (`0.833`). Das Modell leistet mit `F (40, 513) = 3.562, p < 0.01` einen signifikanten Erklärungsbeitrag, die Varianzaufklärung ist mit `R² = 0.217` moderat (`korr. R² = 0.156`).
 
-library(car)
+[^02-analyse-sui-6]: Zur Lesart der Tabelle: Dichotome Variablen wie das Geschlecht bezeichnen in Klammern die Ausprägung, für die der Koeffizient gilt. Beim Geschlecht ist die Bezugsgröße die Ausprägung Mann, dementsprechend ist mit "(w)" gekennzeichnet, dass der Koeffizient von `-0.171` für Frauen gilt. Kategoriale Variablen wie die Erwerbstätigkeit (ET) sind jeweils im Bezug zur ersten Ausprägung zu verstehen. Bei der Erwerbstätigkeit ist dies Voll-/Teilzeiterwerbstätig (inkl. Mini-Jobs), bei der Klasse die Unterschicht, beim Haushaltseinkommen unter 1.500 €, bei der Gemeindegröße unter 5.000 Einwohner\*innen, bei der Partei die SPD und beim Migrationshintergrund kein Migrationshintergrund.
 
-sui <- readRDS("data/sui.Rds")
-
-# Regressionsmodell
-modell_genatt <- lm(genatt ~ age + sex + eastwest + educ + polint + polinf + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
-
-# Homoskedastizität
-plot(modell_genatt, 1) # liegt nicht vor
-
-# keine Multikollinearität
-round(vif(modell_genatt), 3) # liegt nicht vor
-
-# Normalverteilte Residuen
-plot(modell_genatt, 2)
-
-```
-
-```{r reg-genequatt}
-#| output: false
-
-library(car)
-library(stargazer)
-
-# Regressionsmodell
-modell_genequatt <- glm(genequatt ~ age + sex + eastwest + educ + polint + polinf + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
-
-# Homoskedastizität
-plot(modell_genequatt, 1) # liegt nicht vor
-
-# keine Multikollinearität
-round(vif(modell_genequatt), 3) # liegt nicht vor
-
-# Normalverteilte Residuen
-plot(modell_genequatt, 2)
-
-```
+[^02-analyse-sui-7]: Als kleiner Effekt wird ein Koeffizient von `0.25-0.5` definiert, ein mittlerer Effekt ein Koeffizient von `0.5-0.75`, ein großer Effekt ein Koeffizient von `0.75-1` und ein sehr großer Effekt ein Koeffizient von `>1`. Der Koeffizient gibt an, um wie viel sich der Wert der abhängigen Variable ändert, wenn man den Wert der unabhängigen Variable um eins erhöht.
 
 ```{r reg-tbl}
-#| tbl-cap: "Regression"
+#| tbl-cap: "Regressionsmodelle zur Ablehnung geschlechtergerechter Sprache. Daten: Sprache und Identität (2022). Eigene Berechnung."
+#| label: tbl-reg
 #| results: asis
 #| out-height: 100%
 #| out-width: 100%
 
-stargazer(modell_genatt, modell_genequatt,
+odds_genequatt <- round(exp(coef(modell_genequatt)), 3)
+
+stargazer(modell_genatt, modell_genequatt, modell_genequatt,
           type = "latex",
-          covariate.labels = c("Alter", "Geschlecht (w)", "Ost-West (Ost)", "Bildung (Studium)", "politisches Interesse", "politische Informiertheit", "Deutsch nicht als Muttersprache", "Azubi", "in 1-€-Job tätig", "Arbeitslos", "Altersteilzeit", "Rentner*in/Pensionär*in", "Schüler*in", "Student*in", "Hausfrau*Hausmann", "FSJ/FÖJ/BFD", "Sonstiges", "Klasse", "Haushaltsgröße", "Kinde im Haushalt", "Haushaltsnettoeinkommen", "Gemeindegröße", "CDU", "CSU", "Bündnis 90/Die Grünen", "FDP", "AfD", "Die Linke", "Andere Partei", "Keine Partei ist sympathisch", "Migrationshintergrund (ich selbst)", "Migrationshintergrund (ein Elternteil", "Migrationshintergrund (beide Eltern)"),
-          dep.var.labels = c("Ablehnung geS", "GeS leistet Mehrwert für Gleichberechtigung"),
+          covariate.labels = c(
+            "Alter", 
+            "Geschlecht (w)", 
+            "Ost-West (Ost)", 
+            "Bildung (Studium)", 
+            "Deutsch nicht als Muttersprache", 
+            "ET: Azubi", "ET: in 1-€-Job tätig", "ET: Arbeitslos", "ET: Altersteilzeit", "ET: Rentner*in/Pensionär*in", "ET: Schüler*in", "ET: Student*in", "ET: Hausfrau*Hausmann", "ET: FSJ/FÖJ/BFD", "ET: Sonstiges", 
+            "Klasse: untere Mittelschicht", "Klasse: Mittelschicht", "Klasse: obere Mittelschicht", "Klasse: Oberschicht", 
+            "Haushaltsgröße", 
+            "Kinder im Haushalt",
+            "Haushaltsnettoeinkommen: 1.500-2.500", "Haushaltsnettoeinkommen: 2.500-3.500", "Haushaltsnettoeinkommen: über 3.500",
+            "Gemeindegröße: 5-20 Tsd.", "Gemeindegröße: 20-50 Tsd.", "Gemeindegröße: 50-100 Tsd.", "Gemeindegröße: 100-500 Tsd.", "Gemeindegröße: über 500 Tsd.",
+            "Partei: CDU", "Partei: CSU", "Partei: Bündnis 90/Die Grünen", "Partei: FDP", "Partei: AfD", "Partei: Die Linke", "Partei: Andere Partei", "Partei: Keine Partei ist sympathisch",
+            "Migrationshintergrund (ich selbst)", "Migrationshintergrund (ein Elternteil", "Migrationshintergrund (beide Eltern)"),
+          dep.var.labels = c("Ablehnung geS", "Mehrwert für Gleichberechtigung", ""),
           dep.var.caption = "Abhängige Variable:",
-          float = TRUE, # Tabelle soll als float eingebunden werden
+          float = FALSE, # Tabelle soll als float eingebunden werden # Kollidiert mit Quarto
           font.size = "scriptsize", # Schriftgröße verkleinern
           no.space = TRUE, # keine Zwischenräume
-          report = "vc*" #Nur Koeffizienten anzeigen (keine Standardfehler)
+          report = "vc*", #Nur Koeffizienten anzeigen (keine Standardfehler)
+          header = FALSE, # Entfernt die Kommentarzeile (Version + Erstellungsdatum)
+          coef = list(NULL, NULL, odds_genequatt),
+          model.names = FALSE, # verhindert, dass Methode angezeigt wird, z.B. OLS
+          model.numbers = FALSE # verhindert dass Modellnummern angeziegt werden, z.B. normal
           )
 
 ```
+
+Zum Vergleich wird an dieser Stelle zusätzlich die rechte Seite von @tbl-reg hinzugezogen, die einerseits die Koeffizienten (links, mit Signifikanzsternen) und andererseits die Odds Ratios (rechts). Auch hier zeigen sich nur sehr wenige signifikante Effekte: Deutsch nicht als Muttersprache, Haushaltsgröße, Anzahl der Kinder im Haushalt, Haushaltsnettoeinkommen (alle) sowie Partei (AfD).[^02-analyse-sui-8] Mit Blick auf die Hypothesen kann somit für H1.2, H1.3 und H1.4 keine Aussage getroffen werden. Bezüglich H1.1 ergibt sich ein . Es ergibt sich ein leichter Effekt für Nicht-Muttersprachler\*innen. Die Wahrscheinlichkeit, dass sie geschlechtergerechte Sprache einen Mehrwert für die Gleichberechtigung zuschreiben, ist `1.2` mal höher als bei Muttersprachler\*innen. Für die Haushaltsgröße sowie die Anzahl der Kinder im Haushalt lässt sich kein Effekt beobachten. Anders für die drei Einkommensgruppen, für die sich das schon in Betrachtung des linearen Modells angedeutete Bild ergibt, dass die höheren Einkommensklassen geschlechtergerechter Sprache eher skeptischer gegenüberstehen als die unterste – ein bemerkenswerter Befund, der sich mit @mau2024 [: 175] gleicht. Auch hier ist der Effekt nur leicht, im Reziprok der Odds: `1.200`, `1.212`, `1.272`. H1.1 wird damit eher bestärkt unter der oben genannten Einschränkung. Auch für die AfD kann lediglich ein leichter Effekt nachgewiesen werden: Es ist `1.229` mal wahrscheinlicher, dass ein\*e AfD-Sympathisant\*in geschlechtergerechte Sprache keinen Mehrwert für die Gleichberechtigung zugesteht. H1.4 ist damit leicht bekräftigt worden.
+
+[^02-analyse-sui-8]: Bis auf die Gemeindegröße (5–20 Tsd., `p = 0.126`) sind alle Variablen weit entfernt von einem der drei möglichen Signifikanzniveaus.
+
+## Auswertung
+
+Insgesamt zeigt die Analyse vor allem die Schwachpunkte der vorliegenden Daten auf. Trotzdem können Tendenzen aus den Modellen abgeleitet werden: H1.1 wurde mit Einschränkungen bekräftigt. Es konnten keine signifikant großen Effekte befunden werden. H1.2 ist falsifiziert, das Geschlecht hat nur einen sehr leichten Effekt. Für die Hypothese 1.3 fehlten signifikante Daten, sodass auf ihre Prüfung verzichtet werden musste. H1.4 konnte klar bekräftigt werden: AfD-Sympathie führt signifikant mehr zur Ablehnung geschlechtergerechter Sprache. H1.5 konnte ebenso bekräftigt werden, auch wenn keine Signifikanz für das logistische Modell vorhanden war.

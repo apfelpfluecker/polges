@@ -190,15 +190,9 @@ Populismus wird in dieser Arbeit angelehnt an Cas Mudde als eine dünne Ideologi
 
 Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerechtigkeit in der Sprache herzustellen, wobei ein wichtiger Bestandteil die Sichtbarmachung von in der Sprache nicht abgebildeten Geschlechtern ist [vgl. @rödder2022: 6].
 
-…
-
--   Forschungsfragen (ggf. in Einleitung)
-
--   Relevanz (ggf. in Einleitung)
-
 ### Analyse von Individualdaten
 
--   zu erwarten, dass alle keinen großen Einfluss
+Welche sozialstrukturellen Merkmale führen zu einer ablehnenden Einstellung gegenüber geschlechtergerechter Sprache? Grundsätzlich wird erwartet, dass sich anliegend an die Befunde von @mau2024 \[: 287-303\] keine größeren sozialstrukturellen Effekte zeigen. Zwar ist geschlechtergerechte Sprache ein gesellschaftlicher Triggerpunkt, allerdings sollte dies in allen Gruppen ähnlich gut erkennbar sein. Dementsprechend wird vermutet, dass es keine größeren Effekte bei allen sozialstrukturellen Merkmalen gibt – mit Ausnahme des Geschlechts und der Gemeindegröße (H1.1). Frauen sollten demnach geschlechtergerechter Sprache positiver gegenüberstehen als Männer (H1.2) und Menschen aus der Stadt positiver als Menschen vom Land (H1.3). Bei der Parteisympathie liegt die Vermutung nahe, dass sich negative Effekte bei der AfD (H1.4) und positive bei den Grünen (H1.5) zeigen, allerdings sollten diese ebenfalls nicht überaus deutlich sein [vgl. @mau2024: 351-378].
 
 ### Analyse von Bundestagsanträgen
 

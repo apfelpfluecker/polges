@@ -1,68 +1,11 @@
 # Politisierung geschlechtergerechter Sprache (PolGeS)
 
-– Bachelorarbeit –
+– Bachelorarbeit, vorgelegt von Jakob Krueger –
 
-## Zeitplan
+## Erklärungen zum Online-Anhang
 
-### Wochenübersicht
+Das Repository ist so aufgebaut, dass in den Quarto Dateien `index.qmd`, `01-Theorieteil.qmd`, `02-Analyse-sui.qmd`, `03-Analyse-bta.qmd`, `04-Analyse-sm.qmd`, `07-Schluss.qmd` und `08-Anhang.qmd` der Quellcode der Arbeit zu finden ist. In den drei Analyse-Dateien befindet sich der R-Code zur Berechnung der Analysen. Die Datenaufbereitung ist in der Datei `Datenaufbereitungsvorlage.qmd` vollzogen worden.
 
-- Woche 24.-30.06.: 6 Tage
-  - Populismus
-  - GeS und Ablehnung von GeS
-  - Antifeminismen
-- Woche 01.-07.07.: 2 Tage (Rudolstadt)
-- Woche 08.-14.07.: 5 Tage
-- Woche 15.-21.07.: 4 Tage
-- Woche 22.-28.07.: 0 Tage (Floßfahrt)
-- Woche 29.07.-04.08.: 5 Tage
-- Woche 05.-11.08.: 0 Tage (Paddeltour)
-- Woche 12.-18.08.: 6 Tage
-- Woche 19.-25.08.: 0 Tage (DRUCK)
+Im Ordner `data` befinden sich die Daten, die in den Analyse-Dateien inkludiert werden (`sui.Rds`, `btantraege.Rds`, `sm_marktanteile.Rds` und `fb_posts.Rds`). Im Ordner `bundestag-api` befindet sich das Skript für den API-Zugriff (`api-zugriff.qmd`), unter `individualdaten` der Fragebogen und Ergebnisbericht der Studie Sprache und Identität und unter `social-media-data` die einzelnen Erhebungen der Facebook-Posts, die in der Datenaufbereitung dann zusammengefügt wurden, außerdem auch die Codierten Posts.
 
-### To Do’s
-
-- [ ] Forschungsstände
-  
-  - [x] Populismus
-  
-  - [ ] Geschlechtergerechte Sprache (inkl. Ablehnung)
-    
-    - [ ] Zum Begriff der Politisierung
-  
-  - [ ] Ablehnung von Anti-Genderismus/Anitfemitismus
-  
-  - [ ] Einordnung von Bundestagsanträgen und ihre Rolle im politischen Prozess (politics)
-
-- [ ] Theorieentwicklung (auf Basis der Forschungsstände)
-  
-  - [ ] Welche Gruppen lehnen ab
-  
-  - [ ] Welche Parteien thematisieren es
-    
-    - [ ] Standpunkte der Parteien thematisieren?
-  
-  - [ ] Welche Parteien thematisieren es populistisch
-
-- [ ] Analysen
-  
-  - [ ] Individualdaten
-    
-    - [ ] Analyseart festlegen
-  
-  - [ ] BTA (nicht unterschätzen)
-    
-    - [x] Datenerhebung
-    
-    - [ ] Kodierung
-  
-  - [ ] Inhaltsanalyse Social-Media-Posts
-    
-    - [ ] Datenerhebung
-    
-    - [ ] Codebuch
-    
-    - [ ] Kodierung
-
-- [ ] Einleitung
-
-- [ ] Schluss
+Im Ordner `files` befindet sich das Skript für das Codebuch (`Codebuch.qmd`) sowie einige Dateien, die für das Kompilieren der TeX-Datei wichtig sind.

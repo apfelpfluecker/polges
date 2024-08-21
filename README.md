@@ -1,4 +1,4 @@
-# Politisierung geschlechtergerechter Sprache (PolGeS)
+# Polarisierung geschlechtergerechter Sprache (PolGeS)
 
 – Bachelorarbeit, vorgelegt von Jakob Krueger –
 

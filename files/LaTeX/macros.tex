@@ -218,15 +218,16 @@
 \renewcommand\reftextfaraway[1]{Seite~\pageref{#1}}
 %
 \makeatletter
-\@addtoreset{figure}{section}
-\@addtoreset{table}{section}
+% fügt bei jeder Section ein Reset der Zählung des Figure-Counters ein
+%\@addtoreset{figure}{section}
+%\@addtoreset{table}{section}
 \makeatother
 %
 % %\definecolor{darkestblue}{rgb}{1,27,84}
 
 \usepackage[ngerman]{cleveref}
 
-\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
 
 \renewcommand{\thetable}{\thesection.\arabic{table}}
 
@@ -235,8 +236,8 @@
 % KOMA options
 
 \KOMAoptions{pagesize, paper=portrait}
-      \newgeometry{a4paper, lmargin=30mm, top=30mm, textwidth=15.5cm,
- textheight=22.5cm}%
+%      \newgeometry{a4paper, lmargin=30mm, top=30mm, textwidth=15.5cm,
+% textheight=22.5cm}%
  
 \floatplacement{figure}{H}
 \floatplacement{table}{H}
@@ -259,7 +260,12 @@
 \newcommand{\etwocol}{\end{multicols}}
 
 \newcommand{\pdf}[3][1cm 1cm 1cm 1cm]
-  {\begin{center} \includegraphics[width=\linewidth,trim = #1,
+  {
+  %\begin{center}
+  \includegraphics[width=\linewidth,trim = #1,
       clip, page = #3]{#2}
-   \end{center}}
+  \newpage
+  %\includepdf[width=\textwidth,trim = #1, clip, pages = #3, pagecommand={}]{#2}
+  %\end{center}
+  }
 

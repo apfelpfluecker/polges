@@ -32,7 +32,7 @@ Der Untersuchungszeitraum war parallel zur Erhebung der Bundestagsanträge der 2
 
 Der Untersuchungsbereich bezieht sich ausschließlich auf deutsche Parteien. Innerhalb dieses Pools wurden anhand einer Auswahl typischer Fälle lediglich die Parteien betrachtet, die während des Untersuchungszeitraums eine Gruppe oder eine Fraktion im Bundestag stellten oder Teil davon waren.[^04-analyse-sm-2] Übrig bleiben nach dieser Auswahl die Sozialdemokratische Partei Deutschlands (SPD), die Christlich Demokratische Union Deutschlands (CDU) und ihre Schwesterpartei, die Christlich-Soziale Union in Bayern (CSU), Bündnis 90/Die Grünen (Grüne), die Freie Demokratische Partei (FDP), die Alternative für Deutschland (AfD), Die Linke (Linke), sowie das Bündnis Sahra Wagenknecht – Vernunft und Gerechtigkeit (BSW), die im Folgenden der Übersicht halber auch als "Bundestagsparteien" bezeichnet werden.
 
-[^04-analyse-sm-2]: Damit ist der Südschleswigsche Wählerverband (SSW) beispielsweise nicht Teil der Analyse, obwohl die Partei als Partei nationaler Minderheiten 2021 in den Bundestag gewählt wurde. Ihr Abgeordneter Stefan Seidler ist fraktionslos. Gleiches gilt für die Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative (Die PARTEI) und Marco Bülow, der 2018 als Mitglied des Bundestages (MdB) aus der SPD und der SPD-Fraktion austrat, um 2020 in die Partei Die PARTEI einzutreten.
+[^04-analyse-sm-2]: Damit ist der Südschleswigsche Wählerverband (SSW) beispielsweise nicht Teil der Analyse, obwohl die Partei als Partei nationaler Minderheiten 2021 in den Bundestag gewählt wurde. Ihr Abgeordneter Stefan Seidler ist fraktionslos. Gleiches gilt für die Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative (Die PARTEI) und Marco Bülow, der 2018 als Mitglied des Bundestages (MdB) aus der SPD und der SPD-Fraktion austrat, um 2020 in die Partei Die PARTEI einzutreten [vgl. @starzmann2020: o. S.].
 
 Die Social-Media-Kommunikation der Bundestagsparteien wurde operationalisiert durch Facebook-Posts. Soziale Medien stehen deswegen im Fokus dieser Analyse, da sie Populismus unter anderem aufgrund der direkteren Verbindung zur Zielgruppe im Gegensatz zu anderen Medien [vgl. @engesser2017: 1113] einen besonders guten Nährboden bieten [vgl. @müller2016: 194; vgl. @engesser2017: 1350]. Außerdem gehören sie zum festen Kommunikationsrepertoire der Parteien [vgl. @spieß2020: 221], sodass davon ausgegangen werden kann, dass die transportierten Inhalte Ausdruck der Parteimeinung sind. Facebook wurde als Plattform aus drei Gründen ausgewählt: Erstens zeigten bereits @spieß2020 \[: 222\], "dass populistische Kommunikation insbesondere auf Facebook reüssiert". @ernst2017 [: 1357] kamen darüber hinaus zu dem Schluss, dass populistische Kommunikation auf Facebook mehr vertreten ist als bei X (damals Twitter). Zweitens ist Facebook die größte Social-Media-Plattform in Deutschland (vgl. @fig-sm-marktanteil),[^04-analyse-sm-3] die darüber hinaus auch populärer und sozial gemischter ist als andere (Text-)Plattformen [vgl. @ernst2017: 1352]. Und drittens konnten aus forschungsökonomischen Gründen keine weiteren Plattformen untersucht werden.[^04-analyse-sm-4] Ein weiterer Vorteil gegenüber X (ehemals Twitter) ist die nicht vorhandene Zeichenlimitationen, wodurch populistische Konstrukte viel umfangreicher formuliert werden können.
 
@@ -43,7 +43,8 @@ Die Social-Media-Kommunikation der Bundestagsparteien wurde operationalisiert du
 ```{r sm-marktanteil}
 #| label: fig-sm-marktanteil
 #| fig-cap: "Marktanteile verschiedener Social-Media-Plattformen im Zeitverlauf (10/2017–06/2024). Datengrundlage: Statcounter GlobalStats. Eigene Abbildung."
-#| out-width: 50%
+#| out-width: 75%
+#| fig-pos: htpb
 #| echo: false
 #| warning: false
 #| message: false
@@ -62,7 +63,7 @@ sm_marktanteile_long$Date <- ymd(paste0(sm_marktanteile_long$Date, "-01"))
 ggplot(data = sm_marktanteile_long, aes(x = Date, y = MarketShare, color = Plattform)) +
   geom_line(linewidth = 0.4) +
   geom_point(size = 0.3) +
-  scale_color_manual(values = viridis(9))
+  scale_color_manual(values = viridis(9)) +
   labs(x = "Zeit (in Monaten)", y = "Marktanteil (%)") +
   theme_minimal()
 
@@ -108,13 +109,21 @@ Dahingegen kann Hypothese 3.4 weder bekräftigt noch verworfen werden. Zwar wurd
 
 Interessant ist, dass die Daten nahelegen, dass geschlechtergerechte Sprache einerseits rein zahlenmäßig gar kein so großes Thema war (auch wenn Vergleiche zu anderen Themenbereichen notwendig wären, um dies zwingend festzustellen) und andererseits der Peak des Themas längst überschritten ist – zumindest für Posts der Bundestagsparteien. Zudem legt die sinkende Zahl der durchschnittlichen Posts pro Tag den Schluss nahe, dass auch das Medium Facebook seinen Peak bereits hinter sich hat (@fig-smplots-2, `Chi² (7) = 560.03, p < 0.01`). Dies könnte durch zeitlich umfangreichere Untersuchungen und im Vergleich zu anderen Social Media noch exakter bearbeitet werden. Ein eventueller Zusammenhang zwischen einer Regierungsbeteiligung und dem Postverhalten kann aus den Daten nicht abgeleitet werden (@fig-smplots-2).
 
+Bei der Betrachtung der Hypothese 3.2 sowie @fig-popindplots springt sofort ins Auge, dass vor allem und fast ausschließlich die AfD und die CSU populistisch über geschlechtergerechte Sprache sprechen. Aus dem Violin-Plot (@fig-popindplots-1, `Chi² (18, 74) = 27.82, p < 0.1`[^04-analyse-sm-13]) geht hervor, dass die AfD populistischer agiert, was sich sowohl mit Blick auf die Bewertungsstufen (gering, moderat, hoch) zeigt (@fig-popindplots-2, `Chi² (9, 74) = 15.37, p = 0.14`[^04-analyse-sm-14]), als auch in Bezug auf die Posts mit Hauptthema geschlechtergerechter Sprache (@fig-popindplots-3, `Chi² (12, 36) = 16.57, p = 0.31`; @fig-popindplots-4, `Chi² (6, 36= = 4.62, p = 0.5`[^04-analyse-sm-15]) – wenn auch für alle drei Grafiken gilt, dass sie ein zu hohes Maß an Überzufälligkeit aufweisen. Hypothese 3.2 kann somit nur in Teilen bekräftigt werden, die Linken fallen wie schon bei H3.1 aus dem theoretischen Raster.
+
+[^04-analyse-sm-13]: Fisher-Test zur Ermittlung der exakten Signifikanz.
+
+[^04-analyse-sm-14]: Fishers-Test zur Ermittlung der exakten Signifikanz.
+
+[^04-analyse-sm-15]: Jeweils: Fishers-Test zur Ermittlung der exakten Signifikanz.
+
 ```{r plots-erstellen}
 #| echo: false
 #| warning: false
 #| message: false
 
 library(ggplot2)
-library(patchwork)
+#library(patchwork)
 library(tidyr)
 library(viridisLite)
 library(viridis)
@@ -431,7 +440,7 @@ p13 <- ggplot(gender_main_posts, aes(fill = popind, y = party)) +
 #|   - "Posts pro Tag mit Hauptthema geS nach Jahr"
 #| out-height: 80%
 #| out-width: 80%
-#| fig-pos: p
+#| fig-pos: htpb
 #| echo: false
 #| warning: false
 #| message: false
@@ -451,20 +460,13 @@ p9
 
 \elandscape
 
-Bei der Betrachtung der Hypothese 3.2 sowie @fig-popindplots springt sofort ins Auge, dass vor allem und fast ausschließlich die AfD und die CSU populistisch über geschlechtergerechte Sprache sprechen. Aus dem Violin-Plot (@fig-popindplots-1, `Chi² (18, 74) = 27.82, p < 0.1`[^04-analyse-sm-13]) geht hervor, dass die AfD populistischer agiert, was sich sowohl mit Blick auf die Bewertungsstufen (gering, moderat, hoch) zeigt (@fig-popindplots-2, `Chi² (9, 74) = 15.37, p = 0.14`[^04-analyse-sm-14]), als auch in Bezug auf die Posts mit Hauptthema geschlechtergerechter Sprache (@fig-popindplots-3, `Chi² (12, 36) = 16.57, p = 0.31`; @fig-popindplots-4, `Chi² (6, 36= = 4.62, p = 0.5`[^04-analyse-sm-15]) – wenn auch für alle drei Grafiken gilt, dass sie ein zu hohes Maß an Überzufälligkeit aufweisen. Hypothese 3.2 kann somit nur in Teilen bekräftigt werden, die Linken fallen wie schon bei H3.1 aus dem theoretischen Raster.
-
-[^04-analyse-sm-13]: Fisher-Test zur Ermittlung der exakten Signifikanz.
-
-[^04-analyse-sm-14]: Fishers-Test zur Ermittlung der exakten Signifikanz.
-
-[^04-analyse-sm-15]: Jeweils: Fishers-Test zur Ermittlung der exakten Signifikanz.
-
 Nicht falsifiziert und auch klar bekräftigt werden kann dagegen Hypothese 3.5: Posts, in denen hauptsächlich geschlechtergerechte Sprache thematisiert wird und nicht nur Randthema ist, sind besonders und häufiger populistisch (@fig-popindplots) – wenn auch hinsichtlich der Signifikanz dieselben Einschränkungen für die Abbildungen (b) bis (d) gelten. Zwar enthalten nicht mehr AfD-Posts populistische Äußerungen, allerdings weisen sie mehr Populismusdimensionen auf, wenn geschlechtergerechte Sprache das Hauptthema des Posts ist. Bei der CSU ist dagegen sogar festzustellen, dass beides gilt: Mehr Posts sind populistisch und die Posts weisen mehr Populismusdimensionen auf.
 
 ```{r popind-plots}
 #| label: fig-popindplots
 #| layout-ncol: 2
 #| fig-cap: "Populismusgrad der Facebook-Posts zu geschlechtergerechter Sprache (geS) zwischen 2017 und 2024. Eigene Abbildung."
+#| fig-pos: htpb
 #| fig-subcap: 
 #|   - "Posts, die geS thematisieren"
 #|   - "Posts, die geS thematisieren nach Stufen"

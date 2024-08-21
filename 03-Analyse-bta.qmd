@@ -49,14 +49,6 @@ Die Ergebnisse der Datenanalyse sind in @fig-btaplots zu sehen. Die so verschied
 
 [^03-analyse-bta-7]: Um die beiden Wahlperioden (und auch die Zeiträume) miteinander vergleichen zu können, wurde der Durchschnitt pro Tag gebildet. Zwar spiegelt das nicht die realen Arbeitszeiten des Parlamentes wider, schafft aber zumindest etwas mehr Vergleichbarkeit.
 
-Gleiches gilt für Hypothese 2.1, die klar bestärkt werden kann. Mit 16 von 17 kommen fast alle Bundestagsanträge, die im Untersuchungszeitraum gestellt wurden, von der AfD (@fig-btaplots-4, `Chi² (1) = 13.24, p < 0.01`). Nur ein Antrag kommt von den Linken. Bei der Betrachtung von @fig-btaplots-5 (`Chi² (1, 17) = 1.95, p = 0.35`[^03-analyse-bta-8]) fällt auf, dass die Thematisierung in der 20. Wahlperiode, wenn auch nicht signifikant, so zumindest deutlich zugenommen hat. Überhaupt wurde geschlechtergerechte Sprache im Untersuchungszeitraum erst 2019/20 angesprochen (@fig-btaplots-6, `Chi² (4, 17) = 17, p = 0.12`[^03-analyse-bta-9]). Auch diese Beobachtung ist auf keinem Signifkanzniveau signifikant, obgleich die reale Überzufälligkeit aufgrund der geringen Fallzahl schwer zu ermitteln ist.[^03-analyse-bta-10]
-
-[^03-analyse-bta-8]: Fisher-Test zur Ermittlung der exakten Signifikanz.
-
-[^03-analyse-bta-9]: Fisher-Test zur Ermittlung der exakten Signifikanz.
-
-[^03-analyse-bta-10]: Zumal man argumentieren könnte, dass es sich im Sinne der Fragestellung um eine Vollerhebung handelt. Bei selbigen ist die Verwendung von Signifikanztest umstritten [vgl. @behnke2005].
-
 ```{r bta-plots}
 library(tidyverse)
 library(dplyr)
@@ -229,6 +221,8 @@ f6 <- ggplot(bta_gender_counts, aes(x = party, y = relative_count, fill = time))
 
 ```
 
+\blandscape
+
 ```{r bta-plot-ausgabe}
 #| label: fig-btaplots
 #| layout-ncol: 3
@@ -243,6 +237,7 @@ f6 <- ggplot(bta_gender_counts, aes(x = party, y = relative_count, fill = time))
 #|   - "Anträge mit Hauptthema geS"
 #|   - "Anträge pro Tag mit Hauptthema geS nach Wahlperiode"
 #|   - "Anträge pro Tag mit Hauptthema geS nach Jahr"
+#| fig-post: htpb
 #| out-height: 100%
 #| out-width: 100%
 
@@ -254,6 +249,16 @@ f5
 f6
 
 ```
+
+\elandscape
+
+Gleiches gilt für Hypothese 2.1, die klar bestärkt werden kann. Mit 16 von 17 kommen fast alle Bundestagsanträge, die im Untersuchungszeitraum gestellt wurden, von der AfD (@fig-btaplots-4, `Chi² (1) = 13.24, p < 0.01`). Nur ein Antrag kommt von den Linken. Bei der Betrachtung von @fig-btaplots-5 (`Chi² (1, 17) = 1.95, p = 0.35`[^03-analyse-bta-8]) fällt auf, dass die Thematisierung in der 20. Wahlperiode, wenn auch nicht signifikant, so zumindest deutlich zugenommen hat. Überhaupt wurde geschlechtergerechte Sprache im Untersuchungszeitraum erst 2019/20 angesprochen (@fig-btaplots-6, `Chi² (4, 17) = 17, p = 0.12`[^03-analyse-bta-9]). Auch diese Beobachtung ist auf keinem Signifkanzniveau signifikant, obgleich die reale Überzufälligkeit aufgrund der geringen Fallzahl schwer zu ermitteln ist.[^03-analyse-bta-10]
+
+[^03-analyse-bta-8]: Fisher-Test zur Ermittlung der exakten Signifikanz.
+
+[^03-analyse-bta-9]: Fisher-Test zur Ermittlung der exakten Signifikanz.
+
+[^03-analyse-bta-10]: Zumal man argumentieren könnte, dass es sich im Sinne der Fragestellung um eine Vollerhebung handelt. Bei selbigen ist die Verwendung von Signifikanztest umstritten [vgl. @behnke2005].
 
 ## Auswertung
 

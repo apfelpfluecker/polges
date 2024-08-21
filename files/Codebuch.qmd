@@ -50,6 +50,8 @@ format:
     keep-md: false
     linkcolor: black
     citecolor: black
+    mermaid:
+      theme: forest
     
 editor:
   render-on-save: false
@@ -67,105 +69,23 @@ header-includes:
 
 \pagenumbering{arabic}
 
-Überblick über
-
--   Kodierungsprozess
-
-    -   genaue Vorgaben, wie beim Kodieren vorgegangen wird, explizite Anleitung, Beschreibung der Kategorien
-
--   verwendete Kategorien und Unterkategorien
-
-1.  Definitorischer Rahmen
-
-    1.  Informationen über die Untersuchung (ausgliedern aus definitor. Rahmen)
-        -   Grundgesamtheit der Analyse
-
-        -   Bestimmung der zu untersuchenden Medien (+ Begründung)
-    2.  Ziel, Forschungsfrage, Hypothesen
-    3.  Definition der wichtigen Begriffe für die Kategorien
-    4.  Definition der Untersuchungs- und Analyseeinheiten
-        -   Auswahl der Beiträge
-
-        -   Welche Einheiten werden untersucht, warum?
-
-        -   Unterschiedliche Ebenen in Analyseeinheiten
-    5.  Definition der Aufgreifkriterien
-        -   Wann wird etwas in die Analyse aufgenommen
-
-        -   hier: bestimmte Begriffe (Lexika)
-    6.  Beschreibung der Vorgehensweise
-    7.  
-
-2.  Kategoriensystem
-
-    1.  Kategorie 1 mit Ausprägungen (plus Definition und Kodierbeispiel)
-    2.  Kategorie 2...
-    3.  Kategorie n...
-
-    -   formale Kategorien
-
-        -   Datum, Autor\*in, Legislatur, ggf. Zeiteinheit
-
-    -   inhaltliche Kategorien
-
-        -   Populismus
-
-    -   numerisches Relativ oder vorhanden/nicht vorhanden
-
-    -   Kategoriensystem muss vollständig sein -\> alle Aspekte der Forschungsfrage abdecken
-
-    -   Kategoriensystem muss trennscharf sein -\> Kategorien schließen sich gegenseitig aus
-
-    -   Validität:
-
-        -   Vollständigkeit!
-
-        -   geht zu Lasten der Reliabilität -\> je detaillierter die Codes, desto fehleranfälliger die Codierung
-
-    -   Reliabilität:
-
-        -   gleiche Kodierung bei versch. Kodierer\*innen
-
-        -   Intracoderreliabilität: gleicher Kodierer zu versch. Zeitpunkten
-
-        -   Intercoderreliabilität: versch. Kodierer\*innen
-
-        -   Errechnung eines Quotienten
-
-3.  Anhang
-
-    1.  Tabellarische Übersicht über Kategorien
-    2.  (Muster-)Codebogen
-
--   Analyseeinheiten, Kodiereinheiten etc. benennen
-
-------------------------------------------------------------------------
-
-Informationen über die Untersuchung
-
--   Grundgesamtheit der Analyse
-
--   Bestimmung der zu untersuchenden Medien
-
 # Definitorischer Rahmen
 
-## Untersuchungsziel, Forschungsfragen, Hypothesen
+## Untersuchungsziel
 
-*aus Arbeit übernehmen*
+Die Forschungsfrage der Untersuchung zielt darauf ab, welche Parteien geschlechtergerechte Sprache auf Facebook thematisieren und sich dabei populistischer Praktiken bedienen. Hinsichtlich der Hypothesen ist zunächst zu vermuten, dass aufgrund der günstigen Rahmenbedingungen auf Social Media populistische Parteien – als Grundlage der Bewertung wird die PopuList [@rooduijn2023] genutzt, nach der das auf die AfD sowie Die Linke als Grenzfall zutrifft – die Plattform Facebook besonders häufig nutzen, also erkennbar mehr Posts absetzen als die übrigen Parteien (H3.1). Darauf aufbauend wird vermutet, dass die Posts dieser Parteien zu geschlechtergerechten Sprache populistischer sind als bei anderen Parteien, da populistische Parteien auch zu populistischer Kommunikation neigen sollten (H3.2). Wie schon im Zuge der Hypothese H2.1 angesprochen, wird die AfD als Polarisierungsunternehmer angesehen, sodass zu erwarten ist, dass die AfD wie auch bei den Bundestagsanträgen am meisten geschlechtergerechte Sprache thematisiert (H3.3). Da es sich bei geschlechtergerechter Sprache um einen gesellschaftlichen Triggerpunkt handelt, ist anzunehmen, dass im Bundestagswahlkampf 2020/21 besonders viele Posts zu diesem Thema abgesetzt wurden, um davon zu profitieren [vgl. @mau2024: 388] (H3.4). Zuletzt wird vermutet, dass Posts, in denen der Schwerpunkt auf geschlechtergerechter Sprache liegt, populistischer formuliert sind als Posts, die geschlechtergerechte Sprache nur am Rand thematisieren (H3.5).
 
 ## Definition wichtiger Begriffe
 
-*aus Arbeit übernehmen*
+Der Untersuchungsbereich bezieht sich ausschließlich auf deutsche Parteien. Innerhalb dieses Pools wurden anhand einer Auswahl typischer Fälle lediglich die Parteien betrachtet, die während des Untersuchungszeitraums eine Gruppe oder eine Fraktion im Bundestag stellten oder Teil davon waren.[^codebuch-1] Übrig bleiben nach dieser Auswahl die Sozialdemokratische Partei Deutschlands (SPD), die Christlich Demokratische Union Deutschlands (CDU) und ihre Schwesterpartei, die Christlich-Soziale Union in Bayern (CSU), Bündnis 90/Die Grünen (Grüne), die Freie Demokratische Partei (FDP), die Alternative für Deutschland (AfD), Die Linke (Linke), sowie das Bündnis Sahra Wagenknecht – Vernunft und Gerechtigkeit (BSW), die im Folgenden der Übersicht halber auch als „Bundestagsparteien“ bezeichnet werden.
 
-Bundestagsparteien
+[^codebuch-1]: Damit ist der Südschleswigsche Wählerverband (SSW) beispielsweise nicht Teil der Analyse, obwohl die Partei als Partei nationaler Minderheiten 2021 in den Bundestag gewählt wurde. Ihr Abgeordneter Stefan Seidler ist fraktionslos. Gleiches gilt für die Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative (Die PARTEI) und Marco Bülow, der 2018 als Mitglied des Bundestages (MdB) aus der SPD und der SPD-Fraktion austrat, um 2020 in die Partei Die PARTEI einzutreten [vgl. @starzmann2020: o. S.].
 
-Populismus
+Populismus wird in dieser Arbeit angelehnt an Cas Mudde als eine dünne Ideologie definiert, die im Wesentlichen aus den Aspekten Volksnähe, Elitenkritik und der Wiederherstellung der Volkssouveränität besteht [-@mudde2004: 543].
 
-Geschlechtergerechte Sprache
+Als geschlechtergerechte Sprache wird der Versuch verstanden, Geschlechtergerechtigkeit in der Sprache herzustellen, wobei ein wichtiger Bestandteil die Sichtbarmachung von in der Sprache nicht abgebildeten Geschlechtern ist [vgl. @rödder2022: 6]. Es gibt zahlreiche Formen geschlechtergerechter Sprache, exemplarisch seien an dieser Stelle das Binnen-I (StudentInnen), die Beidnennung (Studentinnen und Studenten), die Substantivierung von Präsenspartizipien (Studierende) sowie Zeichensetzungen innerhalb von Wörtern wie zum Beispiel der Gender-Gap (Student_innen), der Gender-Stern (Student\*innen) oder auch der Doppelpunkt (Student:innen) sowie das generische Femininum (Studentinnen) genannt.[^codebuch-2]
 
-Es gibt zahlreiche Formen geschlechtergerechter Sprache, exemplarisch seien an dieser Stelle das Binnen-I (StudentInnen), die Beidnennung (Studentinnen und Studenten), die Substantivierung von Präsenspartizipien (Studierende) sowie Zeichensetzungen innerhalb von Wörtern wie zum Beispiel der Gender-Gap (Student_innen), der Gender-Stern (Student\*innen) oder auch der Doppelpunkt (Student:innen) sowie das generische Femininum (Studentinnen) genannt.[^codebuch-1]
-
-[^codebuch-1]: Streng genommen ist das generische Maskulinum auch eine Form geschlechtergerechter Sprache, allerdings entlädt sich gerade an dieser Form die größte Kritik der feministischen Linguistik, sodass an dieser Stelle davon abgesehen wurde, es explizit zu nennen. Mehr dazu in der Arbeit.
+[^codebuch-2]: Streng genommen ist das generische Maskulinum auch eine Form geschlechtergerechter Sprache, allerdings entlädt sich gerade an dieser Form die größte Kritik der feministischen Linguistik, sodass an dieser Stelle davon abgesehen wurde, es explizit zu nennen. Mehr dazu in der Arbeit.
 
 ## Definition der Auswahleinheit
 
@@ -184,7 +104,7 @@ options(knitr.kable.NA = "")
 auswahleinheit %>% 
   kableExtra::kable(booktabs = T, linesep = "") %>% 
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
-                latex_options = c("striped", "hover", "condensed"), 
+                latex_options = c("basic", "hover", "condensed"), 
                 font_size = if(knitr::is_latex_output()){10} else {14},) %>% 
   kableExtra::column_spec(1, width = "12em")  %>% 
   kableExtra::column_spec(2, width = "25em")
@@ -212,52 +132,54 @@ Die Vorgehensweise wird in @fig-vorgehensweise schematisch beschrieben. Runde K�
 ```{mermaid vorgehensweise}
 %%| label: fig-vorgehensweise
 %%| fig-cap: Visuelle Darstellung der Vorgehensweise. Eigene Abbildung.
-%%| fig-width: 4
+%%| fig-width: 5
+%%| mermaid-format: forest
 
 flowchart TD
-  1([Zeile des Posts aufrufen]) --> 2([Post lesen])
-  2 --- 3{"Überprüfung: Ist
-  Filtervariable TRUE?"}
-  3 --> |ja| 4([Post komplett ansehen])
-  4 --- 5["`**Codierung**
+  0(["zu erstem Post springen
+  (Codierphase = 1)"]) -->  1([Post lesen])
+  1 --> 2{"Welche 
+  Codierphase?"}
+  2 --> |1| 3["`**Codierung**
+  Hauptthema
   Homogenisierung
   Idealisierung
-  Selbstpositionierung
+  Selbstpositionierung`"]
+  3 --> 4([Post abschließen])
+  4 --> 5{"Posts übrig?
+  (in aktueller Phase)"}
+  5 --> |nein| 6{"Ist 3 die aktuelle
+  Codierphase?"}
+  6 --> |nein| 7([Codierphase + 1])
+  7 --> 13([in erste Zeile springen])
+  13 --> 1
+  2 --> |2| 8["`**Codierung**
   Konzeptkritik
   Moralkritik
   Schuldzuweisung
-  Medienkritik
-  mehr Volkskompetenzen
-  weniger Elitenkompetenzen`"]
-  5 --> 6([Codierung des Posts abschließen])
-  6 --> 7{"Gibt es noch 
-  weitere Posts?"}
-  7 --> |ja| 8([In die nächste Zeile springen])
-  8 --> 2
-  7 --> |nein| 9([Codierung abschließen])
-  3 --> |nein| 7
+  Medienkritik`"]
+  8 --> 4
+  2 --> |3| 10["`**Codierung**
+  Mehr Volkskompetenzen
+  Weniger Elitenkompetenzen`"]
+  10 --> 4
+  5 --> |ja| 12([in nächste Zeile springen])
+  12 --> 1
+  6 --> |ja| 14([Codierung abschließen])
 
 ```
 
 ## Reliabilität
 
-…
-
--   Reliabilitätsmaß nach Holsti erwähnen -\> Kritik an nur einem Codierer
+Die Reliabilität wird normalerweise entweder durch mehrere Codierer\*innen oder durch eine mehrfache Codierung gewährleistet. Beides ist in dieser Analyse nicht der Fall, was kritisch zu betrachten ist. Zwar ist die Auswahleinheit nicht besonders groß [vgl. @rössler2017: 174], allerdings stellte sich heraus, dass die Reliabilität im Codierprozess nur schwer von einem einzelnen Codierer sicherzustellen ist [vgl. dazu @rössler2017: 175]. Zwar erfolgte eine Art Pretestphase, die jedoch ebenso an den forschungsökonomischen Gegebenheiten dieser Arbeit krankt [vgl. @brosius2022: 176]. Dementsprechend kann weder eine Inter- noch eine Intracoderreliabilität angegeben werden.
 
 # Kategoriensystem und Codieranweisungen
 
--   formale Kategorien werden automatisiert erfasst
-
--   Kategorien erschöpfend, disjunkt (Rössler 10-102) -\> Vollständigkeit, Trennschärfe und nur relevante Sachverhalte
-
--   Datenniveau (Nominal -\> 0/1)
-
 Das Kategoriensystem sollte im Allgemeinen genauso wie die einzelnen Kategorien vollständig und trennscharf sein sowie ausschließlich die relevanten Sachverhalte abdecken [vgl. @rössler2017: 101-102]. Die Entwicklung des Kategoriensystems erfolgte deduktiv, also theoriegeleitet [vgl. @brosius2022: 175] in Anlehnung an @spieß2020 und @ernst2017.
 
-Populismus als Konstrukt kann wie oben definiert in drei Hauptkategorien (Volksnähe, Elitenkritik, Wiederherstellung der Volkssouveränität) unterteilt werden, die sich in insgesamt neun Unterkategorien ausdrücken. Die Kategorien Homogenisierung, Idealisierung und Selbstpositionierung stehen für Volksnähe, die Kategorien Konzeptkritik, Moralkritik, Schuldzuweisung und Medienkritik für Elitenkritik und die Kategorien mehr Volkskompetenzen und weniger Elitenkompetenzen für die Wiederherstellung der Volkssouveränität. Im Folgenden werden alle Unterkategorien ausführlich beschrieben.
+Populismus als Konstrukt kann, wie oben definiert, in drei Hauptkategorien (Volksnähe, Elitenkritik, Wiederherstellung der Volkssouveränität) unterteilt werden, die sich in insgesamt neun Unterkategorien ausdrücken. Die Kategorien Homogenisierung, Idealisierung und Selbstpositionierung stehen für Volksnähe, die Kategorien Konzeptkritik, Moralkritik, Schuldzuweisung und Medienkritik für Elitenkritik und die Kategorien mehr Volkskompetenzen und weniger Elitenkompetenzen für die Wiederherstellung der Volkssouveränität. Im Folgenden werden alle Unterkategorien ausführlich beschrieben.
 
-Die formalen Kategorien wurden bis auf die Kategorie „Hauptthema“ automatisiert erfasst beziehungsweise automatisiert aus automatisiert erfassten Kategorien umcodiert..
+Die formalen Kategorien wurden bis auf die Kategorie „Hauptthema“ automatisiert erfasst beziehungsweise automatisiert aus automatisiert erfassten Kategorien recodiert.
 
 Es wird ausschließlich der Kontext der Äußerungen zu geschlechtergerechter Sprache beachtet, nicht der gesamte Post.
 
@@ -271,26 +193,26 @@ Volkszentriertheit zeichnet sich durch die Vorstellung aus, „dass es ein durch
 
 ### Homogenisierung
 
-Unter Homogenisierung wird die angebliche Homogenität des Volkes verstanden. Dies bezieht sich auf zwei Ebenen: einerseits auf die Identität des Volkes [vgl. @lewandowsky2022: 18]. Das Volk hat demnach dieselben Interessen und Präferenzen, wobei der Common Sense des Volkes den Special Interests der Eliten gegenübersteht [vgl. @mudde2017: 33]. Dies kann sich bei rechten und linken Akteuren unterscheiden: Erstere verstehen eine gemeinsame Kultur oder Ethnie unter dem Volk, zweitere eher marginalisierte Gruppen [vgl. @lewandowsky2022: 19]. Auf der anderen Seite bezieht sich Homogenität auch auf den politischen Willen des Volkes als Ganzes, den nur die Populist\*innen wirklich repräsentierten [vgl. @lewandowsky2022: 19-20]. Zusammenfassend ist bei der Kategorie Homogenisierung die Ausprägung vorhanden zutreffend, wenn das Volk implizit oder explizit als eine homogene Masse dargestellt wird, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.\
+Unter Homogenisierung wird die angebliche Homogenität des Volkes verstanden. Dies bezieht sich auf zwei Ebenen: einerseits auf die Identität des Volkes [vgl. @lewandowsky2022: 18]. Das Volk hat demnach dieselben Interessen und Präferenzen, wobei der Common Sense des Volkes den Special Interests der Eliten gegenübersteht [vgl. @mudde2017: 33]. Dies kann sich bei rechten und linken Akteuren unterscheiden: Erstere verstehen eine gemeinsame Kultur oder Ethnie unter dem Volk, zweitere eher marginalisierte Gruppen [vgl. @lewandowsky2022: 19]. Auf der anderen Seite bezieht sich Homogenität auch auf den politischen Willen des Volkes als Ganzes, den nur die Populist\*innen wirklich repräsentierten [vgl. @lewandowsky2022: 19-20]. Zusammenfassend ist die Kategorie Homogenisierung zu codieren, wenn das Volk implizit oder explizit als eine homogene Masse dargestellt wird, die eine einheitliche Meinung beziehungsweise ein einheitliches Interesse hat.\
 Dies trifft zu, wenn beispielsweise vom „Volk“, der „Nation“, den „Deutschen“, den „Bürger\*innen“ oder auch von einer „normalen“ oder der „Normalbevölkerung“ gesprochen wird. Wenn also davon gesprochen wird, dass „Gendersprache \[...\] die Menschen auf die Palme \[bringt\]“ [@csu2024], handelt es sich um eine Homogenisierung, da von „den“ Menschen gesprochen wird. Wenn allerdings von einer „große\[n\] Mehrheit der Deutschen“ [@csu2023] gesprochen wird, die Gendern ablehne, handelt es sich nicht um eine Homogenisierung, da ein Verhältnis (große Mehrheit) eine Relativierung und damit keine Generalisierung und keine Homogenisierung darstellt. Auch wenn von „unserer Sprache“ gesprochen wird, handelt es sich um eine Homogenisierung, da impliziert wird, daraus leiteten sich bestimmte Interessen und Werte ab, die verschiedenen Perspektiven auf Sprache, die in der Bevölkerung ohne Frage existieren, nicht gerecht wird.
 
 ### Idealisierung
 
-Das Volk wird idealisiert dargestellt, in dem ihm positive Attribute zugeschrieben werden. Die Konnotationen können zum Beispiel Aufrichtigkeit, Anstand, Fleiß oder auch der viel zitierte gesunde Menschenverstand sein [vgl. @lewandowsky2022: 19; vgl. @spieß2020: 225]. Weitere Beispiele wären, wenn von einem außerordentlichen Gemeinschaftssinn gesprochen wird oder positiv konnotierte Adjektive in Kombination mit Volk oder Synonymen im Sinne der Kategorie Homogenisierung verwendet werden wie in „die kleinen Leute“, „der einfache Bürger“, „das hart arbeitende Volk“, „die normale Bevölkerung“.
+Das Volk wird idealisiert dargestellt, indem ihm positive Attribute zugeschrieben werden. Die Konnotationen können zum Beispiel Aufrichtigkeit, Anstand, Fleiß oder auch der viel zitierte gesunde Menschenverstand sein [vgl. @lewandowsky2022: 19; vgl. @spieß2020: 225]. Weitere Beispiele wären, wenn von einem außerordentlichen Gemeinschaftssinn gesprochen wird oder positiv konnotierte Adjektive in Kombination mit Volk oder Synonymen im Sinne der Kategorie Homogenisierung verwendet werden wie in „die kleinen Leute“, „der einfache Bürger“, „das hart arbeitende Volk“, „die normale Bevölkerung“.
 
 ### Selbstpositionierung
 
-Die Kategorie wird mit der Ausprägung vorhanden versehen, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Das ist auch der Fall, wenn der Akteur für „das Richtige“ eintritt, da das Volk der Populist\*innen eine wertebasierte Zuteilung ist, die beispielsweise auch mit dem „gesunden Menschenverstand“ gleichzusetzen ist. Dementsprechend ist ein Eintreten für „das Richtige“ auch ein Eintreten für das Volk – selbst wenn dieses nicht explizit genannt wird. Hinzukommen kann das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188]. Die Selbstbezeichnung als patriotische Partei gilt damit als eine Selbstpositionierung.
+Die Kategorie wird codiert, wenn der Akteur sich als Fürsprecher des Volkes darstellt, sich also positiv gegenüber dem Volk positioniert, sodass der Eindruck aufkommt, er würde sich mit dem Volk identifizieren. Das ist auch der Fall, wenn der Akteur für „das Richtige“ eintritt, da das Volk der Populist\*innen eine wertebasierte Zuteilung ist, die beispielsweise auch mit dem „gesunden Menschenverstand“ gleichzusetzen ist. Dementsprechend ist ein Eintreten für „das Richtige“ auch ein Eintreten für das Volk – selbst wenn dieses nicht explizit genannt wird. Hinzukommen kann das populistische Charakteristikum des dezidiert moralischen Anspruchs, „dass einzig die Populisten das wahre Volk vertreten“ [vgl. @müller2016: 188]. Die Selbstbezeichnung als patriotische Partei gilt damit als eine Selbstpositionierung.
 
 ## Elitenkritik
 
-Unter Elitenkritik, auch Anti-Establishment-Haltung, wird die Ablehnung der „Elite“ verstanden, die ebenso wie das Volk eine homogene Gruppe ist [vgl. @lewandowsky2022: 20] und die Antithese des Volkes darstellt [vgl. @mudde2017: 32]. Im Fokus dieser Ablehnung steht die Behauptung, dass die Eliten, womit verschiedenste Formen (politisch, kulturell, intellektuell, wirtschaftlich,...) gemeint sein können [vgl. @mudde2017: 33], nur ihren eigenen Interessen folgt und sich auf die Kosten des Volkes bereichert [vgl. @spieß2020: 225; vgl. @mudde2004: 546]. Sie ist „korrupt, inkompetent, abgehoben, entrückt vom Volk und seinen Nöten“ [@lewandowsky2022: 21] und kreiert Probleme, die mit den Problemen der kleinen Leute nichts zu tun haben [vgl. @schmiege2023: 438; vgl. @mudde2017: 33]. Die zentrale Abgrenzung zum Volk erfolgt über die Moral [vgl. @mudde2017: 32], weitere Dimensionen wie Klasse oder Nation können durch die Ergänzung anderer Ideologien ebenso auftauchen [vgl. @mudde2017: 32].
+Unter Elitenkritik, auch Anti-Establishment-Haltung, wird die Ablehnung der „Elite“ verstanden, die ebenso wie das Volk eine homogene Gruppe ist [vgl. @lewandowsky2022: 20] und die Antithese des Volkes darstellt [vgl. @mudde2017: 32]. Im Fokus dieser Ablehnung steht die Behauptung, dass die Eliten, womit verschiedenste Formen (politisch, kulturell, intellektuell, wirtschaftlich,...) gemeint sein können [vgl. @mudde2017: 33], nur ihren eigenen Interessen folgen und sich auf die Kosten des Volkes bereichern [vgl. @spieß2020: 225; vgl. @mudde2004: 546]. Die Elite ist „korrupt, inkompetent, abgehoben, entrückt vom Volk und seinen Nöten“ [@lewandowsky2022: 21] und kreiert Probleme, die mit den Problemen der kleinen Leute nichts zu tun haben [vgl. @schmiege2023: 438; vgl. @mudde2017: 33]. Die zentrale Abgrenzung zum Volk erfolgt über die Moral [vgl. @mudde2017: 32], weitere Dimensionen wie Klasse oder Nation können durch die Ergänzung anderer Ideologien ebenso auftauchen [vgl. @mudde2017: 32].
 
 ### Konzeptkritik
 
-Als Konzeptkritik wird das Anzweifeln oder Kritisieren von fachlichen Kompetenzen oder persönlicher Eigenschaften einzelner Akteur\*innen, die der Elite zugeschrieben werden, verstanden. Dabei reicht auch ein Infragestellen zur Codierung aus. Wichtig ist, dass ein konkreter Akteur vorhanden sein muss. Dabei kann es sich um Universitäten, die Regierung oder um bestimmte Medien handeln. Auch ein einzelner Wissenschaftszweig ist noch als konkreter Akteur zu codieren. Eine rein inhaltliche Kritik zählt nicht als Konzeptkritik. Ein Beispiel wäre, wenn wissenschaftlichen Studien die Wissenschaftlichkeit abgesprochen wird.[^codebuch-2] Genauso würde der Satz „Es ist fraglich, ob das betreffende Ministerium den nötigen Sachverstand zu Rate gezogen hat“ als Konzeptkritik aufgefasst werden.
+Als Konzeptkritik wird das Anzweifeln oder Kritisieren von fachlichen Kompetenzen oder persönlicher Eigenschaften einzelner Akteur\*innen, die der Elite zugeschrieben werden, verstanden. Dabei reicht auch ein Infragestellen zur Codierung aus. Wichtig ist, dass ein konkreter Akteur vorhanden sein muss. Dabei kann es sich um Universitäten, die Regierung oder um bestimmte Medien handeln. Auch ein einzelner Wissenschaftszweig ist noch als konkreter Akteur zu codieren. Eine rein inhaltliche Kritik zählt nicht als Konzeptkritik. Ein Beispiel wäre, wenn wissenschaftlichen Studien die Wissenschaftlichkeit abgesprochen wird.[^codebuch-3] Genauso würde der Satz „Es ist fraglich, ob das betreffende Ministerium den nötigen Sachverstand zu Rate gezogen hat“ als Konzeptkritik aufgefasst werden.
 
-[^codebuch-2]: Selbstverständlich ist Kritik an wissenschaftlichen Studien per se kein Populismus und nicht Teil der Konzeptkritik. Allerdings bewegen wir uns mit dieser Analyse außerhalb des wissenschaftlichen Diskurses – sowohl in Bezug auf die untersuchten Akteure als auch hinsichtlich des Mediums. Insofern kann in diesem Beispiel die Kategorie der Konzeptkritik als vorhanden betrachtet werden.
+[^codebuch-3]: Selbstverständlich ist Kritik an wissenschaftlichen Studien per se kein Populismus und nicht Teil der Konzeptkritik. Allerdings bewegen wir uns mit dieser Analyse außerhalb des wissenschaftlichen Diskurses – sowohl in Bezug auf die untersuchten Akteure als auch hinsichtlich des Mediums. Insofern kann in diesem Beispiel die Kategorie der Konzeptkritik als vorhanden betrachtet werden.
 
 ### Moralkritik
 
@@ -310,11 +232,11 @@ Einer etwas anderen Logik folgt die Kategorie Medienkritik, die erfüllt ist, we
 
 Schließlich steht die Wiederherstellung der Volkssouveränität für die Forderung, die Macht in die Hände des Volkes (zurück) zu geben [vgl. @spieß2020: 225]. Die Politik soll sich demnach vollständig durch den Volkswillen formen, wodurch konstitutionelle Elemente der liberalen Demokratie (unter anderem Gewaltenteilung, Schutz von Minderheiten) implizit oder explizit in Frage gestellt werden [vgl. @spieß2020: 225-226].
 
-### mehr Kompetenzen für das Volk
+### Mehr Kompetenzen für das Volk
 
-Die Kategorie ist erfüllt, wenn der Akteur mehr Befugnisse oder Kompetenzen für das Volk fordert. Auch die Forderung, ein Akteur solle sich mal nach der Volksmeinung richten, ist zu codieren. Das kann beispielsweise die Forderung nach mehr direkter Demokratie, mehr Mitentscheidung oder mehr Partizipation sein.
+Die Kategorie ist erfüllt, wenn der Akteur mehr Befugnisse oder Kompetenzen für das Volk fordert. Auch die Forderung, ein Akteur solle sich nach der Volksmeinung richten, ist zu codieren. Das kann beispielsweise die Forderung nach mehr direkter Demokratie, mehr Mitentscheidung oder mehr Partizipation sein.
 
-### weniger Kompetenzen für die Elite
+### Weniger Kompetenzen für die Elite
 
 Die Kategorie ist erfüllt, wenn der Akteur der Elite ihre vorhandenen Befugnisse oder Kompetenzen abspricht, sie also reduzieren oder minimieren will. Darin inbegriffen sind Forderungen, die der Elite Dinge, die sie im Moment tun kann, absprechen will. Beispielsweise ist die Aussage „Wir sind gegen einen Genderzwang“ zu codieren, weil der Elite die (wenn auch potentielle) Macht genommen werden soll, einen (angeblichen) Genderzwang auszuüben. Auch Verbote für die Elite fallen darunter, also wenn dem öffentlich-rechtlichen Rundfunk die Nutzung geschlechtergerechter Sprache verboten werden soll.
 
@@ -330,8 +252,8 @@ Der Satz „Für uns ist klar: Wer gendern mag, soll gendern, aber niemand darf 
 #| echo: false
 #| warning: false
 #| message: false
-#| #eval: false
-#| #include: false
+#| eval: false
+#| include: false
 
 library(dplyr)
 kategoriensystem <- readxl::read_excel("../files/kategoriensystem.xlsx", range = "A1:D10") ## Achtung ändern!
@@ -350,7 +272,7 @@ options(knitr.kable.NA = "---")
 ```
 
 | Konstrukt  | Hauptkategorien                         | Unterkategorien           | Merkmale                                                                                                             |
-|------------|-----------------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------|
+|------------|-----------------|-----------------------|------------------------------------|
 | Populismus | Volksnähe                               | Homogenisierung           | Darstellung als homogene Masse mit einheitlicher Meinung beziehungsweise einheitlichem Interesse                     |
 |            |                                         | Idealisierung             | idealisierte Darstellung durch Zuschreibung positiver Attribute                                                      |
 |            |                                         | Selbstpositionierung      | Akteur stellt sich dar, als identifiziere er sich mit dem Volk, als sei er Fürsprecher oder Teil des Volkes.         |
@@ -362,91 +284,5 @@ options(knitr.kable.NA = "---")
 |            |                                         | weniger Elitenkompetenzen | Forderung nach weniger Befugnissen/Kompetenzen für die Elite                                                         |
 
 : Kategorienschema {.striped}
-
-### Kategorien
-
-#### Volksnähe
-
-Spieß et al.:
-
--   Volk als homogene Gruppe
-
--   Zuschreibung positiver Attribute
-
--   Identifikation des Akteurs mit dem Volk
-
-Ernst et al.:
-
--   Betonung der Tugenden des Volkes
-
--   Leistungen des Volks loben
-
--   Volk als monolithisch (sehr homogen)
-
--   Nähe zum Volk betonen
-
-Lewandowsky et al.:
-
--   Mehrheitsdezisionismus
-
--   Direkte Demokratie
-
-#### Elitenkritik
-
-Spieß et al.:
-
--   Konzeptkritik (fachliche Kompetenzen / persönl. Eigenschaften bemängelt)
-
--   Moralkritik (Eigeninteressen der Elite über Gemeinwohl gestellt)
-
--   Schuldzuweisung (Elite für Missstände verantwortlich gemacht)
-
--   Medienkritik (andere Logik: Medien als Elite adressiert)
-
-Schmiege et al.:
-
--   Elite allgemein
-
--   ausländische Politiker\*innen und Regierungen
-
--   Politische Elite
-
--   Staatliche Elite
-
--   Wissenschaftliche Elite
-
--   Wirtschaftliche Elite
-
--   Mediale Elite
-
-Ernst et al.:
-
--   Elite diskreditieren
-
--   Elite beschuldigen
-
--   Elite vom Volk distanzieren
-
-Lewandowsky et al.:
-
--   Kritik an nationaler Demokratie und ihren Akteuren
-
--   Kritik an Europäischer Union
-
--   Kritik an Medien
-
-#### Wiederherstellung der Volkssouveränität
-
-Spieß et al.:
-
--   Forderung nach Kompetenzen für das Volk
-
--   Absprache der Kompetenzen der Elite
-
-Ernst et al.:
-
--   Forderung nach mehr Kompetenzen für das Volk
-
--   Ablehnung von mehr Kompetenzen für die Elite
 
 # Literaturverzeichnis

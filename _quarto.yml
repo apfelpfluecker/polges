@@ -4,7 +4,7 @@ project:
   type: book
   output-dir: Bachelorarbeit # anpassen
 
-Entwurfstatus: Entwurf 0.0 # regelmässig anpassen und am Ende auskommentieren (# an Anfangs)
+#Entwurfstatus: Entwurf 0.0 # regelmässig anpassen und am Ende auskommentieren (# an Anfangs)
 
 institut: "Fachbereich Gesellschaftswissenschaften und Philosophie der Philipps-Universität Marburg"
 papertype: "Bachelorarbeit im Fach Politikwissenschaft"
@@ -75,12 +75,16 @@ format:
   pdf:
     documentclass: scrreprt
     fontsize: 12pt
-    classoption: twoside #bei digitalen Arbeiten oneside!
+    classoption:
+      - twoside #bei digitalen Arbeiten oneside!
+      #- usegeometry
     geometry:
-      - top=30mm
-      - left=20mm
-      - lmargin=30mm,
-      - textwidth = 15.5cm,
+      #- top=20mm
+      - left=35mm
+      - right=20mm
+      #- bottom=20mm
+      #- lmargin=30mm
+      #- textwidth = 15.5cm
       - textheight = 22.5cm
     keep-tex: true
     fontenc: T1
@@ -116,7 +120,7 @@ format:
 prefer-html: true
 
 editor:
-  render-on-save: false
+  render-on-save: true
 
 header-includes:   
   - \usepackage{setspace}   #Package um Zeilenabstand zu wechseln

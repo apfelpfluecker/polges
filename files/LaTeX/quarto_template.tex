@@ -10,7 +10,10 @@ $endif$
 
 $doc-class.tex()$
 
-% \documentclass[twoside, fontsize=10pt]{scrreport}
+%\documentclass[twoside, fontsize=10pt]{scrreport}
+%Sprache laden
+%\usepackage[german]{babel}
+
 \usepackage{amsmath,amssymb}
 $if(linestretch)$
 \usepackage{setspace}
@@ -39,6 +42,10 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
 \usepackage{xcolor}
+%Abbildungen und Tabellen durchgehend nummerieren
+\usepackage{eso-pic}
+\counterwithout{figure}{chapter}
+%\counterwithout{table}{chapter}
 
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
@@ -69,7 +76,7 @@ $endif$
 $if(numbersections)$
 \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
 $else$
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+%\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 $endif$
 $if(block-headings)$
 % Make \paragraph and \subparagraph free-standing
@@ -160,7 +167,7 @@ $endif$
     pdfsubject={$if(subtitle)$$subtitle$$endif$},
     pdftitle={$title$},
     pdfkeywords={}
-   lang = {de_CH}
+   lang = {de}
 }
 
 \usepackage{scrlayer-scrpage}
@@ -178,6 +185,12 @@ $endif$
 \usepackage{subcaption}
 \captionsetup[sub]{font=scriptsize, labelfont=scriptsize}
 
+%Einbettung von Tabellen (für alle Tabellen)
+\let\oldtable\table
+\let\endoldtable\endtable
+\renewenvironment{table}[1][htpb]
+  {\oldtable[#1]}
+  {\endoldtable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -269,6 +282,8 @@ Abgabedatum: $Datum$
 
 %Mehr Platz für breite Tabellennummern
 \renewcommand{\l@table}{\@dottedtocline{1}{1em}{3em}}
+%Tabellen fließend nummerieren
+\renewcommand{\thetable}{\arabic{table}}
 \makeatother
 
 \section*{Inhalt}

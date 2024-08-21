@@ -10,36 +10,268 @@ execute:
 ::: {#refs}
 :::
 
-# Codebuch {#sec-codebuch}
-
-```{=tex}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{1} 
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{2} 
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{3} 
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{4}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{5}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{6}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{7}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{8}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{9}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{10}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{11}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{12}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{13}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{14}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{15}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{16}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{17}
-\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{18}
-```
-# Tabellen {#sec-tabellen}
+# Tabellen und Abbildungen {#sec-tabellen}
 
 ```{r}
-#| tbl-cap: "VIF-Werte"
+#| label: setup
+#| include: false
+
+source("_common.R")
+```
+
+## Analyseebene 1
+
+### Prüfung der Vorannahmen lineare Regression
+
+```{r reg-lin-log}
+#| include: false
+
+library(car)
+library(kableExtra)
+library(dplyr)
+library(knitr)
+
+sui <- readRDS("data/sui.Rds")
+# Regressionsmodell linear
+modell_genatt <- lm(genatt ~ age + sex + eastwest + educ + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
+# Regressionsmodell logistisch
+modell_genequatt <- glm(genequatt ~ age + sex + eastwest + educ + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
+
+```
+
+```{r reg-lin-homo}
+#| label: fig-reglinhomo
+#| fig-cap: Homoskedastizität des linearen Modells
+#| out-width: 75%
+
+# Homoskedastizität
+plot(modell_genatt, 1) # liegt nicht vor
+
+```
+
+```{r reg-lin-multi}
+#| label: tbl-reglinmulti
+#| tbl-cap: Multikollinearität des linearen Modells. VIF-Werte
+
+# keine Multikollinearität
+vif_lin <-round(vif(modell_genatt), 3) # liegt nicht vor
+kable(vif_lin, format = "latex", booktabs = TRUE, col.names = c("Variable", "VIF-Wert", "Df", "VIF^(1/(2*Df))")) %>%
+  kable_styling(latex_options = c("striped", "condensed")) %>%
+  footnote(general = "Anmerkung: VIF-Werte oberhalb von 10 deuten auf starke Multikollinearität hin.",
+           threeparttable = TRUE)
+```
+
+```{r reg-lin-nv}
+#| label: fig-reglinnv
+#| fig-cap: Verteilung der Residuen des linearen Modells
+#| out-width: 75%
+
+# Normalverteilte Residuen
+plot(modell_genatt, 2)
+
+```
+
+### Prüfung der Vorannahmen logistische Regression
+
+```{r reg-log-multi}
+#| label: tbl-reglogmulti
+#| tbl-cap: Multikollinearität des logistischen Modells. VIF-Werte.
+
+# keine Multikollinearität
+vif_log <-round(vif(modell_genequatt), 3) # liegt nicht vor
+kable(vif_log, format = "latex", booktabs = TRUE, col.names = c("Variable", "VIF-Wert", "Df", "VIF^(1/(2*Df))")) %>%
+  kable_styling(latex_options = c("striped", "condensed")) %>%
+  footnote(general = "Anmerkung: VIF-Werte oberhalb von 10 deuten auf starke Multikollinearität hin.",
+           threeparttable = TRUE)
+
+```
+
+Die Fallzahl der einzelnen Ausprägungen liegt über 25 (`r sum(sui$genequatt == 1, na.rm = TRUE)` und `r sum(sui$genequatt == 2, na.rm = TRUE)`). Die Gesamtfallzahl liegt damit auch deutlich über 100.
+
+## Analyseebene 2
+
+```{r bta-tbl-1}
+#| label: tbl-btatbl1
+#| tbl-cap: Gesamtzahl der Anträge
+
+library(tidyverse)
+library(dplyr)
+library(ggpubr)
+library(sjmisc)
+
+bta <- readRDS("data/btantraege.Rds")
+
+# Daten in langes Format
+bta_long <- bta %>% 
+  pivot_longer(cols = c(spd, union, gruene, fdp, afd, linke, bsw),
+               names_to = "party",
+               values_to = "Beteiligung") %>% 
+  filter(Beteiligung == 1) %>% 
+  mutate(party = rec(party, rec = "spd = SPD; union = Union; gruene = Grüne; fdp = FDP; afd = AfD; linke = Linke; bsw = BSW"))
+
+# Parteireihenfolge
+desired_order <- c("SPD", "Union", "Grüne", "FDP", "AfD", "Linke", "BSW")
+bta_long$party <- factor(bta_long$party, levels = desired_order)
+
+#############################################
+
+# Häufigkeit der Anträge zählen
+bta_counts <- bta_long %>% 
+  group_by(party) %>% 
+  summarise(Häufigkeit = n(), .groups = "drop")
+# Tabelle erstellen
+kable(bta_counts, format = "latex", booktabs = TRUE, col.names = c("Partei", "Häufigkeit")) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r bta-tbl-2}
+#| label: tbl-btatbl2
+#| tbl-cap: Anträge pro Tag nach Wahlperiode
+
+# Anträge Gesamt nach Wahlperiode
+days19 <- days_in_period("2017-10-24", "2021-10-25") # 19
+days20 <- days_in_period("2021-10-26", "2024-06-19") # 20
+bta_counts <- as.data.frame(table(bta_long$party, bta_long$wahlperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(bta_counts) <- c("party", "election_period", "count")
+bta_counts <- bta_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+bta_counts$party <- factor(bta_counts$party, levels = desired_order)
+# Tabelle
+kable(bta_counts %>% select(party, election_period, relative_count), 
+      format = "latex", 
+      booktabs = TRUE, 
+      col.names = c("Partei", "Wahlperiode", "Anträge/Tag (Durchschnitt)")) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r bta-tbl-3}
+#| label: tbl-btatbl3
+#| tbl-cap: Anträge pro Tag nach Jahr
+
+# Anträge Gesamt nach Zeit
+days1 <- days_in_period("2017-10-24", "2018-10-25")
+days2 <- days_in_period("2018-10-26", "2019-10-25")
+days3 <- days_in_period("2019-10-26", "2020-10-25")
+days4 <- days_in_period("2020-10-26", "2021-10-25")
+days5 <- days_in_period("2021-10-26", "2022-10-25")
+days6 <- days_in_period("2022-10-26", "2023-10-25")
+days7 <- days_in_period("2023-10-26", "2024-06-19")
+bta_counts <- as.data.frame(table(bta_long$party, bta_long$Zeitraum))
+days_in_time<- data.frame(time = c("1", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(bta_counts) <- c("party", "time", "count")
+bta_counts <- bta_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+bta_counts$party <- factor(bta_counts$party, levels = desired_order)
+# Tabelle
+kable(bta_counts %>% select(party, time, relative_count), 
+      format = "latex", 
+      booktabs = TRUE, 
+      col.names = c("Partei", "Zeitraum", "Anträge/Tag (Durchschnitt)")) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r bta-tbl-4}
+#| label: tbl-btatbl4
+#| tbl-cap: Anträge, die geschlechtergerechte Sprache thematisieren
+
+# Häufigkeit der Gender-Anträge zählen
+bta_long_gender <- bta_long %>% 
+  filter(filter == TRUE)
+all_parties <- data.frame(party = unique(bta_long$party))
+all_times <- data.frame(time = c("1", "2", "3", "4", "5", "6", "7"))
+
+bta_gender_counts <- bta_long_gender %>% 
+  group_by(party) %>% 
+  summarise(Häufigkeit = n(), .groups = "drop")
+#alle Parteien berücksichtigen
+bta_gender_counts <- all_parties %>%
+  left_join(bta_gender_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+# Daten für die Tabelle vorbereiten
+bta_counts_table <- bta_gender_counts %>%
+  group_by(party) %>%
+  summarise(Häufigkeit = sum(Häufigkeit), .groups = "drop")
+# Tabelle
+kable(bta_counts_table, 
+      format = "latex", 
+      booktabs = TRUE, 
+      col.names = c("Partei", "Häufigkeit")) %>%
+  kable_styling(latex_options = c("striped", "condensed")) # Keine hold_position
+
+```
+
+```{r bta-tbl5}
+#| label: tbl-btatbl5
+#| tbl-cap: Anträge pro Tag, die geschlechtergerechte Sprache thematisieren nach Wahlperiode
+
+# Anträge Gesamt nach Wahlperiode
+days19 <- days_in_period("2017-10-24", "2021-10-25") # 19
+days20 <- days_in_period("2021-10-26", "2024-06-19") # 20
+bta_gender_counts <- as.data.frame(table(bta_long_gender$party, bta_long_gender$wahlperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(bta_gender_counts) <- c("party", "election_period", "count")
+bta_gender_counts <- bta_gender_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+bta_gender_counts$party <- factor(bta_gender_counts$party, levels = desired_order)
+# Tabelle
+kable(bta_gender_counts %>% select(party, election_period, relative_count), 
+      format = "latex", 
+      booktabs = TRUE, 
+      col.names = c("Partei", "Wahlperiode", "Anträge/Tag (Durchschnitt)")) %>%
+  kable_styling(latex_options = c("striped", "condensed")) 
+
+
+
+
+```
+
+```{r bta-tbl6}
+#| label: tbl-btatbl6
+#| tbl-cap: Anträge pro Tag, die geschlechtergerechte Sprache thematisieren nach Jahr
+
+# Anträge Gesamt nach Zeit
+days1 <- days_in_period("2017-10-24", "2018-10-25")
+days2 <- days_in_period("2018-10-26", "2019-10-25")
+days3 <- days_in_period("2019-10-26", "2020-10-25")
+days4 <- days_in_period("2020-10-26", "2021-10-25")
+days5 <- days_in_period("2021-10-26", "2022-10-25")
+days6 <- days_in_period("2022-10-26", "2023-10-25")
+days7 <- days_in_period("2023-10-26", "2024-06-19")
+bta_gender_counts <- as.data.frame(table(bta_long_gender$party, bta_long_gender$Zeitraum))
+days_in_time<- data.frame(time = c("1", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(bta_gender_counts) <- c("party", "time", "count")
+bta_gender_counts <- bta_gender_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) %>%  # relativen Wert berechnen
+  right_join(all_times, by = "time") %>%  # sorgt dafür, dass alle Zeiträume auftauchen
+  tidyr::replace_na(list(count = 0, relative_count = 0)) # dafür fehlende Werte mit 0 ersetzen
+bta_gender_counts$party <- factor(bta_gender_counts$party, levels = desired_order)
+# Tabelle
+kable(bta_gender_counts %>% select(party, time, relative_count), 
+      format = "latex", 
+      booktabs = TRUE, 
+      col.names = c("Partei", "Zeitraum", "Anträge/Tag (Durchschnitt)")) %>%
+  kable_styling(latex_options = c("striped", "condensed")) 
+
+```
+
+## Analyseebene 3
+
+```{r bta-tbl6}
+#| label: tbl-btatbl6
+#| tbl-cap: Anträge pro Tag, die geschlechtergerechte Sprache thematisieren nach Jahr
 ```
 
 ```{r}
 #| tbl-cap: "Gesamtzahl der Posts"
+#| include: false
 
 library(kableExtra)
 library(gmodels) # für Fisher-Test
@@ -75,11 +307,38 @@ kable(tbl_gesamtposts_wp,
 
 ```
 
--   falls ich's schaffe
+```{=tex}
+%\newgeometry{left=47mm,
+%right=47mm,
+%top=40mm,
+%bottom=10mm}% unteren Rand anpassen
+```
+# Codebuch {#sec-codebuch}
 
+```{=tex}
+%\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{1} 
+%\vspace{-1cm}
+\pdf[2cm 6cm 2cm 2cm]{files/Codebuch.pdf}{2} % ggf. dritte Zahl ändern, dadurch ändert sich auch die Textgröße, sodass es etwas kleiner wird.
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{3} 
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{4}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{5}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{6}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{7}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{8}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{9}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{10}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{11}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{12}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{13}
+\pdf[2cm 0cm 2cm 2cm]{files/Codebuch.pdf}{14}
+```
 # R-Code {#sec-code}
 
-Aus Gründen des Umweltschutzes...
+Der gesamte Code dieser Arbeit befindet sich in einem öffentlichen Github-Repository, das unter folgender Adresse zu erreichen ist: <https://github.com/apfelpfluecker/polges>
+
+Alternativ kann auch der folgende QR-Code gescannt werden.
+
+[![](files/qr-code.png){fig-align="center" width="60%"}](https://github.com/apfelpfluecker/polges)
 
 # Eidesstattliche Erklärung
 

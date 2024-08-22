@@ -19,9 +19,7 @@ execute:
 source("_common.R")
 ```
 
-## Analyseebene 1
-
-### Prüfung der Vorannahmen lineare Regression
+Prüfung der Vorannahmen des linearen Modells: @fig-reglinhomo legt Homoskedastizität nahe. Aus @tbl-reglinmulti geht zudem hervor, dass sich keine VIF-Werte oberhalb des kritischen Werts von 10 befinden. Eine Normalverteilung wird mit Verweis auf @fig-reglinnv angenommen, obgleich diese für die Werte 2 bis 3 leicht abweicht. Damit sind die Vorannahmen des linearen Modells korrekt.
 
 ```{r reg-lin-log}
 #| include: false
@@ -36,6 +34,10 @@ sui <- readRDS("data/sui.Rds")
 modell_genatt <- lm(genatt ~ age + sex + eastwest + educ + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
 # Regressionsmodell logistisch
 modell_genequatt <- glm(genequatt ~ age + sex + eastwest + educ + motong_oth + gainemp + class + housesize + childinhouse + houseinc + commsize + party + migback, data = sui)
+
+sui_genequatt <- sui %>% 
+  select(genequatt, age, sex, eastwest, educ, motong_oth, gainemp, class, housesize, childinhouse, houseinc, commsize, party, migback)
+sui_genequatt <- sui_genequatt[complete.cases(sui_genequatt),]
 
 ```
 
@@ -71,7 +73,7 @@ plot(modell_genatt, 2)
 
 ```
 
-### Prüfung der Vorannahmen logistische Regression
+Prüfung der Vorannahmen logistische Regression: Für das logistische Modell gibt es lediglich drei Vorannahmen. Es darf keine Multikollinearität vorliegen. Das ist mit Blick auf @tbl-reglogmulti der Fall. Die Fallzahl der einzelnen Ausprägung sollte über 25 liegen – auch das ist der Fall (`r sum(sui_genequatt$genequatt == 1, na.rm = TRUE)` und `r sum(sui_genequatt$genequatt == 2, na.rm = TRUE)`). Zuletzt sollte die Gesamtfallzahl über 100 liegen, was ebenso der Fall ist (`r length(sui_genequatt$genequatt)`).
 
 ```{r reg-log-multi}
 #| label: tbl-reglogmulti
@@ -85,10 +87,6 @@ kable(vif_log, format = "latex", booktabs = TRUE, col.names = c("Variable", "VIF
            threeparttable = TRUE)
 
 ```
-
-Die Fallzahl der einzelnen Ausprägungen liegt über 25 (`r sum(sui$genequatt == 1, na.rm = TRUE)` und `r sum(sui$genequatt == 2, na.rm = TRUE)`). Die Gesamtfallzahl liegt damit auch deutlich über 100.
-
-## Analyseebene 2
 
 ```{r bta-tbl-1}
 #| label: tbl-btatbl1
@@ -139,11 +137,16 @@ bta_counts <- bta_counts %>%
   left_join(days_in_time, by = "election_period") %>% # anheften an Ds
   mutate(relative_count = count / days) # relativen Wert berechnen
 bta_counts$party <- factor(bta_counts$party, levels = desired_order)
+crosstab <- bta_counts %>% 
+  select(party, election_period, relative_count) %>% 
+  pivot_wider(names_from = election_period, values_from = relative_count)
 # Tabelle
-kable(bta_counts %>% select(party, election_period, relative_count), 
+kable(crosstab, 
       format = "latex", 
-      booktabs = TRUE, 
-      col.names = c("Partei", "Wahlperiode", "Anträge/Tag (Durchschnitt)")) %>%
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "Wahlperiode 19", "Wahlperiode 20")
+      ) %>%
   kable_styling(latex_options = c("striped", "condensed"))
 
 ```
@@ -167,11 +170,16 @@ bta_counts <- bta_counts %>%
   left_join(days_in_time, by = "time") %>% # anheften an Ds
   mutate(relative_count = count / days) # relativen Wert berechnen
 bta_counts$party <- factor(bta_counts$party, levels = desired_order)
+crosstab <- bta_counts %>% 
+  select(party, time, relative_count) %>% 
+  pivot_wider(names_from = time, values_from = relative_count)
 # Tabelle
-kable(bta_counts %>% select(party, time, relative_count), 
+kable(crosstab, 
       format = "latex", 
-      booktabs = TRUE, 
-      col.names = c("Partei", "Zeitraum", "Anträge/Tag (Durchschnitt)")) %>%
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24")
+      ) %>%
   kable_styling(latex_options = c("striped", "condensed"))
 
 ```
@@ -220,15 +228,17 @@ bta_gender_counts <- bta_gender_counts %>%
   left_join(days_in_time, by = "election_period") %>% # anheften an Ds
   mutate(relative_count = count / days) # relativen Wert berechnen
 bta_gender_counts$party <- factor(bta_gender_counts$party, levels = desired_order)
+crosstab <- bta_gender_counts %>% 
+  select(party, election_period, relative_count) %>% 
+  pivot_wider(names_from = election_period, values_from = relative_count)
 # Tabelle
-kable(bta_gender_counts %>% select(party, election_period, relative_count), 
+kable(crosstab, 
       format = "latex", 
-      booktabs = TRUE, 
-      col.names = c("Partei", "Wahlperiode", "Anträge/Tag (Durchschnitt)")) %>%
-  kable_styling(latex_options = c("striped", "condensed")) 
-
-
-
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "Wahlperiode 19", "Wahlperiode 20")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
 
 ```
 
@@ -253,20 +263,305 @@ bta_gender_counts <- bta_gender_counts %>%
   right_join(all_times, by = "time") %>%  # sorgt dafür, dass alle Zeiträume auftauchen
   tidyr::replace_na(list(count = 0, relative_count = 0)) # dafür fehlende Werte mit 0 ersetzen
 bta_gender_counts$party <- factor(bta_gender_counts$party, levels = desired_order)
+crosstab <- bta_gender_counts %>% 
+  select(party, time, relative_count) %>% 
+  pivot_wider(names_from = time, values_from = relative_count)
 # Tabelle
-kable(bta_gender_counts %>% select(party, time, relative_count), 
+kable(crosstab, 
       format = "latex", 
-      booktabs = TRUE, 
-      col.names = c("Partei", "Zeitraum", "Anträge/Tag (Durchschnitt)")) %>%
-  kable_styling(latex_options = c("striped", "condensed")) 
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
 
 ```
 
-## Analyseebene 3
+```{r sm-tbl-marktanteile}
+#| label: tbl-smtblmarkt
+#| tbl-cap: "Marktanteile verschiedener Social-Media-Plattformen im Zeitverlauf (10/2017-06/2024). Datengrundlage: Statcounter GlobalStats. Eigene Abbildung"
+#| include: false
+#| eval: false
 
-```{r bta-tbl6}
-#| label: tbl-btatbl6
-#| tbl-cap: Anträge pro Tag, die geschlechtergerechte Sprache thematisieren nach Jahr
+library(lubridate)
+library(viridisLite)
+library(viridis)
+# Marktanteile-Datensatz einlesen
+sm_marktanteile <- readRDS("data/sm_marktanteile.Rds")
+# in Long-Format umwandeln
+sm_marktanteile_long <- sm_marktanteile %>% 
+  pivot_longer(cols = -Date, names_to = "Plattform", values_to = "MarketShare")
+# Date in Datumsformat umwandeln
+sm_marktanteile_long$Date <- ymd(paste0(sm_marktanteile_long$Date, "-01"))
+crosstab <- sm_marktanteile_long %>% 
+  pivot_wider(names_from = Date, values_from = MarketShare)
+# Tabelle
+kable(crosstab, 
+      format = "latex", 
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Plattform", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r sm-tbl1}
+#| label: tbl-smtbl-1
+#| tbl-cap: "Gesamtzahl der Posts"
+fb_posts <- readRDS("data/fb_posts.Rds")
+desired_order <- c("SPD", "CDU", "CSU", "Grüne", "FDP", "AfD", "Linke", "BSW")
+
+
+# Posts Gesamt
+post_counts <- as.data.frame(table(fb_posts$party))
+colnames(post_counts) <- c("party", "count")
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+# Daten für die Tabelle vorbereiten
+post_counts_table <- post_counts %>%
+  group_by(party) %>%
+  summarise(count = sum(count), .groups = "drop")
+# Tabelle
+kable(post_counts_table, 
+      format = "latex", 
+      booktabs = TRUE, 
+      col.names = c("Partei", "Häufigkeit")) %>%
+  kable_styling(latex_options = c("striped", "condensed")) # Keine hold_position
+
+```
+
+```{r sm-tbl2}
+#| label: tbl-smtbl-2
+#| tbl-cap: "Posts pro Tag nach Wahlperiode"
+
+# Posts Gesamt nach Wahlperiode
+days19 <- days_in_period("2017-10-24", "2021-10-25") # 19
+days20 <- days_in_period("2021-10-26", "2024-06-19") # 20
+post_counts <- as.data.frame(table(fb_posts$party, fb_posts$Wahlerperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(post_counts) <- c("party", "election_period", "count")
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+crosstab <- post_counts %>% 
+  select(party, election_period, relative_count) %>% 
+  pivot_wider(names_from = election_period, values_from = relative_count)
+# Tabelle
+kable(crosstab, 
+      format = "latex", 
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "Wahlperiode 19", "Wahlperiode 20")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r sm-tbl3}
+#| label: tbl-smtbl-3
+#| tbl-cap: "Posts por Tag nach Jahr"
+
+# Posts Gesamt nach Zeit
+days1 <- days_in_period("2017-10-24", "2018-10-25")
+days2 <- days_in_period("2018-10-26", "2019-10-25")
+days3 <- days_in_period("2019-10-26", "2020-10-25")
+days4 <- days_in_period("2020-10-26", "2021-10-25")
+days5 <- days_in_period("2021-10-26", "2022-10-25")
+days6 <- days_in_period("2022-10-26", "2023-10-25")
+days7 <- days_in_period("2023-10-26", "2024-06-19")
+post_counts <- as.data.frame(table(fb_posts$party, fb_posts$Zeitraum))
+days_in_time<- data.frame(time = c("1", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(post_counts) <- c("party", "time", "count")
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+crosstab <- post_counts %>% 
+  select(party, time, relative_count) %>% 
+  pivot_wider(names_from = time, values_from = relative_count)
+# Tabelle
+kable(crosstab, 
+      format = "latex", 
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r sm-tbl4}
+#| label: tbl-smtbl-4
+#| tbl-cap: "Posts, die geschlechtergerechte Sprache thematisieren"
+
+gender_posts <- fb_posts %>% 
+  filter(filter == TRUE)
+all_parties <- data.frame(party = unique(fb_posts$party))
+# Gender-Posts Gesamt
+post_counts <- as.data.frame(table(gender_posts$party))
+colnames(post_counts) <- c("party", "count")
+# alle Parteien berücksichtigen
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+# Daten für die Tabelle vorbereiten
+post_counts_table <- post_counts %>%
+  group_by(party) %>%
+  summarise(count = sum(count), .groups = "drop")
+# Tabelle
+kable(post_counts_table, 
+      format = "latex", 
+      booktabs = TRUE, 
+      col.names = c("Partei", "Häufigkeit")) %>%
+  kable_styling(latex_options = c("striped", "condensed")) # Keine hold_position
+
+```
+
+```{r sm-tbl5}
+#| label: tbl-smtbl-5
+#| tbl-cap: "Posts pro Tag, die geschlechtergerechte Sprache thematisieren nach Wahlperiode"
+
+# Gender-Posts Gesamt nach Wahlperiode
+post_counts <- as.data.frame(table(gender_posts$party, gender_posts$Wahlerperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(post_counts) <- c("party", "election_period", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days)  # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+crosstab <- post_counts %>% 
+  select(party, election_period, relative_count) %>% 
+  pivot_wider(names_from = election_period, values_from = relative_count)
+# Tabelle
+kable(crosstab, 
+      format = "latex", 
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "Wahlperiode 19", "Wahlperiode 20", "NA")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r sm-tbl6}
+#| label: tbl-smtbl-6
+#| tbl-cap: "Posts pro Tag, die geschlechtergerechte Sprache thematisieren nach Jahr"
+
+# Gender-Posts Gesamt nach Zeit
+post_counts <- as.data.frame(table(gender_posts$party, gender_posts$Zeitraum))
+days_in_time <- data.frame(time = c("2017/18", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(post_counts) <- c("party", "time", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+crosstab <- post_counts %>% 
+  select(party, time, relative_count) %>% 
+  pivot_wider(names_from = time, values_from = relative_count)
+# Tabelle
+kable(crosstab, 
+      format = "latex", 
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "NA")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r sm-tbl7}
+#| label: tbl-smtbl-7
+#| tbl-cap: "Posts mit Hauptthema geschlechtergerechte Sprache"
+
+gender_main_posts <- fb_posts %>% 
+  filter(Hauptthema == 1)
+all_parties <- data.frame(party = unique(fb_posts$party))
+
+# Gender-Posts Hauptthema Gesamt
+post_counts <- as.data.frame(table(gender_main_posts$party))
+colnames(post_counts) <- c("party", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+# Daten für die Tabelle vorbereiten
+post_counts_table <- post_counts %>%
+  group_by(party) %>%
+  summarise(count = sum(count), .groups = "drop")
+# Tabelle
+kable(post_counts_table, 
+      format = "latex", 
+      booktabs = TRUE, 
+      col.names = c("Partei", "Häufigkeit")) %>%
+  kable_styling(latex_options = c("striped", "condensed")) # Keine hold_position
+
+
+```
+
+```{r sm-tbl8}
+#| label: tbl-smtbl-8
+#| tbl-cap: "Posts pro Tag mit Hauptthema geschlechtergerechte Sprache nach Wahlperiode"
+
+# Gender-Posts Hauptthema Gesamt nach Wahlperiode
+post_counts <- as.data.frame(table(gender_main_posts$party, gender_main_posts$Wahlerperiode))
+days_in_time <- data.frame(election_period = c("19", "20"), days = c(days19, days20)) 
+colnames(post_counts) <- c("party", "election_period", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "election_period") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+crosstab <- post_counts %>% 
+  select(party, election_period, relative_count) %>% 
+  pivot_wider(names_from = election_period, values_from = relative_count)
+# Tabelle
+kable(crosstab, 
+      format = "latex", 
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "Wahlperiode 19", "Wahlperiode 20", "NA")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
+```
+
+```{r sm-tbl9}
+#| label: tbl-smtbl-9
+#| tbl-cap: "Posts pro Tag mit Hauptthema geschlechtergerechte Sprache nach Jahr"
+
+# Gender-Posts Hauptthema Gesamt nach Zeit
+post_counts <- as.data.frame(table(gender_main_posts$party, gender_main_posts$Zeitraum))
+days_in_time <- data.frame(time = c("2017/18", "2", "3", "4", "5", "6", "7"), days = c(days1, days2, days3, days4, days5, days6, days7)) 
+colnames(post_counts) <- c("party", "time", "count")
+post_counts <- all_parties %>%
+  left_join(post_counts, by = "party") %>%
+  tidyr::replace_na(list(count = 0))  # Setze fehlende Werte auf 0
+post_counts <- post_counts %>%
+  left_join(days_in_time, by = "time") %>% # anheften an Ds
+  mutate(relative_count = count / days) # relativen Wert berechnen
+post_counts$party <- factor(post_counts$party, levels = desired_order)
+crosstab <- post_counts %>% 
+  select(party, time, relative_count) %>% 
+  pivot_wider(names_from = time, values_from = relative_count)
+# Tabelle
+kable(crosstab, 
+      format = "latex", 
+      align = "c",
+      booktabs = TRUE,
+      col.names = c("Partei", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "NA")
+      ) %>%
+  kable_styling(latex_options = c("striped", "condensed"))
+
 ```
 
 ```{r}

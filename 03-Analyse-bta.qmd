@@ -226,7 +226,7 @@ f6 <- ggplot(bta_gender_counts, aes(x = party, y = relative_count, fill = time))
 ```{r bta-plot-ausgabe}
 #| label: fig-btaplots
 #| layout-ncol: 3
-#| fig-cap: "Bundestagsanträge der Fraktionen/Gruppen zwischen 2017 und 2024 – Gesamt, nach Wahlperiode, nach Jahr. Eigene Abbildung. (geS = geschlechtergerechte Sprache)"
+#| fig-cap: "Bundestagsanträge der Fraktionen/Gruppen zwischen 2017 und 2024 – Gesamt, nach Wahlperiode, nach Jahr. Eigene Abbildung (geS = geschlechtergerechte Sprache)"
 #| fig-subcap:
 #|   - "Gesamtzahl der Anträge"
 #|   - "Anträge pro Tag nach Wahlperiode"

@@ -42,7 +42,7 @@ Die Social-Media-Kommunikation der Bundestagsparteien wurde operationalisiert du
 
 ```{r sm-marktanteil}
 #| label: fig-sm-marktanteil
-#| fig-cap: "Marktanteile verschiedener Social-Media-Plattformen im Zeitverlauf (10/2017–06/2024). Datengrundlage: Statcounter GlobalStats. Eigene Abbildung."
+#| fig-cap: "Marktanteile verschiedener Social-Media-Plattformen im Zeitverlauf (10/2017–06/2024). Datengrundlage: Statcounter GlobalStats. Eigene Abbildung"
 #| out-width: 75%
 #| fig-pos: htpb
 #| echo: false
@@ -342,8 +342,8 @@ p9 <- ggplot(post_counts, aes(x = party, y = relative_count, fill = time)) +
        fill = "Zeitraum") +
   theme_minimal() +
   #scale_x_discrete(labels = function(x) str_wrap(x, width = 13))
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  guides(fill = "none", colour = "none") # Legende ausblenden
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) #+
+  #guides(fill = "none", colour = "none") # Legende ausblenden
 
 
 #################################################################
@@ -427,7 +427,7 @@ p13 <- ggplot(gender_main_posts, aes(fill = popind, y = party)) +
 ```{r plots-ausgeben}
 #| label: fig-smplots
 #| layout-ncol: 3
-#| fig-cap: "Facebook-Posts der Bundestagsparteien zwischen 2017 und 2024 – Gesamt, nach Wahlperiode, nach Jahr. Eigene Abbildung. (geS = geschlechtergerechte Sprache)"
+#| fig-cap: "Facebook-Posts der Bundestagsparteien zwischen 2017 und 2024 – Gesamt, nach Wahlperiode, nach Jahr. Eigene Abbildung (geS = geschlechtergerechte Sprache)"
 #| fig-subcap:
 #|   - "Gesamtzahl der Posts"
 #|   - "Posts pro Tag nach Wahlperiode"
@@ -465,7 +465,7 @@ Nicht falsifiziert und auch klar bekräftigt werden kann dagegen Hypothese 3.5: 
 ```{r popind-plots}
 #| label: fig-popindplots
 #| layout-ncol: 2
-#| fig-cap: "Populismusgrad der Facebook-Posts zu geschlechtergerechter Sprache (geS) zwischen 2017 und 2024. Eigene Abbildung."
+#| fig-cap: "Populismusgrad der Facebook-Posts zu geschlechtergerechter Sprache (geS) zwischen 2017 und 2024. Eigene Abbildung"
 #| fig-pos: htpb
 #| fig-subcap: 
 #|   - "Posts, die geS thematisieren"

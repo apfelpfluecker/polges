@@ -227,9 +227,10 @@
 
 \usepackage[ngerman]{cleveref}
 
-%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
-
-\renewcommand{\thetable}{\thesection.\arabic{table}}
+% Tabellen und Abbildungen nach Kapiteln nummerieren
+% wenn nach Sections gewünscht, dann \thesection nutzen
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
 
 % \urlstyle{same} % nur für APA-Style
 
@@ -238,9 +239,10 @@
 \KOMAoptions{pagesize, paper=portrait}
 %      \newgeometry{a4paper, lmargin=30mm, top=30mm, textwidth=15.5cm,
 % textheight=22.5cm}%
- 
-\floatplacement{figure}{H}
-\floatplacement{table}{H}
+
+%vorher H
+\floatplacement{figure}{!htpb}
+\floatplacement{table}{!htpb}
 
 \makeatletter
 \newcommand{\blandscape}{

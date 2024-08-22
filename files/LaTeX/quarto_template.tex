@@ -42,10 +42,11 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
 \usepackage{xcolor}
-%Abbildungen und Tabellen durchgehend nummerieren
+%Abbildungen und Tabellen nach Kapiteln nummerieren
+% wenn durchgehend gewünscht, dann statt section chapter schreiben
 \usepackage{eso-pic}
-\counterwithout{figure}{chapter}
-%\counterwithout{table}{chapter}
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
 
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
@@ -283,7 +284,7 @@ Abgabedatum: $Datum$
 %Mehr Platz für breite Tabellennummern
 \renewcommand{\l@table}{\@dottedtocline{1}{1em}{3em}}
 %Tabellen fließend nummerieren
-\renewcommand{\thetable}{\arabic{table}}
+%\renewcommand{\thetable}{\arabic{table}}
 \makeatother
 
 \section*{Inhalt}
@@ -309,7 +310,8 @@ Abgabedatum: $Datum$
 \listoffigures
 %\end{multicols}
 
-\clearpage
+%\clearpage
+\cleardoublepage
 
 \ihead[]{\headmark} %oben links
 

@@ -438,8 +438,8 @@ p13 <- ggplot(gender_main_posts, aes(fill = popind, y = party)) +
 #|   - "Posts mit Hauptthema geS"
 #|   - "Posts pro Tag mit Hauptthema geS nach Wahlperiode"
 #|   - "Posts pro Tag mit Hauptthema geS nach Jahr"
-#| out-height: 80%
-#| out-width: 80%
+#| out-height: 70%
+#| out-width: 70%
 #| fig-pos: htpb
 #| echo: false
 #| warning: false

@@ -76,16 +76,15 @@ format:
     documentclass: scrreprt
     fontsize: 12pt
     classoption:
-      - twoside #bei digitalen Arbeiten oneside!
+      - oneside #bei digitalen Arbeiten oneside!
+      - a4paper
       #- usegeometry
     geometry:
-      #- top=20mm
-      - left=35mm
-      - right=20mm
-      #- bottom=20mm
+      #- left=35mm #für twoside
+      #- right=20mm #für twoside
       #- lmargin=30mm
-      #- textwidth = 15.5cm
-      - textheight = 22.5cm
+      - textwidth = 15.5cm # für oneside
+      - textheight = 24.5cm # generell
     keep-tex: true
     fontenc: T1
     template: files/LaTeX/quarto_template.tex
